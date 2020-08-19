@@ -1,0 +1,2901 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+% or ...
+
+\usecolortheme{orchid}
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\end_preamble
+\use_default_options false
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file is a solution template for:
+\end_layout
+
+\begin_layout Itemize
+Talk at a conference/colloquium.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk length is about 20min.
+ 
+\end_layout
+
+\begin_layout Itemize
+Style is ornate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Föreläsning 2 - Variabelselektion och regularisering
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Short Paper Title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, use only with long paper titles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Josef Wilzen
+\end_layout
+
+\begin_layout Date
+2020-08-17
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Modelval
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias, varians, brus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=f\left(x\right)+\epsilon\qquad E\left[\epsilon\right]=0\qquad V\left[\epsilon\right]=\sigma^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{y}=\hat{f}\left(x_{test}\right)
+\]
+
+\end_inset
+
+Förväntad test MSE:
+\begin_inset Formula 
+\[
+E\left[y_{test}-\hat{f}\left(x_{test}\right)\right]^{2}=V\left[\epsilon\right]+V\left[\hat{f}\left(x_{test}\right)\right]+Bias\left[\hat{f}\left(x_{test}\right)\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Brusvarians 
+\begin_inset Formula $V\left[\epsilon\right]$
+\end_inset
+
+: irreducibel brus
+\end_layout
+
+\begin_layout Itemize
+Modellens varians 
+\begin_inset Formula $V\left[\hat{f}\left(x_{test}\right)\right]$
+\end_inset
+
+: Hur mycket kommer 
+\begin_inset Formula $\hat{f}$
+\end_inset
+
+ att ändras när vi byter dataset
+\end_layout
+
+\begin_layout Itemize
+Modellens skewhet 
+\begin_inset Formula $Bias\left[\hat{f}\left(x_{test}\right)\right]$
+\end_inset
+
+: Sytematisk skewhet eller modelleringsfel i modellen
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias, varians, brus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Bias-variance-trade-off
+\end_layout
+
+\begin_layout Itemize
+Vi fill ha 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lågt bias
+\end_layout
+
+\begin_layout Itemize
+Låg varians 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/overtfitting_train_test_curve.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modellval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi vill ha bra 
+\series bold
+generalisering
+\series default
+ hos modellen
+\end_layout
+
+\begin_layout Itemize
+Komplexa modeller överanpassar lätt
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Komplexitet
+\begin_inset Quotes erd
+\end_inset
+
+ betyder olika saker för olika modeller
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linjära modeller: fler variabler, interaktioner, transformationer av variabler
+\end_layout
+
+\begin_layout Itemize
+Neurala nätverk: bred och djup
+\end_layout
+
+\begin_layout Itemize
+Trädmodeller: djup
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularisering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Metoder för att undvika överanpassning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hindra modellerna att bli för komplexa
+\end_layout
+
+\begin_layout Itemize
+Detta ger förhoppningsvis bättre generliseringsfel
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Mycket viktigt tema inom maskininlärning
+\end_layout
+
+\begin_layout Itemize
+Betyder olika saker för olika metoder
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression och klassificering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regression: 
+\begin_inset Formula $y$
+\end_inset
+
+ är kontinuerlig, bruset 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Antas ofta vara normalfördelat
+\end_layout
+
+\begin_layout Itemize
+Alt: t, gamma
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+klassificering: 
+\begin_inset Formula $y$
+\end_inset
+
+ är kategorisk med 2 eller fler utfall
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Binär: logistik/probit regression
+\end_layout
+
+\begin_layout Itemize
+Fler klasser: multinomial logistik/probit regression
+\end_layout
+
+\begin_layout Itemize
+Fler metoder senare i kursen
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förväxlingsmatris
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Screenshot at 2020-08-18 12-24-31.png
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Precision: 
+\begin_inset Formula 
+\[
+P=\frac{f_{11}+f_{00}}{f_{11}+f_{10}+f_{01}+f_{00}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Felkvot (error rate): 
+\begin_inset Formula 
+\[
+E=\frac{f_{10}+f_{01}}{f_{11}+f_{10}+f_{01}+f_{00}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Specificitet och sensitivitet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Screenshot at 2020-08-18 12-24-31.png
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sensitivitet: 
+\begin_inset Formula 
+\[
+=\frac{f_{11}}{f_{11}+f_{10}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Specificitet: 
+\begin_inset Formula 
+\[
+=\frac{f_{00}}{f_{01}+f_{00}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dessa mått är klasspecifika.
+ Dessa formler betecknar klass 1.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Specificitet och sensitivitet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/800px-Sensitivity_and_specificity_part1.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/800px-Sensitivity_and_specificity_part2.png
+	scale 23
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size tiny
+By FeanDoe.
+ Modified version from Walber's Precision and Recall 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://commons.wikimedia.org/wiki/File:Precisionrecall.svg"
+target "https://commons.wikimedia.org/wiki/File:Precisionrecall.svg"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Generaliserade linjära modeller
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Generaliserade linjära modeller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Generaliserade linjära modeller (GLM):
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{1},y_{2},\ldots y_{n}$
+\end_inset
+
+: oberoende från sannolikhetsfördelning från exponentialfamiljen
+\end_layout
+
+\begin_layout Itemize
+Linjär prediktor: 
+\begin_inset Formula $X\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Länkfunktion som kopplar den linjära prediktorn till medelvärdet 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+g\left(\mu\right)=X\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Generaliserade linjära modeller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Generaliserar linjär regression till andra reponsvariabler
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Andra likelihoodfunktioner
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Reponsvariabler
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kontinuerlig: normal
+\end_layout
+
+\begin_layout Itemize
+Binär: Logistisk regression
+\end_layout
+
+\begin_layout Itemize
+Nomiell: Multinomiell logistisk regession
+\end_layout
+
+\begin_layout Itemize
+Frekvensdata: Poission regression
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linjär regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Likelihood: Normal
+\end_layout
+
+\begin_layout Itemize
+Länkfunktion: identitetsfunktionen
+\end_layout
+
+\begin_layout Itemize
+Skattas med genom att minimera:
+\begin_inset Formula 
+\[
+RSS=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Logistisk regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Anta binär 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\begin_inset Formula $p=P\left(y=1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Odds: 
+\begin_inset Formula $0\le\frac{p}{1-p}<\infty$
+\end_inset
+
+, Log odds = logit: 
+\begin_inset Formula $-\infty<log\left(\frac{p}{1-p}\right)<\infty$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Logistisk regression antar att log oddset för 
+\begin_inset Formula $P\left(y=1\right)$
+\end_inset
+
+ beror linjärt på de förklarande variablerna
+\begin_inset Formula 
+\[
+log\left(\frac{p}{1-p}\right)=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\Leftrightarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p=\frac{1}{1+exp\left(-\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)}{1+exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Logistisk regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Logistiska funktionen:
+\begin_inset Formula 
+\[
+p=\frac{1}{1+exp\left(-\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prediktion: Om 
+\begin_inset Formula $P\left(y=1|X_{test},\beta\right)>0.5$
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ klass 1
+\end_layout
+
+\begin_layout Itemize
+Skattas med maximum likelihood (ML), hitta 
+\begin_inset Formula $\beta$
+\end_inset
+
+ som maximerar:
+\begin_inset Formula 
+\[
+l\left(\beta\right)=\prod_{i:y_{i}=1}P\left(y_{i}=1|X_{i},\beta\right)\prod_{i':y_{i'}=0}\left(1-P\left(y_{i'}=1|X_{i'},\beta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Multinomiell regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Anta att 
+\begin_inset Formula $y$
+\end_inset
+
+ kan anta 
+\begin_inset Formula $K$
+\end_inset
+
+ olika värden
+\end_layout
+
+\begin_layout Itemize
+Multinomiell logistisk regression använder länkfunktionen:
+\begin_inset Formula 
+\[
+P\left(y_{i}=k\right)=\frac{exp\left(\beta_{0,k}+\beta_{k}^{T}x\right)}{\sum_{l=1}^{K}exp\left(\beta_{0,l}+\beta_{l}^{T}x\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kallas för 
+\begin_inset CommandInset href
+LatexCommand href
+name "softmaxfunktionen"
+target "https://en.wikipedia.org/wiki/Softmax_function"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera att vi har: 
+\begin_inset Formula $\beta_{0,l}+\beta_{l}^{T}x$
+\end_inset
+
+ för varje klass 
+\begin_inset Formula $l$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ är en matris med storlek 
+\begin_inset Formula $p\times K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skattas med ML.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Modelval för linjär regression
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modelval för linjär regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Utgå från: 
+\begin_inset Formula $y$
+\end_inset
+
+ kontiuerlig med normal likelihood
+\end_layout
+
+\begin_layout Standard
+Vi har ett antal förklarande variabler 
+\begin_inset Formula $X=\left(x_{1},\ldots x_{p}\right)$
+\end_inset
+
+.
+ Vill vill hitta den delmängd som ger minst generaliseringsfel på testdata.
+ Två alternativ:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Välj ut en delmängd av variablerna och skatta med OLS
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Best subset, Forward selection, Backward selection
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Behåll alla variablerna med sätt begränsningar på variablernas parameterrum
+ (support) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ det ger mindre flexibilitet 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ minskar risken för överanpassning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ridge, lasso
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Best subset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Notera det finns 
+\begin_inset Formula $2^{p}$
+\end_inset
+
+ modeller att undersöka! Ex: 
+\begin_inset Formula $2^{20}=1\,048\,576$
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/best subset selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Forward selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/Forward stepwise selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Backward selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/Backward stepwise selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Utväderingsmått
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Indirekt skatta testfelet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utgår från träningsmängden
+\end_layout
+
+\begin_layout Itemize
+Försöker minska den bias som uppstår när vi bara använder oss av träningsmängden
+ och inte 
+\begin_inset Quotes eld
+\end_inset
+
+all data
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Direkt skatta testfelet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+valideringsdata
+\end_layout
+
+\begin_layout Itemize
+korsvalidering
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indirekt skatta testfelet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{p}=\frac{1}{n}\left(RSS+2d\hat{\sigma}^{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\hat{\sigma}^{2}$
+\end_inset
+
+: skattas ofta från den fulla modellen
+\end_layout
+
+\begin_layout Standard
+Straffar med: 
+\begin_inset Formula $2d\hat{\sigma}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Litet 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ litet testfel
+\begin_inset Formula 
+\[
+adjusted\,R^{2}=1-\frac{RSS/\left(n-d-1\right)}{TSS/\left(n-1\right)}
+\]
+
+\end_inset
+
+Stort 
+\begin_inset Formula $adjusted\,R^{2}$
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ litet testfel
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indirekt skatta testfelet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+AIC,BIC och HQIC: based on ML skattning av modeller.
+ Låt 
+\begin_inset Formula $log\left(\hat{L}\right)$
+\end_inset
+
+ vara värdet på log-likelihoodfunktionen för optimla parametervärden.
+ 
+\begin_inset Formula 
+\[
+AIC=2k-2log\left(\hat{L}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+BIC=k\cdot log\left(n\right)-2log\left(\hat{L}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+HQIC=k\cdot log\left(log\left(n\right)\right)-2log\left(\hat{L}\right)
+\]
+
+\end_inset
+
+Låga värden 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ litet testfel
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indirekt skatta testfelet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+För linjär regression
+\begin_inset Formula 
+\[
+AIC=\frac{1}{n\hat{\sigma}^{2}}\left(RSS+2d\hat{\sigma}^{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+BIC=\frac{1}{n\hat{\sigma}^{2}}\left(RSS+log\left(n\right)d\hat{\sigma}^{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+HQIC=\frac{1}{n\hat{\sigma}^{2}}\left(RSS+log\left(log\left(n\right)\right)d\hat{\sigma}^{2}\right)
+\]
+
+\end_inset
+
+Linjär regression: 
+\begin_inset Formula $C_{p}\propto AIC$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hur hög kostnad för fler parametrar? 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n=8$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+2<log\left(n\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n=2000$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+2<log\left(log\left(n\right)\right)<log\left(n\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+BIC och HQIC väljer mindre antal parameterar generellt.
+ För stora datamängder så tenderar AIC att välja för stora modeller.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Shrinkage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Shrinkage (krympning)
+\end_layout
+
+\begin_layout Itemize
+Hindra parameterarna från att bli 
+\begin_inset Quotes eld
+\end_inset
+
+för stora
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sätta begränsningar på parameterrummet
+\end_layout
+
+\begin_layout Itemize
+Ändra deras support (värdemängd)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Vanligaste metoderna:
+\end_layout
+
+\begin_layout Itemize
+Ridge: 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+-norm (Euclidean norm)
+\end_layout
+
+\begin_layout Itemize
+LASSO: 
+\begin_inset Formula $l^{1}$
+\end_inset
+
+-norm
+\end_layout
+
+\begin_layout Itemize
+Standardisera era förklarande variabler först!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ridge regession
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vanlig regression minimerar konstandsfunktionen
+\begin_inset Formula 
+\[
+f\left(\beta\right)=RSS=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ridge= OLS + 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+-norm på 
+\begin_inset Formula $\beta$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\underset{\beta}{arg\,min}\,f\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}+\lambda\sum_{j=1}^{p}\beta_{j}^{2}\qquad\lambda\ge0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda$
+\end_inset
+
+ är en 
+\series bold
+hyperparameter
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda\sum_{j=1}^{p}\beta_{j}^{2}$
+\end_inset
+
+ = shrinkage penalty.
+ Absolut stora värden på 
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+kostar mer
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Hur mycket mer beror på 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ (tänk prissättningen)
+\end_layout
+
+\begin_layout Itemize
+Vad händer när 
+\begin_inset Formula $\lambda\rightarrow0$
+\end_inset
+
+? eller 
+\begin_inset Formula $\lambda\rightarrow\infty$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Notera att 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ inte påverkas av konstandsfunktionen
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ridge regession
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/standardized ridge regression coefficients.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ridge regession
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda\rightarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\beta}_{ridge}\rightarrow\hat{\beta}_{OLS}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda\rightarrow\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\beta}_{ridge}\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\beta_{j}^{2}=||\beta||_{2}^{2}$
+\end_inset
+
+: kvadrerad 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+-norm 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\beta_{j}^{2}$
+\end_inset
+
+: definerar en hypersfär i det p-dimensionella rummet.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $p=2$
+\end_inset
+
+: cirkel, 
+\begin_inset Formula $p=3$
+\end_inset
+
+: sfär
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Krymper: 
+\begin_inset Quotes eld
+\end_inset
+
+alla lika mycket
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+två korrelerade variabler: tar med båda, men krymper effektstorleken
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lasso regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vanlig regression minimerar konstandsfunktionen
+\begin_inset Formula 
+\[
+f\left(\beta\right)=RSS=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+lasso= OLS + 
+\begin_inset Formula $l^{1}$
+\end_inset
+
+-norm på 
+\begin_inset Formula $\beta$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\underset{\beta}{arg\,min}\,f\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}+\lambda\sum_{j=1}^{p}\left|\beta_{j}\right|\qquad\lambda\ge0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda$
+\end_inset
+
+ är en 
+\series bold
+hyperparameter
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda\sum_{j=1}^{p}\beta_{j}^{2}$
+\end_inset
+
+ = shrinkage penalty.
+ Absolut stora värden på 
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+kostar mer
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+lasso = least absolute shrinkage and selection operator
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lasso regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/standardized lasso coefficients.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lasso regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda\rightarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\beta}_{lasso}\rightarrow\hat{\beta}_{OLS}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda\rightarrow\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{\beta}_{lasso}\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\left|\beta_{j}\right|=||\beta||_{1}$
+\end_inset
+
+: 
+\begin_inset Formula $l^{1}$
+\end_inset
+
+-norm 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\text{\left|\ensuremath{\beta_{j}}\right|}$
+\end_inset
+
+: definerar en polytop i det p-dimensionella rummet.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $p=2$
+\end_inset
+
+: diamant, 
+\begin_inset Formula $p=3$
+\end_inset
+
+: polyeder
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lasso: kan tvinga vissa 
+\begin_inset Formula $\beta$
+\end_inset
+
+ av bli 0 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ variabelselektion, glesa (sparse) lösningar
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ex: Låt 
+\begin_inset Formula $p=100$
+\end_inset
+
+, Då kan lasso göra att endast 
+\begin_inset Formula $20$
+\end_inset
+
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+-koefficienter är 
+\begin_inset Formula $\ne0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Två korrelerade variabler:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+tar en och kastar bort den andra
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ kan ge hög varians för testdata 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ridge och lasso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Kan formuleras om: 
+\end_layout
+
+\begin_layout Itemize
+Minimmera RSS med vilkoret 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ridge: 
+\begin_inset Formula $\sum_{j=1}^{p}\beta_{j}^{2}\le s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lasso: 
+\begin_inset Formula $\sum_{j=1}^{p}\left|\beta_{j}\right|\le s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Varje 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ motsvarar ett 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ridge och lasso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/Contours of the error .png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Rigde vs lasso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Båda skattas enkelt med 
+\family typewriter
+glmnet()
+\family default
+ eller 
+\family typewriter
+cv.glmnet()
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Vilken som är 
+\begin_inset Quotes eld
+\end_inset
+
+bäst
+\begin_inset Quotes erd
+\end_inset
+
+ beror på kontexten
+\end_layout
+
+\begin_layout Itemize
+Ridge passar för när y beror på de flesta förklarande variablerna
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Många variabler och ungefär samma effektstorlek
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lasso passar för när y beror på de ett fåtal förklarande variabler
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fåtal variabler med hög effektstorlek, resten nära 
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lasso kan ofta vara lättre att tolka
+\end_layout
+
+\begin_layout Itemize
+Lättre att göra inferens för parametrarna för ridge
+\end_layout
+
+\begin_layout Itemize
+Ofta får frågan avgöras empiriskt för specifika dataset
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Elasticnet regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Elasticnet kombinerar ridge och lasso
+\end_layout
+
+\begin_layout Itemize
+Två hyperparametrar: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ och 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f\left(\beta\right)=RSS+\lambda\left[\left(1-\alpha\right)\sum_{j=1}^{p}\beta_{j}^{2}+\alpha\sum_{j=1}^{p}\left|\beta_{j}\right|\right]\qquad\lambda\ge0,0\le\alpha\le1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda$
+\end_inset
+
+: generella styrkan på kostnaden
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+: relativa vikten på lasso och ridge, 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ ger lasso.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Elasticnet regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kan tvinga vissa 
+\begin_inset Formula $\beta$
+\end_inset
+
+ av bli 0 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ variabelselektion, dock inte lika mycket som lasso
+\end_layout
+
+\begin_layout Itemize
+Klarar av korrelerade/grupper av variabler bättre än lasso
+\end_layout
+
+\begin_layout Itemize
+Nackdel: två hyperparameterar att specificera
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularisering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Överanpassning är stort problem inom maskininlärning
+\end_layout
+
+\begin_layout Itemize
+Regularisering: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Förekommer mycket ofta
+\end_layout
+
+\begin_layout Itemize
+Kan se olika ut beroende på modellklassen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ridge och Lasso
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\beta_{j}^{2}=||\beta||_{2}^{2}$
+\end_inset
+
+: kvadrerad 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+-norm 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sum_{j=1}^{p}\left|\beta_{j}\right|=||\beta||_{1}$
+\end_inset
+
+: 
+\begin_inset Formula $l^{1}$
+\end_inset
+
+-norm 
+\end_layout
+
+\begin_layout Itemize
+Förekommer i många olika varianter
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Avslut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Frågor? Kommentarer?
+\end_layout
+
+\begin_layout Itemize
+Kurshemsidan
+\end_layout
+
+\begin_layout Itemize
+Labben
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,3211 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+% or ...
+
+\usecolortheme{orchid}
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\end_preamble
+\use_default_options false
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file is a solution template for:
+\end_layout
+
+\begin_layout Itemize
+Talk at a conference/colloquium.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk length is about 20min.
+ 
+\end_layout
+
+\begin_layout Itemize
+Style is ornate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Föreläsning 1 - Introduktion till Data Mining och Maskininlärning
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Short Paper Title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, use only with long paper titles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Josef Wilzen
+\end_layout
+
+\begin_layout Date
+2020-08-17
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Introduktion
+\end_layout
+
+\begin_layout Subsection
+Kursupplägg
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kursupplägg
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lärare och examinator: Josef Wilzén
+\end_layout
+
+\begin_layout Itemize
+Upplägg
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Förläsningar
+\end_layout
+
+\begin_layout Itemize
+Datorövningar/labbar
+\end_layout
+
+\begin_layout Itemize
+Projektarbete = 2.5 hp (U,G)
+\end_layout
+
+\begin_layout Itemize
+Tenta = 5 hp (U,G,VG)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kursupplägg
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Föreläsningar 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ny information och metoder presenteras 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Datorövningar 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Parvis lösning av övningar som behandlar tidigare material 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Projektarbete: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Större uppgift där ni ska analysera data mer självständigt 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Seminarium 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Projektarbetet presenteras och opponeras 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tentamen
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Påminner om datorövningarna, kan ha teoretiska frågor 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kursutvärdering 2019
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Antal respondenter: 23 
+\end_layout
+
+\begin_layout Itemize
+Antal svar: 10 (Svarsfrekvens: 43,48 %)
+\end_layout
+
+\begin_layout Itemize
+Vilket helhetsbetyg ger du kursen? 3.40
+\end_layout
+
+\begin_layout Itemize
+Förändingar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variabelselektion
+\end_layout
+
+\begin_layout Itemize
+Icke-linjär regression
+\end_layout
+
+\begin_layout Itemize
+Nya kursböcker
+\end_layout
+
+\begin_layout Itemize
+Lite mer fokus på innehåll/material vs projekt 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förkunskaper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vad behövs sen tidigare?
+\end_layout
+
+\begin_layout Itemize
+Linjär algebra
+\end_layout
+
+\begin_layout Itemize
+Matematisk analys
+\end_layout
+
+\begin_layout Itemize
+Programmering
+\end_layout
+
+\begin_layout Itemize
+Regression och Variansanalys
+\end_layout
+
+\begin_layout Itemize
+Statistik teori
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Introduktion till Data Mining och Maskininlärning
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statistik
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Från Wikipedia: 
+\begin_inset Quotes eld
+\end_inset
+
+Statistik är en gren inom tillämpad matematik som sysslar med insamling,
+ utvärdering, analys och presentation av data eller information.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vad ni har sysslat med i två år...
+\end_layout
+
+\begin_layout Itemize
+Tradionellt så har statistiker sysslat med
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Relativt små och 
+\begin_inset Quotes eld
+\end_inset
+
+enkla
+\begin_inset Quotes erd
+\end_inset
+
+ dataset
+\end_layout
+
+\begin_layout Itemize
+Inferens: hypotestest och konfindesintervall
+\end_layout
+
+\begin_layout Itemize
+Prediktioner
+\end_layout
+
+\begin_layout Itemize
+Strävar efter att använda så korrekta antagaden som möjligt
+\end_layout
+
+\begin_layout Itemize
+Modeller som är lätta att beräkna
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statistik modellering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Startar med ett problem som relaterar till data
+\end_layout
+
+\begin_layout Itemize
+Konstruktikon av abstrakta modeller som beskriver sambandet/relationen mellan
+ ett antal variabler 
+\end_layout
+
+\begin_layout Itemize
+Utgår från att det finns osäkerhet eller slumpelement i problemet och att
+ den ska vara med i modellen
+\end_layout
+
+\begin_layout Itemize
+Beskrivs matematiskt: sannolikhetsfördelningar och ekvationer
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statistik modellering (forts.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Metoder för att skatta modellens parameterar härleds och implementeras
+\end_layout
+
+\begin_layout Itemize
+Sen används modellen för:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inferens = kvantifiera osäkerhet i modellen och dess parameterar
+\end_layout
+
+\begin_layout Itemize
+prediktion = utvärdera modellen i nytt sammanhang/ny data/framtiden etc
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Del i större vetenskapligt arbete
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel: linjär regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Repons: 
+\begin_inset Formula $y$
+\end_inset
+
+ och förklarande variabler 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi antar att det finns ett linjärt samband mellan 
+\begin_inset Formula $y$
+\end_inset
+
+ och 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En deterministiskt modell:
+\begin_inset Formula 
+\[
+y=X\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En slumpmodell
+\begin_inset Formula 
+\[
+y=X\beta+\epsilon\qquad\epsilon\sim N\left(0,\sigma^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skattning: 
+\begin_inset Formula $\hat{\beta}=\left(X^{T}X\right)^{-1}X^{T}y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inferens: vi kan konstuera olika test för modellen, tex t-test, eller konfidensi
+ntervall för 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prediktion: Vi kan beräkna anpassade värden 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ för nya värden på 
+\begin_inset Formula $X_{test}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maskininlärning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Maskininlärning (Machine learning): 
+\end_layout
+
+\begin_layout Itemize
+System/modell/algoritm som kan lära sig från data utan att att explicita
+ instruktioner/regler behöver ges
+\end_layout
+
+\begin_layout Itemize
+Systemet lär sig av 
+\begin_inset Quotes eld
+\end_inset
+
+erfarenhet
+\begin_inset Quotes erd
+\end_inset
+
+ från data
+\end_layout
+
+\begin_layout Itemize
+Används för att fatta datadrivna beslut och prediktioner
+\end_layout
+
+\begin_layout Itemize
+Kan beskrivas som matematiska modeller eller algoritmer
+\end_layout
+
+\begin_layout Itemize
+Ofta fokus på skalbarhet och beräkningseffektivitet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stora datormängder, snabba beräkningar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ofta del i ett större system/programvara
+\end_layout
+
+\begin_layout Itemize
+Ursprung i datorvetenskapen, del av området artificiell intelligens (AI)
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Data Mining 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Data Mining (datautvining):
+\end_layout
+
+\begin_layout Itemize
+Metoder för att hitta mönster, samband stora datamängder
+\end_layout
+
+\begin_layout Itemize
+Skärningspunkten mellan:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+datorvetenskap, databashantering och statistik
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ofta fokus på skalbarhet och beräkningseffektivitet
+\end_layout
+
+\begin_layout Itemize
+Fokus är ofta på explorativ dataanalys (vi vet inte var vi letar efter...)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maskininlärning vs Data Mining
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Stort överlapp mellen fälten!!!
+\end_layout
+
+\begin_layout Itemize
+Maskininlärning: mer fokus på prediktioner
+\end_layout
+
+\begin_layout Itemize
+Data mining: mer explorativ dataanalys och hitta nya samband
+\end_layout
+
+\begin_layout Standard
+Statistical learning 
+\begin_inset Formula $\approx$
+\end_inset
+
+ Maskininlärning
+\end_layout
+
+\begin_layout Standard
+Inom 
+\begin_inset Quotes eld
+\end_inset
+
+learning
+\begin_inset Quotes erd
+\end_inset
+
+ maskininlärning betyder ofta 
+\begin_inset Quotes eld
+\end_inset
+
+estimation
+\begin_inset Quotes erd
+\end_inset
+
+ i statistik.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Diskussionsfråga
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Diskutera i grupper om 3: 
+\end_layout
+
+\begin_layout Itemize
+Ge ett exempel på två stora eller komplexa datamängder där man kan finna
+ intressant information.
+ 
+\end_layout
+
+\begin_layout Itemize
+Beskriv mängden och ange vilken information som kan finnas däri
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel på stora datamaterial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transaktionsdatabaser 
+\end_layout
+
+\begin_layout Itemize
+Elektroniska hälsoregister 
+\end_layout
+
+\begin_layout Itemize
+Register av telefonsamtal
+\end_layout
+
+\begin_layout Itemize
+Sociala nätverk
+\end_layout
+
+\begin_layout Itemize
+Webbsidologgar 
+\end_layout
+
+\begin_layout Itemize
+Korpus (stor samling språkliga data)
+\end_layout
+
+\begin_layout Itemize
+Väder och klimatdata 
+\end_layout
+
+\begin_layout Itemize
+Astrofysisk data
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Maskininlärning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Metoderna kan vara antingen deterministiska eller probabilistiska
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Del beskivs med hjälp av algoritmer (=ingen explicit 
+\begin_inset Quotes eld
+\end_inset
+
+modell
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Många klassiska statistika metoder används inom maskininlärning, ex:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linjär regression
+\end_layout
+
+\begin_layout Itemize
+Logistik regression
+\end_layout
+
+\begin_layout Itemize
+Principal komponent analys (kommer i Multivariata metoder)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Maskininlärning 
+\begin_inset Formula $\approx$
+\end_inset
+
+ (nya) statistiska metoder som passar för komplexa/stora dataset
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mer fokus på att lära sig en 
+\begin_inset Quotes eld
+\end_inset
+
+funktion
+\begin_inset Quotes erd
+\end_inset
+
+ än linjära modeller
+\end_layout
+
+\begin_layout Itemize
+Mer fokus på prediktion
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Dataset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Tabellformat
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="10">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+case
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+variable 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+variable 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+variable 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+variable 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Rader: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+object, record, observation, transaction
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kolumner: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variable, attribute, feature, covariate
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finns många andra format: tidseriser, text, kartor, grafer, videor
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Olika dataskalor 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Nominell: ”Röd”, ”Grön”, ”Blå” 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Binär: 0 eller 1, TRUE eller FALSE 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ordinal: ”låg”, ”mellan”, ”hög” 
+\end_layout
+
+\begin_layout Enumerate
+Intervall/Kvot: [0, 1], 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbb{R^{+}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Maskininlärningsprocessen
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Analysprocessen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Övergripande:
+\end_layout
+
+\begin_layout Itemize
+Problemformulering
+\end_layout
+
+\begin_layout Itemize
+Samla in data
+\end_layout
+
+\begin_layout Itemize
+Datahatering och utforskning: Rådata 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Användbar data
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NA, felaktigheter, rensa, outliers, skalning
+\end_layout
+
+\begin_layout Itemize
+Metadata, plottar, beskrivande statistik
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modellering: skatta modeller och gör prediktioner
+\end_layout
+
+\begin_layout Itemize
+Evaluering: jämför med problemformuleringen!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Datahatering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Saknade värden 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Eliminera objekt eller attribut (problem många saknade värde, attribut kan
+ vara viktiga) 
+\end_layout
+
+\begin_layout Itemize
+Skatta saknade värde 
+\end_layout
+
+\begin_layout Itemize
+Ignorera saknade värde 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Förbearbeta data 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aggregering 
+\end_layout
+
+\begin_layout Itemize
+Urval 
+\end_layout
+
+\begin_layout Itemize
+Reducera dimensionalitet 
+\end_layout
+
+\begin_layout Itemize
+Diskretisering: göra en numerisk variabel till Nominell/Ordinal
+\end_layout
+
+\begin_layout Itemize
+Variabelomvandling (feature engingering)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Översikt av metoder
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt av metoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Supervised learning (övervakand inlärning): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klassificering och regression
+\end_layout
+
+\begin_layout Itemize
+Varje obs består av en repsonevariabel (
+\begin_inset Formula $y$
+\end_inset
+
+) och förklarande variabler (
+\begin_inset Formula $X$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+Värdet på repsonevariabel: etiketter/ufall
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Unsupervised learning (oövervakad inlärning)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ett antal variabler (
+\begin_inset Formula $X$
+\end_inset
+
+), men ingen reponsevariabel
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Översikt av metoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Semisupervised learning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Värdet på responsvariabeln finns bara tillgängligt på en delmängd av data
+\end_layout
+
+\begin_layout Itemize
+Data: 
+\begin_inset Formula $\left\{ X_{a},y_{a}\right\} $
+\end_inset
+
+,
+\begin_inset Formula $\left\{ X_{b}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Använda all data för att förstå relationen 
+\begin_inset Formula $X\rightarrow y$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Reinforcement learning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Handlar om att lära sig att agera optimat i en miljö: robotar, självkörande
+ bilar
+\end_layout
+
+\begin_layout Itemize
+Data 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Lära sig beteende
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel på olika inlärning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Övervakad inlärning: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prediktera morgondagens elkonsumtion.
+ Utgå från väderdata, kalenderregister samt tidigare konsumtion.
+ 
+\end_layout
+
+\begin_layout Itemize
+Identifiera vilka siffror som finns i en bild.
+\end_layout
+
+\begin_layout Itemize
+Skapa beskrivande texter för bilder automatiskt 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Oövervakad inlärning: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Identifiera köpmönster vilket kan användas för reklamkampanjer.
+ 
+\end_layout
+
+\begin_layout Itemize
+Hitta liknade grupper av läkemedelsmolekyler
+\end_layout
+
+\begin_layout Itemize
+Hitta bedragare bland bankkunder
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kursens områden – översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klassificering: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $y$
+\end_inset
+
+: Binär, nominell, ordinal
+\end_layout
+
+\begin_layout Itemize
+Bygg modell för ändligt antal klasser (utfall) 
+\end_layout
+
+\begin_layout Itemize
+Prediktera klass för ny observation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Regression: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $y$
+\end_inset
+
+: 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+,
+\begin_inset Formula $\mathbb{R^{+}}$
+\end_inset
+
+, 
+\begin_inset Formula $a\le y\le b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bygg modell för kontinuerligt utfall 
+\end_layout
+
+\begin_layout Itemize
+Prediktera utfall för ny observation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modeller: beslutsträd, neurala nätverk, k-närmaste grannar
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kursens områden – översikt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klusteranalys: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dela upp observationer i grupper (kluster) 
+\end_layout
+
+\begin_layout Itemize
+Placera ny observation i ”rätt” kluster 
+\end_layout
+
+\begin_layout Itemize
+Undersöka klustrens egenskaper
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Associationsanalys: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hitta samband som sker ofta i transaktionsdata, ex.
+ {blöjor} 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ {öl}
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Modellval och generalisering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur definieras en lämplig modell?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Modellen ska fånga den relevanta strukturen i problemet och kunna svara
+ på frågeställningen
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En modells lämplighet beror alltid på sin kontext!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Givet ovan: modellen ska vara så enkel som möjlig
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Ockhams rakkniv"
+target "https://en.wikipedia.org/wiki/Occam%27s_razor"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vad vinner jag på att ha en mer komplicerad modell?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modellen ska att gå att beräkna i en rimlig tid
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur definieras en lämplig modell?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=f\left(x|w\right)+\epsilon\qquad E\left[\epsilon\right]=0\qquad V\left[\epsilon\right]=\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ är en okänd funktion
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $w$
+\end_inset
+
+ är ev parameterar till 
+\begin_inset Formula $f$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ är en slumpmässig felterm
+\end_layout
+
+\begin_layout Itemize
+Ex: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f\left(x|w\right)=w_{1}\cdot sin\left(2\pi\cdot x\cdot w_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(x|w\right)=w_{1}\cdot exp\left(-x\cdot w_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\left(x|w\right)=x_{1}w_{1}+x_{2}w_{2}+x_{3}w_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur definieras en lämplig modell?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Underanpassning (underfitting): modellen fångar inte relevanta strukturer
+ i problemet
+\end_layout
+
+\begin_layout Itemize
+Överanpassning (overfitting): Modellen fångar upp bruset i data
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename under and overfitting1_image.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modellval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi vill att modellen ska fungera bra på ny data
+\end_layout
+
+\begin_layout Itemize
+Definera en felfunktion/kostnadsfunktion (error funciton/cost function):
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Givet en datamängd så anger felfunktion hur bra modellen anpassar den aktuella
+ datamängden
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vanliga exempel:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Squared error loss: Tänk normalfördelning, ex: linjär regression
+\begin_inset Formula 
+\[
+MSE=\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}-\hat{f}\left(x_{i}\right)\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cross entroy loss: Vanligt för klassificering med neurala nätverk
+\end_layout
+
+\begin_layout Itemize
+Misclassification loss
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modellval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dela upp dataset (om ej för liten) i slumpmässiga delar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Träning (train)
+\end_layout
+
+\begin_layout Itemize
+Validering (validation)
+\end_layout
+
+\begin_layout Itemize
+Test
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Olika proportioner kan väljas: 
+\begin_inset Formula $\left(\frac{1}{3},\frac{1}{3},\frac{1}{3}\right)$
+\end_inset
+
+,
+\begin_inset Formula $\left(0.6,0.2,0.2\right)$
+\end_inset
+
+,
+\begin_inset Formula $\left(0.7,0.15,0.15\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+OBS! Träning bör inte ha mindre proportion än de andra.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur hittas den bästa modellen?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ta fram några kandidatmodeller.
+ De kan ha olika komplexitet.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/modelval_1.png
+	scale 250
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Träningsmängden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används för att skatta parametrarna i modellerna
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/modelval_2.png
+	scale 62
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Valideringsmängden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används för att välja den bästa skattade modellen utifrån lämplig felfunktion.
+\end_layout
+
+\begin_layout Itemize
+Vi kan iterara mellan att skatta nya modeller på träningsdata och utvärdera
+ dem på valideringsdata.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/modelval_3.png
+	scale 62
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Valideringsmängden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/overfitting_testdata.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Träningsdata=svart, valideringdata=vit
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Testmängden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används för att få en väntevärdesriktig skattning av felfunktionen på ny
+ data.
+\end_layout
+
+\begin_layout Itemize
+Vi bör 
+\series bold
+inte
+\series default
+ ändra något på modellen när vi ska använda den på testdata.
+ Varför?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/modelval_4.png
+	scale 62
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-fold cross-validation 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Utgå från ett antal kandidatmodeller.
+\end_layout
+
+\begin_layout Standard
+Dela upp data i K block och för varje modell:
+\end_layout
+
+\begin_layout Enumerate
+Ta bort ett block och anpassa modellen till återstående data
+\end_layout
+
+\begin_layout Enumerate
+Använd den anpassade modellen för att skatta felfunktionen för de borttagna
+ observationerna (valideringsdata)
+\end_layout
+
+\begin_layout Enumerate
+Upprepa 1.
+ och 2.
+ för alla block och skatta felfunktionen för alla valideringsdata.
+ Beräkna genomsnitt för felfunktionen över alla olika block.
+\end_layout
+
+\begin_layout Standard
+Välj modellen med lägst genomsnittlig felfunktion.
+ 
+\end_layout
+
+\begin_layout Standard
+Observera: Om vi har K block så måste vi skatta varje modell K gånger.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-fold cross-validation 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/cv2.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leave-one-out cross-validation 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Utgå från ett antal kandidatmodeller.
+\end_layout
+
+\begin_layout Standard
+För varje modell:
+\end_layout
+
+\begin_layout Enumerate
+Ta bort en observation och anpassa modellen till återstående observationer
+\end_layout
+
+\begin_layout Enumerate
+Använd den anpassade modellen för att skatta felfunktionen för den borttagna
+ observationen (valideringsdata)
+\end_layout
+
+\begin_layout Enumerate
+Upprepa 1.
+ och 2.
+ för alla observationer och skatta felfunktionen för alla valideringsdata.
+ Beräkna genomsnitt för felfunktionen över alla olika block.
+\end_layout
+
+\begin_layout Standard
+Välj modellen med lägst genomsnittlig felfunktion.
+\end_layout
+
+\begin_layout Standard
+Observera: Om vi har 
+\begin_inset Formula $n$
+\end_inset
+
+ obs så måste vi skatta varje modell 
+\begin_inset Formula $n$
+\end_inset
+
+ gånger.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leave-one-out cross-validation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/cv1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias, varians, brus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=f\left(x\right)+\epsilon\qquad E\left[\epsilon\right]=0\qquad V\left[\epsilon\right]=\sigma^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{y}=\hat{f}\left(x_{test}\right)
+\]
+
+\end_inset
+
+Förväntad test MSE:
+\begin_inset Formula 
+\[
+E\left[y_{test}-\hat{f}\left(x_{test}\right)\right]^{2}=V\left[\epsilon\right]+V\left[\hat{f}\left(x_{test}\right)\right]+Bias\left[\hat{f}\left(x_{test}\right)\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Brusvarians 
+\begin_inset Formula $V\left[\epsilon\right]$
+\end_inset
+
+: irreducibel brus
+\end_layout
+
+\begin_layout Itemize
+Modellens varians 
+\begin_inset Formula $V\left[\hat{f}\left(x_{test}\right)\right]$
+\end_inset
+
+: Hur mycket kommer 
+\begin_inset Formula $\hat{f}$
+\end_inset
+
+ att ändras när vi byter dataset
+\end_layout
+
+\begin_layout Itemize
+Modellens skewhet 
+\begin_inset Formula $Bias\left[\hat{f}\left(x_{test}\right)\right]$
+\end_inset
+
+: Sytematisk skewhet eller modelleringsfel i modellen
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bias, varians, brus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Bias-variance-trade-off
+\end_layout
+
+\begin_layout Itemize
+Vi fill ha 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lågt bias
+\end_layout
+
+\begin_layout Itemize
+Låg varians 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/overtfitting_train_test_curve.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Avslut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Frågor? Kommentarer?
+\end_layout
+
+\begin_layout Itemize
+Mail: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Teams
+\end_layout
+
+\begin_layout Itemize
+Distanskurs
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kurshemsidan
+\end_layout
+
+\begin_layout Itemize
+Labben
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document
