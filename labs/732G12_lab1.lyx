@@ -417,11 +417,27 @@ Elesticnet regression, med
 Räkna ut klassificeringsfelet (misclassification rate) för testdata.
  Vilken model var bäst? Undersök om det är lätt att identifiera vilka variabler
  som är viktiga för modellerna.
+ För den bästa och näst bästa modellen:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Se kodmanualen för kod för förväxlingsmatris.
+Beräkna förväxlingsmatrisen för testdata.
+ Se kodmanualen för kod.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna sensitivitet och specificitet för testdata.
+\end_layout
+
+\begin_layout Enumerate
+Vad skiljer den bästa och näst bästa modellen när det gäller klassificeringen?
+ Är det stor eller liten skillnad?
+\end_layout
+
+\begin_layout Enumerate
+Vilka variabler var viktiga för bästa och näst bästa modellen när det gäller
+ prediktion? Är det någon skillnad?
 \end_layout
 
 \end_deeper
