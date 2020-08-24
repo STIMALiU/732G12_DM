@@ -1,0 +1,548 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 2
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\align center
+732G12 Data Mining HT2020
+\end_layout
+
+\begin_layout Section*
+Allmänt
+\end_layout
+
+\begin_layout Standard
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kodmanual: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://canadice.shinyapps.io/732G12_material/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+: An Introduction to Statistical Learning, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allmän info: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boken: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R-kod till labbar: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/code.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dataset: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/data.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Notera att ni inte behöver göra alla delar på alla uppgifter.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna
+ som avhandlats.
+ Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Datauppdelning
+\end_layout
+
+\begin_layout Standard
+För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+ (och testmängd).
+ Detta kan göras med 
+\family typewriter
+createDataPartition()
+\family default
+ från 
+\family typewriter
+caret
+\family default
+-paketet.
+ Argument till den funktionen som är av vikt här är 
+\begin_inset Formula $p$
+\end_inset
+
+ som hur stor andel av observationerna som ska användas till träningsmängden.
+ Ni kan också använda 
+\family typewriter
+subset()
+\family default
+ för att göra detta också, men det blir svårare att tydligt ange de observatione
+r som ska tilldelas till valideringsmängden.
+ Denna uppdelning ska ske slumpmässigt.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
+ från valideringsmängden.
+\end_layout
+
+\begin_layout Part*
+Del 1: Trädmodeller
+\end_layout
+
+\begin_layout Subsection*
+ISL
+\end_layout
+
+\begin_layout Standard
+Gå igenom laborationerna 8.3.1 och 8.3.2 i 
+\series bold
+ISL
+\series default
+.
+\end_layout
+
+\begin_layout Subsection*
+Begränsningar av beslutsträd
+\end_layout
+
+\begin_layout Standard
+Läs in datamaterialet 
+\begin_inset Quotes eld
+\end_inset
+
+issue.csv
+\begin_inset Quotes erd
+\end_inset
+
+ som innehåller två förklarande variabler och en binär responsvariabel.
+ Målet med denna övning är att ni ska skapa ett beslutsträd på detta data
+ och undersöka kvaliten av denna modell.
+ Använd R-paketet 
+\begin_inset CommandInset href
+LatexCommand href
+name "rpart"
+target "https://cran.r-project.org/web/packages/rpart/vignettes/longintro.pdf"
+literal "false"
+
+\end_inset
+
+, se kodmanualen för exempel, för att göra följande:
+\end_layout
+
+\begin_layout Enumerate
+Läs in datamaterialet och se till att alla variabler följer rätt skala och
+ dela sedan upp datamaterialet i 50 procent träning och 50 procent validering.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skatta ett beslutsträd med där maxdjupet är satt till 5 och antal korsvalidering
+ar är satt till 0 (i övrigt standardinställningar enligt kodmanualen).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Utvärdera den skattade modellen genom att: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Beräkna felkvoten av både tränings och valideringsmängden och tolka.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Utforska modellen, hur komplex är den, hur många löv har valts ut och vilket
+ utav de är den största? 
+\end_layout
+
+\begin_layout Enumerate
+Hur djupt är det resulterande trädet? 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Visualisera det ursprungliga datamaterialet och dess klasser.
+ Hur ser beslutsgränsen ut? 
+\end_layout
+
+\begin_layout Enumerate
+Visualisera en liknande figur men nu endast på de predikterade värdena från
+ valideringsmängden.
+ (Ledning: För att prediktera nya utfall från en skattad modell används
+ 
+\family typewriter
+predict(model, newdata = data, type = "class")
+\family default
+.) Verkar det som att beslutsgränsen som hittades i 2.4 också hittas med modellen?
+ Vad för struktur har den nuvarande gränsen? 
+\end_layout
+
+\begin_layout Enumerate
+Skatta ett nytt beslutsträd där maxdjupet istället är satt till 10.
+ Vad händer med den resulterande modellen och de predikterade värdena? 
+\end_layout
+
+\begin_layout Enumerate
+Sammanfatta era iakttagelser och svara på följande frågor: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Varför kan det vara svårt att använda de två skattade modellerna? 
+\end_layout
+
+\begin_layout Enumerate
+Varför kan det vara svårt att hitta en bra beslutsträdsmodell för detta
+ data? 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skapa nya variabler i issue-materialet genom följande formler, 
+\begin_inset Formula $Z1=X1+X2$
+\end_inset
+
+ och 
+\begin_inset Formula $Z2=X1−X2$
+\end_inset
+
+.
+ Visualisera datamaterialet i det nya koordinatsystemet och kommentera på
+ beslutsgränsen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skatta ett beslutsträd likt den från uppgift 2) men använd istället det
+ nya koordinatsystemet som förklarande variabler.
+ Vad blir resultated av denna modell, dess felkvoter i träning och valideringsmä
+ngden, antalet löv och djup? Varför skiljer sig resultatet här gentemot
+ tidigare modeller?
+\end_layout
+
+\begin_layout Subsection*
+Identifiering av spam-mail med hjälp av beslutsträd
+\end_layout
+
+\begin_layout Standard
+Filen 
+\begin_inset Quotes eld
+\end_inset
+
+spambase.csv
+\begin_inset Quotes erd
+\end_inset
+
+ innehåller information om frekvensen av ett antal ord, symboler osv.
+ från 4601 olika mail.
+ Dessa har också klassificerats som antingen spam (spam = 1) eller vanliga
+ mail (spam = 0).
+ Er uppgift är nu att skatta ett beslutsträd som kan användas som någon
+ form av spamfilter för nya mail som anländer till inkorgen.
+ Mer detaljerad information om dessa attribut är angivna i bilagan.
+\end_layout
+
+\begin_layout Enumerate
+Läs in materialet och se över variablernas skalor enligt dess beskrivning
+\end_layout
+
+\begin_layout Enumerate
+Dela upp materialet i en tränings- och valideringsmängd i följande kombinationer
+, 10/90, 30/70, 50/50, 70/30 och 90/10.
+ Skatta ett beslutsträd med standardinställningarna (xval = 0) för vardera
+ uppdelning och jämför hur felkvoterna och trädets komplexitet (djup och
+ antalet löv) förändras.
+ Vilken datauppdelning verkar vara bäst?
+\end_layout
+
+\begin_layout Enumerate
+Använd nu uppdelningen 70/30 och undersök istället hur valet av splitkriterium
+ påverkar kvaliten av modellen.
+\end_layout
+
+\begin_layout Enumerate
+Använd nu uppdelningen 70/30 och använd cost complexity pruning tillsammans
+ med korsvalidering för att välja modell.
+ Gör sedan prediktioner på de sista 30 % (nu som testdata).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Beräkna förväxlingsmatrisen för testdata.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna sensitivitet och specificitet för testdata.
+\end_layout
+
+\begin_layout Enumerate
+Blev modellen bra? Hur djupt blev trädet? Hur många lövnoder?'
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Teorifrågor
+\end_layout
+
+\begin_layout Enumerate
+Beskriv för- och nackdelarna med för- och efterbeskärning och svara vilken
+ av metoderna som vanligtvis föredras.
+\end_layout
+
+\begin_layout Enumerate
+Vad är en beslutsgräns och vilken form följer den i beslutsträd?
+\end_layout
+
+\begin_layout Enumerate
+Vilken skala är bäst anpassad för klassificeringsproblem, nominal eller
+ ordinal? Varför?
+\end_layout
+
+\begin_layout Enumerate
+Hur hanteras ordinala förklarande variabler i beslutsträd?
+\end_layout
+
+\begin_layout Enumerate
+Utan regularisering: vad brukar vara ett problem för trädmodeller, bias
+ eller varians?
+\end_layout
+
+\begin_layout Enumerate
+Utgå från ett kontinuerligt 
+\begin_inset Formula $y$
+\end_inset
+
+ och en kontinuerlig förklarande variabel 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Rita upp en funktion 
+\begin_inset Formula $y=f\left(x\right)$
+\end_inset
+
+ som är lätt att anpassa med ett beslutsträd, men som är problematisk för
+ linjär regression.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
+ Exercises Conceptual 8.4: 1, 3
+\end_layout
+
+\begin_layout Part*
+Del 2: k-nearest neighbour, Naive Bayes classifier
+\end_layout
+
+\begin_layout Standard
+(kommer snart)
+\end_layout
+
+\begin_layout Part*
+Del 3: Ensemblemetoder
+\end_layout
+
+\begin_layout Standard
+(kommer snart)
+\end_layout
+
+\begin_layout Part*
+Bilaga
+\end_layout
+
+\begin_layout Standard
+Attribute Information for spambase: The last column of 
+\begin_inset Quotes eld
+\end_inset
+
+spambase.csv
+\begin_inset Quotes erd
+\end_inset
+
+ denotes whether the e-mail was considered spam (1) or not (0), i.e.
+ unsolicited commercial e-mail.
+ Most of the attributes indicate whether a particular word or character
+ was frequently occurring in the e-mail.
+ The run-length attributes (55-57) measure the length of sequences of consecutiv
+e capital letters.
+ For the statistical measures of each attribute, see the end of this file.
+ 
+\end_layout
+
+\begin_layout Standard
+Here are the definitions of the attributes: 48 continuous real [0,100] attribute
+s of type word_freq_WORD = percentage of words in the e-mail that match
+ WORD, i.e.
+ 100 * (number of times the WORD appears in the e-mail) / total number of
+ words in e-mail.
+ A “word” in this case is any string of alphanumeric characters bounded
+ by non-alphanumeric characters or end-of-string.
+ 
+\end_layout
+
+\begin_layout Itemize
+6 continuous real [0,100] attributes of type char_freq_CHAR = percentage
+ of characters in the e-mail that match CHAR, i.e.
+ 100 * (number of CHAR occurrences) / total characters in e-mail 
+\end_layout
+
+\begin_layout Itemize
+1 continuous real [1,.
+ .
+ .
+ ] attribute of type capital_run_length_average = average length of uninterrupte
+d sequences of capital letters 
+\end_layout
+
+\begin_layout Itemize
+1 continuous integer [1,.
+ .
+ .
+ ] attribute of type capital_run_length_longest = length of longest uninterrupte
+d sequence of capital letters 1 continuous integer [1,.
+ .
+ .
+ ] attribute of type capital_run_length_total = sum of length of uninterrupted
+ sequences of capital letters = total number of capital letters in the e-mail
+ 
+\end_layout
+
+\begin_layout Itemize
+1 nominal {0,1} class attribute of type spam = denotes whether the e-mail
+ was considered spam (1) or not (0), i.e.
+ unsolicited commercial e-mail.
+\end_layout
+
+\end_body
+\end_document

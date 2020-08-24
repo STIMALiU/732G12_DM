@@ -801,7 +801,7 @@ Specificitet och sensitivitet
 Sensitivitet: 
 \begin_inset Formula 
 \[
-=\frac{f_{11}}{f_{11}+f_{10}}
+=\frac{f_{11}}{f_{11}+f_{01}}
 \]
 
 \end_inset
@@ -813,7 +813,7 @@ Sensitivitet:
 Specificitet: 
 \begin_inset Formula 
 \[
-=\frac{f_{00}}{f_{01}+f_{00}}
+=\frac{f_{00}}{f_{10}+f_{00}}
 \]
 
 \end_inset
