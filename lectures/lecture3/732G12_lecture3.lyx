@@ -410,7 +410,47 @@ If you omit details that are vital to the proof/implementation, just say
 
 \end_deeper
 \begin_layout Section
-Trädmodeller intro
+Introduktion
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Denna vecka:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Trädmodeller
+\end_layout
+
+\begin_layout Itemize
+Naive Bayes, k närmaste grannar, ensemblemetoder
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nästa vecka: Neurala nätverk
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -538,8 +578,100 @@ Vissa problem går inte att lösa!
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Lägg till bilder med icke-linjär klassificering!
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linjära och Icke-linjära modeller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/non-linear class problem.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+100 obs, två förklarande variabler 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+ är binär
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linjära och Icke-linjära modeller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/non-linear class problem2.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beslutsregel:
+\begin_inset Formula 
+\[
+x_{2}\cdot\left(1+exp\left(-25\cdot\left(x_{1}-0.5\right)\right)\right)>1
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -617,7 +749,7 @@ Andra exempel:
 \begin_inset Formula $exp\left(x\right)$
 \end_inset
 
-, interaktioner, stegfunktioner, disretisering, dummy-kodning
+, interaktioner, stegfunktioner, diskretisering, dummy-kodning
 \end_layout
 
 \begin_layout Itemize
@@ -695,7 +827,7 @@ Som hjälper oss att prediktera
 
 \end_deeper
 \begin_layout Itemize
-Vi vill kunna hantera många variablerna av olika typ.
+Vi vill kunna hantera många variabler, och av olika typ.
 \end_layout
 
 \end_deeper
@@ -733,15 +865,15 @@ Neurala nätverk
 \end_layout
 
 \begin_layout Itemize
-Splines 
-\end_layout
-
-\begin_layout Itemize
-Generlized additive models (GAM)
+Splines
 \end_layout
 
 \begin_layout Itemize
 Local regression
+\end_layout
+
+\begin_layout Itemize
+Generlized additive models (GAM)
 \end_layout
 
 \begin_layout Itemize
@@ -758,6 +890,10 @@ K-närmaste grannar
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Trädmodeller
 \end_layout
 
 \begin_layout Frame
@@ -779,12 +915,24 @@ Modellen defineras som ett träd (datorstruktur), ofta binärt
 \end_layout
 
 \begin_layout Itemize
-Bygger på att dela upp variabelrummet i icke överlappade områden
+Icke-parametrisk metod
+\end_layout
+
+\begin_layout Itemize
+Två steg:
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-tänk rektanglar
+\begin_layout Enumerate
+Dela upp variabelrummet i icke överlappade regioner 
+\begin_inset Formula $\left\{ R_{1},R_{2},R_{3},\ldots,R_{J}\right\} $
+\end_inset
+
+: axelparallella rektanglar
+\end_layout
+
+\begin_layout Enumerate
+Alla obs i en regioner har samma anpassade värde
 \end_layout
 
 \end_deeper
@@ -792,6 +940,20 @@ tänk rektanglar
 Både regression och klassificering 
 \end_layout
 
+\begin_layout Itemize
+Hur ska vi dela upp? Vilktiga principer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+recursive binary splitting
+\end_layout
+
+\begin_layout Itemize
+top-down, greedy
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -915,11 +1077,19 @@ Exempel
 \end_layout
 
 \end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Metoder för beslutsträd
 \end_layout
 
 \begin_layout Frame
@@ -1086,36 +1256,6 @@ Interval-attribut –> uppdelning till uteslutande intervall
 status open
 
 \begin_layout Plain Layout
-Testregel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Skriv lite om hur testandet går till
-\end_layout
-
-\begin_layout Itemize
-minimera fel
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Sammanfattning av skapandet
 \end_layout
 
@@ -1163,7 +1303,7 @@ Bestäm en regel för tidig avslutning
 status open
 
 \begin_layout Plain Layout
-CART algoritmen
+CART 
 \end_layout
 
 \end_inset
@@ -1173,11 +1313,7 @@ CART algoritmen
 
 \begin_deeper
 \begin_layout Itemize
-Classification and Regression Tree
-\end_layout
-
-\begin_layout Itemize
-Icke-parametrisk metod
+CART = Classification and Regression Tree
 \end_layout
 
 \begin_layout Itemize
@@ -1206,18 +1342,6 @@ CART - Regressionsträd
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-Mål: 
-\begin_inset Formula $\left\{ x|x_{j}<s\right\} $
-\end_inset
-
-borde det inte vara 
-\begin_inset Formula $\left\{ x|x_{j}>s\right\} $
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Minimera felfunktionen 
 \begin_inset Formula $\sum\left(y_{i}-f_{i}\right)^{2}$
@@ -1242,7 +1366,7 @@ Istället: Leta efter en variabel
  som minimerer
 \begin_inset Formula 
 \[
-R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=\left\{ x|x_{j}<s\right\} 
+R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=\left\{ x|x_{j}>s\right\} 
 \]
 
 \end_inset
@@ -1255,6 +1379,72 @@ R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=
 \[
 \underset{j,s}{min}\left[\underset{c_{1}}{min}\sum_{x_{i}\in R_{1\left(j,s\right)}}\left(y_{i}-c_{1}\right)^{2}+\underset{c_{2}}{min}\sum_{x_{i}\in R_{2\left(j,s\right)}}\left(y_{i}-c_{2}\right)^{2}\right]
 \]
+
+\end_inset
+
+
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ skattas ofta som medelvärdet av obs i region 
+\begin_inset Formula $R_{j}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART - Regressionsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/reg_tree_surface.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
 
 \end_inset
 
@@ -1274,7 +1464,7 @@ R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=
 status open
 
 \begin_layout Plain Layout
-CART algoritmen - Klassificeringsträd
+CART - Klassificeringsträd
 \end_layout
 
 \end_inset
@@ -1284,10 +1474,14 @@ CART algoritmen - Klassificeringsträd
 
 \begin_deeper
 \begin_layout Standard
+Vi behöver ett mått för att utvädera om en regel är bra eller inte!
+\end_layout
+
+\begin_layout Standard
 Definiera proportioner:
 \begin_inset Formula 
 \[
-p_{k}=\frac{1}{s}\sum_{i=1}^{s}I\left(y_{i}=k\right)
+p_{k}=\frac{1}{s}\sum_{i=1}^{s}1_{\left(y_{i}=k\right)}
 \]
 
 \end_inset
@@ -1309,7 +1503,7 @@ Entropy
 
 \begin_deeper
 \begin_layout Itemize
-Små värden bra?
+Små värden bra
 \end_layout
 
 \end_deeper
@@ -1323,7 +1517,7 @@ Gini
 
 \begin_deeper
 \begin_layout Itemize
-Små värden bra?
+Total varians för alla klasser, små värden bra
 \end_layout
 
 \end_deeper
@@ -1337,7 +1531,7 @@ Felkvot (misclassification error)
 
 \begin_deeper
 \begin_layout Itemize
-Små värden bra?
+Små värden bra
 \end_layout
 
 \end_deeper
@@ -1354,7 +1548,7 @@ Små värden bra?
 status open
 
 \begin_layout Plain Layout
-CART algoritmen - Klassificeringsträd
+CART - Klassificeringsträd
 \end_layout
 
 \end_inset
@@ -1380,7 +1574,7 @@ där
 \begin_inset Formula $I\left(\cdot\right)$
 \end_inset
 
- är ett föroeringsmått
+ är ett föroreningsmått
 \end_layout
 
 \begin_layout Itemize
@@ -1399,6 +1593,13 @@ där
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{N\left(\nu_{j}\right)}{N}$
+\end_inset
+
+ relativa vikter för varje barnnod
 \end_layout
 
 \begin_layout Itemize
@@ -1421,6 +1622,55 @@ där
 status open
 
 \begin_layout Plain Layout
+Klassificeringsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prediktioner görs med majoritetsröstning om det finns blandade klasser i
+ ett löv
+\end_layout
+
+\begin_layout Itemize
+Vi vill att löven i så hög utsträckning ska ha obs med en klass
+\end_layout
+
+\begin_layout Itemize
+Entropy och Gini är bättre föroeringsmått, då ge ger renare löv
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används vid träning
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Felkvot använd ofta för att utvärdera modellen på testdata
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Regularisering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Regularisering
 \end_layout
 
@@ -1431,7 +1681,7 @@ Regularisering
 
 \begin_deeper
 \begin_layout Standard
-Trädmodeller överpassar lätt!
+Trädmodeller överpassar lätt! Hög varians!
 \end_layout
 
 \begin_layout Standard
@@ -1476,7 +1726,7 @@ Sluta expandera trädet när informationsvinsten är lägre än en vald tröskel
 \end_layout
 
 \begin_layout Itemize
-Kräv viss ett minsta antal obs i varje löv
+Kräv ett visst minsta antal obs i varje löv
 \end_layout
 
 \begin_layout Itemize
@@ -1564,12 +1814,28 @@ C_{\alpha}\left(T\right)=\sum_{\nu\in Löv\,i\,T}N\left(\nu\right)\cdot I\left(\
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Detta kallas för 
+\begin_inset Quotes eld
+\end_inset
+
+cost complexity pruning
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Använd korsvalidering för att skatta 
 \begin_inset Formula $\alpha$
 \end_inset
 
 , välj det värde som ger minst valideringsfel
+\end_layout
+
+\begin_layout Itemize
+Notera: detta är likt idén i lasso
 \end_layout
 
 \end_deeper
@@ -1578,6 +1844,68 @@ Använd korsvalidering för att skatta
 \end_inset
 
 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Skatta regressionsträd med cost complexity pruning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/reg_tree_estimate.png
+	scale 28
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Kommentarer om beslutsträd
 \end_layout
 
 \begin_layout Frame
@@ -1644,7 +1972,7 @@ Kommentarer om beslutsträd
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1698,6 +2026,26 @@ Kommentarer om beslutsträd
 \end_layout
 
 \begin_deeper
+\begin_layout Standard
+Fördelar:
+\end_layout
+
+\begin_layout Itemize
+Lätta att förstå och tolka
+\end_layout
+
+\begin_layout Itemize
+Klarar av olika responsvariabler
+\end_layout
+
+\begin_layout Itemize
+Kräver inte så mycket datahantering innan
+\end_layout
+
+\begin_layout Itemize
+Funkar på relativt stora dataset
+\end_layout
+
 \begin_layout Itemize
 Icke-parameterisk metod: antal 
 \begin_inset Quotes eld
@@ -1711,98 +2059,20 @@ parametrar
 \end_layout
 
 \begin_layout Itemize
-Omöjligt att hitta det optimala trädet pga snåla algoritmer
-\end_layout
-
-\begin_layout Itemize
-Jobbigt att skapa, enkelt att använda
+Automatisk variabelselektion
 \end_layout
 
 \begin_layout Itemize
 Kan anpassa många olika sorters funktioner
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Klarar av olika sorters variabler
 \end_layout
 
 \begin_layout Itemize
 Starkt korrelerade attribut påverkar inte
-\end_layout
-
-\begin_layout Itemize
-Vissa enkla funktioner kräver komplext träd: tex en linjär funktion 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Regularisering
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Hindra trädet från att växa
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-d
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Beskär det i efterhand (prune)
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Regularisering
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Inför straffterm:
-\end_layout
-
-\begin_layout Itemize
-hyperparameter
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Skatta med korsvalidering
 \end_layout
 
 \end_deeper
@@ -1828,10 +2098,74 @@ Kommentarer om beslutsträd
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Kolla vad de skriver i boken
+\begin_layout Standard
+Nackdelar:
 \end_layout
 
+\begin_layout Itemize
+Sämre prediktiv förmåga än vissa andra metoder
+\end_layout
+
+\begin_layout Itemize
+Orubusta: överanpassar lätt
+\end_layout
+
+\begin_layout Itemize
+Omöjligt att hitta det optimala trädet pga snåla algoritmer
+\end_layout
+
+\begin_layout Itemize
+Vissa enkla funktioner kräver komplext träd: tex en linjär funktion 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Förbättringar:
+\end_layout
+
+\begin_layout Itemize
+Bagging
+\end_layout
+
+\begin_layout Itemize
+Random forest
+\end_layout
+
+\begin_layout Itemize
+Boosting
+\end_layout
+
+\begin_layout Itemize
+BART: Bayesian Additive Regression Trees
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inte denna kurs
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
