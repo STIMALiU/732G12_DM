@@ -111,6 +111,19 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+Dataset till vissa uppgifter finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
 
 \series bold
 ISL
@@ -301,7 +314,7 @@ Visualisera en liknande figur men nu endast på de predikterade värdena från
 \family typewriter
 predict(model, newdata = data, type = "class")
 \family default
-.) Verkar det som att beslutsgränsen som hittades i 2.4 också hittas med modellen?
+.) Verkar det som att beslutsgränsen som hittades i 4) också hittas med modellen?
  Vad för struktur har den nuvarande gränsen? 
 \end_layout
 
@@ -431,6 +444,16 @@ Hur hanteras ordinala förklarande variabler i beslutsträd?
 \end_layout
 
 \begin_layout Enumerate
+Klassificeringsträd: varför är det inte så bra att använda felkvoten (misclassif
+ication rate) när nya beslutsgränser ska skapas?
+\end_layout
+
+\begin_layout Enumerate
+Regressionsträd: Vilken kostnadsfunktion brukar används för att utvädera
+ beslutsgränser? 
+\end_layout
+
+\begin_layout Enumerate
 Utan regularisering: vad brukar vara ett problem för trädmodeller, bias
  eller varians?
 \end_layout
@@ -445,7 +468,7 @@ Utgå från ett kontinuerligt
 \end_inset
 
 .
- Rita upp en funktion 
+ Rita upp en funktion (på papper) 
 \begin_inset Formula $y=f\left(x\right)$
 \end_inset
 
@@ -458,7 +481,14 @@ Utgå från ett kontinuerligt
 \series bold
 ISL
 \series default
- Exercises Conceptual 8.4: 1, 3
+ 8.4 Exercises Conceptual: 1, 3
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
@@ -475,6 +505,13 @@ Del 3: Ensemblemetoder
 
 \begin_layout Standard
 (kommer snart)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
