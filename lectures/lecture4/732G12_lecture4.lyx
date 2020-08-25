@@ -602,7 +602,7 @@ K-närmaste grannar klassificering
 \begin_layout Standard
 \begin_inset Graphics
 	filename figs/KNN.png
-	scale 25
+	scale 23
 
 \end_inset
 
@@ -659,34 +659,6 @@ k-närmarste grannar
 \end_inset
 
 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-K-närmaste grannar regression
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-For high-dimensional data (e.g., with number of dimensions more than 10) dimension
- reduction is usually performed prior to applying the k-NN algorithm in
- order to avoid the effects of the curse of dimensionality.
 \end_layout
 
 \end_deeper
@@ -789,10 +761,6 @@ Bayesianska klassificerare
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-Vad händer om klasserna inte är 0/1?
-\end_layout
-
 \begin_layout Itemize
 Om man vill modellera en icke-deterministisk funktion:
 \end_layout
@@ -1085,32 +1053,6 @@ Detta ger en enklare, mindre flexibel model, men som går att skatta
 status open
 
 \begin_layout Plain Layout
-Övning
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-ska detta vara med???
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Exempel
 \end_layout
 
@@ -1274,7 +1216,7 @@ Då behöver vi en mer komplex modell
 \end_layout
 
 \begin_layout Itemize
-simulatan sannolikhetsfördelning för likelihooden
+simultan sannolikhetsfördelning för likelihooden
 \end_layout
 
 \end_deeper
@@ -1315,7 +1257,7 @@ status open
 
 \begin_layout Plain Layout
 
-.4
+.3
 \backslash
 textwidth
 \end_layout
@@ -1353,7 +1295,7 @@ status open
 
 \begin_layout Plain Layout
 
-.4
+.5
 \backslash
 textwidth
 \end_layout
@@ -1366,7 +1308,7 @@ textwidth
 \begin_layout Standard
 \begin_inset Graphics
 	filename figs/ensample_cat.png
-	scale 20
+	scale 22
 
 \end_inset
 
@@ -1728,6 +1670,405 @@ Skatta baggingestimat
 \end_inset
 
  och prediktera klassbeteckning
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Classification And Regression Trees
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CART: Partition the input space using recursvie binary splitting
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Classification: Majority vote within the region.
+\end_layout
+
+\begin_layout Itemize
+Regression: Mean of training data within the region.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/tree_fredrik.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förbättra CART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Flexibiliteten/komplexiteten för trädmodeller beror på trädsjupet 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+För att få liten bias så vill vi ha ett djupt träd
+\end_layout
+
+\begin_layout Itemize
+Men det leder till hög varians!
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prestationsförmågan av (vanliga) CART är ofta otillräcklig!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förbättra CART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To improve the practical performance:
+\end_layout
+
+\begin_layout Itemize
+Efterbeskärning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa djupt träd (liten bias) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ beskär till ett mindre (reducera variansen)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ensemblemetoder: ta genomsnitt över många trädmodeller
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bagging och Random Forest
+\end_layout
+
+\begin_layout Itemize
+Boosted trees
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random forests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bagging kan ge stora förbättringar för trädmodeller!
+\end_layout
+
+\begin_layout Itemize
+Men...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+De 
+\begin_inset Formula $B$
+\end_inset
+
+ bootstrap-urvalen är korrelerade (stort överlapp av observationer)
+\end_layout
+
+\begin_layout Itemize
+Reduktionen i varians blir liten när vi tar medelvärde över korrelerade
+ dataset
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Idé: avkorrelera (decorrelate) de 
+\begin_inset Formula $B$
+\end_inset
+
+ trädmodellerna genom att göra slumpmässiga ändringar på modellerna.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random forests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Random forests
+\end_layout
+
+\begin_layout Itemize
+Använd bagging för att skatta 
+\begin_inset Formula $B$
+\end_inset
+
+ träd
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vid varje uppdelning/regel: endast en slumpmässig delmänd 
+\begin_inset Formula $q\le p$
+\end_inset
+
+ av de förklarande variablerna används.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tumregel: 
+\begin_inset Formula $q=\sqrt{p}$
+\end_inset
+
+ vid klassificering, 
+\begin_inset Formula $q=p/3$
+\end_inset
+
+ vid regression
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Proposed by Leo Breiman, inventor of random forests.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Vad händer om 
+\begin_inset Formula $q=p$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random forests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/random_forest.png
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random forest
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Slumpmässigt val av variabler:
+\end_layout
+
+\begin_layout Itemize
+- Minskar bias, men ofta mycket långsamt
+\end_layout
+
+\begin_layout Itemize
+- Lägger till varians till varje träd
+\end_layout
+
+\begin_layout Itemize
++ Avkorrelerar träden
+\end_layout
+
+\begin_layout Standard
+Ofta dominerar den avkorrelerarand effekten 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ minskar MSE på testdata
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random forest
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Beräkningsmässiga fördelar:
+\end_layout
+
+\begin_layout Itemize
+Lätt att parallellisera
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q<p$
+\end_inset
+
+ minskar kostnad vid varje uppdelning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bra vid många variabler!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Inte så många hyperparameterar: funkar ofta bra!
 \end_layout
 
 \end_deeper
@@ -2255,96 +2596,16 @@ Tekniska detaljer
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-Fråga 1: Hur ska vi vikta om data?
+\begin_layout Enumerate
+Hur ska vi vikta om data?
 \end_layout
 
-\begin_layout Standard
-Fråga 2: Hur ska vi vikta koefficienterna 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
+\begin_layout Enumerate
+Hur ska vi vikta koefficienterna 
+\begin_inset Formula $\alpha^{1},\alpha^{2},\ldots,\alpha^{B}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Classification And Regression Trees
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-CART: Partition the input space using recursvie binary splitting
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Classification: Majority vote within the region.
-\end_layout
-
-\begin_layout Itemize
-Regression: Mean of training data within the region.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/tree_fredrik.png
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Förbättra CART
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Flexibiliteten/komplexiteten för trädmodeller beror på trädsjupet 
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-För att få liten bias så vill vi ha ett djupt träd
-\end_layout
-
-\begin_layout Itemize
-Men det leder till hög varians!
+?
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2352,7 +2613,12 @@ Men det leder till hög varians!
 \end_layout
 
 \begin_layout Standard
-Prestationsförmågan av (vanliga) CART är ofta otillräcklig!
+Olika boostingalgoritmer svarar olika på dessa frågor.
+\begin_inset VSpace bigskip
+\end_inset
+
+AdaBoost: var den första praktiska algoritmen, svarade på (1) och (2) genom
+ att minimera exponentialförslut
 \end_layout
 
 \end_deeper
@@ -2368,151 +2634,7 @@ Prestationsförmågan av (vanliga) CART är ofta otillräcklig!
 status open
 
 \begin_layout Plain Layout
-Förbättra CART
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-To improve the practical performance:
-\end_layout
-
-\begin_layout Itemize
-Efterbeskärning:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Skapa djupt träd (liten bias) 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- beskär till ett mindre (reducera variansen)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Ensemblemetoder: ta genomsnitt över många trädmodeller
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Bagging och Random Forest
-\end_layout
-
-\begin_layout Itemize
-Boosted trees
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Beslutsträdets uppbyggnad
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Columns
-
-\end_layout
-
-\begin_deeper
-\begin_layout Column
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-.4
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Rotnod (N1) 
-\end_layout
-
-\begin_layout Itemize
-Noder (alla N) 
-\end_layout
-
-\begin_layout Itemize
-Löv/slutnoder (N4-N7) 
-\end_layout
-
-\begin_layout Itemize
-Regler 
-\end_layout
-
-\begin_layout Itemize
-Varje löv har ett tilldelat klassvärde baserat på någon röstningsmetod
-\end_layout
-
-\begin_layout Column
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-.4
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/tree1.png
-	scale 22
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Exempel
+AdaBoost pseudo-code
 \end_layout
 
 \end_inset
@@ -2523,7 +2645,39 @@ Exempel
 \begin_deeper
 \begin_layout Standard
 \begin_inset Graphics
-	filename figs/tree2.png
+	filename figs/AdaBoost.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting för regressionsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/boosting for regression trees.png
 	scale 30
 
 \end_inset
@@ -2532,83 +2686,6 @@ Exempel
 \end_layout
 
 \end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Metoder för beslutsträd
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Hur bygger man upp ett beslutsträd?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Hunt’s algoritm 
-\end_layout
-
-\begin_layout Itemize
-Givet Datamängd 
-\begin_inset Formula $D_{t}=\{(X_{1i},\ldots,X_{pi},Y_{i}),i=1\ldots n\}$
-\end_inset
-
-, 
-\begin_inset Formula $t$
-\end_inset
-
--akuell nod 
-\end_layout
-
-\begin_layout Itemize
-Om alla 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
- är lika, markera 
-\begin_inset Formula $t$
-\end_inset
-
- som löv med klassvärde 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Om inte, använd 
-\series bold
-testregeln
-\series default
- för att dela upp Dt i Dt1…Dtn, och sedan kör Hunt(Dt1,t1),…, Hunt(Dtn,tn)
- tills alla noder fått en klass
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Recursive partioning 
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -2621,7 +2698,8 @@ Recursive partioning
 status open
 
 \begin_layout Plain Layout
-Exempel
+Boosting vs.
+ bagging
 \end_layout
 
 \end_inset
@@ -2632,995 +2710,14 @@ Exempel
 \begin_deeper
 \begin_layout Standard
 \begin_inset Graphics
-	filename figs/tree3.png
-	scale 25
+	filename figs/bagging_vs_boosting.png
+	scale 22
 
 \end_inset
 
 
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Hunt’s algoritm forts.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Alternativt avslutskriterium: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Alla objekt i en nod har identiska attributvärden 
-\end_layout
-
-\begin_layout Itemize
-Noden deklareras som ett löv med klassvärde av majoriteten
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Olika testregler: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Binära attribut –> binär uppdelning 
-\end_layout
-
-\begin_layout Itemize
-Nominala attribut –> binär eller mångfaldig uppdelning 
-\end_layout
-
-\begin_layout Itemize
-Ordinala attribut –> uppdelning som bevarar attributsföljden 
-\end_layout
-
-\begin_layout Itemize
-Interval-attribut –> uppdelning till uteslutande intervall
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Sammanfattning av skapandet
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Dela upp observationer för att separera angivna klasser 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Olika testregler ska jämföras
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Att avsluta processen
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Fortsätt dela upp i noder tills alla observationer i löven hör till samma
- klass, eller har exakt samma attributvärden 
-\end_layout
-
-\begin_layout Enumerate
-Bestäm en regel för tidig avslutning
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-CART 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-CART = Classification and Regression Tree
-\end_layout
-
-\begin_layout Itemize
-Skillnader mellan kontinuerliga och diskreta utfall
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-CART - Regressionsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Minimera felfunktionen 
-\begin_inset Formula $\sum\left(y_{i}-f_{i}\right)^{2}$
-\end_inset
-
- är dyrt för alla olika 
-\begin_inset Formula $f_{i}$
-\end_inset
-
- och uppdelningar
-\end_layout
-
-\begin_layout Itemize
-Istället: Leta efter en variabel 
-\begin_inset Formula $\left(x\right)$
-\end_inset
-
- och en uppdelning 
-\begin_inset Formula $\left(s\right)$
-\end_inset
-
- som minimerer
-\begin_inset Formula 
-\[
-R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=\left\{ x|x_{j}>s\right\} 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\underset{j,s}{min}\left[\underset{c_{1}}{min}\sum_{x_{i}\in R_{1\left(j,s\right)}}\left(y_{i}-c_{1}\right)^{2}+\underset{c_{2}}{min}\sum_{x_{i}\in R_{2\left(j,s\right)}}\left(y_{i}-c_{2}\right)^{2}\right]
-\]
-
-\end_inset
-
-
-\begin_inset Formula $c_{j}$
-\end_inset
-
- skattas ofta som medelvärdet av obs i region 
-\begin_inset Formula $R_{j}$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-CART - Regressionsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/reg_tree_surface.png
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-CART - Klassificeringsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Vi behöver ett mått för att utvädera om en regel är bra eller inte!
-\end_layout
-
-\begin_layout Standard
-Definiera proportioner:
-\begin_inset Formula 
-\[
-p_{k}=\frac{1}{s}\sum_{i=1}^{s}1_{\left(y_{i}=k\right)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Definiera föroreningsmått:
-\end_layout
-
-\begin_layout Itemize
-Entropy 
-\begin_inset Formula $=\sum_{i=0}^{c-1}p_{i}\cdot log_{2}\left(p_{i}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Små värden bra
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Gini 
-\begin_inset Formula $=1-\sum_{i=0}^{c-1}p_{i}^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Total varians för alla klasser, små värden bra
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Felkvot (misclassification error) 
-\begin_inset Formula $=1-max\left(p_{i}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Små värden bra
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-CART - Klassificeringsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Välj uppdelning som maximerar informationsvinst
-\begin_inset Formula 
-\[
-\Delta=I\left(parent\right)-\sum_{j=1}^{k}\frac{N\left(\nu_{j}\right)}{N}I\left(\nu_{j}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-där 
-\begin_inset Formula $I\left(\cdot\right)$
-\end_inset
-
- är ett föroreningsmått
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $N$
-\end_inset
-
- är antal objekt i föräldranoden
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\nu_{j}$
-\end_inset
-
- är barnnod 
-\begin_inset Formula $j$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\frac{N\left(\nu_{j}\right)}{N}$
-\end_inset
-
- relativa vikter för varje barnnod
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $N\left(\nu_{j}\right)$
-\end_inset
-
- är antal objekt
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Klassificeringsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Prediktioner görs med majoritetsröstning om det finns blandade klasser i
- ett löv
-\end_layout
-
-\begin_layout Itemize
-Vi vill att löven i så hög utsträckning ska ha obs med en klass
-\end_layout
-
-\begin_layout Itemize
-Entropy och Gini är bättre föroeringsmått, då ge ger renare löv
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Används vid träning
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Felkvot använd ofta för att utvärdera modellen på testdata
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Regularisering
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Regularisering
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Trädmodeller överpassar lätt! Hög varians!
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/overtfitting_train_test_curve.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Hur motverkas överanpassning?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Förbeskärning (pre-pruning):
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Sluta expandera trädet när informationsvinsten är lägre än en vald tröskel
-\end_layout
-
-\begin_layout Itemize
-Kräv ett visst minsta antal obs i varje löv
-\end_layout
-
-\begin_layout Itemize
-Problem: Vilken tröskel ska väljas? Hantera liten vinst ett steg 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- stor vinst nästa steg? 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Efterbeskärning (post-pruning): 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beskär ett helt utväxt träd 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- ersätt ett delträd med ett löv
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Efterbeskärning - Klassificeringsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Ett stort träd 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- komplex modell 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- överanpassning
-\end_layout
-
-\begin_layout Enumerate
-Välj ett delträd, 
-\begin_inset Formula $T$
-\end_inset
-
-, där 
-\begin_inset Formula $\left|T\right|$
-\end_inset
-
- är antalet löv i 
-\begin_inset Formula $T$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Minimera 
-\begin_inset Formula 
-\[
-C_{\alpha}\left(T\right)=\sum_{\nu\in Löv\,i\,T}N\left(\nu\right)\cdot I\left(\nu\right)+\alpha\left|T\right|
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Detta kallas för 
-\begin_inset Quotes eld
-\end_inset
-
-cost complexity pruning
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Använd korsvalidering för att skatta 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, välj det värde som ger minst valideringsfel
-\end_layout
-
-\begin_layout Itemize
-Notera: detta är likt idén i lasso
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Skatta regressionsträd med cost complexity pruning
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/reg_tree_estimate.png
-	scale 28
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Kommentarer om beslutsträd
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Kommentarer om beslutsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Linjär regression:
-\begin_inset Formula 
-\[
-f\left(x\right)=\beta_{0}+\sum_{i=1}^{p}x_{i}\beta_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Regressionsträd:
-\begin_inset Formula 
-\[
-f\left(x\right)=\sum_{i=1}^{M}c_{i}1_{\left(x\in R_{i}\right)}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Kommentarer om beslutsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/trees_vs_linear.png
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Kommentarer om beslutsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Fördelar:
-\end_layout
-
-\begin_layout Itemize
-Lätta att förstå och tolka
-\end_layout
-
-\begin_layout Itemize
-Klarar av olika responsvariabler
-\end_layout
-
-\begin_layout Itemize
-Kräver inte så mycket datahantering innan
-\end_layout
-
-\begin_layout Itemize
-Funkar på relativt stora dataset
-\end_layout
-
-\begin_layout Itemize
-Icke-parameterisk metod: antal 
-\begin_inset Quotes eld
-\end_inset
-
-parametrar
-\begin_inset Quotes erd
-\end_inset
-
- beror på data
-\end_layout
-
-\begin_layout Itemize
-Automatisk variabelselektion
-\end_layout
-
-\begin_layout Itemize
-Kan anpassa många olika sorters funktioner
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Klarar av olika sorters variabler
-\end_layout
-
-\begin_layout Itemize
-Starkt korrelerade attribut påverkar inte
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Kommentarer om beslutsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Nackdelar:
-\end_layout
-
-\begin_layout Itemize
-Sämre prediktiv förmåga än vissa andra metoder
-\end_layout
-
-\begin_layout Itemize
-Orubusta: överanpassar lätt
-\end_layout
-
-\begin_layout Itemize
-Omöjligt att hitta det optimala trädet pga snåla algoritmer
-\end_layout
-
-\begin_layout Itemize
-Vissa enkla funktioner kräver komplext träd: tex en linjär funktion 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Kommentarer om beslutsträd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Förbättringar:
-\end_layout
-
-\begin_layout Itemize
-Bagging
-\end_layout
-
-\begin_layout Itemize
-Random forest
-\end_layout
-
-\begin_layout Itemize
-Boosting
-\end_layout
-
-\begin_layout Itemize
-BART: Bayesian Additive Regression Trees
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Inte denna kurs
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
