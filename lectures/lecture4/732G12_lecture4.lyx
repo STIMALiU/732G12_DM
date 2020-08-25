@@ -1,0 +1,3664 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+% or ...
+
+\usecolortheme{orchid}
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\end_preamble
+\use_default_options false
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file is a solution template for:
+\end_layout
+
+\begin_layout Itemize
+Talk at a conference/colloquium.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk length is about 20min.
+ 
+\end_layout
+
+\begin_layout Itemize
+Style is ornate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Föreläsning 3 - 
+\series medium
+Naive Bayes, k-närmaste grannar, ensemblemetoder
+\series default
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Short Paper Title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, use only with long paper titles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Josef Wilzen
+\end_layout
+
+\begin_layout Date
+2020-08-17
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Introduktion
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduktion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ämnen
+\end_layout
+
+\begin_layout Itemize
+Naive Bayes, 
+\end_layout
+
+\begin_layout Itemize
+k-närmaste grannar, 
+\end_layout
+
+\begin_layout Itemize
+ensemblemetoder
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bagging
+\end_layout
+
+\begin_layout Itemize
+Random forest
+\end_layout
+
+\begin_layout Itemize
+Boosting
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sammanfattning
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+k-närmaste grannar
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Icke-parameterisk metod
+\end_layout
+
+\begin_layout Itemize
+Klassificering och regression
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X=\left(x_{_{1}},\ldots,x_{p}\right),y$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Prediktion av testpunkt 
+\begin_inset Formula $X_{test}$
+\end_inset
+
+: beror bara på de k-närmaste grannarna till testpunkten
+\end_layout
+
+\begin_layout Itemize
+Exempel på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lazy learning
+\end_layout
+
+\begin_layout Itemize
+Prototype learning
+\end_layout
+
+\begin_layout Itemize
+kernelmetod, med en uniform kernel
+\end_layout
+
+\begin_layout Itemize
+lokal metod
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi måste definera ett avståndsmått
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Euklidiskt avstånd
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar klassificering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/KNN.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Majoritet (majority) anges i algoritm 5.2
+\end_layout
+
+\begin_layout Itemize
+Avstånd (weighted distance):
+\begin_inset Formula 
+\[
+y'=\underset{\nu}{argmax}\left(\sum_{\left(x_{i},y_{i}\right)\in D_{z}}w_{i}I\left(\nu=y_{i}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Regression: medelvärde/viktat medelvärde av grannarna
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+k-närmarste grannar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/KNN_fit_data.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For high-dimensional data (e.g., with number of dimensions more than 10) dimension
+ reduction is usually performed prior to applying the k-NN algorithm in
+ order to avoid the effects of the curse of dimensionality.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Målet med modellen är att prediktera nya observationer 
+\end_layout
+
+\begin_layout Itemize
+Påverkas stort av olika skalor – Ett distansmått måste väljas för metoden
+\end_layout
+
+\begin_layout Itemize
+Långsam anpassning – Varje ny observation måste ”skapa” en ny modell 
+\end_layout
+
+\begin_layout Itemize
+Känslig mot brus – Lokal information används 
+\end_layout
+
+\begin_layout Itemize
+Val av K har stor betydelse! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Littet K 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ överanpassning, stort K 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ underanpassning
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Producerar godtyckligt utformade beslutsgränser
+\end_layout
+
+\begin_layout Itemize
+Mer 10 dimensional data: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+problem
+\end_layout
+
+\begin_layout Itemize
+variabelreducerande tekniker, tex PCA
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bayesianska klassificerare
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bayesianska klassificerare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vad händer om klasserna inte är 0/1?
+\end_layout
+
+\begin_layout Itemize
+Om man vill modellera en icke-deterministisk funktion:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(diet, träning) -> (hjärtinfarkt): svårt
+\end_layout
+
+\begin_layout Itemize
+(diet, träning) -> Pr(hjärtinfarkt)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bayes sats:
+\begin_inset Formula 
+\[
+P\left(Y|\boldsymbol{X}\right)=\frac{P\left(\boldsymbol{X}|Y\right)}{P\left(\boldsymbol{X}\right)}\cdot P\left(Y\right)\propto P\left(\boldsymbol{X}|Y\right)\cdot P\left(Y\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+posterior=\frac{likelihood}{evidence}\cdot prior\propto likelihood\cdot prior
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kategoriska attribut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+P(Y=y) = (antalet rader där klassbeteckning är y) / (totala antalet rader)
+ 
+\end_layout
+
+\begin_layout Itemize
+P(X i =x i |Y=y) = (antalet rader där klassbeteckningen är y och attributet
+ är x) / (antalet rader med klassbeteckningen y)
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/data_bayes_class.png
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kontinuerliga attribut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Diskretisera data i olika kategorier – Problem: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+För få intervall (breda gränser) och man kan missa mycket i aggregeringen.
+ 
+\end_layout
+
+\begin_layout Itemize
+För många intervall och det blir problem om intervallen har för få observationer.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Anta en sannolikhetsfördelning för variabeln och skatta parametrarna från
+ träningsmängden
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Normalfördelning vanligt
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Grundläggande princip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Träningsfas: – Skatta sannolikheten P(Y|X) för alla möjliga X och Y
+\end_layout
+
+\begin_layout Itemize
+Klassificeringsfas: – Givet 
+\begin_inset Formula $X'$
+\end_inset
+
+ skatta klass genom 
+\begin_inset Formula $Y'=\underset{Y}{max}\,P\left(Y|\boldsymbol{X}'\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naiv Bayes klassificerare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Modelantagande:
+\begin_inset Formula 
+\[
+P\left(X|Y\right)=\prod P\left(X_{i}|Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi antar att 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ är oberoende: likelihooden faktoriserar över 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Betingade sannolikheter skattas bara för varje 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ istället för varje kombination av 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(Y|\boldsymbol{X}\right)=\prod P\left(X_{i}|Y\right)P\left(Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta ger en enklare, mindre flexibel model, men som går att skatta
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Övning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+ska detta vara med???
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+1 kontinuerlig attribut – 2 klasser
+\end_layout
+
+\begin_layout Itemize
+Hitta beslutsgränsen
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/bayes_class1.png
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Frukter: 
+\begin_inset Formula $Y$
+\end_inset
+
+ kan antingen vara äpple, banan eller apelsin
+\end_layout
+
+\begin_layout Itemize
+Egenskaper: färg, form, diameter
+\end_layout
+
+\begin_layout Itemize
+Vi antar att dessa bidrar oberoende till sannolikheten för att 
+\begin_inset Formula $Y$
+\end_inset
+
+ är äpple:
+\begin_inset Formula 
+\[
+P\left(Y=\ddot{a}pple|X\right)=P\left(X_{färg}|Y\right)P\left(X_{form}|Y\right)P\left(X_{diameter}|Y\right)P\left(Y\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Egenskaper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Robusta mot isolerade bruspunkter 
+\end_layout
+
+\begin_layout Itemize
+Robusta mot irrelevanta attribut då 
+\begin_inset Formula $P\left(X_{i}|Y\right)$
+\end_inset
+
+ blir nästan likformigt fördelad 
+\end_layout
+
+\begin_layout Itemize
+Lätt att skatta
+\end_layout
+
+\begin_layout Itemize
+Korrelerade attribut kan väsentligt försämra prestanda
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Då behöver vi en mer komplex modell
+\end_layout
+
+\begin_layout Itemize
+simulatan sannolikhetsfördelning för likelihooden
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ensemblemetoder
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ensemblemetoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Två olika metodfamiljer
+\end_layout
+
+\begin_layout Itemize
+Modellfokuserad
+\end_layout
+
+\begin_layout Itemize
+Datafokuserad
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bootstrapping och Bagging
+\end_layout
+
+\begin_layout Itemize
+Boosting
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/ensample_cat.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Columns
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bagging och boosting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/bag_boost.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skatta en funktion av den ursprungliga fördelningen 
+\begin_inset Formula $F\left(P\right)$
+\end_inset
+
+ , ersätts med 
+\begin_inset Formula $F\left(P^{*}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bootstrapping
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa 
+\begin_inset Formula $B$
+\end_inset
+
+ stickprov 
+\series bold
+med
+\series default
+ 
+\series bold
+återläggning
+\series default
+ från datamängden
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\begin_inset Formula $F\left(P_{k}^{*}\right)$
+\end_inset
+
+ där 
+\begin_inset Formula $k=1,\ldots,B$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex.
+ Skatta 
+\begin_inset Formula $Var\left(e^{\bar{x}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa B stickprov med återläggning
+\end_layout
+
+\begin_layout Itemize
+Skatta 
+\begin_inset Formula $T_{k}=e^{\bar{Z}_{k}}$
+\end_inset
+
+, där 
+\begin_inset Formula $k=1,\ldots,B$
+\end_inset
+
+ och 
+\begin_inset Formula $Z_{k}$
+\end_inset
+
+ är stickprov 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Beräkna 
+\begin_inset Formula $Var\left(T\right),$
+\end_inset
+
+
+\begin_inset Formula $T=\left(T_{1},T_{2},\ldots,T_{B}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bagging
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Bagging = Bootstrap aggregating
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Idén:
+\end_layout
+
+\begin_layout Itemize
+Givet en model 
+\begin_inset Formula $Y=f\left(\boldsymbol{X}\right)+\epsilon$
+\end_inset
+
+, skatta 
+\begin_inset Formula $E_{p}\left(\hat{f}\left(\boldsymbol{X}\right)\right)$
+\end_inset
+
+, där 
+\begin_inset Formula $P$
+\end_inset
+
+ är fördelningen av 
+\begin_inset Formula $\left(X,y\right)$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lösning: Ersätt 
+\begin_inset Formula $P$
+\end_inset
+
+ med 
+\begin_inset Formula $P^{*}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa 
+\begin_inset Formula $B$
+\end_inset
+
+ bootstrap-urval och skatta 
+\begin_inset Formula $\hat{f}_{b}\left(\boldsymbol{X}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skatta 
+\begin_inset Formula $E_{p}\left(\hat{f}\left(\boldsymbol{X}\right)\right)$
+\end_inset
+
+ genom att ta medelvärdet av bootstrap-funktionerna
+\begin_inset Formula 
+\[
+\hat{f}_{bag}\left(\boldsymbol{X}\right)=\frac{1}{B}\sum_{b=1}^{B}\hat{f}_{b}\left(\boldsymbol{X}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bagging – kommentarer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sänker variansen av den anpassade funktionen
+\end_layout
+
+\begin_layout Itemize
+Påverkas 
+\bar under
+starkt
+\bar default
+ av kvalitén av modellen, en bra modell blir bättre men en dålig modell
+ blir sämre
+\end_layout
+
+\begin_layout Itemize
+En linjär funktion sammanfaller asymptotiskt med bootstrap-skattningarna
+ då 
+\begin_inset Formula $B→∞$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Den anpassade modellen ska vara global!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bagging för klassificering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Givet 
+\begin_inset Formula $K$
+\end_inset
+
+ klasser med 
+\begin_inset Formula $Z=\left\{ Y_{i}\boldsymbol{X}_{i},\,i=1,\ldots N\right\} $
+\end_inset
+
+, beräkna indikatorfunktion alt.
+ klass-sannolikheter.
+\begin_inset Formula 
+\[
+\hat{f}\left(x\right)=\left\{ p_{1}\left(x\right),\ldots,p_{K}\left(x\right)\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{G}\left(x\right)=\underset{k}{argmax}\,\left(p_{k}\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Skatta baggingestimat 
+\begin_inset Formula $\hat{f}_{bag}\left(\boldsymbol{X}\right)=\frac{1}{B}\sum_{b=1}^{B}\hat{f}_{b}\left(\boldsymbol{X}\right)$
+\end_inset
+
+ och prediktera klassbeteckning
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En enkel modell kan vanligtvis fånga vissa aspekter av input-output-relationen.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kan vi sedan lära oss en ensemble av ”svaga modeller”, var och en beskriver
+ någon del av 
+\begin_inset Formula $X-Y$
+\end_inset
+
+ förhållandet och sedan kombinera dessa till en ”stark modell”?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lär sig sekventiellt en ensemble av ”svaga modeller”
+\end_layout
+
+\begin_layout Itemize
+kombinera dessa till en ”stark modell”
+\end_layout
+
+\begin_layout Itemize
+Generel approach, kan till godtycklig metod inom övervakad inlärning.
+\end_layout
+
+\begin_layout Itemize
+Mycket framgångsrik idé inom maskininlärning!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/boosting_scheme.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Modellerna skattas sekventiellt, på ett sådan sätt att vajre model försöker
+ fixa misstagen som har gjorts med tidigare modeller.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Binary classification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/boosting_binary_class.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting procedure (for classification)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting procedure_class.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration1.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration2.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration3.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration4.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration5.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration6.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration7.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration8.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration9.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boosting illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Boosting illustration10.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tekniska detaljer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Fråga 1: Hur ska vi vikta om data?
+\end_layout
+
+\begin_layout Standard
+Fråga 2: Hur ska vi vikta koefficienterna 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Classification And Regression Trees
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CART: Partition the input space using recursvie binary splitting
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Classification: Majority vote within the region.
+\end_layout
+
+\begin_layout Itemize
+Regression: Mean of training data within the region.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/tree_fredrik.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förbättra CART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Flexibiliteten/komplexiteten för trädmodeller beror på trädsjupet 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+För att få liten bias så vill vi ha ett djupt träd
+\end_layout
+
+\begin_layout Itemize
+Men det leder till hög varians!
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prestationsförmågan av (vanliga) CART är ofta otillräcklig!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Förbättra CART
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To improve the practical performance:
+\end_layout
+
+\begin_layout Itemize
+Efterbeskärning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Skapa djupt träd (liten bias) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ beskär till ett mindre (reducera variansen)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ensemblemetoder: ta genomsnitt över många trädmodeller
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bagging och Random Forest
+\end_layout
+
+\begin_layout Itemize
+Boosted trees
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beslutsträdets uppbyggnad
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rotnod (N1) 
+\end_layout
+
+\begin_layout Itemize
+Noder (alla N) 
+\end_layout
+
+\begin_layout Itemize
+Löv/slutnoder (N4-N7) 
+\end_layout
+
+\begin_layout Itemize
+Regler 
+\end_layout
+
+\begin_layout Itemize
+Varje löv har ett tilldelat klassvärde baserat på någon röstningsmetod
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/tree1.png
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/tree2.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Metoder för beslutsträd
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur bygger man upp ett beslutsträd?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Hunt’s algoritm 
+\end_layout
+
+\begin_layout Itemize
+Givet Datamängd 
+\begin_inset Formula $D_{t}=\{(X_{1i},\ldots,X_{pi},Y_{i}),i=1\ldots n\}$
+\end_inset
+
+, 
+\begin_inset Formula $t$
+\end_inset
+
+-akuell nod 
+\end_layout
+
+\begin_layout Itemize
+Om alla 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ är lika, markera 
+\begin_inset Formula $t$
+\end_inset
+
+ som löv med klassvärde 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Om inte, använd 
+\series bold
+testregeln
+\series default
+ för att dela upp Dt i Dt1…Dtn, och sedan kör Hunt(Dt1,t1),…, Hunt(Dtn,tn)
+ tills alla noder fått en klass
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recursive partioning 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/tree3.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hunt’s algoritm forts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alternativt avslutskriterium: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alla objekt i en nod har identiska attributvärden 
+\end_layout
+
+\begin_layout Itemize
+Noden deklareras som ett löv med klassvärde av majoriteten
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Olika testregler: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Binära attribut –> binär uppdelning 
+\end_layout
+
+\begin_layout Itemize
+Nominala attribut –> binär eller mångfaldig uppdelning 
+\end_layout
+
+\begin_layout Itemize
+Ordinala attribut –> uppdelning som bevarar attributsföljden 
+\end_layout
+
+\begin_layout Itemize
+Interval-attribut –> uppdelning till uteslutande intervall
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sammanfattning av skapandet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dela upp observationer för att separera angivna klasser 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Olika testregler ska jämföras
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Att avsluta processen
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Fortsätt dela upp i noder tills alla observationer i löven hör till samma
+ klass, eller har exakt samma attributvärden 
+\end_layout
+
+\begin_layout Enumerate
+Bestäm en regel för tidig avslutning
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CART = Classification and Regression Tree
+\end_layout
+
+\begin_layout Itemize
+Skillnader mellan kontinuerliga och diskreta utfall
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART - Regressionsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Minimera felfunktionen 
+\begin_inset Formula $\sum\left(y_{i}-f_{i}\right)^{2}$
+\end_inset
+
+ är dyrt för alla olika 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ och uppdelningar
+\end_layout
+
+\begin_layout Itemize
+Istället: Leta efter en variabel 
+\begin_inset Formula $\left(x\right)$
+\end_inset
+
+ och en uppdelning 
+\begin_inset Formula $\left(s\right)$
+\end_inset
+
+ som minimerer
+\begin_inset Formula 
+\[
+R_{1}\left(j,s\right)=\left\{ x|x_{j}\le s\right\} \qquad R_{2}\left(j,s\right)=\left\{ x|x_{j}>s\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underset{j,s}{min}\left[\underset{c_{1}}{min}\sum_{x_{i}\in R_{1\left(j,s\right)}}\left(y_{i}-c_{1}\right)^{2}+\underset{c_{2}}{min}\sum_{x_{i}\in R_{2\left(j,s\right)}}\left(y_{i}-c_{2}\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ skattas ofta som medelvärdet av obs i region 
+\begin_inset Formula $R_{j}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART - Regressionsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/reg_tree_surface.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART - Klassificeringsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vi behöver ett mått för att utvädera om en regel är bra eller inte!
+\end_layout
+
+\begin_layout Standard
+Definiera proportioner:
+\begin_inset Formula 
+\[
+p_{k}=\frac{1}{s}\sum_{i=1}^{s}1_{\left(y_{i}=k\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Definiera föroreningsmått:
+\end_layout
+
+\begin_layout Itemize
+Entropy 
+\begin_inset Formula $=\sum_{i=0}^{c-1}p_{i}\cdot log_{2}\left(p_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Små värden bra
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gini 
+\begin_inset Formula $=1-\sum_{i=0}^{c-1}p_{i}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Total varians för alla klasser, små värden bra
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Felkvot (misclassification error) 
+\begin_inset Formula $=1-max\left(p_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Små värden bra
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+CART - Klassificeringsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Välj uppdelning som maximerar informationsvinst
+\begin_inset Formula 
+\[
+\Delta=I\left(parent\right)-\sum_{j=1}^{k}\frac{N\left(\nu_{j}\right)}{N}I\left(\nu_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+där 
+\begin_inset Formula $I\left(\cdot\right)$
+\end_inset
+
+ är ett föroreningsmått
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N$
+\end_inset
+
+ är antal objekt i föräldranoden
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ är barnnod 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{N\left(\nu_{j}\right)}{N}$
+\end_inset
+
+ relativa vikter för varje barnnod
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N\left(\nu_{j}\right)$
+\end_inset
+
+ är antal objekt
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klassificeringsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prediktioner görs med majoritetsröstning om det finns blandade klasser i
+ ett löv
+\end_layout
+
+\begin_layout Itemize
+Vi vill att löven i så hög utsträckning ska ha obs med en klass
+\end_layout
+
+\begin_layout Itemize
+Entropy och Gini är bättre föroeringsmått, då ge ger renare löv
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används vid träning
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Felkvot använd ofta för att utvärdera modellen på testdata
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Regularisering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularisering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Trädmodeller överpassar lätt! Hög varians!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/overtfitting_train_test_curve.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hur motverkas överanpassning?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Förbeskärning (pre-pruning):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sluta expandera trädet när informationsvinsten är lägre än en vald tröskel
+\end_layout
+
+\begin_layout Itemize
+Kräv ett visst minsta antal obs i varje löv
+\end_layout
+
+\begin_layout Itemize
+Problem: Vilken tröskel ska väljas? Hantera liten vinst ett steg 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ stor vinst nästa steg? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Efterbeskärning (post-pruning): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beskär ett helt utväxt träd 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ ersätt ett delträd med ett löv
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Efterbeskärning - Klassificeringsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ett stort träd 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ komplex modell 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ överanpassning
+\end_layout
+
+\begin_layout Enumerate
+Välj ett delträd, 
+\begin_inset Formula $T$
+\end_inset
+
+, där 
+\begin_inset Formula $\left|T\right|$
+\end_inset
+
+ är antalet löv i 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Minimera 
+\begin_inset Formula 
+\[
+C_{\alpha}\left(T\right)=\sum_{\nu\in Löv\,i\,T}N\left(\nu\right)\cdot I\left(\nu\right)+\alpha\left|T\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Detta kallas för 
+\begin_inset Quotes eld
+\end_inset
+
+cost complexity pruning
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Använd korsvalidering för att skatta 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, välj det värde som ger minst valideringsfel
+\end_layout
+
+\begin_layout Itemize
+Notera: detta är likt idén i lasso
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Skatta regressionsträd med cost complexity pruning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/reg_tree_estimate.png
+	scale 28
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Kommentarer om beslutsträd
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Linjär regression:
+\begin_inset Formula 
+\[
+f\left(x\right)=\beta_{0}+\sum_{i=1}^{p}x_{i}\beta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Regressionsträd:
+\begin_inset Formula 
+\[
+f\left(x\right)=\sum_{i=1}^{M}c_{i}1_{\left(x\in R_{i}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/trees_vs_linear.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Fördelar:
+\end_layout
+
+\begin_layout Itemize
+Lätta att förstå och tolka
+\end_layout
+
+\begin_layout Itemize
+Klarar av olika responsvariabler
+\end_layout
+
+\begin_layout Itemize
+Kräver inte så mycket datahantering innan
+\end_layout
+
+\begin_layout Itemize
+Funkar på relativt stora dataset
+\end_layout
+
+\begin_layout Itemize
+Icke-parameterisk metod: antal 
+\begin_inset Quotes eld
+\end_inset
+
+parametrar
+\begin_inset Quotes erd
+\end_inset
+
+ beror på data
+\end_layout
+
+\begin_layout Itemize
+Automatisk variabelselektion
+\end_layout
+
+\begin_layout Itemize
+Kan anpassa många olika sorters funktioner
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klarar av olika sorters variabler
+\end_layout
+
+\begin_layout Itemize
+Starkt korrelerade attribut påverkar inte
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Nackdelar:
+\end_layout
+
+\begin_layout Itemize
+Sämre prediktiv förmåga än vissa andra metoder
+\end_layout
+
+\begin_layout Itemize
+Orubusta: överanpassar lätt
+\end_layout
+
+\begin_layout Itemize
+Omöjligt att hitta det optimala trädet pga snåla algoritmer
+\end_layout
+
+\begin_layout Itemize
+Vissa enkla funktioner kräver komplext träd: tex en linjär funktion 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kommentarer om beslutsträd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Förbättringar:
+\end_layout
+
+\begin_layout Itemize
+Bagging
+\end_layout
+
+\begin_layout Itemize
+Random forest
+\end_layout
+
+\begin_layout Itemize
+Boosting
+\end_layout
+
+\begin_layout Itemize
+BART: Bayesian Additive Regression Trees
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inte denna kurs
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Avslut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Frågor? Kommentarer?
+\end_layout
+
+\begin_layout Itemize
+Kurshemsidan
+\end_layout
+
+\begin_layout Itemize
+Labben
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document
