@@ -496,8 +496,16 @@ Del 2: Naive Bayes classifier
 \end_layout
 
 \begin_layout Standard
-I filen loan.csv finns 600 observationer från en bank där egenskaper hos
- individer som tagit lån är registrerade.
+I filen 
+\begin_inset Quotes eld
+\end_inset
+
+loan.csv
+\begin_inset Quotes erd
+\end_inset
+
+ finns 600 observationer från en bank där egenskaper hos individer som tagit
+ lån är registrerade.
  Det finns även information om lånet betalats tillbaka eller ej.
  Variablerna beskrivs som:
 \end_layout
@@ -589,8 +597,12 @@ Del 4: k-nearest neighbour
 \end_layout
 
 \begin_layout Enumerate
-Anpassa k-närmaste granne modeller på det inbyggda iris data.
- Måtet är att klassifcera variablen Species.
+Anpassa k-närmaste granne (KNN) modeller på det inbyggda iris data.
+ Måtet är att klassifcera variablen 
+\family typewriter
+Species
+\family default
+.
  Utgå från kodmanualen.
  Låt 30 % av data vara testdata.
  Testa 
@@ -600,14 +612,75 @@ Anpassa k-närmaste granne modeller på det inbyggda iris data.
 .
  Beräkna lämpliga utvärderingsmått för testdata.
  Vilket k ger bäst resultat?
+\begin_inset space \qquad{}
+\end_inset
+
+Tips: 
+\family typewriter
+kknn()
+\family default
+, 
+\family typewriter
+knn()
 \end_layout
 
 \begin_layout Enumerate
 Upprepa uppgiften i 1), men använd korsvalidering för att välja k från en
  lista med olika värden.
+ Vilket k ger bäst resultat? Hur presterade den valda modellen?
+\end_layout
+
+\begin_layout Enumerate
+Nu ska ni undersöka KNNs känslighet mot brus i data.
+ Genera data med koden som finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/blob/master/labs/KNN_noise_data.R"
+literal "false"
+
+\end_inset
+
+.
+ Parametern 
+\family typewriter
+sd_val
+\family default
+ styr hur mycket brus som finns i data.
+ Genera nu tre dataset där ni låter 
+\family typewriter
+sd_val
+\family default
+ vara 0.05, 0.1 och 0.15.
+ För varje dataset:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Låt 30 % vara testdata.
+\end_layout
+
+\begin_layout Enumerate
+Skatta KNN modeller med tre olika värden på 
+\begin_inset Formula $k=\left(3,9,15\right)$
+\end_inset
+
+.
+ Beräkna lämpliga utvärderingsmått för testdata.
  Vilket k ger bäst resultat?
 \end_layout
 
+\begin_layout Enumerate
+Gör scatterplot för testdata, där ni färglägger punkterna baserat på klass.
+ Lägg till den sanna beslutslinjen i plotten.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar KNN i relation till brusnivån?
+\end_layout
+
+\end_deeper
 \begin_layout Part*
 Del 3: Ensemblemetoder
 \end_layout
