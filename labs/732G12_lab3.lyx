@@ -297,6 +297,7 @@ literal "false"
 \end_inset
 
  och ange rätt skala på variablerna.
+ Datamaterialet finns under Kursdokument på Lisam.
  Här lämpar sig 
 \family typewriter
 read.csv2()
