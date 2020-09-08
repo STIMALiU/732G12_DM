@@ -5,9 +5,27 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language swedish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -29,6 +47,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -44,6 +63,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -61,7 +81,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style swedish
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -76,7 +96,7 @@
 \begin_body
 
 \begin_layout Title
-Datorlaboration 3
+Datorlaboration 4
 \end_layout
 
 \begin_layout Author
@@ -236,6 +256,25 @@ r som ska tilldelas till valideringsmängden.
 Del 1: Optimiering av neurala nätverk
 \end_layout
 
+\begin_layout Standard
+Här kommer vi utgå från Fashion MNIST-data, kolla 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_classification/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+ Läs in datamaterialet och se till att ha koll på vad det är för sorts data.
+ Nu ska ni testa olika inställningar på optimeringen.
+\end_layout
+
 \begin_layout Itemize
 Mnist model
 \end_layout
@@ -324,6 +363,10 @@ Kombinera L2 regularisering och dropout
 
 \begin_layout Enumerate
 L1 regularisering, men med minst två olika värden på hyperparametern
+\end_layout
+
+\begin_layout Enumerate
+Jämför med en modell utan tidigare nämd regularisering
 \end_layout
 
 \end_deeper
