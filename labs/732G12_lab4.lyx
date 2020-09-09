@@ -172,6 +172,8 @@ Datorlaborationerna kräver att ni har R och Rstudio installerat.
 
 \begin_layout Itemize
 Kodmanual: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -185,6 +187,8 @@ literal "false"
 
 \begin_layout Itemize
 Dataset till vissa uppgifter finns 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -193,6 +197,8 @@ literal "false"
 
 \end_inset
 
+
+\bar default
 .
 \end_layout
 
@@ -207,6 +213,8 @@ ISL
 \begin_deeper
 \begin_layout Itemize
 Allmän info: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -220,6 +228,8 @@ literal "false"
 
 \begin_layout Itemize
 Boken: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -233,6 +243,8 @@ literal "false"
 
 \begin_layout Itemize
 R-kod till labbar: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -246,6 +258,8 @@ literal "false"
 
 \begin_layout Itemize
 Dataset: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -469,6 +483,8 @@ Del 2: Neurala nätverk regularisering
 
 \begin_layout Standard
 Kör denna tutorial: 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -477,6 +493,8 @@ literal "false"
 
 \end_inset
 
+
+\bar default
 .
  
 \end_layout
@@ -484,6 +502,8 @@ literal "false"
 \begin_layout Enumerate
 IMDB dataset: Ni kommer jobba med ett binärt klassificeringsproblem.
  För bakgrund på datasetet, se 
+\bar under
+
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -492,6 +512,8 @@ literal "false"
 
 \end_inset
 
+
+\bar default
 .
 \end_layout
 
@@ -618,17 +640,7 @@ Dela upp data i träning/test (80/20) slumpmässigt
 
 \begin_deeper
 \begin_layout Enumerate
-Skatta
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Välj valfria inställningar på optimeringen.
-\end_layout
-
-\end_inset
-
- neurala nätverk med arkitekturerna nedan.
+Skatta neurala nätverk med arkitekturerna nedan.
  Testa att lägga till olika typer av regularisering.
  Ni kan ha olika typer av regularisering för de olika modellerna.
 \end_layout
@@ -670,17 +682,7 @@ Dela upp data i träning/test, där de 20% sista observationerna är testmängde
 
 \begin_deeper
 \begin_layout Enumerate
-Skatta
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Välj valfria inställningar på optimeringen.
-\end_layout
-
-\end_inset
-
- neurala nätverk med arkitekturerna nedan.
+Skatta neurala nätverk med arkitekturerna nedan.
  Testa att lägga till olika typer av regularisering.
  Ni kan ha olika typer av regularisering för de olika modellerna.
 \end_layout
@@ -745,7 +747,318 @@ Del 4: Faltade nätverk
 \end_layout
 
 \begin_layout Standard
-(kommer snart)
+Kör denna tutorial: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://tensorflow.rstudio.com/tutorials/advanced/images/cnn/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+ Ni ska här jobba med CIFAR10 datasetet, som är ett klassiskt datasets inom
+ maskininlärning.
+ För mer info,se 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.cs.toronto.edu/~kriz/cifar.html"
+literal "false"
+
+\end_inset
+
+
+\bar default
+ och 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/CIFAR-10"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+Notera att detta är färgbilder som har tre kanaler (grön, röd, blå) och
+ att beräkningarna blir mycket tyngre.
+\end_layout
+
+\begin_layout Enumerate
+Beroende på hårdvaran i er dator så kan det vara bra att minska ner storleken
+ på datasetet.
+ Testa att börja med hälften av observationerna.
+ Sedan kan ni använda fler om er dator klarar av det.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar0 <- dataset_cifar10() 
+\end_layout
+
+\begin_layout Plain Layout
+
+no_obs<-dim(cifar0$train$y)[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+no_obs_test<-dim(cifar0$test$y)[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(34) 
+\end_layout
+
+\begin_layout Plain Layout
+
+index<-base::sample(no_obs,size = no_obs/2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+index2<-base::sample(no_obs_test,size = no_obs_test/2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar<-cifar0
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$train$x<-cifar0$train$x[index,,,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$train$y<-cifar0$train$y[index,]
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$test$x<-cifar0$test$x[index2,,,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$test$y<-cifar0$test$y[index2,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+rm(cifar0)
+\end_layout
+
+\begin_layout Plain Layout
+
+# kolla så att klasserna är hyfsat balanserade: 
+\end_layout
+
+\begin_layout Plain Layout
+
+table(cifar$train$y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+table(cifar$test$y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vad är det för sorts data ni jobbar med här? Hur många obs? Hur stora bilder?
+ Vilka klasser finns?
+\end_layout
+
+\begin_layout Enumerate
+Skatta den föreslagna modellen (OBS kan ta lång tid).
+ Hur många parameterar har den?
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar modellen på testdata? Beräkna förväxlingsmatrisen för testdata.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vilken klass var lättast att klassificera?
+\end_layout
+
+\begin_layout Enumerate
+Vilken klass var svårat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra arkitekturen på modellen.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ändra de faltade lagren: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Antal lager, varning: ta ej för många 
+\end_layout
+
+\begin_layout Enumerate
+Ändra antal och storlek på 
+\family typewriter
+filters
+\family default
+ i faltade lagren, varning: ta ej för många
+\end_layout
+
+\begin_layout Enumerate
+Ändra 
+\family typewriter
+pool_size
+\family default
+ i pooling-lagren.
+\end_layout
+
+\begin_layout Enumerate
+Testa average pooling
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att modifiera de fullt kopplade lagren.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra optimeringen
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar den bästa modellen som ni lyckas hitta?
+\end_layout
+
+\begin_layout Enumerate
+Gå in 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://benchmarks.ai/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+ och se hur de bästa modellerna presterar på CIFAR10 och MNIST.
+\end_layout
+
+\begin_layout Section*
+Del 5: Mer faltade nätverk
+\end_layout
+
+\begin_layout Standard
+Återvänd till Fashion MNIST-data, kolla 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_classification/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+ Läs in datamaterialet och se till att ha koll på vad det är för sorts data.
+\end_layout
+
+\begin_layout Enumerate
+Skapa följande modeller:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Faltat lager + pooling + två fullt kopplade lager
+\end_layout
+
+\begin_layout Enumerate
+Faltat lager + pooling + faltat lager + pooling + två fullt kopplade lager
+\end_layout
+
+\begin_layout Enumerate
+En egen kombination av lager, men med minst ett faltat lager.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skatta de föreslagna modellerna.
+ Hur många parameterar har de?
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar modellerna på testdata? Beräkna förväxlingsmatrisen för testdata
+ för de olika modellerna.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vilken klass var lättast att klassificera?
+\end_layout
+
+\begin_layout Enumerate
+Vilken klass var svårat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Om ni vill: testa att lägga till någon regularisering till den bästa modellen
+ i 1).
+ Hur blir prediktionen på testdata?
+\end_layout
+
+\begin_layout Enumerate
+Jämför med er bästa modell med bara fullt kopplade lager på detta dataset.
+ Vilken presterar bäst? Hur stor är skillnaden? Hur skiljer sig antalet
+ parametrar åt?
 \end_layout
 
 \end_body
