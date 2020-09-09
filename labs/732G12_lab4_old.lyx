@@ -22,24 +22,19 @@
 \fancyhead[RO,LE]{}
 \fancyhead[C]{Programming i R}
 \fancyhead[LO,RE]{}
-
- 
 \end_preamble
 \use_default_options true
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language swedish
-\language_package auto
+\language_package default
 \inputencoding auto
-\fontencoding default
+\fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -54,18 +49,18 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
-\use_geometry true
+\papersize default
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
-\use_package mathdots 0
-\use_package mathtools 0
-\use_package mhchem 0
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -74,18 +69,14 @@ knitr
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_minted 0
 \index Index
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2.5cm
-\topmargin 2.5cm
-\rightmargin 2.5cm
-\bottommargin 2.5cm
-\secnumdepth 2
-\tocdepth 2
+\secnumdepth 3
+\tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
@@ -113,52 +104,8 @@ Josef Wilzén
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Global options
-\end_layout
-
-\begin_layout Plain Layout
-
-opts_chunk$set(comment='') 
-\end_layout
-
-\begin_layout Plain Layout
-
-options(digits = 5)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
+\align center
+732G12 Data Mining HT2020
 \end_layout
 
 \begin_layout Section*
@@ -298,7 +245,14 @@ r som ska tilldelas till valideringsmängden.
  från valideringsmängden.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
 Del 1: Optimiering av neurala nätverk
 \end_layout
 
@@ -321,149 +275,37 @@ literal "false"
  Nu ska ni testa olika inställningar på optimeringen.
 \end_layout
 
-\begin_layout Enumerate
-Definera följande modell i keras:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=FALSE,comment=''>>=
+\begin_layout Itemize
+Mnist model
 \end_layout
 
-\begin_layout Plain Layout
-
-model <- keras_model_sequential() 
+\begin_layout Itemize
+Fixera antal epoker till 30 
 \end_layout
 
-\begin_layout Plain Layout
-
-model %>%   
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_flatten(input_shape = c(28, 28)) %>%   
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_dense(units = 128, activation = 'relu') %>%
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_dense(units = 128, activation = 'relu') %>%     
-\end_layout
-
-\begin_layout Plain Layout
-
-layer_dense(units = 10, activation = 'softmax')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Fixera antal epoker till 20.
- Sätt den globala learning rate till 0.01.
- Sätt batchstorlek till 128.
-\end_layout
-
-\begin_layout Enumerate
-Hur många parametrar har modellen?
-\end_layout
-
-\begin_layout Enumerate
-Testa nu följande inställningar.
- Undersök tränings- och valideringsdata under träning och utvärdera på testdata.
- 
-\series bold
-Tips
-\series default
-: titta 
-\bar under
-
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://tensorflow.rstudio.com/reference/keras/"
-literal "false"
-
-\end_inset
-
-
-\bar default
- vid behov.
+\begin_layout Itemize
+Testa olika optimerare
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-Skatta modellen med vanlig SGD
+\begin_layout Itemize
+batchstorlek två stycken
 \end_layout
 
-\begin_layout Enumerate
-Skatta modellen med Adam algoritmen.
- Använd defaultvärden på övriga hyperparametrar.
- 
+\begin_layout Itemize
+SGD
 \end_layout
 
-\begin_layout Enumerate
-Skatta modellen med RMSPROP algoritmen.
- Använd defaultvärden på övriga hyperparametrar.
- 
+\begin_layout Itemize
+ADAM
 \end_layout
 
-\begin_layout Enumerate
-Vilken metod är ni mest nöjd med?
+\begin_layout Itemize
+RMSPROP
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Gör om 3) men med batchstorlek 64 och 256.
- Hur påverkar det optimeringen?
-\end_layout
-
-\begin_layout Enumerate
-Välj batchstorlek 128 och SGD.
- Ändra learning rate till 1 och 0.0001, vad händer?
-\end_layout
-
-\begin_layout Enumerate
-Upprepa 5) men med Adam eller RMSPROP
-\end_layout
-
-\begin_layout Enumerate
-Välj batchstorlek 128 och SGD.
- Testa att ändra startvärdena.
- Detta görs i lagerfunktionerna.
- Kolla i dokumentationen hur ni ska göra.
- Testa att låta startvärdena vara väldigt små (men ej exakt noll) och rätt
- stora.
- Hur blir resultatet?
-\end_layout
-
-\begin_layout Enumerate
-Välj en metod från 3) och skatta modellen med 40 epoker.
-\end_layout
-
-\begin_layout Enumerate
-Av alla metoder för optimering ni testat, vad tycker ni har funkat bäst?
- Har det varit stor skillnad?
-\end_layout
-
-\begin_layout Section*
+\begin_layout Part*
 Del 2: Neurala nätverk regularisering
 \end_layout
 
@@ -501,7 +343,7 @@ Hur många parametrar är det i de baseline model, smaller model och bigger
 \end_layout
 
 \begin_layout Enumerate
-Hur bra tycker ni att L2 regularisering och dropout funkar för baseline
+Hur bra tycker du att L2 regularisering och dropout funkar för baseline
  model?
 \end_layout
 
@@ -528,8 +370,187 @@ Jämför med en modell utan tidigare nämd regularisering
 \end_layout
 
 \end_deeper
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
 Del 3: Mer regularisering
+\end_layout
+
+\begin_layout Standard
+Regession + regularisering
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Del 4: Faltade nätverk
+\end_layout
+
+\begin_layout Standard
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://tensorflow.rstudio.com/tutorials/advanced/images/cnn/"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vad är det för sorts data ni jobbar med här? Hur många obs? Hur stora bilder?
+\end_layout
+
+\begin_layout Enumerate
+Skatta den föreslagna modellen.
+ Hur många parameterar har den?
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar modellen på testdata? Beräkna förväxlingsmatrisen för testdata.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vilken klass var lättast att klassificera?
+\end_layout
+
+\begin_layout Enumerate
+Vilken klass var svårat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra arkitekturen på modellen.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ändra antalet neuroner i lagren
+\end_layout
+
+\begin_layout Enumerate
+Testa att lägga till fler lager.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra optimeringen
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+antalet epoker
+\end_layout
+
+\begin_layout Enumerate
+batchstorlekek
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hur presterar den bästa modellen som ni lyckas hitta?
+\end_layout
+
+\begin_layout Enumerate
+Se denna video: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Parameters vs Hyperparameters"
+target "https://www.youtube.com/watch?v=VTE2KlfoO3Q"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Del 4: Mer faltade nätverk
+\end_layout
+
+\begin_layout Standard
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_regression/"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vad är det för data? Hur många förklarande variabler? Hur många observationer?
+\end_layout
+
+\begin_layout Enumerate
+Skatta den föreslagna modellen.
+ Hur många parameterar har den?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Hur bra blir modellen på testdata?
+\end_layout
+
+\begin_layout Enumerate
+Vilken kostnadsfunktion används?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra arkitekturen på modellen och utvärdera resultatet på testdata.
+\end_layout
+
+\begin_layout Enumerate
+Testa att ändra optimeringen och utvärdera resultatet på testdata.
+\end_layout
+
+\begin_layout Enumerate
+Skatta en Random forest-modell på samma dataset och utvärdera resultatet
+ på testdata.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Fungerar Random forest bättre eller sämre än neurala nätverk på dettta dataset?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Del 4: Mer regression 
 \end_layout
 
 \begin_layout Standard
@@ -546,11 +567,11 @@ NN_reg_data.csv
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Läs in datamaterialet i R.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Det finns tre olika y-variabler:
 \end_layout
 
@@ -580,17 +601,6 @@ y_true
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-Ni analyserade detta dataset i förra laborationen.
- 
-\family typewriter
-y_true
-\family default
- är en funktion som varierar mjukt över x variablen.
- Målet är nu att se om ni kan anpassa en funktion som varierar mer mjukt
- med hjälp av regularisering.
-\end_layout
-
 \begin_layout Enumerate
 Plotta de olika 
 \begin_inset Formula $y$
@@ -605,11 +615,7 @@ Plotta de olika
 \end_layout
 
 \begin_layout Enumerate
-Börja med att ha 
-\family typewriter
-y_less_noise
-\family default
- som er responsvariabel.
+Börja med att ha y_less_noise som er responsvariabel.
 \end_layout
 
 \begin_layout Enumerate
@@ -628,12 +634,14 @@ Välj valfria inställningar på optimeringen.
 
 \end_inset
 
- neurala nätverk med arkitekturerna nedan.
- Testa att lägga till olika typer av regularisering.
- Ni kan ha olika typer av regularisering för de olika modellerna.
+ neurala nätverk med följande arkitekturer:
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+Ett gömt lager med 5 noder + Relu
+\end_layout
+
 \begin_layout Enumerate
 Ett gömt lager med 30 noder + Relu
 \end_layout
@@ -648,18 +656,21 @@ Två gömda lager med 20 + 20 noder +Relu
 
 \end_deeper
 \begin_layout Enumerate
-Hur presterar modellerna på träning och testdata?
+Vilken modell presterar bäst på testdata?
 \end_layout
 
 \begin_layout Enumerate
-Jämför med fallet utan regularisering (se era resultat på laboration 3)
+Plotta anpassade värden för träning/test i samma plot som 
+\family typewriter
+y_true
+\family default
+.
+ Ser det ut att vara en bra anpassning?
 \end_layout
 
 \begin_layout Enumerate
-Gör scatterplot med obserade x och y.
- Lägg till anpassade värden för träning och test (ha olika färger för de
- olika fallen).
- Får ni en mer mjukt varierande anpassade värden? 
+Om ni vill: Skatta random forest och k-nearest neighbors och jämför vilken
+ modell som presterar bäst på testdata.
 \end_layout
 
 \end_deeper
@@ -680,12 +691,14 @@ Välj valfria inställningar på optimeringen.
 
 \end_inset
 
- neurala nätverk med arkitekturerna nedan.
- Testa att lägga till olika typer av regularisering.
- Ni kan ha olika typer av regularisering för de olika modellerna.
+ neurala nätverk med följande arkitekturer:
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+Ett gömt lager med 5 noder + Relu
+\end_layout
+
 \begin_layout Enumerate
 Ett gömt lager med 30 noder + Relu
 \end_layout
@@ -700,53 +713,91 @@ Två gömda lager med 20 + 20 noder +Relu
 
 \end_deeper
 \begin_layout Enumerate
-Hur presterar modellerna på träning och testdata?
+Vilken modell presterar bäst på testdata?
 \end_layout
 
 \begin_layout Enumerate
-Jämför med fallet utan regularisering (se era resultat på laboration 3)
+Plotta anpassade värden för träning/test i samma plot som 
+\family typewriter
+y_true
+\family default
+.
+ Ser det ut att vara en bra anpassning?
 \end_layout
 
 \begin_layout Enumerate
-Gör scatterplot med obserade x och y.
- Lägg till anpassade värden för träning och test (ha olika färger för de
- olika fallen).
- Får ni mer mjukt varierande anpassade värden?
+Om ni vill: Skatta random forest och k-nearest neighbors och jämför vilken
+ modell som presterar bäst på testdata.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Kolla på era resulat i 3) och 4), funkar regulariseringen som ni föreslår?
- Lyckas ni anpassa en funktion som varierar mer mjukt med hjälp regulariseringen
-, jämfört med om ni inte har någon regulariseringen?
+I 5) försöker ni 
+\begin_inset CommandInset href
+LatexCommand href
+name "interpolera"
+target "https://sv.wikipedia.org/wiki/Interpolation"
+literal "false"
+
+\end_inset
+
+ en funktion, i 6) försöker ni 
+\begin_inset CommandInset href
+LatexCommand href
+name "extrapolera"
+target "https://sv.wikipedia.org/wiki/Extrapolering"
+literal "false"
+
+\end_inset
+
+ en funktion.
+ Vilken uppgift verkar lättast? Hur fungerade era modeller i de båda fallen?
+ 
 \end_layout
 
 \begin_layout Enumerate
-Upprepa 3) och 4) fast använd 
+Upprepa 5) och 6) fast använd 
 \family typewriter
 y_more_noise
 \family default
 .
- Nu finns det mer brus i data, så nu blir det viktigare med att ha en lämplig
- regularisering för att inte överanpassa.
- Jämför med fallet 
-\family typewriter
-y_less_noise
-\family default
-.
+ Hur presterar de olika modellerna när det finns mer burs i data?
 \end_layout
 
 \begin_layout Enumerate
-Tycker ni att neurala nätverk är en lämplig modellklas för detta dataset?
+Skatta några modeller på 
+\family typewriter
+y_true
+\family default
+ och hela datasetet som träning.
+ 
 \end_layout
 
-\begin_layout Section*
-Del 4: Faltade nätverk
+\begin_deeper
+\begin_layout Enumerate
+Skatta modeller med ett gömt lager och:
 \end_layout
 
-\begin_layout Standard
-(kommer snart)
+\begin_deeper
+\begin_layout Enumerate
+5 noder + Relu
 \end_layout
 
+\begin_layout Enumerate
+10 noder + Relu
+\end_layout
+
+\begin_layout Enumerate
+Så många noder som krväs för att få en mycket bra anpassning.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Plotta observerade värden och anpassade värden i samma plot.
+ Hur bra är neurala nätverk på att anpassa en godtycklig funktion?
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
