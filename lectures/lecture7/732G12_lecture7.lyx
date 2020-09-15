@@ -617,7 +617,7 @@ Klustringstyper
 \series bold
 Partitionell
 \series default
- (data är indelad i ett antal oöverlappande kluster),
+: data är indelad i ett antal oöverlappande kluster,
 \begin_inset Newline newline
 \end_inset
 
@@ -629,7 +629,11 @@ eller
 \series bold
 Hierarkisk
 \series default
- (delkluster är tillåtna, kluster är representerade som ett träd)
+: delkluster är tillåtna, kluster är representerade som ett träd
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -641,7 +645,7 @@ Hierarkisk
 \series bold
 Uteslutande
 \series default
- (ett objekt tillhör ett kluster)
+: ett objekt tillhör ett kluster,
 \begin_inset Newline newline
 \end_inset
 
@@ -653,7 +657,7 @@ eller
 \series bold
 Överlappande
 \series default
- (ett objekt hör till några kluster)
+: ett objekt hör till några kluster,
 \begin_inset Newline newline
 \end_inset
 
@@ -665,7 +669,7 @@ eller
 \series bold
 Fuzzy
 \series default
- (Ett objekt hör till olika kluster med en specifik sannolikhet)
+: Ett objekt hör till olika kluster med en specifik sannolikhet
 \end_layout
 
 \end_deeper
@@ -695,7 +699,7 @@ Klustringstyper
 \series bold
 Fullständig
 \series default
- (varje objekt tillskrivet ett kluster)
+: varje objekt tillskrivet ett kluster,
 \begin_inset Newline newline
 \end_inset
 
@@ -707,7 +711,7 @@ eller
 \series bold
 Ofullständig
 \series default
- (somliga objekt är inte tillskrivna något kluster)
+: somliga objekt är inte tillskrivna något kluster
 \end_layout
 
 \end_deeper
@@ -1116,11 +1120,11 @@ c_{i}=\frac{1}{n_{i}}\sum_{x\in C_{i}}x
 \end_layout
 
 \begin_layout Itemize
-K-means hittar en ett lokalt minima till 
-\begin_inset Formula $SSE$
-\end_inset
-
-
+K-means algoritmen hittar en ett 
+\series bold
+lokalt
+\series default
+ minima
 \end_layout
 
 \end_deeper
@@ -1209,7 +1213,7 @@ Vi måste välja startvärden för centroiderna, valet påverkar starkt utgånge
 \end_layout
 
 \begin_layout Itemize
-Exempelvis, om man väljer dåliga startpunkter
+Exempelvis, om man väljer dåliga startpunkter:
 \end_layout
 
 \begin_layout Standard
@@ -1564,7 +1568,7 @@ Känslig mot initialiseringsproblem
 
 \begin_deeper
 \begin_layout Itemize
-Halverande K-means, k-means++
+Halverande k-means, k-means++
 \end_layout
 
 \end_deeper

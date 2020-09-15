@@ -557,10 +557,6 @@ Beskriv två alternativa lösningar till initialiseringsproblemen för val
 \end_layout
 
 \begin_layout Enumerate
-Vad betyder termen densitetsattraherare?
-\end_layout
-
-\begin_layout Enumerate
 Vilka olika hyperparameterar finns det i k-means?
 \end_layout
 
@@ -573,11 +569,100 @@ Del 5
 \end_layout
 
 \begin_layout Standard
-(kommer snart)
+Gå in på denna sida 
+\begin_inset CommandInset href
+LatexCommand href
+name "Clustering basic benchmark"
+target "http://cs.joensuu.fi/sipu/datasets/"
+literal "false"
+
+\end_inset
+
+.
+ Ni ska nu testa att klustra några dataset härifrån.
 \end_layout
 
+\begin_layout Enumerate
+Ladda ner datasetet 
+\begin_inset Quotes sld
+\end_inset
+
+Unbalance
+\begin_inset Quotes srd
+\end_inset
+
+ och läs in i R.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plotta och undersök data
+\end_layout
+
+\begin_layout Enumerate
+Testa att göra klustra data med
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+k-means: testa olika värden på k
+\end_layout
+
+\begin_layout Enumerate
+DBSCAN: Välj valfria värden på hyperparametrarna.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hur fungerar klustringen i de olika fallen?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ladda ner dataseteten 
+\begin_inset Quotes sld
+\end_inset
+
+S-sets
+\begin_inset Quotes srd
+\end_inset
+
+ och läs in i R.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Börja med att undersöka data: Vad skiljer S1-S4 åt?
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom dataseten S1-S4 och klustra med
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+k-means: testa olika värden på k
+\end_layout
+
+\begin_layout Enumerate
+DBSCAN: Välj valfria värden på hyperparametrarna.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hur fungerar klustringen i de olika fallen?
+\end_layout
+
+\end_deeper
 \begin_layout Section*
 Del 6: Frivillig fördjupning
+\end_layout
+
+\begin_layout Standard
+Nedan följer några uppgifter för frivillig fördjupning på områden som tas
+ upp i kursen multivariata metoder.
+ Notera att det är tillåtet att använda dessa metoder i era projekt i denna
+ kurs.
 \end_layout
 
 \begin_layout Subsection*
