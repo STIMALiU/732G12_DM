@@ -395,6 +395,20 @@ Skapa följande nya intressemått utifrån den resulterande regeltabellen.
 \end_inset
 
  är supporten för hela regeln.
+\begin_inset space \qquad{}
+\end_inset
+
+Tips: 
+\family typewriter
+lhs()
+\family default
+, 
+\family typewriter
+rhs()
+\family default
+, 
+\family typewriter
+support()
 \end_layout
 
 \begin_deeper
@@ -452,7 +466,7 @@ Sortera den resulterande tabellen utefter alla intressemått och visa de
 \begin_layout Enumerate
 Utforska hur listorna med regler skiljer sig från varandra och försök dra
  några slutsatser om intressemåttens huvudsakliga egenskaper.
- Hur skiljer sig asymmetriska och sym- metriska intressemått? Tips: Kolla
+ Hur skiljer sig asymmetriska och symmetriska intressemått? Tips: Kolla
  i denna artikel 
 \begin_inset CommandInset href
 LatexCommand href
@@ -463,14 +477,6 @@ literal "false"
 \end_inset
 
  
-\end_layout
-
-\begin_layout Section*
-Del 3 
-\end_layout
-
-\begin_layout Standard
-(Kommer snart)
 \end_layout
 
 \end_body
