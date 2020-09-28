@@ -1,0 +1,520 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik och maskininlärning\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Data Mining}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Data Mining}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 7
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Allmänt
+\end_layout
+
+\begin_layout Standard
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kodmanual: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.isakhietala.com/teaching/732g12/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dataset till vissa uppgifter finns 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+: An Introduction to Statistical Learning, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allmän info: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boken: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R-kod till labbar: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/code.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dataset: 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/data.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Notera att ni inte behöver göra alla delar på alla uppgifter.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna
+ som avhandlats.
+ Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Datauppdelning
+\end_layout
+
+\begin_layout Standard
+För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+ (och testmängd).
+ Detta kan göras med 
+\family typewriter
+createDataPartition()
+\family default
+ från 
+\family typewriter
+caret
+\family default
+-paketet.
+ Argument till den funktionen som är av vikt här är 
+\begin_inset Formula $p$
+\end_inset
+
+ som hur stor andel av observationerna som ska användas till träningsmängden.
+ Ni kan också använda 
+\family typewriter
+subset()
+\family default
+ för att göra detta också, men det blir svårare att tydligt ange de observatione
+r som ska tilldelas till valideringsmängden.
+ Denna uppdelning ska ske slumpmässigt.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
+ från valideringsmängden.
+\end_layout
+
+\begin_layout Section*
+Del 1: Webssideanalys
+\end_layout
+
+\begin_layout Standard
+Datamaterialet 
+\begin_inset Quotes sld
+\end_inset
+
+clickstream.csv
+\begin_inset Quotes srd
+\end_inset
+
+ innehåller en log-fil från en e-handel webssida som säljer hård- och mjuk-
+ varaprodukter.
+ Varje rad innehåller ett användar-ID (COOKIE), och information om 
+\family typewriter
+Datum
+\family default
+, 
+\family typewriter
+Time
+\family default
+, 
+\family typewriter
+Click-order
+\family default
+, och 
+\family typewriter
+Webpage
+\family default
+.
+ Bilagan innehåller en lista med alla sidor som finns på hemsidan.
+ Utgå från kodmanualen för sekvensanalys.
+\end_layout
+
+\begin_layout Subsection*
+Sekvensanalys utan tidsbegränsningar
+\end_layout
+
+\begin_layout Enumerate
+Sätt maximala antalet enheter i sekvenserna till 2 och titta på de fem flest
+ förekommande sekvenserna.
+ Försök förklara varför dessa verkar vara vanligt förekommande.
+ Vad är sannolikheten att 
+\family typewriter
+Product
+\family default
+-sidan besöks minst två gånger av en användare? 
+\end_layout
+
+\begin_layout Enumerate
+Vilka sidor leder till att en användare besöker 
+\family typewriter
+Pay_Res
+\family default
+?
+\end_layout
+
+\begin_layout Subsection*
+Sekvensanalys med tidsbegränsningar
+\end_layout
+
+\begin_layout Standard
+Besvara följande frågor genom sekvensanalyser där ni anger korrekta värden
+ för de tidsbegränsningar som kan styras.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vilka sidor leder 
+\series bold
+direkt
+\series default
+ till 
+\family typewriter
+Help
+\family default
+?
+\end_layout
+
+\begin_layout Enumerate
+Vilken är den flest förekommande sidan som en användare besöker efter att
+ ha startat på 
+\family typewriter
+Start_Session
+\family default
+ och besökt tre andra sidor emellan? Är denna sekvens rimlig?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Bilaga
+\end_layout
+
+\begin_layout Standard
+List of websites that were visited
+\end_layout
+
+\begin_layout Itemize
+Home: the homepage of the website 
+\end_layout
+
+\begin_layout Itemize
+Login: where a user has to enter their name and other personal information
+ 
+\end_layout
+
+\begin_layout Itemize
+Logpost: prompts a message that informs whether the login has been successful
+ 
+\end_layout
+
+\begin_layout Itemize
+Register: to be recognized later on, the user has to obtain a userid and
+ password 
+\end_layout
+
+\begin_layout Itemize
+Regpost: shows the partial results of the registration, asking for missing
+ information 
+\end_layout
+
+\begin_layout Itemize
+Help: it answers questions that may arise during navigation through the
+ website 
+\end_layout
+
+\begin_layout Itemize
+News: presents the most up-to-date products 
+\end_layout
+
+\begin_layout Itemize
+Shelf: contains of the programs that can be downloaded from the website
+ 
+\end_layout
+
+\begin_layout Itemize
+Program: gives detailed information about the software programs that can
+ be bought 
+\end_layout
+
+\begin_layout Itemize
+Download: allows the user to download software programs of interest 
+\end_layout
+
+\begin_layout Itemize
+Catalog: contains a complete list of products on sale in the website 
+\end_layout
+
+\begin_layout Itemize
+Product: shows detailed information on each product that can be purchased
+ 
+\end_layout
+
+\begin_layout Itemize
+P-info: sets out the payment terms for purchasing products on the website
+ 
+\end_layout
+
+\begin_layout Itemize
+Addcart: where the virtual basket can be filled with items to be purchased
+ 
+\end_layout
+
+\begin_layout Itemize
+Cart: shows the current status of the basket 
+\end_layout
+
+\begin_layout Itemize
+Mdfycart: allows the user to modify the current content of the basket 
+\end_layout
+
+\begin_layout Itemize
+Pay_req: displays the amount to pay for the products in the basket
+\end_layout
+
+\begin_layout Itemize
+Pay_res: here the visitor agrees to pay, and payment data is inserted 
+\end_layout
+
+\begin_layout Itemize
+Freeze: where the requested payment can be suspended, perhaps to add new
+ products to the basket 
+\end_layout
+
+\begin_layout Itemize
+Agb: general terms of purchase 
+\end_layout
+
+\begin_layout Itemize
+start_session session start 
+\end_layout
+
+\begin_layout Itemize
+end_session session end
+\end_layout
+
+\end_body
+\end_document
