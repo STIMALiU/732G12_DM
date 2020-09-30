@@ -210,7 +210,7 @@ en som finns tillhands.
 
 \begin_layout Standard
 När ni väl kommit fram till ett svar på er frågeställning ska allting sammanstäl
-las till en rapport som ska formas enligt rapportmallen.
+las till en rapport som ska formas enligt rapportmallen, se kurshemsidan.
  Huvudfokus ska ligga på databeskrivningen och dess bearbetning samt rapportens
  metodkapitel.
  Alla analyser och slutsatser ska vara motiverade med lämpliga grafer och
@@ -231,7 +231,7 @@ literal "false"
 
 \end_inset
 
- med 
+ (med 
 \begin_inset CommandInset href
 LatexCommand href
 name "knitr"
@@ -240,8 +240,7 @@ literal "false"
 
 \end_inset
 
-.
- 
+)
 \end_layout
 
 \begin_layout Itemize
@@ -548,9 +547,9 @@ Köpcentrum (Retail)
 
 \begin_deeper
 \begin_layout Itemize
-Data från en anonym belgisk affär LÄS IGENOM OCH ANVÄND RAPPORTMALLEN! med
- 88 162 transaktioner och ett antal unika varor eller varugrupper Källa:
- 
+Data från en anonym belgisk affär med 88 162 transaktioner och ett antal
+ unika varor eller varugrupper.
+ Källa: 
 \begin_inset CommandInset href
 LatexCommand href
 name "http://fimi.ua.ac.be/data/"
@@ -614,7 +613,8 @@ enkelt
 \begin_inset Quotes srd
 \end_inset
 
-: inte för några observationer eller variabler
+: inte för några observationer eller variabler, tumregel: antingen antal
+ obs>1000 eller antal variabler > 20
 \end_layout
 
 \begin_layout Itemize
