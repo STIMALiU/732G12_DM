@@ -1,0 +1,185 @@
+---
+title: "Rapport X"
+subtitle: "Kurskod, Grupp Y"
+author: 
+  - "Författare 1 Namn"
+  - "Författare 2 Namn"
+date: '20XX-XX-XX'
+
+# Ändrar utformningen av en sida
+geometry: "top=100pt,bottom=100pt,left=68pt,right=66pt"
+
+output: 
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+
+# Lägger till angivelser om LaTeX-paket som ska användas i rapporten
+header-includes:
+  - \usepackage{float}
+  - \usepackage{longtable}
+  - \usepackage{caption}
+  - \usepackage{fancyhdr}
+  - \usepackage{titling}
+  - \usepackage[swedish, english]{babel}
+  - \renewcommand{\headrulewidth}{0pt}
+  
+  # Ändrar ett kommando så att man kan ange flera författare
+  - \renewcommand{\and}{\\}
+  
+  # Lägger till information till titelsidan
+  - \pretitle{\centering\vspace{0cm}{\large Labbrapport i Statistik \par}\vspace{4cm}\Huge\textbf}
+  - \posttitle{\vspace{1cm}\large\textbf{}\par}
+  - \preauthor{\centering\vspace{4cm}\normalsize}
+  - \postauthor{\par\vspace{4cm}}
+  - \predate{\centering{\normalsize Avdelningen för Statistik och maskininlärning \\ Institutionen för datavetenskap \\ Linköpings universitet \par}}
+  - \postdate{\par\vspace{2cm}}
+  - \raggedbottom
+
+# Lägger till en bibliografi med alla referenser som används i rapporten
+bibliography: report_ref.bib
+---
+
+<!-- Väljer språk till svenska för automatiska titlar -->
+\selectlanguage{swedish}
+
+<!-- Byter språket på figur- och tabellbeskrivningar till angivna namn -->
+\captionsetup[table]{name = Tabell}
+\setcounter{table}{0}
+\captionsetup[figure]{name = Figur}
+\setcounter{figure}{0}
+
+<!-- Anger att tabellbeskrivningar hamnar ovanför tabellen -->
+\floatstyle{plaintop}
+\restylefloat{table}
+
+<!-- Anger sidnumreringens position -->
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+
+<!-- Tar bort sidnumrering för förteckningar och titelsidan -->
+\pagenumbering{gobble}
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+<!-- Skapar en innehållsförteckning och anger djupet av rubrikerna som ska visas -->
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+<!-- Börjar sidnumreringen på sida 1 efter att alla förteckningar visats -->
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+<!-- Börjar med kapitel 1 -->
+# Inledning
+Detta är enklare mall för hur akademiska rapporter ska skrivas. Den kan även användas som stöd när övriga rapporter ska skrivas.
+Se till att använda ett korrekt språk i rapporterna, utan stavfel och andra grammatiska misstag. Tänk hela tiden att ni ska kunna visa upp det ni presterar för en framtida arbetsgivare.
+
+Referenser till källor, både elektroniska och fysiska, måste följa en korrekt och enhetlig stil. Det finns flera olika att välja mellan men de vanligaste är APA, Harvard eller Oxford. Det spelar ingen roll vilken av dessa system som ni väljer att använda så länge ni använder en konsekvent och korrekt. 
+
+Denna mall använder en bibtex-fil med referenser (report_ref.bib) Exempel på referenser:
+
+- Vi kan läsa om K-means klustering i @james2013introduction.  
+- En annan referens är [@zaki2019data]
+
+Läs  *[här](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)* för mer information om referenser i Rmarkdown.
+
+## Bakgrund
+I bakgrunden ges en introduktion till ämnet och motivering till problemställningen i uppsatsen.
+
+## Syfte
+Här beskrivs syftet med undersökningen samt eventuella avgränsningar.
+Det är ok att slå ihop Bakgrund och Syfte till en rubrik.
+
+## Problemformulering (Frågeställning)
+Detta kapitel är smidigt för att i punktform presentera de frågeställningar som rapporten ska försöka besvara.
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+
+# Data
+Detta kapitel beskriver den datamängd som rapporten baserar sig på. Definitioner av variabler och rapportspecifika termer som används, vilken källa de kommer ifrån osv.
+
+## Databearbetning
+Här ska all databearbetning presenteras, det vill säga ifall ni har behövt transformera, skapa nya variabler eller på annat sätt ändrat i datamaterialet från dess ursprungliga form som ni laddat ner från källan.
+
+
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+
+# Metod (VIKTIGT!!!)
+Detta kapitel beskriver de statistiska metoderna som används i rapporten. Hänvisa till litteraturen då metoderna förklaras och visa formler, t.ex. hur support beräknas.
+Metoderna ska beskrivas **generellt** i detta kapitel; i vilka fall de bör användas, vilka krav eller antaganden som gäller och hur metoden beräknas. 
+
+Ta upp nedanstående punkter i den mån de är relevanta för er metod:
+
+- Beskriv metoden och antaganden 
+  - Definitioner, formler, skattning,  optimering mm
+- Modeller/modellval, hyperparameterar, modellkomplexitet
+- Överanpassning/generalisering 
+  - Träning, validering, test
+- Utvärderingsmått och liknande
+
+Förklara vilka mjukvaror/progam/paket som ni använder för att tillämpa er metod.
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+# Resultat och Analys
+
+Detta kapitel presenterar resultatet av beräkningar, diagram och tabeller som sen tolkas och analyseras. 
+
+Här anger ni vilka faktiska val ni har gjort med avseende på modellval, hyperparameterar mm.
+
+Varje diagram och tabell som presenteras i rapporten ska vara numrerat och namngivet.
+
+- Ta inte med någon tabell eller diagam som ni inte kommenterar eller tolkar.
+
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+# Diskussion
+Här ingår en kritisk granskning av resultaten (inte analys eller tolkning utan mer fokuserad på trovärdighet) samt en utvärdering av lämpligheten av de använda metoderna. Här görs även kopplingar tillbaka till tidigare studier som gåtts igenom i bakgrunden med referenser i texten.
+En del av diskussion bör också försöka sätta resultatet i sitt sammanhang, vad kan samhället ta lärdom av dessa resultat, hur kan man fortsätta undersöka ämnet (t.ex. andra metoder eller andra faktorer).
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+# Slutsats
+Detta kapitel sammanfattar det som presenterats i  med huvudfokus på att besvara de frågeställningar som angivits i Inledning.
+
+
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+# Referenser
+
+<div id="refs"></div>
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+# Bilaga
+
+Slutligen ska ni även ha en bilaga. Här kan bifoga diagram eller tabeller som tolkas i rapporten men inte anses vara alltför viktiga. 
+Beräkningar av alla resultat bör framförallt visas i bilagan då det tar väldigt stor plats men alla tolkningar och analyser bör finnas med i brödtexten. 
+
+Här ska ni ha relevant R-kod
+ 
+ - Visa de viktigaste funktionerna/anropen/inställningarna 
+ - **Ta inte med all kod**
+
+## Redogörelse för bidrag
+Här skriver ni en kort redogörelse för hur gruppens medlemmar har bidragit till arbetet och rapporten. Kan vara i form av en punktlista.
+
+
