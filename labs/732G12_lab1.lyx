@@ -85,7 +85,7 @@ Josef Wilzén
 
 \begin_layout Standard
 \align center
-732G12 Data Mining HT2020
+732G12 Data Mining HT2021
 \end_layout
 
 \begin_layout Section*
@@ -107,24 +107,11 @@ ISL
 
 \begin_deeper
 \begin_layout Itemize
-Allmän info: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 Boken: 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://www.statlearning.com/"
 literal "false"
 
 \end_inset
@@ -137,7 +124,7 @@ R-kod till labbar:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/code.html"
+target "https://www.statlearning.com/resources-second-edition"
 literal "false"
 
 \end_inset
@@ -150,7 +137,16 @@ Dataset:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/data.html"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/resources-second-edition"
 literal "false"
 
 \end_inset
