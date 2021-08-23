@@ -15,6 +15,9 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -410,6 +413,46 @@ If you omit details that are vital to the proof/implementation, just say
 
 \end_deeper
 \begin_layout Section
+Intro
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Min bakgrund
+\end_layout
+
+\begin_layout Itemize
+Kursplanen: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://liu.se/studieinfo/kurs/732g12/ht-2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Labbar
+\end_layout
+
+\end_deeper
+\begin_layout Section
 Modelval
 \end_layout
 
@@ -568,6 +611,12 @@ generalisering
  hos modellen
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Modellen ska fungera bra på nya liknande dataset!
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Komplexa modeller överanpassar lätt
 \end_layout
@@ -683,7 +732,56 @@ Antas ofta vara normalfördelat
 \end_layout
 
 \begin_layout Itemize
-Alt: t, gamma
+Alt: 
+\begin_inset CommandInset href
+LatexCommand href
+name "t"
+target "https://en.wikipedia.org/wiki/Student%27s_t-distribution"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Gamma"
+target "https://en.wikipedia.org/wiki/Gamma_distribution"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Log-normal"
+target "https://en.wikipedia.org/wiki/Log-normal_distribution"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Frekvenser: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Poisson"
+target "https://en.wikipedia.org/wiki/Poisson_distribution"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Negativ binomial"
+target "https://en.wikipedia.org/wiki/Negative_binomial_distribution"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1036,11 +1134,11 @@ Reponsvariabler
 
 \begin_deeper
 \begin_layout Itemize
-Kontinuerlig: normal
+Kontinuerlig: normal, t, gamma, log-normal
 \end_layout
 
 \begin_layout Itemize
-Binär: Logistisk regression
+Binär: Logistisk regression, probit regression
 \end_layout
 
 \begin_layout Itemize
@@ -1048,7 +1146,7 @@ Nomiell: Multinomiell logistisk regession
 \end_layout
 
 \begin_layout Itemize
-Frekvensdata: Poission regression
+Frekvensdata: Poission regression, Negativ binomialfördelning
 \end_layout
 
 \end_deeper
@@ -1220,7 +1318,7 @@ Prediktion: Om
 \end_layout
 
 \begin_layout Itemize
-Skattas med maximum likelihood (ML), hitta 
+Skattas med maximum likelihood (MLE), hitta 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -1316,7 +1414,7 @@ Notera att vi har:
 \end_layout
 
 \begin_layout Itemize
-Skattas med ML.
+Skattas med MLE.
  
 \end_layout
 
