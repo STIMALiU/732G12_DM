@@ -441,7 +441,7 @@ Upplägg
 
 \begin_deeper
 \begin_layout Itemize
-Förläsningar
+Föreläsningar
 \end_layout
 
 \begin_layout Itemize
@@ -457,6 +457,77 @@ Tenta = 5 hp (U,G,VG)
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Coronaregler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allämnt: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Avstånd: minst en armlängd, gärna två meter
+\end_layout
+
+\begin_layout Itemize
+Stanna hemma om du är sjuk
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Föreläsningar: på campus
+\end_layout
+
+\begin_layout Itemize
+Datorövningar/labbar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I datorsal
+\end_layout
+
+\begin_layout Itemize
+En student per dator
+\end_layout
+
+\begin_layout Itemize
+Flytta inte skärmarna som sitter mellan datorerna
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Coronaregler: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://insidan.liu.se/HR-Personal/coronavirus?l=sv"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -495,7 +566,7 @@ Datorövningar
 
 \begin_deeper
 \begin_layout Itemize
-Parvis lösning av övningar som behandlar tidigare material 
+Enskild lösning av övningar som behandlar tidigare material 
 \end_layout
 
 \end_deeper
@@ -1946,7 +2017,11 @@ Eliminera objekt eller attribut (problem många saknade värde, attribut kan
 \end_layout
 
 \begin_layout Itemize
-Skatta saknade värde 
+Skatta saknade värden 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ imputering
 \end_layout
 
 \begin_layout Itemize
@@ -3178,25 +3253,11 @@ Frågor? Kommentarer?
 \end_layout
 
 \begin_layout Itemize
-Mail: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
 Teams
 \end_layout
 
 \begin_layout Itemize
-Distanskurs
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
 Kurshemsidan
-\end_layout
-
-\begin_layout Itemize
-Labben
 \end_layout
 
 \end_deeper
