@@ -1509,189 +1509,6 @@ Ridge, lasso
 status open
 
 \begin_layout Plain Layout
-Best subset
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Notera det finns 
-\begin_inset Formula $2^{p}$
-\end_inset
-
- modeller att undersöka! Ex: 
-\begin_inset Formula $2^{20}=1\,048\,576$
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/best subset selection.png
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Forward selection
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/Forward stepwise selection.png
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Backward selection
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/Backward stepwise selection.png
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\size tiny
-Från 
-\begin_inset CommandInset href
-LatexCommand href
-name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
-literal "false"
-
-\end_inset
-
- av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Utväderingsmått
 \end_layout
 
@@ -1834,7 +1651,7 @@ Indirekt skatta testfelet
 
 \begin_deeper
 \begin_layout Standard
-AIC,BIC och HQIC: based on ML skattning av modeller.
+AIC,BIC och HQIC: based on MLE skattning av modeller.
  Låt 
 \begin_inset Formula $log\left(\hat{L}\right)$
 \end_inset
@@ -1963,6 +1780,192 @@ Hur hög kostnad för fler parametrar?
 BIC och HQIC väljer mindre antal parameterar generellt.
  För stora datamängder så tenderar AIC att välja för stora modeller.
  
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Best subset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Notera det finns 
+\begin_inset Formula $2^{p}$
+\end_inset
+
+ modeller att undersöka! Ex: 
+\begin_inset Formula $2^{20}=1\,048\,576$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/best subset selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Forward selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/Forward stepwise selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Backward selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/Backward stepwise selection.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
