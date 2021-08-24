@@ -176,7 +176,7 @@ glmnet
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "• https://web.stanford.edu/~hastie/Papers/Glmnet_Vignette.pdf"
+target "https://cran.r-project.org/web/packages/glmnet/vignettes/glmnet.pdf"
 literal "false"
 
 \end_inset
@@ -204,7 +204,7 @@ Frivillig repetition: Logistik regression
 \end_layout
 
 \begin_layout Enumerate
-Gå igenom laborationerna 4.6.1 och 4.62 i 
+Gå igenom laborationerna 4.7.1 och 4.7.2 i 
 \series bold
 ISL
 \series default
@@ -236,7 +236,7 @@ Variabelselektion för linjära modeller
 \end_layout
 
 \begin_layout Enumerate
-Gå igenom laborationen 6.5 i 
+Gå igenom laborationen 6.5.1 i 
 \series bold
 ISL
 \series default
@@ -244,7 +244,7 @@ ISL
 \end_layout
 
 \begin_layout Enumerate
-Gå igenom laborationen 6.6 i 
+Gå igenom laborationen 6.5.2 i 
 \series bold
 ISL
 \series default
@@ -256,7 +256,7 @@ ISL
 \series bold
 ISL
 \series default
- 6.8 Exercises Conceptual: Gör uppgift 2) och 4)
+ 6.6 Exercises Conceptual: Gör uppgift 2) och 4)
 \end_layout
 
 \begin_layout Section
@@ -447,11 +447,11 @@ Nedan följer fler övningsuppgifter.
 \end_layout
 
 \begin_layout Itemize
-Kapitel 5: Exercises Applied: 5), 7), 8)
+Kapitel 5.4: Exercises Applied: 5), 7), 8)
 \end_layout
 
 \begin_layout Itemize
-Kapitel 6: Exercises Applied: 8), 10)
+Kapitel 6.6: Exercises Applied: 8), 10)
 \end_layout
 
 \end_body

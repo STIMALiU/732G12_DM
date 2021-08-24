@@ -1820,7 +1820,7 @@ Notera det finns
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1839,7 +1839,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -1878,7 +1878,7 @@ Forward selection
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1897,7 +1897,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -1936,7 +1936,7 @@ Backward selection
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1955,7 +1955,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -2177,7 +2177,7 @@ Ridge regession
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2196,7 +2196,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -2438,7 +2438,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -2667,7 +2667,7 @@ Ridge och lasso
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2686,7 +2686,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
