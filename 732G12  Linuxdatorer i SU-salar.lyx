@@ -164,7 +164,7 @@ SU-salarna och Ubuntu
 De schemalagda datorlaborationerna har SU-salarna bokade, som har Linux
  (Ubuntu) som operativsystem.
  För att få tillgång till R, Rstudio och de R-paket som kursen använder
- gör du följande:
+ gör ni följande:
 \end_layout
 
 \begin_layout Itemize
@@ -173,14 +173,14 @@ Tryck:
 Ctrl+Alt+T
 \family default
  för att öppna en terminal.
- Här kan du skriva olika kommandon, dessa aktiveras när du trycker enter.
+ Här kan ni skriva olika kommandon, dessa aktiveras när ni trycker enter.
 \end_layout
 
 \begin_layout Itemize
 Skriv: 
 \family typewriter
 \lang english
-module add prog/r-mega-edition/20.08
+module add prog/r-mega-edition/21.07
 \family default
 \lang swedish
  och tryck enter
@@ -192,6 +192,17 @@ Detta läser in kursmodulen, som innehåller de programvaror som behövs i
  kursen.
 \end_layout
 
+\begin_layout Itemize
+Funkar inte komandot ovan, testa då: 
+\family typewriter
+\lang english
+module add prog/r-mega-edition/20.08
+\family default
+\lang swedish
+ och tryck enter (detta är gamla kursmodulen, innehåller det mesta men programva
+ror är inte uppdaterade)
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 Skriv 
@@ -199,6 +210,20 @@ Skriv
 rstudio
 \family default
  i terminalen och tryck enter
+\end_layout
+
+\begin_layout Itemize
+Ni kan behöva installera R-paket 
+\begin_inset CommandInset href
+LatexCommand href
+name "ISLR2"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "false"
+
+\end_inset
+
+ själva i Rstudio.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -215,6 +240,19 @@ pluma: enkel textredigerare, bra att använda för att titta på datafiler
 
 \begin_layout Itemize
 LibreOffice: kontorsprogram
+\end_layout
+
+\begin_layout Standard
+Se mer allmän information om SU-salar 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.student.liu.se/studentstod/itsupport/allmant-linuxdatorsalar?l=sv"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section*
@@ -238,15 +276,6 @@ Gå in på denna sida:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://insidan.liu.se/it/it-i-undervisning/linuxresurser-for-distansundervisning/?l=sv"
-literal "false"
-
-\end_inset
-
-, info finns även här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
 target "https://www.student.liu.se/studentstod/itsupport/linuxdatorsalar/fjarrinloggning?l=sv"
 literal "false"
 
@@ -254,7 +283,7 @@ literal "false"
 
 .
  Ni kan använda er av RDP eller ThinLinc, men ThinLinc rekommenderas.
- Följ instruktionerna i länkarna för att ansluta online.
+ Följ instruktionerna i länken för att ansluta online.
  
 \end_layout
 
@@ -297,7 +326,7 @@ install_tensorflow()
 
 \begin_layout Plain Layout
 
-# Om ni får frågan om att installer Miniconda, svara Y (yes).
+# Om ni får frågan om att installera Miniconda, svara Y (yes).
 \end_layout
 
 \begin_layout Plain Layout
