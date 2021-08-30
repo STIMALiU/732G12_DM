@@ -15,6 +15,9 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -173,7 +176,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2020-08-17
+2021-08-30
 \end_layout
 
 \begin_layout Standard
@@ -805,7 +808,7 @@ Olika metoder för att kunna anpassa mer generella icke-linjära modeller
 \end_layout
 
 \begin_layout Itemize
-Vi vill 
+Vi vill hitta 
 \begin_inset Quotes eld
 \end_inset
 
@@ -932,7 +935,7 @@ Dela upp variabelrummet i icke överlappade regioner
 \end_layout
 
 \begin_layout Enumerate
-Alla obs i en regioner har samma anpassade värde
+Alla obs i en region har samma anpassade värde
 \end_layout
 
 \end_deeper
@@ -941,7 +944,7 @@ Både regression och klassificering
 \end_layout
 
 \begin_layout Itemize
-Hur ska vi dela upp? Vilktiga principer:
+Hur ska vi dela upp? Vilktiga principer:´
 \end_layout
 
 \begin_deeper
@@ -1438,7 +1441,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -1864,7 +1867,7 @@ Skatta regressionsträd med cost complexity pruning
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1883,7 +1886,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
@@ -1972,7 +1975,7 @@ Kommentarer om beslutsträd
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1991,7 +1994,7 @@ Från
 \begin_inset CommandInset href
 LatexCommand href
 name "“An Introduction to Statistical Learning with Applications in R”"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf"
 literal "false"
 
 \end_inset
