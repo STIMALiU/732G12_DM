@@ -935,7 +935,7 @@ Dela upp variabelrummet i icke överlappade regioner
 \end_layout
 
 \begin_layout Enumerate
-Alla obs i en region har samma anpassade värde
+Alla obs i en region har samma anpassade värde: medelvärde/typvärde
 \end_layout
 
 \end_deeper
@@ -1562,6 +1562,17 @@ CART - Klassificeringsträd
 \begin_deeper
 \begin_layout Standard
 Välj uppdelning som maximerar informationsvinst
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta=I\left(parent\right)-I\left(children\right)
+\]
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \Delta=I\left(parent\right)-\sum_{j=1}^{k}\frac{N\left(\nu_{j}\right)}{N}I\left(\nu_{j}\right)
