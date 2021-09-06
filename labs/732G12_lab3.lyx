@@ -306,6 +306,19 @@ literal "false"
  (finns även på kurshemsidan) för hur ni läser in pakten.
 \end_layout
 
+\begin_layout Itemize
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "CHEAT SHEET"
+target "https://raw.githubusercontent.com/rstudio/cheatsheets/master/keras.pdf"
+literal "false"
+
+\end_inset
+
+ för Keras.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
