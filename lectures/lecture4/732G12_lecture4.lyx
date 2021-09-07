@@ -15,6 +15,9 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -177,7 +180,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2020-08-17
+2021-08-31
 \end_layout
 
 \begin_layout Standard
@@ -436,15 +439,15 @@ Introduktion
 \end_layout
 
 \begin_layout Itemize
-Naive Bayes, 
+K-närmaste grannar
 \end_layout
 
 \begin_layout Itemize
-k-närmaste grannar, 
+Naive Bayes
 \end_layout
 
 \begin_layout Itemize
-ensemblemetoder
+Ensemblemetoder
 \end_layout
 
 \begin_deeper
@@ -567,6 +570,34 @@ Vi måste definera ett avståndsmått
 \begin_deeper
 \begin_layout Itemize
 Euklidiskt avstånd
+\begin_inset Formula 
+\[
+d\left(\boldsymbol{x},\boldsymbol{y}\right)=\sqrt{\sum_{k=1}^{n}\left(x_{k}-y_{k}\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Manhattan avstånd (Taxicab)
+\begin_inset Formula 
+\[
+d\left(\boldsymbol{x},\boldsymbol{y}\right)=\sum_{k=1}^{n}\left|x_{k}-y_{k}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se kapitiel 2.4 i 
+\series bold
+IDM
+\series default
+ för fler exempel
 \end_layout
 
 \end_deeper
@@ -699,6 +730,28 @@ Långsam anpassning – Varje ny observation måste ”skapa” en ny modell
 Känslig mot brus – Lokal information används 
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-närmaste grannar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Val av K har stor betydelse! 
 \end_layout
@@ -716,13 +769,17 @@ Littet K
  underanpassning
 \end_layout
 
+\begin_layout Itemize
+Vi kan använda korsvalidering för att bestämma k.
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 Producerar godtyckligt utformade beslutsgränser
 \end_layout
 
 \begin_layout Itemize
-Mer 10 dimensional data: 
+Mer än 10 dimensioner i data: 
 \end_layout
 
 \begin_deeper
@@ -736,13 +793,6 @@ variabelreducerande tekniker, tex PCA
 
 \end_deeper
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Bayesianska klassificerare
 \end_layout
@@ -767,11 +817,19 @@ Om man vill modellera en icke-deterministisk funktion:
 
 \begin_deeper
 \begin_layout Itemize
-(diet, träning) -> (hjärtinfarkt): svårt
+(diet, träning) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ (hjärtinfarkt): svårt
 \end_layout
 
 \begin_layout Itemize
-(diet, träning) -> Pr(hjärtinfarkt)
+(diet, träning) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Pr(hjärtinfarkt)
 \end_layout
 
 \end_deeper
@@ -843,13 +901,18 @@ textwidth
 \end_layout
 
 \begin_layout Itemize
-P(Y=y) = (antalet rader där klassbeteckning är y) / (totala antalet rader)
- 
+\begin_inset Formula $P(Y=y)$
+\end_inset
+
+ = (antalet rader där klassbeteckning är y) / (totala antalet rader) 
 \end_layout
 
 \begin_layout Itemize
-P(X i =x i |Y=y) = (antalet rader där klassbeteckningen är y och attributet
- är x) / (antalet rader med klassbeteckningen y)
+\begin_inset Formula $P(X_{i}=x_{i}|Y=y)$
+\end_inset
+
+ = (antalet rader där klassbeteckningen är y och attributet är x) / (antalet
+ rader med klassbeteckningen y)
 \end_layout
 
 \begin_layout Column
@@ -1216,7 +1279,7 @@ Då behöver vi en mer komplex modell
 \end_layout
 
 \begin_layout Itemize
-simultan sannolikhetsfördelning för likelihooden
+Simultan sannolikhetsfördelning för likelihooden
 \end_layout
 
 \end_deeper
@@ -1257,7 +1320,7 @@ status open
 
 \begin_layout Plain Layout
 
-.3
+.4
 \backslash
 textwidth
 \end_layout
@@ -1641,7 +1704,7 @@ Givet
 \end_inset
 
  klasser med 
-\begin_inset Formula $Z=\left\{ Y_{i}\boldsymbol{X}_{i},\,i=1,\ldots N\right\} $
+\begin_inset Formula $Z=\left\{ Y_{i},\boldsymbol{X}_{i},\,i=1,\ldots N\right\} $
 \end_inset
 
 , beräkna indikatorfunktion alt.
@@ -1741,7 +1804,7 @@ Förbättra CART
 
 \begin_deeper
 \begin_layout Standard
-Flexibiliteten/komplexiteten för trädmodeller beror på trädsjupet 
+Flexibiliteten/komplexiteten för trädmodeller beror på träddjupet 
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2061,6 +2124,10 @@ Bra vid många variabler!
 \end_deeper
 \begin_layout Itemize
 Inte så många hyperparameterar: funkar ofta bra!
+\end_layout
+
+\begin_layout Itemize
+Kan ibland bli problem med starkt korrelerade variabler
 \end_layout
 
 \end_deeper
@@ -2694,6 +2761,50 @@ Boosting för regressionsträd
 status open
 
 \begin_layout Plain Layout
+Boosting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Andra varianter:
+\end_layout
+
+\begin_layout Itemize
+Gradient boosting
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+XGboost
+\end_layout
+
+\begin_layout Itemize
+LightGBM
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Boosting vs.
  bagging
 \end_layout
@@ -2703,7 +2814,6 @@ Boosting vs.
 
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \begin_inset Graphics
 	filename figs/bagging_vs_boosting.png
@@ -2714,7 +2824,6 @@ Boosting vs.
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
