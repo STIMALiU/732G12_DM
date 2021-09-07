@@ -214,6 +214,16 @@ literal "false"
 \end_inset
 
 .
+ mnist-data finns på 
+\begin_inset CommandInset href
+LatexCommand href
+name "Lisam"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -342,6 +352,25 @@ Läs in materialet
 
 mnist_train.csv
 \begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+mnist-data finns på 
+\begin_inset CommandInset href
+LatexCommand href
+name "Lisam"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
 \end_inset
 
  som är träningsmängden från 
