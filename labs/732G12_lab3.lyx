@@ -304,6 +304,23 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+ISL
+\series default
+: här finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "instruktioner"
+target "https://web.stanford.edu/~hastie/ISLR2/keras-instructions.html"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
 Är ni i SU-salarna så ska det finnas installerat, se 
 \begin_inset CommandInset href
 LatexCommand href
@@ -399,7 +416,19 @@ mnist_test.csv
 
  .
  Tänk på hur keras-paketet vill ha data strukturerat och följ instruktionerna
- i kodmanualen.
+ i kodmanualen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Se även lab 10.9.2 A Multilayer Network on the MNIST Digit Data i 
+\series bold
+ISL
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -422,8 +451,8 @@ validation_split = 0
 Utvärdera modellen som skattats genom att kontrollera nätverkets anpassningshist
 orik.
  Hur många epoker behövdes för att hitta den bästa modellen? Verkar modellen
- vara nog bra för att modellera data- materialet? Utifrån träningsmängden
- vilka siffror verkar modellen ha sämst lycka med att prediktera? Vilka
+ vara nog bra för att modellera datamaterialet? Utifrån träningsmängden
+ vilka siffror verkar modellen ha lyckas sämst med att prediktera? Vilka
  siffror har modellen predikterat de till istället?
 \end_layout
 
@@ -474,10 +503,40 @@ literal "false"
  notera att data har annat format än när ni läste in den i 1), nu är det
  en array.
  Dett gör att inputlagret behöver vara annorlunda.
- Anpassa den föreslagna modellen.
+ Anpassa den föreslagna modellen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Den modellen använder layer_dropout(), vi kommer att gå igenom dropout i
+ kursvecka 4.
+\end_layout
+
+\end_inset
+
+.
  Hur presterar den jämfört med er tidigare? Hur många parameterar skattar
  ni? Förutom själva arkitekturen på nätverket, hittar ni några andra skillnader
  jämfört med era tidgare modeller?
+\end_layout
+
+\begin_layout Enumerate
+Lab 10.9.2 
+\begin_inset Quotes eld
+\end_inset
+
+A Multilayer Network on the MNIST Digit Data
+\begin_inset Quotes erd
+\end_inset
+
+ i 
+\series bold
+ISL
+\series default
+ skattar en liknande modell som ni har gjort i 2) och 9).
+ Läs igenom labben, jämför deras precision för testdata med vad ni fått
+ tidigare.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -637,6 +696,22 @@ Fungerar Random forest bättre eller sämre än neurala nätverk på dettta data
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+Gå igenom labben 10.9.1 
+\begin_inset Quotes eld
+\end_inset
+
+A Single Layer Network on the Hitters Data
+\begin_inset Quotes erd
+\end_inset
+
+ i 
+\series bold
+ISL
+\series default
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -764,8 +839,8 @@ y_true
 \end_layout
 
 \begin_layout Enumerate
-Om ni vill: Skatta random forest och k-nearest neighbors och jämför vilken
- modell som presterar bäst på testdata.
+Om ni vill: Skatta en trädmodell med cost complexity pruning och k-nearest
+ neighbors och jämför vilken modell som presterar bäst på testdata.
 \end_layout
 
 \end_deeper
@@ -821,8 +896,8 @@ y_true
 \end_layout
 
 \begin_layout Enumerate
-Om ni vill: Skatta random forest och k-nearest neighbors och jämför vilken
- modell som presterar bäst på testdata.
+Om ni vill: Skatta en trädmodell med cost complexity pruning och k-nearest
+ neighbors och jämför vilken modell som presterar bäst på testdata.
 \end_layout
 
 \end_deeper
@@ -883,7 +958,7 @@ Skatta modeller med ett gömt lager och:
 \end_layout
 
 \begin_layout Enumerate
-Så många noder som krväs för att få en mycket bra anpassning.
+Så många noder som krävs för att få en mycket bra anpassning.
  
 \end_layout
 
