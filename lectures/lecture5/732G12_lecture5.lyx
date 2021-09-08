@@ -173,7 +173,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2020-09-02
+2021-09-08
 \end_layout
 
 \begin_layout Standard
@@ -454,11 +454,31 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Läst kaptiel 25 Neural Networks i 
+Läsning i 
 \series bold
-DMML
+ISL
+\series default
+:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+10 intro, 10.1-10.2 10.7 intro, 10.7.1, 10.7.2, 10.7.4
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Läsning i 
+\series bold
+IDM
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+6.7 till 6.8.2 
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -738,7 +758,7 @@ Används för att lära sig komplexa sannolikhetsfördelningar: sampla bilder,
 \end_layout
 
 \begin_layout Itemize
-GAN
+Generative adversarial network (GAN)
 \end_layout
 
 \end_deeper
@@ -1793,12 +1813,6 @@ Kurshemsidan
 Labben
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Demokod
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Frame
 
