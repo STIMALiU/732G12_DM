@@ -173,7 +173,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2020-09-08
+2021-09-13
 \end_layout
 
 \begin_layout Standard
@@ -465,6 +465,26 @@ Lek runt med olika modeller här!
 status open
 
 \begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Gradient descent
 \end_layout
 
@@ -643,11 +663,8 @@ Mycket viktig parameter
 \end_layout
 
 \begin_layout Itemize
-Ofta behöver vi sakta minska 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- med iterationer i SGD
+Ofta behöver vi sakta minska inlärningstakten med antalet iterationer i
+ SGD
 \end_layout
 
 \begin_deeper
@@ -684,6 +701,28 @@ Krav för teoretisk konvergens:
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stochastic gradient descent (SGD)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1283,7 +1322,7 @@ RMSProp
 
 \begin_deeper
 \begin_layout Itemize
-Skala om gradienten beroende på träningshistorian, gör att vi
+Skala om gradienten beroende på träningshistoriken, gör att vi:
 \end_layout
 
 \begin_deeper
@@ -1298,7 +1337,7 @@ tar mindre steg för de parametrar som har stora derivator: här vill vi vara
 \end_layout
 
 \begin_layout Itemize
-Skapa med exponentiellt avtagande glidande medelvärde för tidigare gradientvärde
+Skala med exponentiellt avtagande glidande medelvärde för tidigare gradientvärde
 n (elementvis)
 \end_layout
 
@@ -1372,6 +1411,56 @@ Adam och RMSProp
 
 \begin_layout Section
 Regularisering
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularisering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regularisering genom normstraff
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vilken kostnadsfunktion har Ridge regession?
+\end_layout
+
+\begin_layout Itemize
+Vilken kostnadsfunktion har Lasso regession?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -1851,7 +1940,7 @@ Speglingar, rotationer, beskärningar, addera brus mm
 
 \end_deeper
 \begin_layout Itemize
-Ensamplemetoder/Bagging
+Ensamplemetoder
 \end_layout
 
 \begin_deeper
@@ -1990,6 +2079,26 @@ Faltade nätverk
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Faltade nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_deeper
 \begin_layout Standard
 Faltade nätverk: Convolutional networks, convolutional neural networks,
@@ -2103,7 +2212,7 @@ Kan ses som en sammanviktning av två kontinuerliga funktioner
 \begin_inset Formula $x\text{\left(t\right)}$
 \end_inset
 
-och 
+ och 
 \begin_inset Formula $h\left(t\right)$
 \end_inset
 
