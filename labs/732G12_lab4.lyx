@@ -186,6 +186,10 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+asgf
+\end_layout
+
+\begin_layout Itemize
 Dataset till vissa uppgifter finns 
 \bar under
 
@@ -207,25 +211,10 @@ literal "false"
 \series bold
 ISL
 \series default
-: An Introduction to Statistical Learning, 
+: An Introduction to Statistical Learning,
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Allmän info: 
-\bar under
-
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Boken: 
 \bar under
@@ -233,7 +222,7 @@ Boken:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+target "https://www.statlearning.com/"
 literal "false"
 
 \end_inset
@@ -248,7 +237,7 @@ R-kod till labbar:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/code.html"
+target "https://www.statlearning.com/resources-second-edition"
 literal "false"
 
 \end_inset
@@ -258,12 +247,21 @@ literal "false"
 
 \begin_layout Itemize
 Dataset: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "false"
+
+\end_inset
+
+ och 
 \bar under
 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "http://faculty.marshall.usc.edu/gareth-james/ISL/data.html"
+target "https://www.statlearning.com/resources-second-edition"
 literal "false"
 
 \end_inset
@@ -272,6 +270,64 @@ literal "false"
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+IDM
+\series default
+: Introduction to Data Mining
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kod till boken finns här
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Sample chapters"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/index.php#chapters"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dataset till vissa uppgifter finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
+ mnist data finns på 
+\begin_inset CommandInset href
+LatexCommand href
+name "Lisam"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Notera att ni inte behöver göra alla delar på alla uppgifter.
  Det viktiga är att ni får en förståelse för de olika principerna och modellerna
@@ -310,6 +366,35 @@ r som ska tilldelas till valideringsmängden.
  Denna uppdelning ska ske slumpmässigt.
  Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
  från valideringsmängden.
+\end_layout
+
+\begin_layout Section*
+Keras
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "CHEAT SHEET"
+target "https://raw.githubusercontent.com/rstudio/cheatsheets/master/keras.pdf"
+literal "false"
+
+\end_inset
+
+ för Keras.
+ Dokumentation för keras finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/guide/"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -445,7 +530,7 @@ Vilken metod är ni mest nöjd med?
 
 \end_deeper
 \begin_layout Enumerate
-Gör om 3) men med batchstorlek 64 och 256.
+Gör om 4) men med batchstorlek 64 och 256.
  Hur påverkar det optimeringen?
 \end_layout
 
@@ -455,7 +540,7 @@ Välj batchstorlek 128 och SGD.
 \end_layout
 
 \begin_layout Enumerate
-Upprepa 5) men med Adam eller RMSPROP
+Upprepa 6) men med Adam eller RMSPROP
 \end_layout
 
 \begin_layout Enumerate
@@ -469,7 +554,7 @@ Välj batchstorlek 128 och SGD.
 \end_layout
 
 \begin_layout Enumerate
-Välj en metod från 3) och skatta modellen med 40 epoker.
+Välj en metod från 4) och skatta modellen med 40 epoker.
 \end_layout
 
 \begin_layout Enumerate
@@ -529,7 +614,7 @@ Hur bra tycker ni att L2 regularisering och dropout funkar för baseline
 
 \begin_layout Enumerate
 Utgå från baseline model, testa förändringarna nedan.
- Utvärdera med plottar på valideringsdata och undersök precisionen på testdata.
+ Utvärdera valideringsdata med plottar lämpliga utvärderingsmått.
 \end_layout
 
 \begin_deeper
@@ -671,7 +756,7 @@ Jämför med fallet utan regularisering (se era resultat på laboration 3)
 Gör scatterplot med obserade x och y.
  Lägg till anpassade värden för träning och test (ha olika färger för de
  olika fallen).
- Får ni en mer mjukt varierande anpassade värden? 
+ Får ni mer mjukt varierande anpassade värden? 
 \end_layout
 
 \end_deeper
@@ -740,6 +825,7 @@ y_less_noise
 
 \begin_layout Enumerate
 Tycker ni att neurala nätverk är en lämplig modellklas för detta dataset?
+ 
 \end_layout
 
 \begin_layout Section*
