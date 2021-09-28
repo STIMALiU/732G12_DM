@@ -419,15 +419,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Exempel på användning av arules finns 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lab6_code.R"
-literal "false"
-
-\end_inset
-
 
 \end_layout
 
@@ -482,28 +473,11 @@ Skapa en associationsanalys igen men denna gång ange 4 som det maximalt
 \end_layout
 
 \begin_layout Section*
-Del 2
+Del 2: Intressemått
 \end_layout
 
 \begin_layout Standard
-Gå igenom koden 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/association-analysis-basic-concepts-and-algorithms.html#association-analysis-basic-concepts-and-algorithms"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-Del 3: Intressemått
-\end_layout
-
-\begin_layout Standard
-Använd här samma material som i del 1 och repetera steg 2 från denna.
+Använd här samma material som i övning 1 och repetera steg 2 från denna.
 \end_layout
 
 \begin_layout Enumerate
@@ -616,7 +590,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 4: Webssideanalys
+Del 3: Webssideanalys
 \end_layout
 
 \begin_layout Standard
@@ -649,11 +623,6 @@ Webpage
 .
  Bilagan innehåller en lista med alla sidor som finns på hemsidan.
  Utgå från kodmanualen för sekvensanalys.
- Notera att det går att köra 
-\family typewriter
-cSPADE()
-\family default
- i Rstudio.
 \end_layout
 
 \begin_layout Subsection*
