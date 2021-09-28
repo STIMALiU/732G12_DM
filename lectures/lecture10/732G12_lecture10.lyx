@@ -173,7 +173,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2020-09-28
+2021-09-28
 \end_layout
 
 \begin_layout Standard
@@ -528,6 +528,18 @@ Lösning: Gruppera attributvärden på ett logiskt sätt, t.ex.
  städer i olika län eller regioner.
 \end_layout
 
+\begin_layout Itemize
+Skapa en 
+\begin_inset Quotes eld
+\end_inset
+
+Övrigt
+\begin_inset Quotes erd
+\end_inset
+
+ kategori
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 Om det finns attributvärden med väldigt hög support, t.ex.
@@ -592,16 +604,16 @@ Lika frekvens
 \end_layout
 
 \begin_layout Itemize
-Lika andel
-\end_layout
-
-\begin_layout Itemize
-(Kluster) 
+Kluster
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 Skapa ett attribut för varje kategoriskt värde .
+\end_layout
+
+\begin_layout Itemize
+Vi måste bestämma antal intervall
 \end_layout
 
 \end_deeper
@@ -1218,7 +1230,7 @@ Projekt
 
 \begin_deeper
 \begin_layout Itemize
-Mer info på labben imorgon (29/9)
+Se dokument för detaljer
 \end_layout
 
 \begin_layout Itemize
