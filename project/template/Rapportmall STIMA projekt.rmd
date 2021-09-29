@@ -104,10 +104,21 @@ Detta kapitel är smidigt för att i punktform presentera de frågeställningar 
 
 
 # Data
-Detta kapitel beskriver den datamängd som rapporten baserar sig på. Definitioner av variabler och rapportspecifika termer som används, vilken källa de kommer ifrån osv.
+Detta kapitel beskriver den datamängd som rapporten baserar sig på. Definitioner av variabler och rapportspecifika termer som används, vilken källa (visa referens vid behov!) de kommer ifrån osv.
+
+
 
 ## Databearbetning
 Här ska all databearbetning presenteras, det vill säga ifall ni har behövt transformera, skapa nya variabler eller på annat sätt ändrat i datamaterialet från dess ursprungliga form som ni laddat ner från källan.
+
+
+
+**Allmänt om data:**
+
+- Visa metadata: dimensioner på data 
+- Visa beskrivande statistik, lämpliga plottar och tabeller på data
+- Hantera saknade värden
+- Undersök om det finns outliers, oblanserade klasser mm
 
 
 
@@ -130,6 +141,14 @@ Ta upp nedanstående punkter i den mån de är relevanta för er metod:
 
 Förklara vilka mjukvaror/progam/paket som ni använder för att tillämpa er metod.
 
+Notera att i de flesta fall så är det lämpligt att jämföra två eller fler modeller/metoder på samma problem. Det kan vara så att man har samma metodfamlij, men med olika hyperparametrar.
+
+- Tex inom klassificering /regression: Om ni tänker använda någon icke-linjär metod, då är det ofta rimligt att jämföra med linjär regression/linjär logistisk regression (men även andra modeller kan vara intressant att jämföra med). Tänk frågan: "Vad vinner vi med en mer komplicerad modell?"
+- Det är ok att ha en metod som sin "huvudmetod" som beskrivs mer ingående i metodkapitlet, och en eller flera jämförande metoder som beskrivs kortare.
+- Om ni vill hålla er till endast en metod så bör ni motivera det och den metoden bör utforskas mer ingående med avseende på olika inställningar etc. 
+
+
+
 <!-- Anger sidbrytning -->
 \clearpage
 
@@ -139,9 +158,11 @@ Detta kapitel presenterar resultatet av beräkningar, diagram och tabeller som s
 
 Här anger ni vilka faktiska val ni har gjort med avseende på modellval, hyperparameterar mm.
 
-Varje diagram och tabell som presenteras i rapporten ska vara numrerat och namngivet.
+Varje diagram och tabell som presenteras i rapporten ska vara numrerat och ha en figur/tabelltext som kort beskriver innehållet. Avrunda till lämpligt antal decimaler.
 
-- Ta inte med någon tabell eller diagam som ni inte kommenterar eller tolkar.
+- Ta inte med någon tabell eller diagram som ni inte kommenterar eller tolkar.
+
+
 
 
 <!-- Anger sidbrytning -->
@@ -171,8 +192,15 @@ Detta kapitel sammanfattar det som presenterats i  med huvudfokus på att besvar
 
 # Bilaga
 
-Slutligen ska ni även ha en bilaga. Här kan bifoga diagram eller tabeller som tolkas i rapporten men inte anses vara alltför viktiga. 
-Beräkningar av alla resultat bör framförallt visas i bilagan då det tar väldigt stor plats men alla tolkningar och analyser bör finnas med i brödtexten. 
+Slutligen ska ni även ha en bilaga. Här kan bifoga diagram eller tabeller som tolkas i rapporten men inte anses vara alltför viktiga, men som ni ändå vill ha med. Exempel kan vara:
+
+- Figurer/tabeller som tar mycket plats
+- Om ett flertal figurer är mycket lika varandra, visa då en under Resultat och de övriga här i bilagan.
+- Beräkningar som tar mycket plats
+
+Notera att alla tolkningar och analyser bör finnas med i brödtexten, ni kan referera till figurer/tabellerna som finns här.
+
+## Kod
 
 Här ska ni ha relevant R-kod
  

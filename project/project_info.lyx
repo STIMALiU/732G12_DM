@@ -179,16 +179,19 @@ Instruktioner
 \end_layout
 
 \begin_layout Standard
-Er uppgift är att i par välja någon av nedanstående material att analysera.
- Från början kommer det endast tillåtas en grupp per material och metodfamilj,
- men ifall det tar slut material kommer några få jobba med samma.
- Det är även tillåtet att välja ett annat material som finns tillgänligt
- på internet, men då måste godkänade fås.
- Först till kvarn gäller för dessa val!
-\end_layout
+Er uppgift är att i par välja ett datamaterial som ni ska analysera.
+ Se sektionen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Datamaterial"
+plural "false"
+caps "false"
+noprefix "false"
 
-\begin_layout Standard
-När ni väl valt material ska ni komma på en frågeställning som lämpas att
+\end_inset
+
+ för detaljer.
+ När ni väl valt material ska ni komma på en frågeställning som lämpas att
  besvaras med hjälp utav metodfamiljen som ni valt ut.
  Det kan vara alltifrån, Vilka egenskaper påverkar huruvida en komponent
  är trasig?, Vilka sidor besöker en användare innan den landar på Resultat?,
@@ -287,6 +290,10 @@ gruppX_liuid1_liuid2.pdf
  och ladda upp på Lisam i den anvisade samarbetsytan innan deadline.
 \end_layout
 
+\begin_layout Standard
+Se filen 
+\end_layout
+
 \begin_layout Subsection*
 Presentation
 \end_layout
@@ -320,21 +327,25 @@ Varje grupp ska opponera på en annan rapport enligt det schema som kommer
 
 \begin_layout Section
 Datamaterial
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Datamaterial"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Nedan presenteras förslag på datamaterial.
- Notera att ni kan välja ett annat material, se rubriken 
-\begin_inset Quotes sld
-\end_inset
+Er uppgift är att i par välja någon av nedanstående material att analysera.
+ Endast en grupp tillåtas per material och metodfamilj.
+ Det är även tillåtet att välja ett annat material som finns tillgänligt
+ på internet, men då måste godkänade fås.
+ Först till kvarn gäller för dessa val!
+\end_layout
 
-Eget datamaterial
-\begin_inset Quotes srd
-\end_inset
-
- nedan.
- Notera att det är först till kvarn som gäller.
- Skriv upp ert val på projektlistan som kommer att delas i Teams under kanalen
+\begin_layout Standard
+Skriv upp ert val på projektlistan som kommer att delas i Teams under kanalen
  
 \begin_inset Quotes sld
 \end_inset
@@ -344,244 +355,15 @@ Eget datamaterial
 \end_inset
 
 .
- Datamaterialen är indelade efter föreslagen metodklass, men ni kan använda
- annan metod, men det ska motiveras i rapporten.
- '
+ Datamaterialen har en föreslagen metodfamilj, men ni kan använda annan
+ metod, men det ska motiveras i rapporten.
+ 
 \end_layout
 
-\begin_layout Subsubsection*
-Klustering 
+\begin_layout Standard
+Ni ska citera källan på datamaterialet i de fall då det krävs.
 \end_layout
 
-\begin_layout Itemize
-Växter 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-En databas över 22 632 växter som finns i USA och Canada.
- Informationen för varje växt som finns är vilken stat eller provins/territorium
- som den växer i.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Plants"
-target "https://archive.ics.uci.edu/ml/datasets/Plants"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Klustering
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-USAs befolkning
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-En databas över 2 458 285 slumpmässigt utvalda individer från 1990 års folkräkni
-ng i USA.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
-target "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Klustering
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Köpcentrum (Gifts)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Transaktionsdatabas över en UK-baserad affär.
- Källa 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
-target "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Klustering
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Klassificering
-\end_layout
-
-\begin_layout Itemize
-Bilsensorer
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-11 sensorer i en bil har samlats in data för att benämna ifall en komponent
- är trasig eller ej.
- Tyvärr finns ingen information kring vad de olika variablerna betyder exakt.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Dataset+for+Sensorless+Drive+Diagnosis"
-target "https://archive.ics.uci.edu/ml/datasets/Dataset+for+Sensorless+Drive+Diagnosis"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Bokstavsigenkänning
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Datamaterial som behandlar en 20 000 bokstäver med variabler som beskriver
- hur dessa ser ut.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
-target "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Regression
-\end_layout
-
-\begin_layout Itemize
-SkillCraft1
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
-target "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Parkinsons
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
-target "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Associations och sekvensanalys
-\end_layout
-
-\begin_layout Itemize
-FIFA
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ett datamaterial taget från FIFA World Cup 98s hemsida med 20 450 unika
- sekvenser av klickningar på 2 990 distinkt olika hemsidor.
- Tyvärr finns ingen information om vilka sidorna egentligen är.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://www.philippe-fournier-viger.com/spmf/index.php?link=datasets.php"
-target "http://www.philippe-fournier-viger.com/spmf/index.php?link=datasets.php"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Köpcentrum (Retail)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Data från en anonym belgisk affär med 88 162 transaktioner och ett antal
- unika varor eller varugrupper.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://fimi.ua.ac.be/data/"
-target "http://fimi.ua.ac.be/data/"
-literal "false"
-
-\end_inset
-
- (Tom Brijs, notera källan i länken)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Växter
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Samma som ovan
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Köpcentrum (Gifts)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Samma som ovan
-\end_layout
-
-\end_deeper
 \begin_layout Subsection*
 Eget datamaterial
 \end_layout
@@ -614,7 +396,15 @@ enkelt
 \end_inset
 
 : inte för några observationer eller variabler, tumregel: antingen antal
- obs>1000 eller antal variabler > 20
+ obs 
+\begin_inset Formula $\ge$
+\end_inset
+
+ 1000 eller antal variabler 
+\begin_inset Formula $\ge$
+\end_inset
+
+ 10
 \end_layout
 
 \begin_layout Itemize
@@ -662,5 +452,232 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+De databaser som finns tillgänliga via 
+\begin_inset CommandInset href
+LatexCommand href
+name "pxweb"
+target "https://cran.r-project.org/web/packages/pxweb/index.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Lista på dataset
+\end_layout
+
+\begin_layout Itemize
+SkillCraft1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
+target "https://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parkinsons
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
+target "https://archive.ics.uci.edu/ml/datasets/Parkinsons+Telemonitoring"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Regression
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Apartment for rent classified Data Set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Apartment+for+rent+classified"
+target "https://archive.ics.uci.edu/ml/datasets/Apartment+for+rent+classified"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Regression, Klassificering, Klustering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bokstavsigenkänning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Datamaterial som behandlar en 20 000 bokstäver med variabler som beskriver
+ hur dessa ser ut.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
+target "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+USAs befolkning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En databas över 2 458 285 slumpmässigt utvalda individer från 1990 års folkräkni
+ng i USA.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
+target "https://archive.ics.uci.edu/ml/datasets/US+Census+Data+%281990%29"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klustering, Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Köpcentrum (Gifts)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transaktionsdatabas över en UK-baserad affär.
+ Källa 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
+target "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klustering, Associations och sekvensanalys
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Växter 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En databas över 22 632 växter som finns i USA och Canada.
+ Informationen för varje växt som finns är vilken stat eller provins/territorium
+ som den växer i.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Plants"
+target "https://archive.ics.uci.edu/ml/datasets/Plants"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klustering, Associations och sekvensanalys
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wine Quality Data Set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Wine+Quality"
+target "https://archive.ics.uci.edu/ml/datasets/Wine+Quality"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Regression, Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Adult Data Set
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Adult"
+target "https://archive.ics.uci.edu/ml/datasets/Adult"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
