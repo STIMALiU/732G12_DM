@@ -1,0 +1,179 @@
+---
+title: "Laboration X"
+subtitle: "Kurskod"
+author: 
+  - "Författare 1 Namn"
+  - "Författare 2 Namn"
+date: '20XX-XX-XX'
+
+# Ändrar utformningen av en sida
+geometry: "top=100pt,bottom=100pt,left=68pt,right=66pt"
+
+output: 
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+
+# Lägger till angivelser om LaTeX-paket som ska användas i rapporten
+header-includes:
+  - \usepackage{float}
+  - \usepackage{longtable}
+  - \usepackage{caption}
+  - \usepackage{fancyhdr}
+  - \usepackage{titling}
+  - \usepackage[swedish, english]{babel}
+  - \renewcommand{\headrulewidth}{0pt}
+  
+  # Ändrar ett kommando så att man kan ange flera författare
+  - \renewcommand{\and}{\\}
+  
+  # Lägger till information till titelsidan
+  - \pretitle{\centering\vspace{0cm}{\large Labbrapport i Statistik \par}\vspace{4cm}\Huge\textbf}
+  - \posttitle{\vspace{1cm}\large\textbf{}\par}
+  - \preauthor{\centering\vspace{4cm}\normalsize}
+  - \postauthor{\par\vspace{4cm}}
+  - \predate{\centering{\normalsize Avdelningen för Statistik och maskininlärning \\ Institutionen för datavetenskap \\ Linköpings universitet \par}}
+  - \postdate{\par\vspace{2cm}}
+  - \raggedbottom
+
+# Lägger till en bibliografi med alla referenser som används i rapporten
+bibliography: BiBTeXexempel.bib
+---
+
+<!-- Väljer språk till svenska för automatiska titlar -->
+\selectlanguage{swedish}
+
+<!-- Byter språket på figur- och tabellbeskrivningar till angivna namn -->
+\captionsetup[table]{name = Tabell}
+\setcounter{table}{0}
+\captionsetup[figure]{name = Figur}
+\setcounter{figure}{0}
+
+<!-- Anger att tabellbeskrivningar hamnar ovanför tabellen -->
+\floatstyle{plaintop}
+\restylefloat{table}
+
+<!-- Anger sidnumreringens position -->
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+
+<!-- Tar bort sidnumrering för förteckningar och titelsidan -->
+\pagenumbering{gobble}
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+<!-- Skapar en innehållsförteckning och anger djupet av rubrikerna som ska visas -->
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+<!-- Börjar sidnumreringen på sida 1 efter att alla förteckningar visats -->
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+<!-- Börjar med kapitel 1 -->
+# Introduktion
+Introducera laborationen; de datamaterial som används, målen med uppgifterna och annat förberedande arbete. Detta kan inkludera inläsning av data och paket där all form av output ska vara gömt såvida inget annat anges.
+
+```{r echo = FALSE, include = FALSE}
+#include = FALSE tar bort alla utskrifter som kommer från laddning av data eller paket
+require(ggplot2)
+
+
+```
+
+
+<!-- Anger sidbrytning -->
+\clearpage
+
+
+# Uppgifter
+
+
+## Uppgift 1
+
+### Exempel på hur R används i LaTeX
+Först kör jag lite R-kod:
+
+```{r echo = TRUE}
+# Jag har lite kod
+library(xtable) # Laddar paketet xtable
+data(iris)
+
+x <- 10
+x
+```
+
+
+Men det blir ganska fult så jag döljer det istället:
+
+```{r echo = FALSE}
+# Jag har lite kod
+library(xtable) 
+data(iris)
+
+x <- 10
+x
+
+```
+
+Jag skriver min uppsats om datasetet iris. [@anderson1935irises] Självklart använder jag referenser korrekt. Vill jag referera till en viss sida gör jag det i noten. [@anderson1935irises, s 2-4] Då kommer fortfarande bara en referens att läggas till i litteraturförteckningen.
+
+Jag har samlat ihop datasetet iris som består av `r nrow(iris)` observationer. De första observationerna kan ni se här: \label{min_data}
+```{r echo = FALSE}
+# Skriv ut data
+head(iris)
+```
+
+Att visa data direkt från R är ganska fult i dokument.Det är mycket snyggare att använda exempelvis `xtable()`:
+
+```{r echo = FALSE, results = "asis"}
+# Jag har lite kod att köra
+print(xtable(head(iris,n=20), caption="En tabell med data."), 
+    include.rownames = FALSE, # Removes the row numbering 
+    table.placement = "H", # Specifies the placement of the table, note that these two commands need to be placed inside the print() and not the xtable()
+    comment = FALSE,
+    caption.placement = "top")  # Specifies to put the caption on top of the table
+```
+
+Om jag använder caption=”Rubrik” i funktionen `xtable()` så genereras en tabellrubrik som används för att skapa en tabellförteckning. Detta kallas floating i LaTeX och görs automatiskt av `xtable()`.
+
+### Figurer
+Mitt data som ni kan se på sida \pageref{min_data}, har jag använt för att göra den snygga figur \ref{fig:En-figur} som finns på sida \pageref{fig:En-figur}. 
+
+```{r echo = FALSE, fig.height = 4, fig.width = 7, fig.cap = "\\label{fig:En-figur}Min figur", fig.pos = "H!"}
+ggplot(iris) + aes(x = Sepal.Length, y = Sepal.Width) + geom_point() +
+  theme_bw() + labs(main = "Min figur")
+
+
+```
+
+### Linjär regression
+Jag har gjort massa häftiga analyser som linjär regression med alla `r nrow(iris)` observationer:
+
+```{r echo=FALSE, results='asis'}
+analys <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+print(xtable(analys, caption="Lite regressioner."), comment = FALSE, table.placement = "H", caption.placement = "top")
+```
+
+Och en ANOVA-analys. 
+
+```{r echo=FALSE, results='asis'}
+print.xtable(xtable(anova(analys), caption = "ANOVA"), comment = FALSE, table.placement = "H",
+    caption.placement = "top")
+```
+
+Oavsett dyker alla tabeller upp i tabellförteckningen utan problem.
+
+\pagebreak
+
+# Lärdomar, problem, övriga kommentarer 
+Under detta kapitel kan ni ta upp de saker som ni lärt er, eventuella problem ni stött på och andra saker (kopplade till kursen) som ni tänkt på under arbetet med laborationen. Dessa tankar kan vara bra att ha när det är dags för att repetera kursen, så ni kommer ihåg saker som ni kanske hade lite problem med och fick göra någon speciallösning på eller liknande.
+
+\clearpage
+
+# Referenser
