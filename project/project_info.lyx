@@ -206,11 +206,7 @@ en som finns tillhands.
 
 \begin_layout Standard
 När ni väl kommit fram till ett svar på er frågeställning ska allting sammanstäl
-las till en rapport som ska formas enligt rapportmallen, se kurshemsidan.
- Huvudfokus ska ligga på databeskrivningen och dess bearbetning samt rapportens
- metodkapitel.
- Alla analyser och slutsatser ska vara motiverade med lämpliga grafer och
- tabeller.
+las till en rapport som ska formas enligt rapportmallen.
  Rapportmallen finns 
 \begin_inset CommandInset href
 LatexCommand href
@@ -229,7 +225,13 @@ literal "false"
 
 \end_inset
 
-.
+ (se även kurshemsidan), och innehåller instruktioner om hur ni ska skriva
+ er rapport.
+ Huvudfokus ska ligga på databeskrivningen och dess bearbetning samt rapportens
+ metodkapitel.
+ Alla analyser och slutsatser ska vara motiverade med lämpliga grafer och
+ tabeller.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -522,28 +524,6 @@ literal "false"
 
 \begin_layout Itemize
 Förslag: Regression
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Apartment for rent classified Data Set
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Apartment+for+rent+classified"
-target "https://archive.ics.uci.edu/ml/datasets/Apartment+for+rent+classified"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Förslag: Regression, Klassificering, Klustering
 \end_layout
 
 \end_deeper
