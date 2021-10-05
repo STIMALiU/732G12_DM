@@ -4,7 +4,6 @@
 
 class_evaluation_keras <- function(new_data, model, true_y, digits = 3){
   # Predikterar klassen för new_data givet den skattade modellen
-  browser()
   class_pred <- model %>% predict(new_data) %>% k_argmax()
   pred<-as.vector(as.array(class_pred))
 
