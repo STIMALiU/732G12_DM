@@ -291,19 +291,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Dokumentation för keras finns 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://tensorflow.rstudio.com/guide/"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 
 \series bold
 ISL
@@ -344,6 +331,43 @@ literal "false"
 \end_inset
 
  för Keras.
+ Dokumentation för keras finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/guide/"
+literal "false"
+
+\end_inset
+
+ och 
+\bar under
+\lang swedish
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/reference/keras/"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang swedish
+Utvärdering vid klassificering kan göras med funktionen 
+\begin_inset CommandInset href
+LatexCommand href
+name "class_evaluation_keras()"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation_keras.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
