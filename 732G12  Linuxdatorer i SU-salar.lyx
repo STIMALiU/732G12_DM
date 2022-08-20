@@ -177,30 +177,33 @@ Ctrl+Alt+T
 \end_layout
 
 \begin_layout Itemize
-Skriv: 
+Skriv:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
 \family typewriter
 \lang english
-module add prog/r-mega-edition/21.07
+module add courses/732G12
+\family default
+\lang swedish
+ och tryck enter, eller
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\lang english
+module add prog/r-mega-edition/21.10
 \family default
 \lang swedish
  och tryck enter
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Detta läser in kursmodulen, som innehåller de programvaror som behövs i
  kursen.
-\end_layout
-
-\begin_layout Itemize
-Funkar inte komandot ovan, testa då: 
-\family typewriter
-\lang english
-module add prog/r-mega-edition/20.08
-\family default
-\lang swedish
- och tryck enter (detta är gamla kursmodulen, innehåller det mesta men programva
-ror är inte uppdaterade)
 \end_layout
 
 \end_deeper
@@ -210,20 +213,6 @@ Skriv
 rstudio
 \family default
  i terminalen och tryck enter
-\end_layout
-
-\begin_layout Itemize
-Ni kan behöva installera R-paket 
-\begin_inset CommandInset href
-LatexCommand href
-name "ISLR2"
-target "https://cran.r-project.org/web/packages/ISLR2/index.html"
-literal "false"
-
-\end_inset
-
- själva i Rstudio.
- 
 \end_layout
 
 \begin_layout Standard

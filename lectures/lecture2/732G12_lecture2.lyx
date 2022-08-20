@@ -176,7 +176,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2021-08-24
+2021-08-23
 \end_layout
 
 \begin_layout Standard
@@ -430,10 +430,6 @@ Intro
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Min bakgrund
-\end_layout
-
 \begin_layout Itemize
 Kursplanen: 
 \begin_inset CommandInset href
@@ -692,6 +688,16 @@ Betyder olika saker för olika metoder
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Recept:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Komplex modell + regularisering = en bra modell
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -896,7 +902,7 @@ Specificitet och sensitivitet
 \end_layout
 
 \begin_layout Itemize
-Sensitivitet: 
+Sensitivitet (=true positive rate): 
 \begin_inset Formula 
 \[
 =\frac{f_{11}}{f_{11}+f_{01}}
@@ -908,7 +914,7 @@ Sensitivitet:
 \end_layout
 
 \begin_layout Itemize
-Specificitet: 
+Specificitet (=true negative rate): 
 \begin_inset Formula 
 \[
 =\frac{f_{00}}{f_{10}+f_{00}}
@@ -1026,7 +1032,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
 \size tiny
 By FeanDoe.
@@ -1043,6 +1049,14 @@ literal "false"
 \end_layout
 
 \end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Section
 Generaliserade linjära modeller
 \end_layout
@@ -1651,7 +1665,7 @@ Indirekt skatta testfelet
 
 \begin_deeper
 \begin_layout Standard
-AIC,BIC och HQIC: based on MLE skattning av modeller.
+AIC, BIC och HQIC: baserad på MLE skattning av modeller.
  Låt 
 \begin_inset Formula $log\left(\hat{L}\right)$
 \end_inset
