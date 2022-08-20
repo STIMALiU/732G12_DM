@@ -173,7 +173,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2021-08-23
+2022-08-22
 \end_layout
 
 \begin_layout Standard
@@ -449,7 +449,11 @@ Datorövningar/labbar
 \end_layout
 
 \begin_layout Itemize
-Projektarbete = 2.5 hp (U,G)
+Projektarbete = 2.5 hp (U,G) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ görs i par
 \end_layout
 
 \begin_layout Itemize
@@ -457,77 +461,6 @@ Tenta = 5 hp (U,G,VG)
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Coronaregler
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Allämnt: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Avstånd: minst en armlängd, gärna två meter
-\end_layout
-
-\begin_layout Itemize
-Stanna hemma om du är sjuk
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Föreläsningar: på campus
-\end_layout
-
-\begin_layout Itemize
-Datorövningar/labbar:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-I datorsal
-\end_layout
-
-\begin_layout Itemize
-En student per dator
-\end_layout
-
-\begin_layout Itemize
-Flytta inte skärmarna som sitter mellan datorerna
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Coronaregler: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://insidan.liu.se/HR-Personal/coronavirus?l=sv"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -566,7 +499,11 @@ Datorövningar
 
 \begin_deeper
 \begin_layout Itemize
-Enskild lösning av övningar som behandlar tidigare material 
+Lösning av övningar som behandlar tidigare material
+\end_layout
+
+\begin_layout Itemize
+Förberder både inför projektarbetet och tentan
 \end_layout
 
 \end_deeper
@@ -591,7 +528,7 @@ Projektarbetet presenteras och opponeras
 
 \end_deeper
 \begin_layout Itemize
-Tentamen
+Tenta
 \end_layout
 
 \begin_deeper
@@ -613,7 +550,7 @@ Påminner om datorövningarna, kan ha teoretiska frågor
 status open
 
 \begin_layout Plain Layout
-Kursutvärdering 2020
+Kursutvärdering 2021
 \end_layout
 
 \end_inset
@@ -623,20 +560,15 @@ Kursutvärdering 2020
 
 \begin_deeper
 \begin_layout Itemize
-Antal respondenter: 13
+Antal respondenter: 17
 \end_layout
 
 \begin_layout Itemize
-Antal svar: 9 (Svarsfrekvens: 69 %)
+Antal svar: 7 (Svarsfrekvens: 41 %)
 \end_layout
 
 \begin_layout Itemize
-Vilket helhetsbetyg ger du kursen? 3,78 
-\end_layout
-
-\begin_layout Itemize
-Kursen var helt på distans: Fungerade bra för 6 personer och mindre bra
- för 3 personer.
+Vilket helhetsbetyg ger du kursen? 3 
 \end_layout
 
 \begin_layout Itemize
@@ -645,11 +577,128 @@ Förändringar:
 
 \begin_deeper
 \begin_layout Itemize
-Sektionen om klustering utökad
+Labbar
 \end_layout
 
 \begin_layout Itemize
-Ny kursbok
+Projekt 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ startar tidigare
+\end_layout
+
+\begin_layout Itemize
+Tentan 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ lite mer hjälp
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bonuspoäng till tentan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Chans till 2 bonuspoäng till tentan
+\end_layout
+
+\begin_layout Itemize
+Krav: deltar på 9 av 14 labbtillfällen
+\end_layout
+
+\begin_layout Itemize
+Deltaga betyder:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vara där och jobba aktivit med kursinnehållet
+\end_layout
+
+\begin_layout Itemize
+ställa minst en fråga till läraren om kursinnehållet eller visar upp minst
+ en lösning till någon uppgift 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bonuspoängen: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gilltiga för de tre tentatillfällena som är kopplade till 2022 års omgång
+ av kursen
+\end_layout
+
+\begin_layout Itemize
+Används på det första tentatillfället som man deltar i av dessa tre (sparas
+ inte)
+\end_layout
+
+\begin_layout Itemize
+Kan bara användas för att få godkänt betyg
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Projektarbete
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gör i grupper om två
+\end_layout
+
+\begin_layout Itemize
+Gruppanmälan på Lisam
+\end_layout
+
+\begin_layout Itemize
+Man ska välja data själv
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Separat inlämning för val av datamaterial
 \end_layout
 
 \end_deeper
@@ -1124,7 +1173,6 @@ Statistical learning
 \end_layout
 
 \begin_layout Standard
-Inom 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1132,7 +1180,7 @@ learning
 \begin_inset Quotes erd
 \end_inset
 
- maskininlärning betyder ofta 
+ inom maskininlärning betyder ofta 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1863,9 +1911,15 @@ Variable, attribute, feature, covariate
 
 \end_deeper
 \begin_layout Itemize
-Finns många andra format: tidseriser, text, kartor, grafer, videor
+Finns många andra format: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+tidserier, text, bilder, kartor, grafer, videor
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2111,7 +2165,7 @@ Ett antal variabler (
 \begin_inset Formula $X$
 \end_inset
 
-), men ingen reponsevariabel
+), men ingen reponsvariabel
 \end_layout
 
 \end_deeper
@@ -2618,6 +2672,18 @@ Squared error loss: Tänk normalfördelning, ex: linjär regression
 \begin_inset Formula 
 \[
 MSE=\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}-\hat{f}\left(x_{i}\right)\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean absolute error loss:
+\begin_inset Formula 
+\[
+MAE=\frac{1}{n}\sum_{i=1}^{n}\left|y_{i}-\hat{f}\left(x_{i}\right)\right|
 \]
 
 \end_inset
