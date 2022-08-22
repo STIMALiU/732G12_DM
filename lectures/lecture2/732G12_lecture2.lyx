@@ -176,7 +176,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2021-08-23
+2022-08-23
 \end_layout
 
 \begin_layout Standard
@@ -902,7 +902,7 @@ Specificitet och sensitivitet
 \end_layout
 
 \begin_layout Itemize
-Sensitivitet (=true positive rate): 
+Sensitivitet (=true positive rate, recall): 
 \begin_inset Formula 
 \[
 =\frac{f_{11}}{f_{11}+f_{01}}
@@ -953,69 +953,58 @@ Specificitet och sensitivitet
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Graphics
+	filename figs/Screenshot at 2020-08-18 12-24-31.png
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sensitivitet (=true positive rate, recall): 
+\begin_inset Formula 
+\[
+=\frac{f_{11}}{f_{11}+f_{01}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Specificitet (=true negative rate): 
+\begin_inset Formula 
+\[
+=\frac{f_{00}}{f_{10}+f_{00}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dessa mått är klasspecifika.
+ Dessa formler betecknar klass 1.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "50col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/800px-Sensitivity_and_specificity_part1.png
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "50col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename figs/800px-Sensitivity_and_specificity_part2.png
-	scale 23
-
-\end_inset
-
-
+F-score
 \end_layout
 
 \end_inset
@@ -1023,29 +1012,56 @@ status collapsed
 
 \end_layout
 
-\begin_layout Plain Layout
-
+\begin_deeper
+\begin_layout Itemize
+F-score är det harmoniska medelvärdet av precisionen och sensitivitet (recall)
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Formula $F_{\beta}=\left(1+\beta^{2}\right)\frac{precision\cdot sensitivitet}{\left(\beta^{2}\cdot precision\right)+sensitivitet}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Vanligt med 
+\begin_inset Formula $\beta=1$
+\end_inset
 
-\size tiny
-By FeanDoe.
- Modified version from Walber's Precision and Recall 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://commons.wikimedia.org/wiki/File:Precisionrecall.svg"
-target "https://commons.wikimedia.org/wiki/File:Precisionrecall.svg"
-literal "false"
-
+: 
+\begin_inset Formula $F_{1}=2\cdot\frac{precision\cdot sensitivitet}{precision+sensitivitet}$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Ligger mellan 
+\begin_inset Formula $0$
+\end_inset
+
+ och 
+\begin_inset Formula $1$
+\end_inset
+
+, högre värden är bättre
+\end_layout
+
+\begin_layout Itemize
+Andra värden: 
+\begin_inset Formula $0.5$
+\end_inset
+
+ och 
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Beräknas klassvis
 \end_layout
 
 \end_deeper
@@ -1834,7 +1850,7 @@ Notera det finns
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1892,7 +1908,7 @@ Forward selection
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1950,7 +1966,7 @@ Backward selection
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2595,6 +2611,110 @@ tar en och kastar bort den andra
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Adaptive lasso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Låt varje 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+ ha sin egen vikt 
+\begin_inset Formula $w_{j}$
+\end_inset
+
+ i regulariseringen 
+\begin_inset Formula 
+\[
+\underset{\beta}{arg\,min}\,f\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\sum_{j=1}^{p}\beta_{j}x_{i,j}\right)^{2}+\lambda\sum_{j=1}^{p}w_{j}\left|\beta_{j}\right|\qquad\lambda\ge0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Välj vikter 
+\begin_inset Formula 
+\[
+w_{j}=\frac{1}{\left|\hat{\beta}_{j,start}\right|^{\gamma}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ofta så väljs 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Välj 
+\begin_inset Formula $\hat{\beta}_{j,start}$
+\end_inset
+
+ som 
+\begin_inset Formula $\hat{\beta}_{j,OLS}$
+\end_inset
+
+ eller 
+\begin_inset Formula $\hat{\beta}_{j,ridge}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stora värden på 
+\begin_inset Formula $\hat{\beta}_{j,start}$
+\end_inset
+
+ ger mindre vikter 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ ger mindre krympning av 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Har visa teoretiska fördelar jämfört med vanlig lasso.
+ Kräver dock att vi skattar 
+\begin_inset Formula $\hat{\beta}_{j,start}$
+\end_inset
+
+ i ett separat steg först.
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
