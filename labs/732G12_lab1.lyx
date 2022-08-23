@@ -252,6 +252,19 @@ ISL
 \end_layout
 
 \begin_layout Enumerate
+Gå igenom koden 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lab1_adaptive_lasso_example.R"
+literal "false"
+
+\end_inset
+
+ för att testa adaptive lasso.
+\end_layout
+
+\begin_layout Enumerate
 
 \series bold
 ISL
