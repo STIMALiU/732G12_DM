@@ -6,6 +6,7 @@ set.seed(1354)
 train <- sample(1:nrow(x), nrow(x) / 2)
 test <- (-train)
 
+
 y_train<-y[train]
 y_test <- y[test]
 
