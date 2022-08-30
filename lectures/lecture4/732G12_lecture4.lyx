@@ -2787,7 +2787,15 @@ XGboost
 LightGBM
 \end_layout
 
+\begin_layout Itemize
+CatBoost
+\end_layout
+
 \end_deeper
+\begin_layout Itemize
+Vinner ofta tävlingar i maskininlärning
+\end_layout
+
 \end_deeper
 \begin_layout Frame
 
