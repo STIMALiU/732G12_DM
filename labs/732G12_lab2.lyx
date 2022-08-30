@@ -110,6 +110,21 @@ literal "false"
 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Utvärdering av klassificeringsproblem, se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "– https://www.isakhietala.com/teaching/732g12/#sammanfattande-funktion-f%C3%B6r-modellutv%C3%A4rdering"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -328,7 +343,16 @@ Utvärdera den skattade modellen genom att:
 \begin_deeper
 \begin_layout Enumerate
 Beräkna felkvoten av både tränings och valideringsmängden och tolka.
- 
+ Kolla tex 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "– https://www.isakhietala.com/teaching/732g12/#sammanfattande-funktion-f%C3%B6r-modellutv%C3%A4rdering"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
