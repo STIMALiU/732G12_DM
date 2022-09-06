@@ -833,10 +833,21 @@ Börja med att ha y_less_noise som er responsvariabel.
 \end_layout
 
 \begin_layout Enumerate
-Dela upp data i träning/test (80/20) slumpmässigt
+Skatta modellerna nedan på alla observationer.
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+Skatta en ploynomregression med 
+\family typewriter
+lm()
+\family default
+ av ordning 20.
+ Tips: 
+\family typewriter
+poly()
+\end_layout
+
 \begin_layout Enumerate
 Skatta
 \begin_inset Foot
@@ -844,6 +855,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Välj valfria inställningar på optimeringen.
+ Ex: batch_size=32, epochs = 30, learning_rate = 0.01
 \end_layout
 
 \end_inset
@@ -853,95 +865,61 @@ Välj valfria inställningar på optimeringen.
 
 \begin_deeper
 \begin_layout Enumerate
-Ett gömt lager med 5 noder + Relu
+Ett gömt lager med 20 noder + Relu
 \end_layout
 
 \begin_layout Enumerate
-Ett gömt lager med 30 noder + Relu
+Ett gömt lager med 200 noder + Relu
 \end_layout
 
 \begin_layout Enumerate
-Ett gömt lager med 100 noder + Relu
+Två gömda lager med 50 + 50 noder +Relu
 \end_layout
 
 \begin_layout Enumerate
-Två gömda lager med 20 + 20 noder +Relu
+Två gömda lager med 100 + 100 noder +Relu
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Vilken modell presterar bäst på testdata?
+Gör b), men lägg till polynom av 
+\family typewriter
+x
+\family default
+ upp till ordning 5 som förklarande variabler.
+ Tips: 
+\family typewriter
+as.matrix(poly(train_x,degree = 5,simple = TRUE))
 \end_layout
 
 \begin_layout Enumerate
-Plotta anpassade värden för träning/test i samma plot som 
+Plotta anpassade värden tillsammans med observerad data för de olika modellerna.
+ Hur ser anpassningen ut?
+\end_layout
+
+\begin_layout Enumerate
+Ta fram MSE för träning och MSE där ni jämför de anpassade värdena med 
 \family typewriter
 y_true
 \family default
 .
- Ser det ut att vara en bra anpassning?
+ Hur funkar modellerna?
 \end_layout
 
 \begin_layout Enumerate
-Om ni vill: Skatta en trädmodell med cost complexity pruning och k-nearest
- neighbors och jämför vilken modell som presterar bäst på testdata.
+Om ni vill: Skatta en trädmodell med cost complexity pruning och/eller k-nearest
+ neighbors och jämför med modellerna ovan.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Dela upp data i träning/test, där de 20% sista observationerna är testmängden
- (alltså de längst åt höger i era plottar) och resterande i träningsdata.
+Dela upp data i träning/validering, där de 5% sista observationerna är validerin
+gmängden (alltså de längst åt höger i era plottar) och resterande i träningsdata.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Skatta
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Välj valfria inställningar på optimeringen.
-\end_layout
-
-\end_inset
-
- neurala nätverk med följande arkitekturer:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Ett gömt lager med 5 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Ett gömt lager med 30 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Ett gömt lager med 100 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Två gömda lager med 20 + 20 noder +Relu
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Vilken modell presterar bäst på testdata?
-\end_layout
-
-\begin_layout Enumerate
-Plotta anpassade värden för träning/test i samma plot som 
-\family typewriter
-y_true
-\family default
-.
- Ser det ut att vara en bra anpassning?
-\end_layout
-
-\begin_layout Enumerate
-Om ni vill: Skatta en trädmodell med cost complexity pruning och k-nearest
- neighbors och jämför vilken modell som presterar bäst på testdata.
+Gör om stegen i 5), men med den nya uppdelningen.
 \end_layout
 
 \end_deeper
