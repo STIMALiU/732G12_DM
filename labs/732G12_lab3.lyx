@@ -218,7 +218,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "Lisam"
-target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2022HT_N7/CourseDocuments/data?csf=1&web=1&e=xbIYu5"
 literal "false"
 
 \end_inset
@@ -288,6 +288,7 @@ literal "false"
 \end_inset
 
  för instuktioner.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -335,15 +336,14 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://tensorflow.rstudio.com/guide/"
+target "https://tensorflow.rstudio.com/guides/"
 literal "false"
 
 \end_inset
 
- och 
-\bar under
+ och
 \lang swedish
-
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -404,7 +404,7 @@ mnist-data finns på
 \begin_inset CommandInset href
 LatexCommand href
 name "Lisam"
-target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2022HT_N7/CourseDocuments/data?csf=1&web=1&e=xbIYu5"
 literal "false"
 
 \end_inset
@@ -477,7 +477,18 @@ orik.
  Hur många epoker behövdes för att hitta den bästa modellen? Verkar modellen
  vara nog bra för att modellera datamaterialet? Utifrån träningsmängden
  vilka siffror verkar modellen ha lyckas sämst med att prediktera? Vilka
- siffror har modellen predikterat de till istället?
+ siffror har modellen predikterat de till istället? 
+\lang swedish
+Utvärdering vid klassificering kan göras med funktionen 
+\begin_inset CommandInset href
+LatexCommand href
+name "class_evaluation_keras()"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation_keras.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -756,7 +767,16 @@ NN_reg_data.csv
 \begin_inset Quotes erd
 \end_inset
 
- med neurala nätverk.
+ med neurala nätverk, finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
  Datasetet har en prediktor, x och y har ett icke-linjärt samband med y.
  
 \end_layout
