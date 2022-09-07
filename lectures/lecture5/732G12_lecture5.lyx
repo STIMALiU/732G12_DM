@@ -15,6 +15,13 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -173,7 +180,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2021-09-08
+2022-09-07
 \end_layout
 
 \begin_layout Standard
@@ -440,8 +447,24 @@ Denna föreläsning utgår ifrån att ni har:
 
 \begin_layout Itemize
 Sett dessa videor: 
-\bar under
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.youtube.com/watch?v=sDv4f4s2SB8"
+literal "false"
 
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.youtube.com/watch?v=vMh0zPT0tLI"
+literal "false"
+
+\end_inset
+
+ och 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -667,6 +690,10 @@ Reinforcement learning
 \end_layout
 
 \begin_layout Itemize
+Representation learning
+\end_layout
+
+\begin_layout Itemize
 Generativa modeller
 \end_layout
 
@@ -708,6 +735,14 @@ Radial basis networks
 
 \begin_layout Itemize
 Faltade (Convolutional) nätverk: bilder, videor, tidserier.
+\end_layout
+
+\begin_layout Itemize
+Recurrent neural networks, LSTM
+\end_layout
+
+\begin_layout Itemize
+Transformer networks
 \end_layout
 
 \end_deeper
@@ -1382,6 +1417,38 @@ Optimering av neurala nätverk
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset Graphics
+	filename figs/Saddle_point.svg.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 Platåer och sadelpunkter
 \end_layout
 
@@ -1430,38 +1497,6 @@ Platåer och sadelpunkter: gör optimeringen med gradient decent svårare
 status open
 
 \begin_layout Plain Layout
-Sadelpunkt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/Saddle_point.svg.png
-	scale 20
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Optimering av neurala nätverk
 \end_layout
 
@@ -1473,6 +1508,17 @@ Optimering av neurala nätverk
 \begin_deeper
 \begin_layout Standard
 Gradient descent: hitta minimum på en funktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underset{a}{argmin}\quad f\left(a_{n}\right)=\sum_{i}L\left(f\left(x^{(i)},a\right),y^{(i)}\right)
+\]
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 a_{n+1}=a_{n}-\gamma\cdot\nabla f\left(a_{n}\right)
@@ -1535,7 +1581,15 @@ Gör en väntevärdesriktig skattning av
 \begin_inset Formula $\nabla\hat{f}\left(a_{n}\right)$
 \end_inset
 
- genom att ta ett slumpmässigt sample från data (mini-batch)
+ genom att ta ett slumpmässigt sample från data (mini-batch) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ tänk urvalsundersökning!
 \end_layout
 
 \begin_layout Itemize
@@ -1559,7 +1613,11 @@ Kräver att vi har oberoende observationer i likelihoodfunktionen.
 \end_layout
 
 \begin_layout Itemize
-Funkar bra för neurala nätverk !
+Funkar bra för neurala nätverk!
+\end_layout
+
+\begin_layout Itemize
+Ger en viss regularisering
 \end_layout
 
 \end_deeper
