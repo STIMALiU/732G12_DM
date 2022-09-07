@@ -1513,7 +1513,7 @@ Gradient descent: hitta minimum på en funktion
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\underset{a}{argmin}\quad f\left(a_{n}\right)=\sum_{i}L\left(f\left(x^{(i)},a\right),y^{(i)}\right)
+\underset{a}{argmin}\quad L\left(a_{n}\right)=\sum_{i}L_{i}\left(f\left(x^{(i)},a\right),y^{(i)}\right)
 \]
 
 \end_inset
@@ -1521,7 +1521,7 @@ Gradient descent: hitta minimum på en funktion
 
 \begin_inset Formula 
 \[
-a_{n+1}=a_{n}-\gamma\cdot\nabla f\left(a_{n}\right)
+a_{n+1}=a_{n}-\gamma\cdot\nabla L\left(a_{n}\right)
 \]
 
 \end_inset
@@ -1570,7 +1570,7 @@ SGD:
 \begin_deeper
 \begin_layout Itemize
 Dyrt att beräkna 
-\begin_inset Formula $\nabla f\left(a_{n}\right)$
+\begin_inset Formula $\nabla L\left(a_{n}\right)$
 \end_inset
 
  för alla datapunkter
@@ -1578,7 +1578,7 @@ Dyrt att beräkna
 
 \begin_layout Itemize
 Gör en väntevärdesriktig skattning av 
-\begin_inset Formula $\nabla\hat{f}\left(a_{n}\right)$
+\begin_inset Formula $\nabla\hat{L}\left(a_{n}\right)$
 \end_inset
 
  genom att ta ett slumpmässigt sample från data (mini-batch) 
@@ -1594,7 +1594,7 @@ Gör en väntevärdesriktig skattning av
 
 \begin_layout Itemize
 Det finns varians i 
-\begin_inset Formula $\nabla\hat{f}\left(a_{n}\right)$
+\begin_inset Formula $\nabla\hat{L}\left(a_{n}\right)$
 \end_inset
 
 , större batch ger mindre varians men blir dyrare att beräkna.
