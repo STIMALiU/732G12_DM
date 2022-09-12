@@ -15,6 +15,13 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -173,7 +180,7 @@ Josef Wilzen
 \end_layout
 
 \begin_layout Date
-2021-09-13
+2022-09-12
 \end_layout
 
 \begin_layout Standard
@@ -498,7 +505,7 @@ Gradient descent
 Kostnadsfunktion:
 \begin_inset Formula 
 \[
-h\left(\theta_{n}\right)
+L\left(\theta_{n}\right)
 \]
 
 \end_inset
@@ -520,7 +527,7 @@ Gradient descent: hitta minimum på en funktion
 
 \begin_layout Itemize
 Vi behöver gradienten (partiella derivator) 
-\begin_inset Formula $\nabla h\left(\theta_{n}\right)$
+\begin_inset Formula $\nabla L\left(\theta_{n}\right)$
 \end_inset
 
 
@@ -538,7 +545,7 @@ Gradient descent: dyrt när vi har många obs!
 Vanligt i statistik: (oberoende obs)
 \begin_inset Formula 
 \[
-h\left(\theta\right)=\sum_{i=1}^{N}L\left(f\left(x^{(i)},\theta\right),y^{(i)}\right)
+L\left(\theta\right)=\sum_{i=1}^{N}L_{i}\left(f\left(x^{(i)},\theta\right),y^{(i)}\right)
 \]
 
 \end_inset
@@ -574,7 +581,7 @@ SGD:
 
 \begin_layout Itemize
 Dyrt att beräkna 
-\begin_inset Formula $\nabla h\left(\theta\right)$
+\begin_inset Formula $\nabla L\left(\theta\right)$
 \end_inset
 
  för alla datapunkter
@@ -582,7 +589,7 @@ Dyrt att beräkna
 
 \begin_layout Itemize
 Gör en väntevärdesriktig skattning av 
-\begin_inset Formula $\nabla\hat{h}\left(\theta\right)$
+\begin_inset Formula $\nabla\hat{L}\left(\theta\right)$
 \end_inset
 
  genom att ta ett slumpmässigt sample från data (mini-batch)
@@ -590,7 +597,7 @@ Gör en väntevärdesriktig skattning av
 
 \begin_layout Itemize
 Det finns varians i 
-\begin_inset Formula $\nabla\hat{h}\left(\theta\right)$
+\begin_inset Formula $\nabla\hat{L}\left(\theta\right)$
 \end_inset
 
 , större batch ger mindre varians men blir dyrare att beräkna.
@@ -843,7 +850,7 @@ Compute gradient estimate:
 Apply update:
 \begin_inset Formula 
 \[
-\theta\leftarrow\theta-\epsilon\cdot\hat{g}
+\theta\leftarrow\theta-\epsilon_{k}\cdot\hat{g}
 \]
 
 \end_inset
@@ -999,7 +1006,7 @@ Require
 \end_inset
 
 , Learning rate schedule: 
-\begin_inset Formula $\epsilon$
+\begin_inset Formula $\epsilon_{1},\epsilon_{2},\ldots,\epsilon_{k},\ldots$
 \end_inset
 
 
@@ -1057,7 +1064,7 @@ Compute gradient estimate:
 Compute velocity:
 \begin_inset Formula 
 \[
-v\leftarrow\alpha\cdot v-\epsilon\cdot\hat{g}
+v\leftarrow\alpha\cdot v-\epsilon_{k}\cdot\hat{g}
 \]
 
 \end_inset
@@ -2134,8 +2141,6 @@ Revolutionerade bildbehandlingen 2012
 
 \begin_layout Itemize
 Lite historia här: 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -2241,6 +2246,28 @@ feature map
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/Convolution"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/Convolution#/media/File:Convolution_of_spiky_function_with_box2.gif"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2274,8 +2301,6 @@ Används för att filtrera signaler/tidserier, tex för att ta bort brus
 
 \begin_layout Itemize
 Används bla när vi vill beräkna täthetsfunktionen för 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "summan av två oberoende slumpvariabler"
@@ -2284,6 +2309,8 @@ literal "false"
 
 \end_inset
 
+
+\bar under
 
 \begin_inset VSpace bigskip
 \end_inset
@@ -2446,10 +2473,10 @@ Spatial information: närliggande pixlar relaterar till varandra mer än pixlar
 \end_layout
 
 \begin_layout Standard
+
+\size scriptsize
 Från: Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville,
  2016, 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -2488,8 +2515,6 @@ ImageNet dataset / challenge, 1.2 million training images, 1000 classes
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.image-net.org"
@@ -2498,8 +2523,6 @@ literal "false"
 
 \end_inset
 
-
-\bar default
 
 \begin_inset Newline newline
 \end_inset
@@ -2515,8 +2538,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset CommandInset href
 LatexCommand href
 name "https://devopedia.org/imagenet"
@@ -2682,6 +2703,54 @@ status open
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+Visualisering: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://ezyang.github.io/convolution-visualizer/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+För mer förklaringar och räkneexempel: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://towardsdatascience.com/visualizing-the-fundamentals-of-convolutional-neural-networks-6021e5b07f69"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+2D-faltning av bild
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \begin_inset Graphics
 	filename figs/2-D convolution.png
@@ -2693,10 +2762,10 @@ status open
 \begin_inset Newline newline
 \end_inset
 
+
+\size scriptsize
 Från: Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville,
  2016, 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -2909,10 +2978,10 @@ Padding
 \end_layout
 
 \begin_layout Standard
+
+\size scriptsize
 Från: Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville,
  2016, 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -2957,10 +3026,10 @@ Faltning + aktiveringsfunktion + pooling
 \end_layout
 
 \begin_layout Standard
+
+\size scriptsize
 Från: Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville,
  2016, 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
