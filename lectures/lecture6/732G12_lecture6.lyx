@@ -2247,16 +2247,7 @@ feature map
 
 \end_deeper
 \begin_layout Itemize
-Se 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://en.wikipedia.org/wiki/Convolution"
-literal "false"
-
-\end_inset
-
- och 
+Se exempel 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
