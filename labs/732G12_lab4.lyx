@@ -316,12 +316,12 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "Lisam"
-target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
+target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2022HT_N7/CourseDocuments/data?csf=1&web=1&e=xbIYu5"
 literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -369,8 +369,6 @@ Keras
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Se 
 \begin_inset CommandInset href
 LatexCommand href
@@ -385,14 +383,13 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://tensorflow.rstudio.com/guide/"
+target "https://tensorflow.rstudio.com/guides/"
 literal "false"
 
 \end_inset
 
  och 
 \bar under
-\lang swedish
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -584,13 +581,11 @@ Av alla metoder för optimering ni testat, vad tycker ni har funkat bäst?
 \end_layout
 
 \begin_layout Section*
-Del 2: Neurala nätverk regularisering
+Del 2: Neurala nätverk: regularisering
 \end_layout
 
 \begin_layout Standard
 Kör denna tutorial: 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -599,280 +594,28 @@ literal "false"
 
 \end_inset
 
-
-\bar default
 .
- 
-\end_layout
-
-\begin_layout Enumerate
-IMDB dataset: Ni kommer jobba med ett binärt klassificeringsproblem.
- För bakgrund på datasetet, se 
-\bar under
-
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_text_classification/"
-literal "false"
-
-\end_inset
-
-
-\bar default
-.
-\end_layout
-
-\begin_layout Enumerate
-Hur många parametrar är det i de baseline model, smaller model och bigger
- model? Hur relaterar det till modellernas kapacitet?
-\end_layout
-
-\begin_layout Enumerate
-Hur bra tycker ni att L2 regularisering och dropout funkar för baseline
- model?
-\end_layout
-
-\begin_layout Enumerate
-Utgå från baseline model, testa förändringarna nedan.
- Utvärdera valideringsdata med plottar lämpliga utvärderingsmått.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-L2 regularisering, men med ett annat värde på hyperparametern
-\end_layout
-
-\begin_layout Enumerate
-Kombinera L2 regularisering och dropout
-\end_layout
-
-\begin_layout Enumerate
-L1 regularisering, men med minst två olika värden på hyperparametern
-\end_layout
-
-\begin_layout Enumerate
-Jämför med en modell utan tidigare nämd regularisering
-\end_layout
-
-\end_deeper
-\begin_layout Section*
-Del 3: Mer regularisering
-\end_layout
-
-\begin_layout Standard
-Ni ska nu modellera datasetet det simulerade datasetet 
-\begin_inset Quotes eld
-\end_inset
-
-NN_reg_data.csv
-\begin_inset Quotes erd
-\end_inset
-
- med neurala nätverk.
- Datasetet har en prediktor, x och y har ett icke-linjärt samband med y.
- 
-\end_layout
-
-\begin_layout Itemize
-Läs in datamaterialet i R.
-\end_layout
-
-\begin_layout Itemize
-Det finns tre olika y-variabler:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family typewriter
-y_true
-\family default
-: det sanna värdet på y
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-y_less_noise
-\family default
-/
-\family typewriter
-y_more_noise
-\family default
-: 
-\family typewriter
-y_true
-\family default
- + olika nivåer av brus.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Ni analyserade detta dataset i förra laborationen.
- 
-\family typewriter
-y_true
-\family default
- är en funktion som varierar mjukt över x variablen.
- Målet är nu att se om ni kan anpassa en funktion som varierar mer mjukt
- med hjälp av regularisering.
-\end_layout
-
-\begin_layout Enumerate
-Plotta de olika 
-\begin_inset Formula $y$
-\end_inset
-
- mot 
-\begin_inset Formula $x$
-\end_inset
-
-.
- Hur ser sambandet ut?
-\end_layout
-
-\begin_layout Enumerate
-Börja med att ha 
-\family typewriter
-y_less_noise
-\family default
- som er responsvariabel.
-\end_layout
-
-\begin_layout Enumerate
-Dela upp data i träning/test (80/20) slumpmässigt
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Skatta neurala nätverk med arkitekturerna nedan.
- Testa att lägga till olika typer av regularisering.
- Ni kan ha olika typer av regularisering för de olika modellerna.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Ett gömt lager med 30 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Ett gömt lager med 100 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Två gömda lager med 20 + 20 noder +Relu
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Hur presterar modellerna på träning och testdata?
-\end_layout
-
-\begin_layout Enumerate
-Jämför med fallet utan regularisering (se era resultat på laboration 3)
-\end_layout
-
-\begin_layout Enumerate
-Gör scatterplot med obserade x och y.
- Lägg till anpassade värden för träning och test (ha olika färger för de
- olika fallen).
- Får ni mer mjukt varierande anpassade värden? 
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Dela upp data i träning/test, där de 20% sista observationerna är testmängden
- (alltså de längst åt höger i era plottar) och resterande i träningsdata.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Skatta neurala nätverk med arkitekturerna nedan.
- Testa att lägga till olika typer av regularisering.
- Ni kan ha olika typer av regularisering för de olika modellerna.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Ett gömt lager med 30 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Ett gömt lager med 100 noder + Relu
-\end_layout
-
-\begin_layout Enumerate
-Två gömda lager med 20 + 20 noder +Relu
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Hur presterar modellerna på träning och testdata?
-\end_layout
-
-\begin_layout Enumerate
-Jämför med fallet utan regularisering (se era resultat på laboration 3)
-\end_layout
-
-\begin_layout Enumerate
-Gör scatterplot med obserade x och y.
- Lägg till anpassade värden för träning och test (ha olika färger för de
- olika fallen).
- Får ni mer mjukt varierande anpassade värden?
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Kolla på era resulat i 3) och 4), funkar regulariseringen som ni föreslår?
- Lyckas ni anpassa en funktion som varierar mer mjukt med hjälp regulariseringen
-, jämfört med om ni inte har någon regulariseringen?
-\end_layout
-
-\begin_layout Enumerate
-Upprepa 3) och 4) fast använd 
-\family typewriter
-y_more_noise
-\family default
-.
- Nu finns det mer brus i data, så nu blir det viktigare med att ha en lämplig
- regularisering för att inte överanpassa.
- Jämför med fallet 
-\family typewriter
-y_less_noise
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Tycker ni att neurala nätverk är en lämplig modellklas för detta dataset?
  
 \end_layout
 
 \begin_layout Section*
-Del 4: Faltade nätverk
+Del 3: Faltade nätverk
 \end_layout
 
 \begin_layout Standard
 Kör denna tutorial: 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://tensorflow.rstudio.com/tutorials/advanced/images/cnn/"
+target "https://tensorflow.rstudio.com/examples/cifar10_cnn"
 literal "false"
 
 \end_inset
 
-
-\bar default
 .
  Ni ska här jobba med CIFAR10 datasetet, som är ett klassiskt datasets inom
  maskininlärning.
- För mer info,se 
-\bar under
-
+ För mer info, se 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -881,11 +624,7 @@ literal "false"
 
 \end_inset
 
-
-\bar default
  och 
-\bar under
-
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -894,14 +633,17 @@ literal "false"
 
 \end_inset
 
-
-\bar default
 .
 \end_layout
 
 \begin_layout Standard
 Notera att detta är färgbilder som har tre kanaler (grön, röd, blå) och
  att beräkningarna blir mycket tyngre.
+\end_layout
+
+\begin_layout Enumerate
+Börja med att träna i 10 epoker när ni skattar modellen.
+ Sen kan ni öka när ni ser hur lång tid beräkningarna tar.
 \end_layout
 
 \begin_layout Enumerate
@@ -1097,7 +839,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-Del 5: Mer faltade nätverk
+Del 4: Mer faltade nätverk
 \end_layout
 
 \begin_layout Standard
