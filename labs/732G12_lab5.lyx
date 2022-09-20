@@ -166,15 +166,11 @@ Allmänt
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Datorlaborationerna kräver att ni har R och Rstudio installerat.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Kodmanual: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -190,7 +186,6 @@ literal "false"
 \begin_layout Itemize
 
 \series bold
-\lang english
 ISL
 \series default
 : An Introduction to Statistical Learning,
@@ -198,8 +193,6 @@ ISL
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 Boken: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -213,8 +206,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 R-kod till labbar: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -228,8 +219,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 Dataset: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -255,7 +244,6 @@ literal "false"
 \begin_layout Itemize
 
 \series bold
-\lang english
 IDM
 \series default
 : Introduction to Data Mining
@@ -263,8 +251,6 @@ IDM
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 Kod till boken finns 
 \begin_inset CommandInset href
 LatexCommand href
@@ -278,8 +264,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset CommandInset href
 LatexCommand href
 name "Sample chapters"
@@ -293,8 +277,6 @@ literal "false"
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 Dataset till vissa uppgifter finns 
 \begin_inset CommandInset href
 LatexCommand href
@@ -348,7 +330,7 @@ r som ska tilldelas till valideringsmängden.
 \end_layout
 
 \begin_layout Section*
-Del 0: kod
+Del 0: Kod
 \end_layout
 
 \begin_layout Itemize
@@ -717,7 +699,78 @@ Genomför k-means klustring med några olika värden på k.
 \end_layout
 
 \begin_layout Section*
-Del 5 Irisdata
+Del 5 Utvärdera kluster
+\end_layout
+
+\begin_layout Enumerate
+Utgå från koden i 
+\begin_inset CommandInset href
+LatexCommand href
+name "7.3 Internal Cluster Validation"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#internal-cluster-validation"
+literal "false"
+
+\end_inset
+
+, gå igenom:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+7.3.1 Compare the Clustering Quality
+\end_layout
+
+\begin_layout Enumerate
+7.3.2 Silhouette plot
+\end_layout
+
+\begin_layout Enumerate
+7.3.3 Find Optimal Number of Clusters for k-means
+\end_layout
+
+\begin_layout Enumerate
+7.3.4 Visualizing the Distance Matrix
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gå igenom koden i 
+\begin_inset CommandInset href
+LatexCommand href
+name "7.4 External Cluster Validation"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#external-cluster-validation"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Utgå från koden i 
+\begin_inset CommandInset href
+LatexCommand href
+name "7.5 Advanced Data Preparation for Clustering"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#advanced-data-preparation-for-clustering"
+literal "false"
+
+\end_inset
+
+ gå igenom:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+7.5.1 Outlier Removal 
+\end_layout
+
+\begin_layout Enumerate
+7.5.2 Clustering Tendency
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Del 6: Irisdata
 \end_layout
 
 \begin_layout Standard
@@ -799,77 +852,6 @@ Jämför resultatet i 1), 2) och 3).
  Vilken modell föredrar ni här?
 \end_layout
 
-\begin_layout Section*
-Del 6: Utvärdera kluster
-\end_layout
-
-\begin_layout Enumerate
-Utgå från koden i 
-\begin_inset CommandInset href
-LatexCommand href
-name "7.3 Internal Cluster Validation"
-target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#internal-cluster-validation"
-literal "false"
-
-\end_inset
-
-, gå igenom:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-7.3.1 Compare the Clustering Quality
-\end_layout
-
-\begin_layout Enumerate
-7.3.2 Silhouette plot
-\end_layout
-
-\begin_layout Enumerate
-7.3.3 Find Optimal Number of Clusters for k-means
-\end_layout
-
-\begin_layout Enumerate
-7.3.4 Visualizing the Distance Matrix
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Gå igenom koden i 
-\begin_inset CommandInset href
-LatexCommand href
-name "7.4 External Cluster Validation"
-target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#external-cluster-validation"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Utgå från koden i 
-\begin_inset CommandInset href
-LatexCommand href
-name "7.5 Advanced Data Preparation for Clustering"
-target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/clustering-analysis.html#advanced-data-preparation-for-clustering"
-literal "false"
-
-\end_inset
-
- gå igenom:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-7.5.1 Outlier Removal 
-\end_layout
-
-\begin_layout Enumerate
-7.5.2 Clustering Tendency
-\end_layout
-
-\end_deeper
 \begin_layout Section*
 Del 7: Teorifrågor
 \end_layout
