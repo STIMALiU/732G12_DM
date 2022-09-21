@@ -23,7 +23,13 @@
 \fancyhead[C]{Data Mining}
 \fancyhead[LO,RE]{}
 
- 
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -173,7 +179,7 @@ Instruktioner
 
 \begin_layout Standard
 Er uppgift är att i par välja ett datamaterial som ni ska analysera.
- Se sektionen 
+ Se sektion 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Datamaterial"
@@ -184,11 +190,33 @@ noprefix "false"
 \end_inset
 
  för detaljer.
- När ni väl valt material ska ni komma på en frågeställning som lämpas att
- besvaras med hjälp utav metodfamiljen som ni valt ut.
- Det kan vara alltifrån, Vilka egenskaper påverkar huruvida en komponent
- är trasig?, Vilka sidor besöker en användare innan den landar på Resultat?,
- Finns det grupper av varor som oftast köps samtidigt? osv.
+ När ni väl valt datamaterial ska ni komma på en frågeställning som kan
+ besvaras genom att analysera det valda datamaterialet.
+ Exempel på frågeställningar:
+\end_layout
+
+\begin_layout Itemize
+Vilka egenskaper påverkar huruvida en komponent är trasig?
+\end_layout
+
+\begin_layout Itemize
+Vilken metod predikterar temperaturen bäst med avseende på MSE och MAE?
+\end_layout
+
+\begin_layout Itemize
+Vilka sidor besöker en användare innan den landar på sidan 
+\begin_inset Quotes sld
+\end_inset
+
+Resultat
+\begin_inset Quotes srd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Finns det grupper av varor som oftast köps samtidigt?
 \end_layout
 
 \begin_layout Standard
@@ -197,8 +225,8 @@ Under arbetets gång kommer ni säkert stöta på problem som till exempel att
  eller att en viss tilltänkt metod inte alls fungerar på just det specifika
  datamaterialet.
  En del av denna inlämningsuppgift är att ni ska självständigt lösa dessa
- problem men kan självklart fråga om hjälp under de schemalagda handledningspass
-en som finns tillhands.
+ problem, men ni kan självklart fråga om hjälp under de schemalagda handlednings
+passen som finns tillhands.
  Lösningar som ni kommer på, måste tydligt presenteras i rapporten som ni
  skriver för att uppfylla kravet om reproducerbarhet som råder för akademiska
  rapporter.
@@ -301,6 +329,52 @@ gruppX_liuid1_liuid2.pdf
 \end_inset
 
  och ladda upp på Lisam i den anvisade samarbetsytan innan deadline.
+ Deadlines finns sammaställda i ett dokumment 
+\begin_inset CommandInset href
+LatexCommand href
+name "[kommer snart]"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Datainlämning
+\end_layout
+
+\begin_layout Standard
+Ni ska göra en mindre inlämning (på Lisam) innan ni lämnar in den färdiga
+ rapporten.
+ Där ska ni:
+\end_layout
+
+\begin_layout Itemize
+Beskriva vilket datamaterial som ni har valt
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vilka variabler, antal variabler, antal obs mm
+\end_layout
+
+\begin_layout Itemize
+kortfattad explorativ analys: kortfattad beskrivande statistik av data och/eller
+ några plottar av data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ange preliminär frågeställning (ok att ändra senare vid behov)
+\end_layout
+
+\begin_layout Standard
+Inlämingen ska vara en pdf-fil som är 1-3 sidor lång.
+ Syftet är att ni ska välja data och komma igång med inledande datahanteringen,
+ och börja fundera över frågeställningen.
+ Det är ok att återanvända hela eller delar av denna inlämning till den
+ slutgiltiga rapporten om man vill.
 \end_layout
 
 \begin_layout Subsection*
@@ -308,10 +382,11 @@ Presentation
 \end_layout
 
 \begin_layout Standard
-Under seminariet kommer varje grupp förfoga över 20 minuter där både presentatio
+Under seminariet kommer varje grupp förfoga över 25 minuter där både presentatio
 n och opponering inkluderas.
- Ni ska under presentationens första 10 minuter sammanfatta den rapport
- som ni gjort och sedan lämnas 10 minuter för opponering från opponentgruppen.
+ Ni ska under presentationens första 15 minuter presentera och sammanfatta
+ den rapport som ni gjort och sedan lämnas 10 minuter för opponering från
+ opponentgruppen.
 \end_layout
 
 \begin_layout Subsection*
@@ -354,10 +429,8 @@ name "sec:Datamaterial"
 \end_layout
 
 \begin_layout Standard
-Er uppgift är att i par välja någon av nedanstående material att analysera.
- Endast en grupp tillåtas per material och metodfamilj.
- Det är även tillåtet att välja ett annat material som finns tillgänligt
- på internet, men då måste godkänade fås.
+Er uppgift är att i grupper om två välja något datamaterial att analysera.
+ Endast en grupp tillåtas per datamaterial.
  Först till kvarn gäller för dessa val!
 \end_layout
 
@@ -372,13 +445,11 @@ Skriv upp ert val på projektlistan som kommer att delas i Teams under kanalen
 \end_inset
 
 .
- Datamaterialen har en föreslagen metodfamilj, men ni kan använda annan
- metod, men det ska motiveras i rapporten.
- Ni ska citera källan på datamaterialet i de fall då det krävs.
+ Ni ska citera källan på datamaterialet i de fall då det krävs i er rapport.
 \end_layout
 
 \begin_layout Subsection*
-Eget datamaterial
+Välja datamaterial
 \end_layout
 
 \begin_layout Standard
@@ -387,7 +458,7 @@ Ni är fria att välja ett eget datamaterial.
 \end_layout
 
 \begin_layout Itemize
-Inget simulerat dataset eller 
+Inget simulerat datamaterial eller 
 \begin_inset Quotes sld
 \end_inset
 
@@ -413,7 +484,7 @@ enkelt
 \begin_inset Formula $\ge$
 \end_inset
 
- 1000 eller antal variabler 
+ 500 eller antal variabler 
 \begin_inset Formula $\ge$
 \end_inset
 
@@ -467,6 +538,18 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "List of datasets for machine-learning research"
+target "https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 De databaser som finns tillgänliga via 
 \begin_inset CommandInset href
 LatexCommand href
@@ -476,11 +559,29 @@ literal "false"
 
 \end_inset
 
+, se också 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html"
+literal "false"
 
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.scb.se/en/services/statistical-programs-for-px-files/px-web/pxweb-examples/"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
-Förslag på dataset
+Några förslag på datamaterial
 \end_layout
 
 \begin_layout Itemize
@@ -528,31 +629,6 @@ Förslag: Regression
 
 \end_deeper
 \begin_layout Itemize
-Bokstavsigenkänning
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Datamaterial som behandlar en 20 000 bokstäver med variabler som beskriver
- hur dessa ser ut.
- Källa: 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
-target "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Förslag: Klassificering
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
 USAs befolkning
 \end_layout
 
@@ -574,30 +650,6 @@ literal "false"
 
 \begin_layout Itemize
 Förslag: Klustering, Klassificering
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Köpcentrum (Gifts)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Transaktionsdatabas över en UK-baserad affär.
- Källa 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
-target "https://archive.ics.uci.edu/ml/datasets/Online+Retail"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Förslag: Klustering, Associations och sekvensanalys
 \end_layout
 
 \end_deeper
@@ -659,6 +711,31 @@ Adult Data Set
 LatexCommand href
 name "https://archive.ics.uci.edu/ml/datasets/Adult"
 target "https://archive.ics.uci.edu/ml/datasets/Adult"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Förslag: Klassificering
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bokstavsigenkänning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Datamaterial som behandlar en 20 000 bokstäver med variabler som beskriver
+ hur dessa ser ut.
+ Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
+target "https://archive.ics.uci.edu/ml/datasets/Letter+Recognition"
 literal "false"
 
 \end_inset
