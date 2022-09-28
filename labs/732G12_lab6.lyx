@@ -301,29 +301,6 @@ literal "false"
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Dataset till vissa uppgifter finns 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
-literal "false"
-
-\end_inset
-
-.
- mnist data finns på 
-\begin_inset CommandInset href
-LatexCommand href
-name "Lisam"
-target "https://liuonline.sharepoint.com/:f:/r/sites/Lisam_732G12_2021HT_HZ/CourseDocuments/Data?csf=1&web=1&e=ROyENF"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 Notera att ni inte behöver göra alla delar på alla uppgifter.
  Det viktiga är att ni får en förståelse för de olika principerna och modellerna
@@ -648,7 +625,16 @@ Webpage
 \family default
 .
  Bilagan innehåller en lista med alla sidor som finns på hemsidan.
- Utgå från kodmanualen för sekvensanalys.
+ Utgå från 
+\begin_inset CommandInset href
+LatexCommand href
+name "kodmanualen"
+target "https://www.isakhietala.com/teaching/732g12/3-association/"
+literal "false"
+
+\end_inset
+
+ för sekvensanalys.
  Notera att det går att köra 
 \family typewriter
 cSPADE()
