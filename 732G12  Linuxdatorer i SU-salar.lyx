@@ -184,20 +184,16 @@ Skriv:
 \begin_layout Itemize
 
 \family typewriter
-\lang english
 module add courses/732G12
 \family default
-\lang swedish
  och tryck enter, eller
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-\lang english
-module add prog/r-mega-edition/21.10
+module add prog/r-mega-edition/22.08
 \family default
-\lang swedish
  och tryck enter
 \end_layout
 
@@ -245,22 +241,16 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-
-\lang english
 SU-salarna online
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Det går att komma åt SU-salarnas datorer online (remote) på egen dator.
  Det gör att ni kan använda de programvaror som finns installerade på dessa
  datorer.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Gå in på denna sida: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -277,14 +267,10 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
-
-\lang english
 Keras/Tensorflow i SU-sal
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Ladda in kursmodulen och starta sen Rstudio.
  Kör sedan:
 \end_layout
