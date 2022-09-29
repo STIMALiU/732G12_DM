@@ -425,6 +425,16 @@ marbas.csv
  Filen innehåller två variabler TRANS_ID och PRODUCT, där TRANS_ID beskriver
  vilken transaktion som observationen hör till och PRODUCT beskriver vilken
  produkt som köptes.
+ Kod till vissa av uppgifterna finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lab6_del1_kod.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -522,6 +532,20 @@ rhs()
 , 
 \family typewriter
 support()
+\family default
+, viss kod finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lab6_IS.R"
+literal "false"
+
+\end_inset
+
+.
+
+\family typewriter
+ 
 \end_layout
 
 \begin_deeper
