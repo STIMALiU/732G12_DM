@@ -571,6 +571,20 @@ Laplace=\frac{P\left(A,B\right)}{P\left(A\right)+2}
 
 \end_deeper
 \begin_layout Enumerate
+Många olika intressemått går att få fram med funktionen interestMeasure(),
+ se även 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://mhahsler.github.io/arules/docs/measures"
+literal "false"
+
+\end_inset
+
+ för förklaringar.
+\end_layout
+
+\begin_layout Enumerate
 Sortera den resulterande tabellen utefter alla intressemått och visa de
  tio regler med högst värden.
  Vilka av dessa regler anses vara intressanta?
