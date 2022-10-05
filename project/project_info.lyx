@@ -332,7 +332,8 @@ gruppX_liuid1_liuid2.pdf
  Deadlines finns sammaställda i ett dokumment 
 \begin_inset CommandInset href
 LatexCommand href
-name "[kommer snart]"
+name "[här]"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/project/Datum%20och%20deadlines%20f%C3%B6r%20732G12%20HT2022.pdf"
 literal "false"
 
 \end_inset
