@@ -13,7 +13,7 @@ f_cond<-function(x2,x1,L,k,x0){
 }
 
 x_line<-seq(0,1,length=1000)
-y_line<-f(x = x_line,L = 1,k = 25,x0 = 0.5)
+y_line<-f(x = x_line,L = 1,k = 1,x0 = 0.5)
 # sanna beslutsgränsen
 plot(x_line,y_line,t="l")
 
@@ -32,6 +32,9 @@ x1<-x1_0+rnorm(n = nobs,sd = sd_val)
 x2<-x2_0+rnorm(n = nobs,sd = sd_val)
 #---------------------------------------------------------------------------
 plot(x1,x2)
-y_lab<-f_cond(x2 = b,x1 = a,L = 1,k = 25,x0 = 0.5)
+b<-1
+a<-1
+y_lab<-f_cond(x2 = x1_0,x1 = x2_0,L = 1,k = 1,x0 = 0.5)
 plot(x1,x2,col=y_lab+1,pch=16)
 lines(x_line,y_line)
+

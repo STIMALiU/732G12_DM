@@ -15,6 +15,13 @@
 
 \setbeamercovered{transparent}
 % or whatever (possibly just delete it)
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -534,6 +541,85 @@ Tenta
 \begin_deeper
 \begin_layout Itemize
 Påminner om datorövningarna, kan ha teoretiska frågor 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Kurslitteratur
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+An Introduction to Statistical Learning with Applications in R
+\emph default
+ (
+\series bold
+ISL
+\series default
+) av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani 2st
+ ed.
+ 2021
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Finns gratis online här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Introduction to Data Mining, Global Edition
+\emph default
+ (
+\series bold
+IDM
+\series default
+) av Pang-Ning Tan, Michael Steinbach, Anuj Karpatne och Vipin Kumar Second
+ edition, ISBN: 9780273769224
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Denna bok finns inte gratis, finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "sample chapters"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/index.php"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
