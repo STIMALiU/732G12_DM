@@ -1,0 +1,527 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 1}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+    \begin{itemize}
+        \item Introduktion
+        \begin{itemize}
+            \item Kursupplägg
+            \item Introduktion till Data Minig och Maskininlärning
+        \end{itemize}
+        \item Översikt av metoder
+        \item Modellval och generalisering
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Kursupplägg}
+    \begin{itemize}
+        \item Lärare och examinator: Johan Alenlöv
+        Frågor: johan.alenlov@liu.se
+        \item Upplägg
+        \begin{itemize}
+            \item Föreläsningar
+            \item Datorövningar/labbar
+            \item Projektarbete
+            \item Datortentamen
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Introduktion - Kursupplägg}
+    \begin{itemize}
+        \item Föreläsningar
+        \begin{itemize}
+            \item Presenterar metoder
+        \end{itemize}
+        \item Datorövningar
+        \begin{itemize}
+            \item Använd metoderna för att lösa övningar/problem
+            \item Förberedelse för projekt samt tentamen
+        \end{itemize}
+        \item Projektarbete
+        \begin{itemize}
+            \item Större uppgift där ni ska analysera eget datamaterial
+            \item Seminarie där man ska presentera och opponera
+        \end{itemize}
+        \item Datortentamen
+        \begin{itemize}
+            \item Påminner om datorövningar, kan ha något teoretiskt inslag
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Introduktion - Kursutvärdering 2022}
+    \begin{itemize}
+        \item Antal respondenter: 11
+        \item Antal svar: 8 ($72\%$)
+        \item Helhetsbetyg: $3.88$
+        \item Förändringar till detta år:
+        \begin{itemize}
+            \item Ny kursplan:
+            \begin{itemize}
+                \item Associations- och sekvensanalys har tagits bort.
+                \item Mer om icke-linjära metoder har tillkommit.
+            \end{itemize}
+            \item Med nytt innehåll kommer nya labbar.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Introduktion - Bonuspoäng}
+    \begin{itemize}
+        \item Möjligt att ha 2 bonuspoäng på tentamen.
+        \item Krav: Delta aktivt på 9 av 14 tillfällen
+        \item Delta aktivt innebär:
+        \begin{itemize}
+            \item Vara på plats och jobba med kursen.
+            \item Ställa en fråga och visa upp en lösning för läraren.
+        \end{itemize}
+        \item Använda bonuspoängen:
+        \begin{itemize}
+            \item Kan bara användas under de tre tillfällen kopplade till årets omgång.
+            \item Kan bara användas för att bli godkänd.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Projektarbete}
+    \begin{itemize}
+        \item Grupper om två.
+        \item Gruppanmälan på Lisam.
+        \item Eget datamaterial.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Förkunskaper}
+    Vad behöhver ni ha med er?
+    \begin{itemize}
+        \item Linjär algebra
+        \item Matematisk analys
+        \item Programmering
+        \item Regression och Variansanalys
+        \item Statistik teori
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Vad är statistik}
+    \begin{bluebox}
+        \myheading{Från SCB:}
+        Med statistik menas vetenskapen om metoder för insamling, bearbetning, redovisning och analys av data. Statistik är också den siffermässiga beskrivningen av en viss företeelse, till exempel i tabellform. Statistik har alltså två betydelser: dels metodiken eller processen, dels informationen eller själva produkten.
+    \end{bluebox}
+\end{frame}
+
+\begin{frame}{Introduktion - Statistisk modellering}
+    \begin{itemize}
+        \item Börjar med data som vi vill analysera.
+        \item Konstruerar en modell som beskriver något samband.
+        \item Osäkerhet/slumptal kan finnas i problemet och ska vara med i modellen.
+        \item Beskriv vår modell matematiskt med fördelningar och ekvationer.
+        \item Härled och implementera parameterskattningar.
+        \item Använd vår modell för inferens och predikation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Intoduktion - Exempel: Linjär regression}
+    Vi har respons $\bf{y}$ och förklarande variabler $\bf{X}$.
+
+    Vi antar ett linjärt samband mellan $\bf{y}$ och $\bf{X}$.
+
+    Deterministik modell:
+    \begin{equation*}
+        \bf{y} = \bf{X} \beta.
+    \end{equation*}
+
+    Stokastisk modell:
+    \begin{equation*}
+        \bf{y} = \bf{X} \beta + \boldsymbol{\varepsilon}, \qquad \boldsymbol{\varepsilon} \sim \mathcal{N}(0, \sigma^2_{\varepsilon}).
+    \end{equation*}
+
+    Vi kan skatta parametrar med $\hat{\beta} = (\bf{X}^\top \bf{X})^{-1}\bf{X}^{\top} \bf{y}$
+
+    Inferens genom att konstruera test eller konfidensintervall
+
+    Predikation genom att beräkna respons $\hat{y}$ för nya värden $\bf{X}_{\text{test}}$.
+\end{frame}
+
+\begin{frame}{Introduktion - Maskininlärning}
+    \begin{bluebox}
+        \myheading{Från Wikipedia:}
+        Det handlar om metoder för att med data "träna" datorer att upptäcka och "lära" sig regler för att lösa en uppgift, utan att datorerna har programmerats med regler för just den uppgiften.
+    \end{bluebox}
+\end{frame}
+
+\begin{frame}{Introduktion - Data Mining}
+    \begin{bluebox}
+        \myheading{Från Wikipedia:}
+        ... betecknar verktyg för att söka efter mönster, samband och trender i stora datamängder. Verktygen använder beräkningsmetoder för multivariat statistisk analys kombinerat med beräkningseffektiva algoritmer för maskininlärning och mönsterigenkänning hämtade från artificiell intelligens.
+    \end{bluebox}
+\end{frame}
+
+\begin{frame}{Introduktion - Maskininlärning vs Data Mining}
+    Sorta överlapp mellan maskininlärning och data mining.
+    \begin{itemize}
+        \item Maskininlärning, mest fokus på predikationer.
+        \item Data mining, mer fokus på att utforska dataset och hitta samband.
+    \end{itemize}
+    ''Statistical learning'' $\approx$ Maskininlärning.
+\end{frame}
+
+\begin{frame}{Introduktion - Diskussion}
+    Bilda grupper om 3 och diskutera er fram till två stora eller komplexa datamängder, beskriv vad det är för mängder och vilken information som kan finnas.
+\end{frame}
+
+\begin{frame}{Introduktion - Exempel på stora datamaterial}
+    \begin{itemize}
+        \item Transaktionsdatabaser
+        \item Hälsoregister
+        \item Sociala nätverk
+        \item Väder / klimatdata
+        \item Börsdata
+        \item Korpus
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Dataset}
+    Tabellformat:\\
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        id & Variabel 1 & Variabel 2 & Variabel 3 &  $\cdots$ \\ \hline \hline
+        1 & $\cdot$ & $\cdot$ & $\cdot$ & $\cdots$ \\ \hline
+        2 & $\cdot$ & $\cdot$ & $\cdot$ & $\cdots$ \\ \hline
+        3 & $\cdot$ & $\cdot$ & $\cdot$ & $\cdots$ \\ \hline
+        $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\ \hline
+    \end{tabular}
+    \begin{itemize}
+        \item Rader är objekt, record, observation, transaktion etc.
+        \item Kolumner är variabler, attribut, kovariat etc.
+        \item Finns andra format, t.ex. tidsserier, texter, bilder etc.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion - Dataskalor}
+    Finns många olik dataskalor:
+    \begin{itemize}
+        \item Nominell
+        \begin{itemize}
+            \item Ex. "RÖD", "GRÖN", "BLÅ"
+        \end{itemize}
+        \item Binär
+        \begin{itemize}
+            \item 0 eller 1
+        \end{itemize}
+        \item Ordinal
+        \begin{itemize}
+            \item Ex. "LÅG", "MELLAN", "HÖG"
+        \end{itemize}
+        \item Intervall/kvot
+        \begin{itemize}
+            \item Ex. $[0,1], \mathbb{R}, \mathbb{R}^{+}$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Analysprocessen}
+    \myheading{Exempel på processen:}
+    \begin{enumerate}
+        \item Problemformulering
+        \item Samla in data
+        \item Datahantering
+        \begin{itemize}
+            \item Gå från rådata till användbar data
+            \item Ta bort sakanade värden, outliers, skalning
+            \item Kolla på metadata, plottar
+        \end{itemize}
+        \item Modellering
+        \begin{itemize}
+            \item Skatta modeller och gör predikationer
+        \end{itemize}
+        \item Evaluering
+        \begin{itemize}
+            \item Jämför med problemformuleringen!
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Datahantering}
+    \begin{itemize}
+        \item Saknade värden
+        \begin{itemize}
+            \item Eliminera objekt eller attribut
+            \item Skatta saknade värden (imputering)
+            \item Ignorera saknade värden
+        \end{itemize}
+        \item Förbearbeta data
+        \begin{itemize}
+            \item Aggregering
+            \item Urval
+            \item Reducera dimensionalitet
+            \item Diskretisering
+            \item Variabelomvandling
+            \item Skalning
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Metoder}
+    \begin{itemize}
+        \item Supervised learning
+        \begin{itemize}
+            \item Klassificering och regression
+            \item Varje observation består av en responvariabel och förklarande variabler
+        \end{itemize}
+        \item Unsupervised learning
+        \begin{itemize}
+            \item Ett antal variabler, men ingen responsvariabel
+        \end{itemize}
+        \item Semisupervised learning
+        \begin{itemize}
+            \item Värdet på responsvariabeln finns bara på en delmängd av observationerna
+        \end{itemize}
+        \item Reinforcement learning
+        \begin{itemize}
+            \item Handlar om att lära sig agera optimalt i en miljö.
+            \item Använda data för att lära sig ett beteende.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Exempel på metoder}
+    \begin{itemize}
+        \item Supervised learning:
+        \begin{itemize}
+            \item Prediktera morgondagens elpris
+            \item Identifiera objekt i en bild
+            \item Skapa en beskrivande text från en bild
+        \end{itemize}
+        \item Unsupervised learning:
+        \begin{itemize}
+            \item Identifiera köpmönster
+            \item Hitta liknande grupper av läkemedelsmolekyler
+            \item Hitta bedragare bland bankkunder
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Kursens områden}
+    \begin{itemize}
+        \item Klassificering
+        \item Regression
+        \item Modeller
+        \item Klusteranalys
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Att välja en lämplig modell}
+
+    För en lämplig modell gäller:
+    \begin{itemize}
+        \item Modellen ska fånga upp den relevanta strukturen i problemet och kunna svara på frågeställningen!
+        \item Modellen ska vara så enkel som möjligt.
+        \item Modellen ska gå att beräkna i rimlig tid.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Att välja en lämplig modell - Exempel}
+    
+    Standardmodell med additivt brus:
+    \begin{equation*}
+        y = f(x | \omega) + \varepsilon, \qquad \mathbb{E}[\varepsilon] = 0, \qquad \mathbb{V}[\varepsilon] = \sigma^2_{\varepsilon}.
+    \end{equation*}
+
+    \begin{itemize}
+        \item $f$ är en okänd funktion
+        \item $\omega$ är parametrar till $f$
+        \item $\varepsilon$ är slumpmässig felterm
+        \item Exempel på funktioner:
+        \begin{align*}
+            f(x \mid \omega) &= \omega_1 \cdot x + \omega_2 \\
+            f(x \mid \omega) &= \sin(2\pi \omega_1 x + \omega_2) + \omega_3 \\
+            f(x \mid \omega) &= \exp(- \omega_1 (x - \omega_2)^2) \\
+            f(x \mid \omega) &= \omega_1 x_1 + \omega_2 x_2 + \omega_3 x_3 \\
+        \end{align*}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Vilken modell är lämplig?}
+    \begin{center}
+        \includegraphics[width = \textwidth]{under and overfitting1_image.pdf}
+    \end{center}
+
+    \begin{itemize}
+        \item Underanpassning: Modellen fångar inte upp relevanta strukturer i problemet.
+        \item Överanpassning: Modellen fångar upp bruset i datan.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Modellval}
+    \begin{itemize}
+        \item För att hjälpa oss i modellval definerar vi en felfunktion/kostnadsfunktion
+        \begin{itemize}
+            \item Givet data ger kostnadsfunktionen ett värde på hur bra modellen anpassar datan.
+        \end{itemize}
+        \item Vanliga exempel:
+        \begin{itemize}
+            \item Mean squared error (MSE)
+            \begin{equation*}
+                \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} \left(y_i - f(x_i \mid \hat{\omega})\right)^2
+            \end{equation*}
+            \item Mean absolute error (MAE)
+            \begin{equation*}
+                \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \left| y_i - f(x_i \mid \hat{\omega}) \right|
+            \end{equation*}
+            \item Cross entropy loss
+            \item Missclassification loss
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Modellval}
+    Standardprocessen:
+    \begin{itemize}
+        \item Dela upp din data i slumpmässiga delar:
+        \begin{itemize}
+            \item Träningsdata
+            \item Valideringsdata
+            \item Testdata
+        \end{itemize}
+        \item Olika proportioner kan användas
+        \begin{itemize}
+            \item $(\tfrac{1}{3}, \tfrac{1}{3}, \tfrac{1}{3})$
+            \item $(0.5, 0.25, 0.25)$
+            \item $(0.8, 0.1, 0.1)$
+        \end{itemize}
+        \item Testdata bör inte vara minst.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Hur hittar vi bästa modellen?}
+    
+    Börja med att ta fram några kandidatfunktioner
+
+    \includegraphics[width = \textwidth]{figs/modelval_1.png}
+
+\end{frame}
+
+\begin{frame}{Träningsdata}
+    Använd träningsdata för att skatta parametrarna i modellerna.
+
+    \includegraphics[width = \textwidth]{figs/modelval_2.png}
+\end{frame}
+
+\begin{frame}{Valideringsdata}
+    Använd valideringsdatan för att välja den bästa skattade funktionen utifrån lämplig felfunktion. 
+
+    \includegraphics[width=\textwidth]{figs/modelval_3.png}
+
+    Vi kan iterera mellan att skatta med träningsdata och utvärdera på valideringsdatan
+
+\end{frame}
+
+\begin{frame}{Validringsdata}
+    
+    \includegraphics[width=\textwidth]{figs/overfitting_testdata.png}
+
+    Här är träningsdata svart och valideringsdata vit.
+
+\end{frame}
+
+\begin{frame}{Testdata}
+    
+    Vi använder testdatan för att få en väntevärdesriktig skattning av felfunktionen på ny data.
+
+    Vi bör \emph{inte} ändra något på modellen när vi ska använda den på testdata. Varför?
+
+    \includegraphics[width=\textwidth]{figs/modelval_4.png}
+
+\end{frame}
+
+\begin{frame}{Leave-one-out cross-validation}
+    Givet ett antal modeller görs följande för varje modell:
+    \begin{enumerate}
+        \item Ta bort en observation och anpassa modellen till återstående data.
+        \item Använd den anpassade modellen för att beräkna felet på den borttagna observationen.
+        \item Upprepa 1 och 2 för alla datapunkter. Beräkna genomsnittet för felfunktionen över alla observationer.
+    \end{enumerate}
+    Välj modellen med lägs genomsnittlig felfunktion.
+
+    OBS! Om vi har $n$ observationer måste vi anpassa varje modell $n$ gånger.
+\end{frame}
+
+\begin{frame}{Leave-one-out cross-validation}
+    \begin{center}
+        \includegraphics[height=0.8\textheight]{figs/cv1.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{K-fold cross-validation}
+    Dela upp datan i $k$ olika block. Givet ett antal modeller görs följande för varje modell:
+    \begin{enumerate}
+        \item Ta bort ett block och anpassa modellen till återstående data.
+        \item Använd den anpassade modellen för att beräkna felet på de borttagna observationerna.
+        \item Upprepa 1 och 2 för alla block. Beräkna genomsnittet för felfunktionen över alla olika block.
+    \end{enumerate}
+    Välj modellen med lägs genomsnittlig felfunktion.
+
+    OBS! Om vi har $K$ block måste vi anpassa varje modell $K$ gånger.
+\end{frame}
+
+\begin{frame}{Leave-one-out cross-validation}
+    \begin{center}
+        \includegraphics[height=0.8\textheight]{figs/cv2.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Bias, varians och brus}
+    Givet en modell
+    \begin{equation*}
+        y = f(x) + \varepsilon, \qquad \mathbb{E}[\varepsilon] = 0, \qquad \mathbb{V}[\varepsilon] = \sigma^2_{\varepsilon}
+    \end{equation*}
+    med skattad funktion $\hat{y} = \hat{f}(x_{\text{test}})$.
+
+    Om vi beräknar MSE får vi:
+    \begin{equation*}
+        \mathbb{E}\left[ \left( y_{\text{test}} - \hat{f}(x_{\text{test}}) \right)^2 \right] = \mathbb{V}[\varepsilon] + \mathbb{V}\left[\hat{f}(x_{\text{test}})\right] + \operatorname{Bias}\left[\hat{f}(x_{\text{test}})\right]^2
+    \end{equation*}
+    \begin{itemize}
+        \item Brusvariansen $\mathbb{V}[\varepsilon]$: irreducibelt brus
+        \item Modellens varians $\mathbb{V}[\hat{f}(x_{\text{test}})]$: hur mycket ändras $\hat{f}$ när vi byter dataset
+        \item Modellens systematiska fel $\operatorname{Bias}[\hat{f}(x_{\text{test}})]$: modelleringsfel i modellen
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Frågor?}
+    
+\end{frame}
+
+\end{document}
