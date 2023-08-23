@@ -126,11 +126,11 @@
     \begin{itemize}
         \item Sensitivitet (recall, hit rate, true positive rate):
         \begin{equation*}
-            \operatorname{TPR} = \frac{f_{11} }{f_{11} + f_{01}}.
+            \operatorname{TPR} = \frac{f_{11} }{f_{11} + f_{10}}.
         \end{equation*}
         \item Specifitet (selectivity, true negative rate):
         \begin{equation*}
-            \operatorname{TNR} = \frac{f_{00}}{f_{10} + f_{00}}.
+            \operatorname{TNR} = \frac{f_{00}}{f_{00} + f_{01}}.
         \end{equation*}
     \end{itemize}
         
@@ -148,7 +148,7 @@
             F_1 = 2 \frac{\operatorname{P} \cdot \operatorname{TPR}}{\operatorname{P} + \operatorname{TPR}}
         \end{equation*}
         \item F-score är mellan 0 och 1, högre är bättre.
-        \item $\beta$ säger hur viket säger hur du värderar precision och sensivitet.
+        \item $\beta$ säger hur du värderar precision och sensivitet.
         \item Beräknas klassvis.
     \end{itemize}
 
@@ -198,17 +198,17 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Generaliserade linjära modeller - Exempel}
-    \myheading{Multinominell logistisk regression}
-    \begin{itemize}
-        \item Likelihood: Kategorisk ($y$ kan ta $K$ olika värden, $\mathbb{P}(y = k) = p_k$)
-        \item L\"ankfunktion: Logit,
-        \begin{equation*}
-            g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
-        \end{equation*}
-        \item Skattas med att maximera MLE
-    \end{itemize}
-\end{frame}
+% \begin{frame}{Generaliserade linjära modeller - Exempel}
+%     \myheading{Multinominell logistisk regression}
+%     \begin{itemize}
+%         \item Likelihood: Kategorisk ($y$ kan ta $K$ olika värden, $\mathbb{P}(y = k) = p_k$)
+%         \item L\"ankfunktion: Logit,
+%         \begin{equation*}
+%             g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
+%         \end{equation*}
+%         \item Skattas med att maximera MLE
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}{Modellval för linjära regression}
 
@@ -447,7 +447,7 @@
         \item Kombinerar Ridge och Lasso.
         \item Ny hyperparameter $\alpha$ för att mixa dessa,
         \begin{equation*}
-            f(\beta) = \operatorname{RSS} + \lambda \left((1-\alpha) \sum_{j=1}^{p}\beta_j^2 \alpha \sum_{j=1}^{p}|\beta_j|  \right), \qquad \lambda \geq 0,\, 0 \leq \alpha \leq 1.
+            f(\beta) = \operatorname{RSS} + \lambda \left((1-\alpha) \sum_{j=1}^{p}\beta_j^2 + \alpha \sum_{j=1}^{p}|\beta_j|  \right), \qquad \lambda \geq 0,\, 0 \leq \alpha \leq 1.
         \end{equation*}
         \item $\lambda$ är likt tidigare hur mycket regularisering vi gör.
         \item $\alpha$ väljer hur mycket vikt vid Ridge respektive Lasso.
