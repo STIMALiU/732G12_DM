@@ -129,4 +129,83 @@
     \end{align*}
 \end{frame}
 
+\begin{frame}{Kategoriska attribut}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            $\mathbb{P}(Y = y)$ är andelen datapunkter med klass $y$.
+
+            $\mathbb{P}(X_i = x_i \mid Y = y)$ andelen datapunkter med attribut $x_i$ av datapunkterna med klass $y$.
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{figs/data_bayes_class.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Kontinuerliga attribut}
+
+    För kontinuerliga attribut finns olika tillvägagångssätt.
+
+    \begin{itemize}
+        \item Diskretisera data i olika kategorier.
+        \begin{itemize}
+            \item För få intervall gör att man missar information.
+            \item För många intervall kan ge intervall utan observationer.
+        \end{itemize}
+        \item Anta en sannolikhetsfördelning för variabeln och skatta parametrarna från träniningsdatan.
+        \begin{itemize}
+            \item Normalfördelningen är vanlig.
+            \item Conjugate prior.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Grundläggande princip}
+
+    Träningfasen:
+
+    Skatta sannolikheten $\mathbb{P}(Y \mid \mathbf{X})$ för alla möjliga $\mathbf{X}$ och $y$.
+
+    Klassificeringsfas:
+
+    Givet $\mathbf{X}'$ skatta klass $Y' = \max_Y \mathbf{P}(Y \mid \mathbf{X}')$.
+    
+\end{frame}
+
+\begin{frame}{Naiv Bayes klassificerare}
+
+    Modellantagande:
+    \begin{equation*}
+        \mathbb{P}(\mathbf{X} \mid Y) = \prod_i \mathbb{P}(X_i \mid Y),
+    \end{equation*}
+    alla $X_i$ är oberoende av varandra. Vi kan då faktorisera likelihooden över $\mathbf{X}$.
+
+    Använder vi detta får vi en sannolikhet
+    \begin{equation*}
+        \mathbb{P}(Y \mid \mathbf{X}) = \prod_i \mathbb{P}(X_i \mid Y) \mathbb{Y},
+    \end{equation*}
+    det räcker med att skatta sannolikheten för varje $X_i$. Detta ger oss en enklare modell som går att skatta.
+    
+\end{frame}
+
+\begin{frame}{Egenskaper hos naiv Bayes}
+    \begin{itemize}
+        \item Metoden är robust mot isolerade bruspunkter.
+        \item Metoden är robust mot irrelevanta attribut.
+        \item Lätt att skatta.
+        \item Korrelerade attribut kan väsentligt försämra prestandan.
+        \begin{itemize}
+            \item Behöver en mer komplex modell för att hantera.
+            \item Simultan sannolikhetsfördelning för likelihooden.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ensamblemetoder}
+    
+    \includegraphics[width=.8\textwidth]{figs/ensample_cat.png}
+
+\end{frame}
+
 \end{document}
