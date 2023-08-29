@@ -208,7 +208,7 @@
 
     Istället kör vi med en girig algoritm, där vi vill hitta bästa variabeln $x_j$ och uppdelning $s$ genom att lösa följande problem:
     \begin{align*}
-        \min_{j,s} \left[ \min_{c_1} \sum_{x_1 \in R_1(j,s)} (y_i - x_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j,s)} (y_i - c_2)^2 \right], \\
+        \min_{j,s} \left[ \min_{c_1} \sum_{x_1 \in R_1(j,s)} (y_i - c_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j,s)} (y_i - c_2)^2 \right], \\
         R_1(j,s) = \{x \mid x_j \leq s\} \qquad R_2(j,s) = \{x | x_j \geq s\},
     \end{align*}
     $c_1$ och $c_2$ skattas oftast som medelvärdet av respektive region.

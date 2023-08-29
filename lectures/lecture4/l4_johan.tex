@@ -8,7 +8,7 @@
 %\usepackage{movie15}
 
 \title{732G12 Data Mining}
-\subtitle{Föreläsning 3}
+\subtitle{Föreläsning 4}
 \date{}
 \author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
@@ -28,5 +28,105 @@
 \begin{document}
 
 \maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item K-närmaste grannar
+        \item Bayesianska klassificerare
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging
+            \item Boosting
+            \item Random forest
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{K-närmaste grannar}
+    \begin{greenbox}
+        \myheading{Idé} basera predikation på de K datapunkter som är närmast.
+   \end{greenbox}
+
+   Ger en icke-parametrisk metod för klassificering och regression.
+
+   Problem: Vad är närmast?
+\end{frame}
+
+\begin{frame}{Avståndsmått}
+    Vi behöver något som talar om för oss hur nära två datapunkter är. Finns många alternativ som man kan välja, som ger olika resultat.
+
+    \begin{description}
+        \item[Euklidiskt avstånd]
+        \begin{equation*}
+            d(\mathbf{x},\mathbf{y}) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^2}
+        \end{equation*}
+        \item[Manhattan avstånd] 
+        \begin{equation*}
+            d(\mathbf{x},\mathbf{y}) = \sum_{k=1}^{n} | x_k - y_k |
+        \end{equation*}
+    \end{description}
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+    \begin{enumerate}
+        \item Låt $k$ vara ditt valda antal grannar och $D$ din träninigsdata.
+        \item För varje testdata $z = (\mathbf{x}', y') \in D$:
+        \begin{enumerate}
+            \item Beräkna $d(\mathbf{x},\mathbf{x}')$ (avstådet mellan $z$ och all träningsdata)
+            \item Välj $D_z \subseteq D$, de $k$ närmaste träniningsdatan till $z$
+            \item Låt $y' = \argmax_v \sum_{(\mathbf{x}_i, y_i) \in D_z} \mathbf{I}_{v = y_i}$
+        \end{enumerate}
+    \end{enumerate}
+    2.3 är majoritetsvalet. Kan också vikta detta värde med avståndet:
+    \begin{itemize}
+        \item[2.3] $y' = \argmax_{v} \sum_{(\mathbf{x}_i, y_i) \in D_z} w_i \mathbf{I}_{v = y_i}$. 
+    \end{itemize}
+
+    För regression används medelvärde alternativt viktat medelvärde.
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+
+    \includegraphics[width = \textwidth]{figs/KNN_fit_data.png}
+    
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+
+    \begin{itemize}
+        \item Målet med modellen är att prediktera nya observationer.
+        \item Påverkas stort av olika skalor.
+        \item Långsam anpassning.
+        \item Känslig mot brus.
+        \item Val av K har stor betydelse!
+        \begin{itemize}
+            \item Litet K ger överanpassning.
+            \item Stort K ger underanpassning.
+            \item Korsvalidering kan användas för att bestämma K.
+        \end{itemize}
+        \item Producerar godtyckligt utformade beslutsgränser.
+        \item Problem i högre dimensioner.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Bayesiansk klassificerare}
+    Att direkt modellera en icke-deterministisk funktion kan vara mycket svårt.
+
+    Exempel:
+    \begin{itemize}
+        \item $(\text{diet}, \text{träning}) \to (\text{hjärtinfarkt})$ är svårt
+        \item $(\text{diet}, \text{träning}) \to \mathbb{P}(\text{hjärtinfarkt})$ lättare
+    \end{itemize}
+
+    Använd Bayes sats för att hjälpa till i modelleringen
+    \begin{align*}
+        \mathbb{P}(Y \mid \mathbf{X}) &= \frac{\mathbb{P}(\mathbf{X} \mid Y)}{\mathbb{P}(\mathbf{X})} \cdot \mathbb{P}(Y) \propto \mathbb{P}(\mathbf{X} \mid Y) \cdot \mathbb{P}(Y) \\
+        \text{posterior} &= \frac{\text{likelihood}}{\text{evidence}} \cdot \text{prior} \propto \text{likelihood} \cdot \text{prior}
+    \end{align*}
+\end{frame}
 
 \end{document}
