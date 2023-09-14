@@ -1,0 +1,99 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 7}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Introduktion
+        \item K-means klustring
+        \item Hierarkisk klustring
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Introduktion}
+    \begin{itemize}
+        \item Oövervakad inlärning: Lära sig data \imp{utan} responsvariabel!
+        \item Flera olika algoritmer:
+        \begin{itemize}
+            \item \imp{Klusteranalys}
+            \item Associationsanalys
+            \item Sekventiella mönster
+            \item Dimensionalty reduction techniques
+            \item PCS, Faktormodeller
+            \item Representation Learning
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion}
+    \begin{greenbox}
+        Måler med klusteranalys är att dela upp datamaterialet i grupper (kluster) som är intressanta och/eller användbara.
+    \end{greenbox}
+
+    Vi vet inte i förväg vilka grupper som kommer att bildas.
+
+    Ingen responsvariabel.
+\end{frame}
+
+\begin{frame}{Klusteranalys}
+
+    Ta 5 minuter att fundera på följande frågor:
+
+    \begin{enumerate}
+        \item Hur många kluster finns det i bilden?
+        \includegraphics[width = .7\textwidth]{figs/kluster1.png}
+        \item Kom på något område där klusteranalys kan vara användbart.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Klusteranalys}
+    
+    Ett "kluster" är inte entydigt definerat.
+
+    \includegraphics[width = .7\textwidth]{figs/kluster1.png}
+
+    Tillämpningsområden:
+    \begin{itemize}
+        \item Biologi (toxonomi/gener)
+        \item Informationssökning (Sökmotorer)
+        \item Psykologi och medicin
+        \item Kunddata
+        \item Sociala medier/nätverk
+    \end{itemize}
+
+\end{frame}
+
+\end{document}
