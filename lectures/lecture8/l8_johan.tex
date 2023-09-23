@@ -51,22 +51,22 @@
 
 \begin{frame}{K-medoid klustring}
 
-    Använder \imp{medioder} som center/prototyp vid klustring.
+    Använder \imp{medoider} som center/prototyp vid klustring.
     \begin{itemize}
-        \item En \imp{mediod} är en representativ observation inom ett dataset/kluster.
-        \item Mediod är \imp{inte} samma som centroid, median, geometrisk median etc.
-        \item Medioder är \imp{lätta att tolka}
+        \item En \imp{medoid} är en representativ observation inom ett dataset/kluster.
+        \item Medoid är \imp{inte} samma som centroid, median, geometrisk median etc.
+        \item Medoider är \imp{lätta att tolka}
         \begin{itemize}
             \item centroider kan vara punkter som inte liknar någon av observationerna i data.
         \end{itemize}
-        \item k-mediods:
+        \item k-medoids:
         \begin{itemize}
             \item minimerar summan av parvisa avstånd.
             \item kan använda godtyckligt avståndsmått.
             \item mer robust med brus och extremvärden.
         \end{itemize}
         \item k-means: använder oftast euklidiskt avstånd.
-        \item k-mediod klustring kallas också Partitioning Around Medoids (PAM)
+        \item k-medoid klustring kallas också Partitioning Around Medoids (PAM)
     \end{itemize}
     
 \end{frame}
@@ -76,6 +76,8 @@
     \includegraphics[width = \textwidth]{figs/k-mediod.png}
     
 \end{frame}
+
+
 
 \begin{frame}{Densitetsbaserade metoder}
 

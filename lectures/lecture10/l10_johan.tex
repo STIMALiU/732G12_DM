@@ -1,0 +1,24 @@
+
+
+
+
+\begin{frame}{Smoothing Splines för klassificering}
+    
+    Vi har hittills gjort smoothing splines för regression, vi kan såklart använda metoden för klassificering.
+
+    För logistisk regression har vi
+    \begin{equation*}
+        p(x) = \mathbb{P}(Y = 1 | X = x) = \frac{e^{f(x)}}{1 + e^{f(x)}},
+    \end{equation*}
+    där $f(x)$ är en linjär funktion.
+
+    Vi kan såklart använda smoothing splines istället.
+
+\end{frame}
+
+\begin{frame}{Smoothing Splines för Klassificering}
+    Om vi skriver upp optimeringsproblemet får vi log-likelihood (med straffterm)
+    \begin{equation*}
+        \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i))} \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
+    \end{equation*}
+\end{frame}
