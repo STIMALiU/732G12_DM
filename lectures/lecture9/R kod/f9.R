@@ -201,7 +201,7 @@ invlogit <- function(x){
   1/(1+exp(x))
 }
 y_bin <- invlogit(y);
-y_bin <- ()
+y_bin <- as.integer(y_bin > 0.5)
 
 
 fit1 <- smooth.spline(x,y,df = 9)
@@ -218,3 +218,13 @@ plot.smooth.cv +
   aes(y = fit1.pred$y, x = fit1.pred$x), color = "red") +
   geom_line(
   aes(y = fit2.pred$y, x = fit2.pred$x), color = "blue")
+
+library(gam)
+class.smooth <- gam(I(y > 0) ~ s(x, df = 10), family = binomial, data = data)
+plot.bin.smooth <- ggplot(data.bin, aes(x=x,y=y_bin)) +
+  geom_point(alpha = 0.55, color = "black") + theme_minimal()
+plot.bin.smooth
+plot.bin.smooth + 
+  geom_line(
+    aes(y = predict(class.smooth), x = x)
+  )

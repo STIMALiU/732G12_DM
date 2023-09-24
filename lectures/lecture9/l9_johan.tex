@@ -438,4 +438,73 @@
 
 
 
+\begin{frame}{Smoothing Splines för klassificering}
+    
+    Vi har hittills gjort smoothing splines för regression, vi kan såklart använda metoden för klassificering.
+
+    För logistisk regression har vi
+    \begin{equation*}
+        p(x) = \mathbb{P}(Y = 1 | X = x) = \frac{e^{f(x)}}{1 + e^{f(x)}},
+    \end{equation*}
+    där $f(x)$ är en linjär funktion.
+
+    Vi kan såklart använda smoothing splines istället.
+
+\end{frame}
+
+\begin{frame}{Smoothing Splines för Klassificering}
+    Om vi skriver upp optimeringsproblemet får vi log-likelihood (med straffterm)
+    \begin{equation*}
+        \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i))} \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
+    \end{equation*}
+
+    Vilket igen kan visas resultera i natural splines med knutar i datapunkterna.
+\end{frame}
+
+\begin{frame}{Flerdimensionella Splines}
+    
+    Hittills har vi pratat om endimensionella modeller. Alla går utäka till flerdimensionella modeller.
+
+    Antag att vi har $x \in \mathbb{R}^2$ och att vi har basfunktioner $h_{1k}(x_1), k = 1, \ldots, K_1$ för första koordinaten och motsvarande $h_{2k}(x_2), k = 1, \ldots, K_2$ för andra koordinaten.
+
+    Vi kan då definera den $K_1 \times K_2$ dimensionella tensor produkt basen
+    \begin{equation*}
+        g_{jk}(x) = h_{1j}(x_1)h_{2k}(x_2), j = 1,\ldots,K_1 \, k = 1, \ldots, K_2.
+    \end{equation*}
+
+    Dessa baser kan vi använda för att beskriva vår tvådimensionella funktion
+    \begin{equation*}
+        g(x) = \sum_{j=1}^{K_1} \sum_{k=1}^{K_2} g_{jk}(x).
+    \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Flerdimensionella Smoothing Splines}
+    Vi kan igen sätta upp smoothing splines problemet för dessa flerdimensionella problem. Om $x_i \in \mathbb{R}^d$ ställer vi upp problemet
+    \begin{equation*}
+        \min_g \sum_{i=1}^{n}\{y_i - g(x_i)\}^2 + \lambda J[g],
+    \end{equation*}
+    där $J[g]$ är en lämplig straffterm.
+
+    Om $d=2$ har vi
+    \begin{equation*}
+        J[g] = \int \int_{\mathbb{R}^2} \left[ \left( \frac{\partial^2 g(x)}{\partial x_1^2}\right)^2 + 2 \left(\frac{\partial^2 g(x)}{\partial x_1 \partial x_2}\right)^2 \left(\frac{\partial^2 g(x)}{\partial x_2^2}\right)^2  \right] \mathrm{d}x_1 \mathrm{d} x_2
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Flerdimensionella Smoothing Splines}
+
+    Precis som för endimensionella smoothing splines har vi
+    \begin{itemize}
+        \item $\lambda = 0$ ger en funktion som interpolerar alla datapunkter.
+        \item $\lambda = 0$ ger ett plan.
+        \item Andra värden ger en lösning som kan representeras som en linjärfunktion av basfunktioner med koefficient från ridge regression.
+    \end{itemize}
+
+    Lösningen är inte kubiska basfunktioner (som i endimensionella fallet) utan \imp{radiala basfunktioner} (radial basis functions).
+
+    Också kallade \imp{thin-plate splines}.
+    
+\end{frame}
+
 \end{document}
