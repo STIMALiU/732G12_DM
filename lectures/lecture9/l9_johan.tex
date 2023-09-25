@@ -10,7 +10,7 @@
 \usepackage{listofitems} % for \readlist to create arrays
 
 \title{732G12 Data Mining}
-\subtitle{Föreläsning 8}
+\subtitle{Föreläsning 9}
 \date{}
 \author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
@@ -341,7 +341,7 @@
     \begin{greenbox}
         Hitta funktionen $g(x)$ som minimerar
         \begin{equation*}
-            L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x) \mathrm{d}x.
+            L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x.
         \end{equation*}
     \end{greenbox}
     
@@ -356,7 +356,7 @@
 \begin{frame}{Smoothing splines}
 
     \begin{equation*}
-        L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x) \mathrm{d}x.
+        L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x.
     \end{equation*}
 
     \begin{bluebox}\myheading{Teorem:}
@@ -379,7 +379,7 @@
         \begin{itemize}
             \item $\lambda = 0$ ger $df_{\lambda} = 4+n$.
             \item $\lambda = \infty$ ger $df_{\lambda} = 2$.
-            \item Ofta 
+            \item Ofta vill vi istället välja $\lambda$ som ger oss vissa frihetsgrad.
         \end{itemize}
         \item Hur välja $\lambda$?
     \end{itemize}
@@ -488,7 +488,7 @@
 
     Om $d=2$ har vi
     \begin{equation*}
-        J[g] = \int \int_{\mathbb{R}^2} \left[ \left( \frac{\partial^2 g(x)}{\partial x_1^2}\right)^2 + 2 \left(\frac{\partial^2 g(x)}{\partial x_1 \partial x_2}\right)^2 \left(\frac{\partial^2 g(x)}{\partial x_2^2}\right)^2  \right] \mathrm{d}x_1 \mathrm{d} x_2
+        J[g] = \int \int_{\mathbb{R}^2} \left[ \left( \frac{\partial^2 g(x)}{\partial x_1^2}\right)^2 + 2 \left(\frac{\partial^2 g(x)}{\partial x_1 \partial x_2}\right)^2 + \left(\frac{\partial^2 g(x)}{\partial x_2^2}\right)^2  \right] \mathrm{d}x_1 \mathrm{d} x_2
     \end{equation*}
 \end{frame}
 
@@ -497,7 +497,7 @@
     Precis som för endimensionella smoothing splines har vi
     \begin{itemize}
         \item $\lambda = 0$ ger en funktion som interpolerar alla datapunkter.
-        \item $\lambda = 0$ ger ett plan.
+        \item $\lambda = \infty$ ger ett plan.
         \item Andra värden ger en lösning som kan representeras som en linjärfunktion av basfunktioner med koefficient från ridge regression.
     \end{itemize}
 
