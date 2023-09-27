@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{fancyhdr}
+\usepackage[top=10mm, bottom=10mm, left=10mm, right=10mm,includehead,includefoot]{geometry}
+
+
+\pagestyle{empty}
+\fancyhf{}
+
+\lhead{LINKÖPINGS UNIVERSITET\\Avdelningen för statistik och maskininlärning\\Institutionen för datavetenskap}
+\rhead{
+Data Mining 732G12 \\ HT2023}
+
+
+\title{Datorlaboration 6}
+\author{Johan Alenlöv}
+
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{fancy}
+
+
+\section*{Allmänt}
+
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+\begin{itemize}
+    \item Kodmanual: \href{https://www.isakhietala.com/teaching/732g12/}{länk}
+    \item \textbf{ISL}: An introduction to Statistical Learning,
+    \begin{itemize}
+        \item Boken: \href{https://www.statlearning.com/}{länk}
+        \item R-kod till labbar: \href{https://www.statlearning.com/resources-second-edition}{länk}
+        \item Dataset: \href{https://cran.r-project.org/web/packages/ISLR2/index.html}{länk} och \href{https://www.statlearning.com/resources-second-edition}{länk}
+    \end{itemize}
+    \item \textbf{IDM}: Introduction to Data Mining,
+    \begin{itemize}
+        \item Kod till boken: \href{https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/}{länk}
+        \item \href{https://www-users.cse.umn.edu/~kumar001/dmbook/index.php#chapters}{Sample chapters}
+    \end{itemize}
+    \item Dataset till vissa uppgifter finns \href{https://github.com/STIMALiU/732G12_DM/tree/2023/data}{här}
+\end{itemize}
+Notera att ni inte behöver göra alla delar på alla uppgifter. Det viktiga är att ni får en förståelse för de olika principerna och modellerna som avhandlats. Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+
+\section*{Datoruppdelning}
+
+För att motverka överanpassning bör ni dela upp data till träning-, validering-, (och testmängd). Detta kan göras med \texttt{createDataPartition()} från \texttt{caret}-paketet. Argument till den funktionen som är av vikt här är \texttt{p} som anger hur stor andel av observationerna som ska användas till träningsmängden. Ni kan också använda \texttt{subset()} för att göra detta, men det blir svårare att tydligt ange de observationer som ska tilldelas till valideringsmängden. Denna uppdelning måste var aslumpmässigt. Notera att om en testmängd ska skapas måste uppdelningen ske en gång till från valideringsmängden.
+
+\section*{Del 1: Polynomregression och stegfunktioner}
+
+\begin{enumerate}
+    \item Gå igenom Lab 7.8.1 i ISL
+    \item Vad är skillnaden mellan följande tre funktioner för polynomregression?
+    \begin{minted}{R}
+        y ~ poly(x, 4)
+        y ~ poly(x, 4, raw = TRUE)
+        y ~ x + I(x^2) + I(x^3) + I(x^4)
+    \end{minted}
+    \item Läs in datamaterialet \texttt{lab6\_data\_1.csv}. Dela upp i träning och validering och använd korsvalidering för att skatta den bästa polynomregression och stegfunktionen till detta datamaterial. Vilken grad av polynom används? Hur många stegfunktioner används?
+\end{enumerate}
+
+\section*{Del 2: Splines}
+
+\begin{enumerate}
+    \item Gör Lab 7.8.2 i ISL
+    \item Ladda in datamaterialet \texttt{lab6\_data\_1.csv}. Välj knutarna i 1, 2, 3, och 4. Testa nu att skatta vanliga splines (\texttt{bs()}) med \texttt{degree} 1, 2, 3 och 4. Vad blir skillnaden i resultat? Vilken ser bäst ut?
+    \item Använd samma datamaterial och ändra till natural splines (\texttt{ns()}). Vad blir skillnaden? Lägg till knutar i 0.5 och 4.5 och jämför.
+    \item Testa andra platser för knutarna och använd korsvalidering för att hitta den bästa modellen.
+\end{enumerate}
+
+\section*{Del 3: GAM}
+\begin{enumerate}
+    \item Gör Lab 7.8.3 i ISL
+\end{enumerate}
+
+\section*{Del 4: Email Spam}
+    \begin{enumerate}
+        \item Ladda in \texttt{spambase.csv} datasetet och bekanta dig med det. Vi vill skapa en modell som predikterar \texttt{spam} (0 eller 1) givet de förklarande variablerna. Då våra förklarande är tungsvansade kan en log-transformation fungera bra ($\log(x + 0.1)$) där vi lägger på $0.1$ för att undvika $\log(0)$ problem.
+        \item Dela upp datamaterialet i 70\% träningsdata och 30\% valideringsdata.
+        \item Börja med att anpassa en vanlig multiple logistisk regression till datamaterialet. Vilket klassificeringsfel får du?
+        \item Anpassa nu en GAM modell med kubiska natural splines med 4 frihetsgrader för varje förklarande variabel. Vilket klassificeringsfel får du nu?
+        \item Testa med andra ordningar av frihetsgrader för dina splines och se om du kan få till en bättre modell.
+        \item Testa att använda lokal regression för någon eller några variabler och se hur det påverkar dina resultat.
+    \end{enumerate}
+\end{document}

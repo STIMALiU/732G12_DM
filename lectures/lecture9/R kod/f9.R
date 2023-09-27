@@ -4,6 +4,7 @@ library(caret)
 n <- 500
 x <- runif(n , min = 0, max = 5  )
 y <- 0.5 + 3*x - 2*x^2 + .2*x^3 + log(2*x+1) + 3*sin(pi * x) + rnorm(n = n, sd = 1)
+df <- data.frame(x = x, y = y)
 
 plot(x, y)
 

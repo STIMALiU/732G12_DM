@@ -12,3 +12,4 @@
 *.snm
 *.gz
 *.toc
+.vscode/settings.json
