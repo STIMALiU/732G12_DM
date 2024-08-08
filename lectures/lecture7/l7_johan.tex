@@ -1,0 +1,463 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 7}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Introduktion
+        \item K-means klustring
+        \item Hierarkisk klustring
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Projektet}
+    \begin{itemize}
+        \item Anmäl er till grupper på Lisam.
+        \item Börja kolla på uppgiften och hitta data!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion}
+    \begin{itemize}
+        \item Oövervakad inlärning: Lära sig data \imp{utan} responsvariabel!
+        \item Flera olika algoritmer:
+        \begin{itemize}
+            \item \imp{Klusteranalys}
+            \item Associationsanalys
+            \item Sekventiella mönster
+            \item Dimensionalty reduction techniques
+            \item PCS, Faktormodeller
+            \item Representation Learning
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduktion}
+    \begin{greenbox}
+        Måler med klusteranalys är att dela upp datamaterialet i grupper (kluster) som är intressanta och/eller användbara.
+    \end{greenbox}
+
+    Vi vet inte i förväg vilka grupper som kommer att bildas.
+
+    Ingen responsvariabel.
+\end{frame}
+
+\begin{frame}{Klusteranalys}
+
+    Ta 5 minuter att fundera på följande frågor:
+
+    \begin{enumerate}
+        \item Hur många kluster finns det i bilden?
+        \includegraphics[width = .7\textwidth]{figs/kluster1.png}
+        \item Kom på något område där klusteranalys kan vara användbart.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Klusteranalys}
+    
+    Ett "kluster" är inte entydigt definerat.
+
+    \includegraphics[width = .7\textwidth]{figs/kluster1.png}
+
+    Tillämpningsområden:
+    \begin{itemize}
+        \item Biologi (toxonomi/gener)
+        \item Informationssökning (Sökmotorer)
+        \item Psykologi och medicin
+        \item Kunddata
+        \item Sociala medier/nätverk
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Klassificering och klustering}
+
+    \begin{itemize}
+        \item Klassificeringsmetoder som vi jobbat med tidigare är exempel på övervakad inlärning. Ger etiketter till nya objekt, utgår från orginaldata som har etiketter.
+        \item Klusteranalys är ett exempel på oövervakad inlärning - vi härleder en etikett för objekt, utgår endast från data.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Klustringstyper}
+
+    \begin{description}
+        \item[Partionell:] Data är indelad i ett antal oöverlappande kluster.
+        \item[Hierarkisk:] Delkluster är tillåtna, kluster är representerade som ett träd.  
+    \end{description}
+    \vspace{1cm}
+    \begin{description}
+        \item[Uteslutande:] Ett objekt tillhör ett kluster.
+        \item[Överlappande:] Ett objekt hör till några kluster.
+        \item[Fuzzy:] Ett objekt hör till olika kluster med en specifik sannolikhet.  
+    \end{description}
+    \vspace{1cm}
+
+    \begin{description}
+        \item[Fullständig:] Varje objekt är tillskrivet (minst) ett kluster.
+        \item[Ofullständigt:] Vissa objekt är inte tillskrivna något kluster. 
+    \end{description}
+    
+\end{frame}
+
+\begin{frame}{Klustertyper}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Separerade
+                \item Angränsande/intilliggande
+                \item Centroid- eler prototypbaserade
+                \item Densitet- eller täthetsbaserade
+                \item Konceptuella
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width = \textwidth]{figs/Klustertyper.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{K-means klustring}
+
+    \begin{itemize}
+        \item Centroid-baserad och partionell klustringsmetod.
+        \begin{itemize}
+            \item Centroid är en punkt som ska representera/sammanfatta alla observationer i ett kluster.
+        \end{itemize}
+        \item Enkel och ofta effektiv metod.
+        \item $K$: hyperparameter, antalet klasser.
+    \end{itemize}
+
+    \includegraphics[width=\textwidth]{figs/basic K-means.png}
+    
+\end{frame}
+
+\begin{frame}{K-means klustring}
+
+    \includegraphics[width=\textwidth]{figs/K-means clustering.png}
+    Från An Introduction to Statistical Learning with Applications in R av Gareth James, Daniela Witten, Trevor
+Hastie, Robert Tibshirani
+    
+\end{frame}
+
+\begin{frame}{K-means klustring: Exempel}
+    \includegraphics[width=1.1\textwidth]{figs/k-means Illustration1.png}
+\end{frame}
+
+\begin{frame}{K-means klustring: Detaljer}
+
+    \begin{itemize}
+        \item Låt $c_i$ vara centroid för kluster $i$. Låt $C_i$ vara en mängd med alla observationer i kluster $i$.
+        \item Vi behöver ett avståndsmått
+        \begin{itemize}
+            \item Används för att mäta avståndet mellan $c_i$ och övriga observationer.
+            \item Vanligast är euklidiskt avstånd,
+            \begin{equation*}
+                d(p,q) = \sqrt{\sum_{i=1}^{n}(q_i - p_i)^2}
+            \end{equation*}
+            \item Finns såklart många andra val som kan göras.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-means klustring: Detaljer}
+
+    \begin{itemize}
+        \item K-means minimerar SSE
+        \item SSE i ett kluster ges av
+        \begin{equation*}
+            E_{c_i} = \sum_{x \in C_i} d(x, c_i)^2.
+        \end{equation*}
+        \item Totala SSE för alla kluster
+        \begin{equation*}
+            \operatorname{SSE} = \sum_{i=1}^{K} E_{c_i} = \sum_{i=1}^{K} \sum_{x \in C_i} d(x, c_i)^2
+        \end{equation*}
+        \item I det euklidiska rummet beräknas centroider som
+        \begin{equation*}
+            c_i = \frac{1}{n_i} \sum_{x \in C_i} x.
+        \end{equation*}
+        \item K-means algoritmen hittar ett lokalt minima.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-means klustring: Exempel}
+
+    \includegraphics[height=\textheight]{figs/k-means Illustration2.png}
+    
+\end{frame}
+
+\begin{frame}{K-means klustring: Startvärden}
+
+    Vi måste välja våra initiala gissningar för centroider. Detta val påverkar starkt utgången av algoritmen.
+
+    Dåliga startvärden kan ge dåliga resultat.
+    \includegraphics[width = \textwidth]{figs/dåliga start värden.png}
+
+    Vanlig metod är att köra algoritmen många gångenr med olika (slumpade) startvärden.
+    
+\end{frame}
+
+\begin{frame}{Halverande K-means}
+
+    \begin{itemize}
+        \item Algoritm som motverkar problemet med startvärden.
+        \item Dela upp datamängden i två kluster, välj ett och dela upp det i två osv.
+        \begin{itemize}
+            \item Valet av kluster kan göras med avseende på flest observation, störst SSE eller annat kriterie.
+        \end{itemize}
+        \item Uppdelningen kan liknas vid ett binärt träd.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Halverande K-means}
+
+    \includegraphics[width=\textwidth]{figs/Halverande K-means_exempel.png}
+    
+\end{frame}
+
+\begin{frame}{Halverande K-means}
+
+    \includegraphics[width = \textwidth]{figs/Halverande K-means algoritm.png}
+    
+\end{frame}
+
+\begin{frame}{K-means++}
+
+
+    Algoritm för att hitta startvärden till K-means.
+
+    \begin{enumerate}
+        \item Välj en centroid uniformt slumpmässigt från observationerna.
+        \item För varje datapunkt $x$ beräkna avstånder $d(x,c_i)$ mellan $x$ och den närmaste centroiden (som redan valts).
+        \item Välj en datapunkt som centroid genom att:
+        \begin{itemize}
+            \item Slump en punkt med hjälp av viktade sannolikheter, där vikterna är proportionella mot $d(x,c_i)^2$.
+        \end{itemize}
+        \item Upprepa 2 och 3 tills $K$ centroider valts ut.
+        \item Kör vanlig K-means med dessa startcentroider.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{K-means++}
+
+    \begin{itemize}
+        \item Generellt: K-means++ förbättrar SSE mycket över slumpade startvärden.
+        \item Tar extra tid att bestämma startvärden, men K-means konvergerar mycket snabbare än med slumpade startvärden.
+        \item Vanligt att K-means++ är dubbelt så snabb som K-means med slumpade startvärden.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-means klustring: Kommentarer}
+
+    \begin{itemize}
+        \item Enkel och ganska effektiv.
+        \item Känslig mot startvärden.
+        \begin{itemize}
+            \item Kör många gånger med olika startvärden.
+            \item Halverande K-means.
+            \item K-means++
+        \end{itemize}
+        \item Skapar klotformade kluster och är linjärt separerade.
+        \begin{itemize}
+            \item Andra former fungerar sämre.
+        \end{itemize}
+        \item Ger en centroid för varje kluster. Kan användas för att beskriva klustret.
+        \item Har svårt att identifiera kluster av olika storlekar eller med olika tätheter.
+        \item Känslig mot extremvärden.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-mean klustring: Utökningar}
+
+    \begin{itemize}
+        \item Kernel K-means: Kan forma kluster av olika former med icke-linjära separationsgränser.
+        \item Gaussian mixture models/klustring:
+        \begin{itemize}
+            \item Varje kluster beskrivs med en multivariat normalfördelning.
+            \item Skattas med expectation-maximization (EM) algoritmen.
+        \end{itemize}
+        \item K-medoids/Partitioning Around Medoids. Använder medioder som center (en punkt i datasetet).
+        \item K-medians klustring: använder medianer istället.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Hierarkisk klustring}
+
+\begin{itemize}
+    \item Två typer:
+    \begin{itemize}
+        \item Agglomerativ, bygger underifrån.
+        \item Diversiv, bygger uppifrån.
+    \end{itemize}
+    \item Skapar en hierarki med kluster.
+    \begin{itemize}
+        \item Subkluster som har subkluster som har subkluster....
+    \end{itemize}
+\end{itemize}    
+    
+\end{frame}
+
+
+\begin{frame}{Agglomerativ hierarkisk klustring}
+
+    \begin{itemize}
+        \item Börja med att ge varje observation sitt egna kluster. Slå ihop närliggande kluster till ett större kluster. Upprepa detta tills alla observationer är i ett kluster.
+        \item Proocessen visualiseras i ett s.k. dendogram.
+        \begin{itemize}
+            \item Vågrät axel innehåller observationsnummer (ordningen är odtycklig)
+            \item Lodrät axel mäter avstånd mellan kluster.
+            \item Förgreningen mäter vilka kluster och vid vilket avstånd dessa lås ihop.
+        \end{itemize}
+    \end{itemize}
+
+    \includegraphics[width = 0.5 \textwidth]{figs/dendogram1.png}
+    
+\end{frame}
+
+\begin{frame}{Agglomerativ hierarkisk klustring}
+
+    \includegraphics[width = \textwidth]{figs/dendogram2.png}
+    
+\end{frame}
+
+\begin{frame}{Dendogram}
+
+    \begin{itemize}
+        \item Dendogrammet visar \imp{alla} ihopslagningar.
+        \item Vi måste manuellt ange när vi anser att ihopslagningarna ska sluta: Hur många kluster?
+        \begin{itemize}
+            \item Subjektivt
+            \item När avståndet mellan ihopslagningar är "stort nog".
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Dendogram}
+
+    \includegraphics[width=\textwidth]{figs/dendogram3.png}
+    
+\end{frame}
+
+\begin{frame}{Agglomerativ hierarkisk klustring: Algoritm}
+
+    \includegraphics[width = \textwidth]{figs/hclut_alg.png}
+
+    Proximity matrix är en matris som innehåller närheten mellan kluster. Kan använda en distansmatris också.
+
+\end{frame}
+
+\begin{frame}{Beräkning av avstånd mellan två kluster}
+
+    Då kluster ofta innehåller flera observationer behövs en metod för att definera hur avstånd beräknas, även kallad \imp{länkningsmetod}.
+
+    Låt $C_i$ och $C_j$ vara två kluster.
+    \begin{itemize}
+        \item MIN eller Single (enkel länkning):
+        \begin{equation*}
+            \operatorname{prox}(C_i, C_j) = \min_{x \in C_i, y \in C_j} \operatorname{dist}(x, y).
+        \end{equation*}
+        \item MAX eller Complete (fullständig länkning):
+        \begin{equation*}
+            \operatorname{prox}(C_i, C_j) = \max_{x \in C_i, y \in C_j} \operatorname{dist}(x, y).
+        \end{equation*}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Beräkning av avständ mellan två kluster}
+
+    \begin{itemize}
+        \item Group average (genomsnitts länkning):
+        \begin{equation*}
+            \operatorname{prox}(C_i, C_j) = \frac{1}{n_i \cdot n_j} \sum_{x \in C_i, y \in C_j} \operatorname{dist}(x,y),
+        \end{equation*}
+        där $n_i$ och $n_j$ är antalet observationer i kluster $i$ och $j$.
+        \item Wards/Centroid metod: Närheten defineras som hur mycket kvadrerade fel ökar när två kluster slås ihop.
+        
+        Samma kostnadsfunktion som i K-means.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Beräkning av avstånd mellan två kluster}
+
+    \includegraphics[width = \textwidth]{figs/linking_pic.png}
+    
+\end{frame}
+
+\begin{frame}{Egenskaper}
+
+    \begin{itemize}
+        \item Ingen global funktion att optimera.
+        \item Group average- och olika centroid metoder kan ta hänsyn till olika klusterstorlekar när ett par kluster förenas.
+        \item Ihopslagningar är slutgiltiga och går inte att ta isär senare.
+        \item Närhetsmåttet kan påverka resultatet.
+        \begin{itemize}
+            \item Extremvärden.
+            \item Brus.
+        \end{itemize}
+        \item Passar bra för data som har en hierarkisk struktur.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Exempel}
+    
+    \includegraphics[width=\textwidth]{figs/ex_data.png}
+
+\end{frame}
+
+\begin{frame}{Exempel}
+
+    \includegraphics[width=.495\textwidth]{figs/Single link clustering.png} \includegraphics[width=.495\textwidth]{figs/Complete link clustering.png}
+    
+\end{frame}
+
+\begin{frame}{Exempel}
+
+    \includegraphics[height=\textheight]{figs/grouP_ward_clustering.png}
+    
+\end{frame}
+
+\end{document}

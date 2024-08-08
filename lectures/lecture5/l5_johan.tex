@@ -1,0 +1,351 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 5}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Neurala nätverk
+        \item Feature learning
+        \item Optimering av neurala nätverk
+        \item Hyperparametrar
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Tentainformation}
+    
+    Finns några gamla tentor på Lisam. Den tenta ni får kommer vara liknande men inget som har med associationsanalys/sekventiell data är med i kursen nu.
+
+    Inte bara kod som ska lämnas in utan även lösningar. Använd Rmarkdown för att skriva fina lösningar med plottar och kod. All kod ska bifogas i inlämningen.
+
+    På Lisam finns mapp med alla hjälpfiler för tentan. Dessa kommer finnas på datorerna när tentan börjar. Kolla igenom dessa i god tid innan tentan för att få en uppfattning om vad som finns och var!
+
+\end{frame}
+
+\begin{frame}{Neuralt nätverk}
+    När vi pratar om neurala nätverk kan vi prata om lite vad som helst. Finns \textbf{väldigt många} olika sorters nätverk.
+
+    Kan använda neurala nätverk för att lösa många olika problem:
+    \begin{itemize}
+        \item Övervakad inlärning
+        \item Oövervakad inlärning
+        \item Reinforcement learning
+        \item Generativa modeller
+        \item Representation learning
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Neurala nätverk}
+    
+    För övervakad inlärning kan vi t.ex. använda
+    \begin{itemize}
+        \item Feed-forward network / Multiple layer perceptron (MLP)
+        \item Radial basis network
+        \item Convolutional neural networks (CNN)
+        \item Recurrent neural networks
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Neurala Nätverk}
+
+    För oövervakad inlärning:
+    \begin{itemize}
+        \item Dolda representationer: Autoencoders
+        \item Clustering: Self Organizing Map
+    \end{itemize}
+
+    Generativa modeller:
+    \begin{itemize}
+        \item Används för att lära sig komplexa fördelningar för att sen dra nya samples.
+        \begin{itemize}
+            \item Sampla nya bilder
+            \item Skriva text
+        \end{itemize}
+        \item Generative adversarial network (GAN)
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Feature learning}
+
+    Vi går tillbaka till linjär regression,
+    \begin{equation*}
+        y = \mathbf{X} \beta + \varepsilon, \quad \mathbb{E}[\varepsilon] = 0, \quad \mathbb{V}[\varepsilon] = \sigma^2.
+    \end{equation*}
+    
+    Vad kan vi göra om data inte följer denna linjära modell?
+
+\end{frame}
+
+\begin{frame}{Feature learning}
+    
+    Vanligt i linjär regression,
+    \begin{itemize}
+        \item Givet data $\mathbf{X} = (x_1, x_2, \ldots, x_p)$ och $ y = \mathbf{X} \beta$.
+        \item Vi kan transformera variablerna i $\mathbf{X}$:
+        \begin{itemize}
+            \item Polynomregression, $\mathbf{X} = (x, x^2, x^3, \ldots, x^p)$
+            \item Funktioner, $\log(x), \sqrt{x}, \exp(x), \ldots$
+            \item Interaktioner, $x_1 x_2$
+            \item Stegfunktioner
+            \item Disktretisering
+            \item Dummy-kodning
+        \end{itemize}
+        \item Kallas i maskininlärning för "feature engineering"
+        \begin{itemize}
+            \item Svårt att veta vilken transformation som vi ska göra för varje problem.
+            \item Svårt med komplexa datastrukturer som text eller bild.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Feature learning}
+    
+    \begin{itemize}
+        \item Vi har data $\mathbb{X} = (x_1, x_2, \ldots, x_p)$.
+        \item Transformationer är funktioner av data.
+        \begin{itemize}
+            \item Ex. $h(x) = \log(x), h(x_1,x_2) = \exp(x_1 \cdot x_2)$.
+        \end{itemize}
+        \item Anta en $x$-variabel, låt $h(x)$ vara en viktad summa av andra funktioner,
+        \begin{equation*}
+            z = h(x) = \sum_{i=1}^{M}w_i h_i(x),
+        \end{equation*}
+        där $h_i(x)$ är godtyckliga funktioner.
+        \item<2-> Om vi har många $x$-variabler får vi,
+        \begin{equation*}
+            z =  h(x_1, x_2, \ldots, x_p) = \sum_{i=1}^{M} w_i h_i(x_1, x_2, \ldots, x_p).
+        \end{equation*}
+        \item<2-> Hur ska vi välja $h_i(x)$?
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Feature learning}
+    
+    För en linjär transformation hitta matriserna $\mathbf{W}$ och $\mathbf{V}$,
+    \begin{equation*}
+        \underset{n \times m}{\mathbf{Z}} = \underset{n \times p}{\mathbf{X}} \cdots \underset{p \times m}{\mathbf{W}}, \qquad \underset{n \times g}{\mathbf{Z}} = \underset{n \times p}{\mathbf{X}} \cdots \underset{p \times m}{\mathbf{W}} \cdot \underset{m \times g}{\mathbf{V}}.
+    \end{equation*}
+
+    För neurala nätverk vill vi kunna modellera icke-linjära funktioner.
+
+    Idé: Använd många "enkla" icke-linjära funktioner för att skapa en komplex icke-linjär funktion!
+
+\end{frame}
+
+\begin{frame}{Feature learning}
+
+    \begin{greenbox}
+        \myheading{Neurala nätverk}
+
+        Låt $\sigma(\cdot)$ vara en enkel icke-linjär funktion och låt $h_i(x_1, \ldots, x_p)$ vara en linjär funktion,
+        \begin{equation*}
+            h_i(x_1, x_2, \ldots, x_p) = \beta_{0i} + \beta_i^{\top} \mathbf{x}.
+        \end{equation*}
+
+        Låt nu
+        \begin{equation*}
+            z = \sigma(h_i(x_1, x_2, \ldots, x_p)) = \sigma(\beta_{0i} + \beta_i^{\top} \mathbf{x}),
+        \end{equation*}
+        nästla sedan många sådana funktioner för att bygga upp en godtyckligt komplex icke-linjär funktion.
+    \end{greenbox}
+    
+\end{frame}
+
+\begin{frame}{Feature learning}
+    
+    För MLP brukar vi skriva
+    \begin{equation*}
+        \underset{k \times 1}{a}^{(p+1)} = \sigma \left( \underset{k \times n}{\mathbf{W}}^{(p)} \cdot \underset{n \times 1}{a}^{(p)} + \underset{k \times 1}{b}^{(p)} \right).
+    \end{equation*}
+    Här är:
+    \begin{description}
+        \item[$k$] Dimension av nya lagret
+        \item[$n$] Dimension av föregående lager
+        \item[$\mathbf{W}$] Viktmatris
+        \item[$b$] Bias
+        \item[$(p)$] Vilket lager
+        \item[$\sigma()$] Vår funktion som opererar elementvis   
+    \end{description}
+    Historiskt har sigmoid eller hyperbolic tangent varit vanliga aktiveringsfunktioner. Numera är ReLu (eller varianter) den vanligaste,
+    \begin{equation*}
+        \operatorname{ReLu}(x) = \max(0,x).
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Feature learninig}
+
+    Vi kan se ett neuralt nätverk som att vi
+    \begin{enumerate}
+        \item Automatiskt lär oss transformationer av de förklarande variablerna.
+        \item Gör linjär (logistisk,multinomiell) regression på transformationerna (sista lagret).
+    \end{enumerate}
+    OBS!
+    \begin{itemize}
+        \item Komplexa funktioner kräver mycket data att lära sig!
+        \item Neurala nätverk kan lätt överanpassa träningsdata!
+        \item Funkar när vi har stort antal förklarande variabler.
+        \item Om vi låter gömda lager ha mindre dimension än förklarande variabler får vi "icke-linjär variabelreduktion".
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Universal approximation theorem}
+    Vilka funktioner kan vi då lära oss med ett neuralt nätverk av detta slag?
+
+    \begin{greenbox}
+        \myheading{Universal approximation theorem}: Let $\operatorname{C}(\mathrm{X},\mathbb{R}^{m})$ denote the set of continuous functions from $\mathrm{X} \subset \mathbb{R}^n$ to $\mathbb{R}^{m}$. Let $\sigma \in \operatorname{C}(\mathbb{R},\mathbb{R})$. Note that $(\sigma \otimes x)_i = \sigma(x_i)$, so $\sigma \otimes x$ denotes $\sigma$ applied to each component of $x$.
+
+        Then $\sigma$ is not polynomial if and only if for every $n \in \mathbb{N}, m \in \mathbb{N}$, compact $\mathrm{K} \subseteq \mathbb{R}^n, f \in \operatorname{C}(\mathrm{K},\mathbb{R}^m), \varepsilon > 0$ there exists $k \in \mathbb{N}, A \in \mathbb{R}^{k \times n}, b \in \mathbb{R}^k, C \in \mathbb{R}^{m \times k}$ such that
+        \begin{equation*}
+            \sup_{x \in \mathrm{K}} \| f(x) - g(x) \| < \varepsilon,
+        \end{equation*}
+        where $g(x) = C \cdot (\sigma \otimes (A \cdot x + b))$.
+    \end{greenbox}
+\end{frame}
+
+\begin{frame}{Optimering av neurala nätverk}
+    
+    Gradient decent: Hitta minimum på en funktion genom att gå dit den lutar mest!
+
+    Vill hitta
+    \begin{equation*}
+        a^* = \argmin_a L(a) = \sum_i L_i(f(x^{(i)},a), y^{(i)}).
+    \end{equation*}
+
+    Löser detta genom sekvensen
+    \begin{equation*}
+        a_{n+1} = a_n - \gamma \cdot \nabla L(a_n).
+    \end{equation*}
+
+    \begin{itemize}
+        \item Vi behöver gradienter (partiella derivator)
+        \item Backpropagation: kedjeregel för derivator på neruala nätverk.
+        \item Gradient decent: dyrt när vi har många observationer!
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Optimering av neurala nätverk}
+    
+    Svårt problem med många fallgropar.
+
+    \begin{itemize}
+        \item Lokala minima
+        \begin{itemize}
+            \item Ställen som ser ut som ett minima (eller grannar har högre kostand) men inte är det bästa som finns.
+            \item Kan ha hög kostand eller låg.
+            \item Identifikationsproblem:
+            \begin{itemize}
+                \item Viktsymmetri
+                \item Skalning mellan lager
+            \end{itemize}
+            \item Kan ha oräkneligt antal lokala minima.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Optimering av neurala nätverk}
+    
+    Platåer och sadelpunkter
+    \begin{itemize}
+        \item Ställen där gradienten är noll (eller nära), fast vi inte är på ett loaklt min/max.
+        \item Sadelpunkter:
+        \begin{itemize}
+            \item Lokalt minima i några riktningar.
+            \item Lokalt maxima i andra riktningar.
+        \end{itemize}
+        \item Antalet sadelpunkter tenderar att öka med antalet dimensioner.
+        \item Platåer är stora områden som är platta (gradient nära noll).
+        \item Platåer och sadelpunkter gör optimeringen med gradient decent svårare.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Stochastic gradient decent (SGD)}
+
+    Det är dyrt att beräkna $\nabla L(a_n)$ för alla datapunkter.
+
+    Gör istället en väntesvärdesriktig skattning $\nabla \hat{L}(a_n)$ av gradienten genom att ta ett slumpmässigt sample från data (mini-batch).
+
+    \begin{itemize}
+        \item Större batch ger mindre varians i skattningen men blir dyrare att beräkna.
+        \item Kräver fler iterationer och mindre learning rate.
+        \item Kräver att vi har oberoende observationer.
+        \item Funkar bra för neurala nätverk!
+        \item En epoch är en genomgång av all träningsdata.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Hyperparametrar}
+    
+    I neruala nätverk finns massvis med Hyperparametrar!
+    \begin{itemize}
+        \item Arkitektur:
+        \begin{itemize}
+            \item Antal gömda lager
+            \item Antal neuroner i varje lager
+            \item Aktiveringsfunktioner
+            \item (Speciella typer av neuroner/lager)
+        \end{itemize}
+        \item Optimeringen:
+        \begin{itemize}
+            \item Mini-batch storlek
+            \item Learning rate (fix eller föränderlig)
+            \item Antal epoker
+            \item (Vilken optimeringsalgoritm som används)
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hyperparametrar}
+    Hur ska vi bestämma deras värden?
+    \begin{itemize}
+        \item Svår fråga utan exakt svar.
+        \item Mycket trial and error.
+        \item Valideringsdata
+        \item För stora problem kan det ta lång tid att hitta bra hyperparametrar
+    \end{itemize}
+\end{frame}
+
+\end{document}

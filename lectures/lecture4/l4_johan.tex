@@ -1,0 +1,489 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 4}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item K-närmaste grannar
+        \item Bayesianska klassificerare
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging
+            \item Boosting
+            \item Random forest
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{K-närmaste grannar}
+    \begin{greenbox}
+        \myheading{Idé} basera predikation på de K datapunkter som är närmast.
+   \end{greenbox}
+
+   Ger en icke-parametrisk metod för klassificering och regression.
+
+   Problem: Vad är närmast?
+\end{frame}
+
+\begin{frame}{Avståndsmått}
+    Vi behöver något som talar om för oss hur nära två datapunkter är. Finns många alternativ som man kan välja, som ger olika resultat.
+
+    \begin{description}
+        \item[Euklidiskt avstånd]
+        \begin{equation*}
+            d(\mathbf{x},\mathbf{y}) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^2}
+        \end{equation*}
+        \item[Manhattan avstånd] 
+        \begin{equation*}
+            d(\mathbf{x},\mathbf{y}) = \sum_{k=1}^{n} | x_k - y_k |
+        \end{equation*}
+    \end{description}
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+    \begin{enumerate}
+        \item Låt $k$ vara ditt valda antal grannar och $D$ din träninigsdata.
+        \item För varje testdata $z = (\mathbf{x}', y') \in D$:
+        \begin{enumerate}
+            \item Beräkna $d(\mathbf{x},\mathbf{x}')$ (avstådet mellan $z$ och all träningsdata)
+            \item Välj $D_z \subseteq D$, de $k$ närmaste träniningsdatan till $z$
+            \item Låt $y' = \argmax_v \sum_{(\mathbf{x}_i, y_i) \in D_z} \mathbf{I}_{v = y_i}$
+        \end{enumerate}
+    \end{enumerate}
+    2.3 är majoritetsvalet. Kan också vikta detta värde med avståndet:
+    \begin{itemize}
+        \item[2.3] $y' = \argmax_{v} \sum_{(\mathbf{x}_i, y_i) \in D_z} w_i \mathbf{I}_{v = y_i}$. 
+    \end{itemize}
+
+    För regression används medelvärde alternativt viktat medelvärde.
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+
+    \includegraphics[width = \textwidth]{figs/KNN_fit_data.png}
+    
+\end{frame}
+
+\begin{frame}{K-närmaste grannar}
+
+    \begin{itemize}
+        \item Målet med modellen är att prediktera nya observationer.
+        \item Påverkas stort av olika skalor.
+        \item Långsam anpassning.
+        \item Känslig mot brus.
+        \item Val av K har stor betydelse!
+        \begin{itemize}
+            \item Litet K ger överanpassning.
+            \item Stort K ger underanpassning.
+            \item Korsvalidering kan användas för att bestämma K.
+        \end{itemize}
+        \item Producerar godtyckligt utformade beslutsgränser.
+        \item Problem i högre dimensioner.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Bayesiansk klassificerare}
+    Att direkt modellera en icke-deterministisk funktion kan vara mycket svårt.
+
+    Exempel:
+    \begin{itemize}
+        \item $(\text{diet}, \text{träning}) \to (\text{hjärtinfarkt})$ är svårt
+        \item $(\text{diet}, \text{träning}) \to \mathbb{P}(\text{hjärtinfarkt})$ lättare
+    \end{itemize}
+
+    Använd Bayes sats för att hjälpa till i modelleringen
+    \begin{align*}
+        \mathbb{P}(Y \mid \mathbf{X}) &= \frac{\mathbb{P}(\mathbf{X} \mid Y)}{\mathbb{P}(\mathbf{X})} \cdot \mathbb{P}(Y) \propto \mathbb{P}(\mathbf{X} \mid Y) \cdot \mathbb{P}(Y) \\
+        \text{posterior} &= \frac{\text{likelihood}}{\text{evidence}} \cdot \text{prior} \propto \text{likelihood} \cdot \text{prior}
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Kategoriska attribut}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            $\mathbb{P}(Y = y)$ är andelen datapunkter med klass $y$.
+
+            $\mathbb{P}(X_i = x_i \mid Y = y)$ andelen datapunkter med attribut $x_i$ av datapunkterna med klass $y$.
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{figs/data_bayes_class.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Kontinuerliga attribut}
+
+    För kontinuerliga attribut finns olika tillvägagångssätt.
+
+    \begin{itemize}
+        \item Diskretisera data i olika kategorier.
+        \begin{itemize}
+            \item För få intervall gör att man missar information.
+            \item För många intervall kan ge intervall utan observationer.
+        \end{itemize}
+        \item Anta en sannolikhetsfördelning för variabeln och skatta parametrarna från träniningsdatan.
+        \begin{itemize}
+            \item Normalfördelningen är vanlig.
+            \item Conjugate prior.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Grundläggande princip}
+
+    Träningfasen:
+
+    Skatta sannolikheten $\mathbb{P}(Y \mid \mathbf{X})$ för alla möjliga $\mathbf{X}$ och $y$.
+
+    Klassificeringsfas:
+
+    Givet $\mathbf{X}'$ skatta klass $Y' = \max_Y \mathbf{P}(Y \mid \mathbf{X}')$.
+    
+\end{frame}
+
+\begin{frame}{Naiv Bayes klassificerare}
+
+    Modellantagande:
+    \begin{equation*}
+        \mathbb{P}(\mathbf{X} \mid Y) = \prod_i \mathbb{P}(X_i \mid Y),
+    \end{equation*}
+    alla $X_i$ är oberoende av varandra. Vi kan då faktorisera likelihooden över $\mathbf{X}$.
+
+    Använder vi detta får vi en sannolikhet
+    \begin{equation*}
+        \mathbb{P}(Y \mid \mathbf{X}) = \prod_i \mathbb{P}(X_i \mid Y) \mathbb{P}(Y),
+    \end{equation*}
+    det räcker med att skatta sannolikheten för varje $X_i$. Detta ger oss en enklare modell som går att skatta.
+    
+\end{frame}
+
+\begin{frame}{Egenskaper hos naiv Bayes}
+    \begin{itemize}
+        \item Metoden är robust mot isolerade bruspunkter.
+        \item Metoden är robust mot irrelevanta attribut.
+        \item Lätt att skatta.
+        \item Korrelerade attribut kan väsentligt försämra prestandan.
+        \begin{itemize}
+            \item Behöver en mer komplex modell för att hantera.
+            \item Simultan sannolikhetsfördelning för likelihooden.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ensamblemetoder}
+    
+    \includegraphics[width=.8\textwidth]{figs/ensample_cat.png}
+
+\end{frame}
+
+\begin{frame}{Bootstraping}
+    
+    \begin{greenbox}
+        Idé: Skapa $B$ stickprov av datan genom att \textbf{med återläggning} välja nya datapunkter. Använd dessa stickprov för att skatta modell eller funktioner.
+    \end{greenbox}
+
+    Exempel:
+
+    Vi vill skatta $\mathbb{V}(e^{\bar{X}})$.
+
+    Skapa $B$ stickprov.
+
+    Skatta $T_k = e^{\bar{Z}_k}$ för $k = 1, \ldots, B$.
+
+    Beräkna $\mathbb{V}(\mathbf{T})$.
+
+
+\end{frame}
+
+\begin{frame}{Bagging}
+    
+    Idé: Om man tar medelvärdet av oberoende observationer (modeller) så minskar variansen.
+
+    \begin{bluebox}
+        \myheading{Bagging (Bootstrap aggregating)}: Använd Bootstrap för att skapa $B$ träningsdataset och skatta en modell $\hat{f}_b$ för varje av dessa set.
+
+        Den slutgiltliga modellen får vi genom att ta medelvärdet av alla dessa modeller:
+        \begin{equation*}
+            \hat{f}_{\text{bag}}(\mathbf{X}) = \frac{1}{B}\sum_{b=1}^{B}\hat{f}_b(\mathbf{X}).
+        \end{equation*}
+    \end{bluebox}
+
+    \begin{itemize}
+        \item Sänker variansen av den anpassade funktionen.
+        \item Påverkas \emph{mycket} av kvalitén av modellen. En bra modell blir bättre, en dålig blir sämre.
+        \item För klassificering, använd majoritetsröstning.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification and Regression Trees (CART)}
+    Vi delar upp variabelrummet genom att rekrusivt göra binära splittar.
+
+    För klassificering används vanligaste klassen, för regression medelvärdet inom regionen.
+
+    \includegraphics[width=\textwidth]{figs/tree_fredrik.png}
+\end{frame}
+
+\begin{frame}{Förbättre CART}
+    Flexibilitet/komplexitet för trädmodeller beror på djupet.
+    \begin{redbox}
+        Ett djupt träd ger litet bias, men mycket varians.
+    \end{redbox}
+    
+    Förbättringar:
+    \begin{itemize}
+        \item Efterbeskärning (post-pruning):
+        \begin{itemize}
+            \item Skapa ett djupt träd och beskär det till ett mindre (minska variansen).
+        \end{itemize}
+        \item Ensamblemetoder:
+        \begin{itemize}
+            \item Ta ett genomsnitt över många trädmodeller.
+            \item Bagging
+            \item Random forest
+            \item Boosted trees
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    Bagging kan ge stora förbättringar för trädmodeller. Men det finns vissa problem:
+    \begin{itemize}
+        \item De $B$ bootstrap-urvalen är korrelerade.
+        \item Reduktionen i varians blir liten när vi tar medelvärde över korrelerade variabler.
+    \end{itemize}
+
+    Idé: Avkorrelera de $B$ trädmodellerna genom att göra slumpmässiga ändringar av modellerna.
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    
+    \begin{itemize}
+        \item Använd bagging för att skatta $B$ träd,
+        \begin{itemize}
+            \item Vid varje uppdelning/regel använd endast en slumpmässig delmängd $q \leq p$ av de förklarande variablerna.
+        \end{itemize}
+        \item Tumregel: (Förslag från Leo Breiman)
+        \begin{itemize}
+            \item Klassificering: $q = \sqrt{p}$
+            \item Regression: $q = p/3$
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Random forest}
+    Slumpmässigt val av variabler leder till:
+    \begin{description}
+        \item[-] Minskar bias, men ofta mycket långsamt.
+        \item[-] Lägger till varians till varje träd.
+        \item[+] Avkorrelerar träden.
+    \end{description}
+    Ofta dominerar den avkorrelerade effekten vilket leder till att MSE minskar på testdata.
+\end{frame}
+
+\begin{frame}{Random forest}
+    Beräkningsmässiga fördelar:
+    \begin{itemize}
+        \item Lätt att parallellisera.
+        \item $q <  p$ minskar kostanden för vaje regel/uppdelning.
+        \item Inte så många hyperparametrar.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Boosting}
+    
+    En enkel modell kan vanligtvis fånga vissa aspekter av datan.
+
+    Kan vi lära oss en stor mängd enkla modeller som var och en lär sig en liten del av datarelationen och sen kombinera dessa "dåliga" modeller till en stark modell.
+
+    Hur skulle vi göra detta?
+
+\end{frame}
+
+\begin{frame}{Boosting}
+    \begin{itemize}
+        \item Lär sig sekventiellt en ensamble av "svaga" modeller.
+        \item Kombinerar dessa till en "stark" modell.
+        \item Generell metod som kan användas till all form av övervakad inlärning.
+        \item Mycket framgångsrikt inom maskininlärning.
+    \end{itemize}
+
+    \includegraphics[width=\textwidth]{figs/boosting_scheme.png}
+\end{frame}
+
+\begin{frame}{Binär klassificering}
+    Vi kommer begränsa oss nu till binär klassificering.
+
+    Vi låter klasserna vara $-1$ och $1$ (möjliga $y$ värden).
+
+    Använder vi detta kan vi skriva majoritetsröstninig av $B$ klassificerare $\hat{y}^{b}(\mathbf{x})$ som
+    \begin{equation*}
+        \sign \left(\sum_{b=1}^{B} \hat{y}^{b}(\mathbf{x})\right).
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Boosting för klassificering}
+    
+    \begin{enumerate}
+        \item Ge varje datapunkt en vikt $w_i^1 = 1/n$.
+        \item För $b = 1, \ldots, B$
+        \begin{enumerate}
+            \item[a] Träna en "svag" klassificerare $\hat{y}^{b}(\mathbf{x})$ på den \myheading{viktade träniningsdatan} $\{(\mathbf{x}_i,y_i,w_i^b)\}_{i=1}^{n}$.
+            \item[b] Uppdatera vikterna $\{w_{i}^{b+1}\}_{i=1}^{n}$ från $\{w_{i}^{b}\}_{i=1}^{n}$
+            \begin{enumerate}
+                \item[i] Öka vikterna för missklassificerade datapunkter.
+                \item[ii] Minska vikterna för korrekt klassificeradet datapunkter. 
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    Predikationen från de $B$ klassificerarna kombineras genom att använda en viktad majoritetsomröstning,
+    \begin{equation*}
+        \hat{y}^{B}_{\text{boost}}(\mathbf{x}) = \sign \left(\sum_{b=1}^{B} \alpha^b \hat{y}^b(\mathbf{x})\right).
+    \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration1.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration2.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration3.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration4.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration5.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration6.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration7.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration8.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration9.png}
+\end{frame}
+
+\begin{frame}{Boosting exempel}
+    \includegraphics[width=\textwidth]{figs/Boosting illustration10.png}
+\end{frame}
+
+\begin{frame}{Boosting - Detaljer}
+    
+    Boosting fungerar bra, men vi har lite detaljer vi måste reda ut först.
+
+    \begin{enumerate}
+        \item Hur ska vi vikta om data?
+        \item Hur ska vi vikta koefficienterna $\alpha^b$?
+    \end{enumerate}
+
+    Olika boostingalgoritmer svarar olika på dessa frågor.
+
+    Den första praktiska algoritmen AdaBoost, svarade på dessa frågor genom att minimera exponentialförlust.
+
+\end{frame}
+
+\begin{frame}{AdaBoost}
+
+    \begin{enumerate}
+        \item Ge varje datapunkt en vikt $w_i^1 = 1/n$.
+        \item För $b = 1, \ldots, B$
+        \begin{enumerate}
+            \item[a] Träna en "svag" klassificerare $\hat{y}^{b}(\mathbf{x})$ på den \myheading{viktade träniningsdatan} $\{(\mathbf{x}_i,y_i,w_i^b)\}_{i=1}^{n}$.
+            \item[b] Uppdatera vikterna $\{w_{i}^{b+1}\}_{i=1}^{n}$ från $\{w_{i}^{b}\}_{i=1}^{n}$
+            \begin{enumerate}
+                \item[i] Beräkna $E_{\text{train}}^{b} = \sum_{i=1}^{n} w_{i}^{b} \mathbb{I}\{y_i \neq \hat{y}^{b}(\mathbf{x}_i)\}$.
+                \item[ii] Beräkna $\alpha^{b} = 0.5 \log((1 - E_{\text{train}}^{b})/E_{\text{train}}^{b})$.
+                \item[iii] Beräkna $w_{i}^{b+1} = w_i^b \exp(- \alpha^{b} y_i \hat{y}^{b}(\mathbf{x}_i)), i = 1,\ldots,n$.
+                \item[iv] Normalisera $w_i^{b+1}$. 
+            \end{enumerate}
+        \end{enumerate}
+        \item Output $\hat{y}^{B}_{\text{boost}}(\mathbf{X}) = \sign\left(\sum_{b=1}^{B} \alpha^b \hat{y}^{b}(\mathbf{x})\right)$.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Boosting för regressionsträd}
+
+    \includegraphics[width=\textwidth]{figs/boosting for regression trees.png}
+    
+\end{frame}
+
+\begin{frame}{Boosting - Sammanfattninig}
+    
+    Finns många andra varianter:
+    \begin{itemize}
+        \item Gradient boosting:
+        \begin{itemize}
+            \item XGboost
+            \item LightGBM
+            \item CatBoost
+        \end{itemize}
+        \item Presterar bra och vinner ofta tävlingar.
+    \end{itemize}
+
+    Om vi jämför med baggning kan vi se:
+
+    \begin{tabular}{l | l}
+        Bagging & Boosting \\ \hline
+        Kan träna modeller parallellt & Tränar modeller sekventiellt \\
+        Använder bootstrappade dataset & Använder viktade dataset \\
+        Överanpassar inte med ökande $B$ & Kan överanpassa när $B$ ökar \\
+        Minskar variansen men inte bias & Minska varians och bias.
+        
+    \end{tabular}
+
+\end{frame}
+
+\end{document}

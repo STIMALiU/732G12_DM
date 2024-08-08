@@ -1,0 +1,462 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 2}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+    
+    \begin{itemize}
+        \item Modellval
+        \item Generaliserade linjära modeller
+        \item Modellval för linjär regression
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Modellval}
+    
+    \begin{itemize}
+        \item Vi söker en modell som \textbf{generaliserar} väl.
+        \begin{itemize}
+            \item Med generalisering menas att den ska fungera bra på ny data.
+        \end{itemize}
+        \item En komplex modell har lättare att överanpassa.
+        \item Vad är ''komplexitet''?
+        \begin{itemize}
+            \item Linjär modell: Antal variabler, interaktioner, transformationer etc.
+            \item Neurala nätverk: Bredd och djup av modellen.
+            \item Trädmodeller: Djupet.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Regularisering}
+
+    Regularisering är ett sätt att motverka överanpassning.
+
+    \begin{itemize}
+        \item Idé att hindra modellen att bli för komplex.
+        \item Ger förhoppningsvis bättre generaliseringsfel.
+        \item \textbf{Mycket viktigt tema inom maskininlärning}
+        \item Görs på olika sätt för olika metoder.
+    \end{itemize}
+
+    Idé är att
+    \begin{equation*}
+        \text{Komplex modell} + \text{regularisering} = \text{en bra modell}
+    \end{equation*}
+
+    Kommer prata mer om detta senare.
+
+\end{frame}
+
+\begin{frame}{Regression och Klassificering}
+    
+    Två klassiska problem är regression och klassificering.
+
+    \begin{itemize}
+        \item Regression: Prediktera en variabel $y$, oftast $y$ kontinuerlig. Bruset $\varepsilon$ är:
+        \begin{itemize}
+            \item Vanligast är normalfördelat.
+            \item Alternativt, t-fördelning, Gamma, Log-normal,\dots
+            \item Kan också vara disktet, Poisson, Negativ binomial,\dots
+        \end{itemize}
+        \item Fördelningen ger felfunktionen.
+        \item Klassificering: $y$ är kategorisk med 2 eller flera utfall:
+        \begin{itemize}
+            \item Binär: logistisk/probit regression
+            \item Fler klasser: Multinomial logistisk/probit regression
+            \item Kommer diskutera fler metoder senare
+        \end{itemize}
+        \item Hur skapa felfunktion?
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Förväxlingsmatris}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{figs/Screenshot at 2020-08-18 12-24-31.png}
+\end{center}
+
+\begin{itemize}
+    \item Precision:
+    \begin{equation*}
+        \operatorname{P} = \frac{f_{11} + f_{00}}{f_{11} + f_{10} + f_{01} + f_{00}}.
+    \end{equation*}
+    \item Felkvot (error rate):
+    \begin{equation*}
+        \operatorname{E} = \frac{f_{10} + f_{01}}{f_{11} + f_{10} + f_{01} + f_{00}}.
+    \end{equation*}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Förväxlingsmatris}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figs/Screenshot at 2020-08-18 12-24-31.png}
+    \end{center}
+    
+    \begin{itemize}
+        \item Sensitivitet (recall, hit rate, true positive rate):
+        \begin{equation*}
+            \operatorname{TPR} = \frac{f_{11} }{f_{11} + f_{10}}.
+        \end{equation*}
+        \item Specifitet (selectivity, true negative rate):
+        \begin{equation*}
+            \operatorname{TNR} = \frac{f_{00}}{f_{00} + f_{01}}.
+        \end{equation*}
+    \end{itemize}
+        
+\end{frame}
+
+\begin{frame}{F-score}
+    
+    \begin{itemize}
+        \item F-score är ett mått av träffsäkerhet baserat på precision och sensitivitet.
+        \begin{equation*}
+            F_{\beta} = (1 + \beta^2) \frac{\operatorname{P} \cdot \operatorname{TPR}}{\beta^2 \cdot \operatorname{P} + \operatorname{TPR}}
+        \end{equation*}
+        \item Vanligt med $\beta=1$ vilket ger (harmoniska medelvärdet)
+        \begin{equation*}
+            F_1 = 2 \frac{\operatorname{P} \cdot \operatorname{TPR}}{\operatorname{P} + \operatorname{TPR}}
+        \end{equation*}
+        \item F-score är mellan 0 och 1, högre är bättre.
+        \item $\beta$ säger hur du värderar precision och sensivitet.
+        \item Beräknas klassvis.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generaliserade linjära modeller}
+
+    Antag att data $\mathbf{y} = y_1, y_2, \ldots, y_n$ är oberoende observationer från sannolikhetsfördelning från exponentialfamiljen.
+
+    Vi har en linjär prediktor $\mathbf{X} \beta$ samt en länkfunktion $g$ som kopplar ihop prediktorn med medelvärdet $\mu$ genom
+    \begin{equation*}
+        g(\mu) = \mathbf{X} \beta.
+    \end{equation*}
+    
+    Tar "vanlig" linjär regression till andra typer av responsvariabler
+    \begin{itemize}
+        \item Kontinuerlig: Normal, t, gamma, log-normal
+        \item Binär: Logistisk regression
+        \item Nominell: Multinomiell logistisk regression
+        \item Frekvensdata: Poisson regression
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Generaliserade linjära modeller - Exempel}
+
+    \myheading{Linjär regression}
+    \begin{itemize}
+        \item Likelihood: Normal
+        \item L\"ankfunktion: identitetsfunktionen
+        \item SKattas genom att minimera:
+        \begin{equation*}
+            \operatorname{RSS} = \sum_{i=1}^{n} \left( y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij} \right)^2
+        \end{equation*}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generaliserade linjära modeller - Exempel}
+    \myheading{Logistisk regression}
+    \begin{itemize}
+        \item Likelihood: Bernoulli ($y$ kan vara 0 eller 1, $\mathbb{P}(y = 1) = p$)
+        \item L\"ankfunktion: Logit,
+        \begin{equation*}
+            g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
+        \end{equation*}
+        \item Skattas med att maximera MLE
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Generaliserade linjära modeller - Exempel}
+%     \myheading{Multinominell logistisk regression}
+%     \begin{itemize}
+%         \item Likelihood: Kategorisk ($y$ kan ta $K$ olika värden, $\mathbb{P}(y = k) = p_k$)
+%         \item L\"ankfunktion: Logit,
+%         \begin{equation*}
+%             g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
+%         \end{equation*}
+%         \item Skattas med att maximera MLE
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Modellval för linjära regression}
+
+    Utgå ifrån: $y$ kontinuerlig med normal likelihood.
+
+    Vi har ett antal förklarande variabler $\mathbf{x} = (x_1, \ldots, x_p)$. Vill hitta parametrar/modell som ger minst generaliseringsfel.
+
+    Två alternativ:
+    \begin{itemize}
+        \item Alternativ 1: Välj ut en delmängd av variablerna.
+        \begin{itemize}
+            \item Best subset, forward selection, backward selection
+        \end{itemize}
+        \item Alternativ 2: Behåll alla variabler men begränsa parametrarna.
+        \begin{itemize}
+            \item Regularisering, Ridge och Lasso.
+        \end{itemize}  
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Utvärderingsmått}
+    Om vi har flera modeller, hur jämför vi dessa?
+
+    Två alternativ:
+    \begin{itemize}
+        \item Indirekt skatta testfelet
+        \begin{itemize}
+            \item Utgå från träningsmängden
+            \item Försök att minska den bias som uppstår när vi inte använder all data.
+        \end{itemize}
+        \item Direkt skatta testfelet
+        \begin{itemize}
+            \item Valideringsdata
+            \item Korsvalidering
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Indirekt skatta testfelet}
+    MSE på träningsdatan underskattar "riktiga" MSE värdet, kan inte användas för att välja modell.
+
+    Idé: justera träningsfelet för att ta hänsyn till detta. 
+
+    \begin{equation*}
+        C_p = \frac{1}{n} (\operatorname{RSS} + 2 d \hat{\sigma}^2),
+    \end{equation*}
+
+    Litet $C_p$ är bäst.
+
+    \begin{equation*}
+        \text{adjusted R}^2 = 1 - \frac{\operatorname{RSS}/(n-d-1)}{\operatorname{TSS}/(n-1)},
+    \end{equation*}
+    där
+    \begin{equation*}
+        \operatorname{TSS} = \sum_{i=1}^{n}(y_i - \bar{y})^2.
+    \end{equation*}
+
+    Stort $\text{adjusted R}^2$ är bäst.
+\end{frame}
+
+\begin{frame}{Indirekt skatta testfelet}
+    
+    Tre andra mått AIC, BIC och HQIC är baserade på MLE skattning ev modeller.
+
+    Låt $\log(\hat{L})$ vara log-likelihood för optimala parametervärden.
+
+    \begin{align*}
+        \operatorname{AIC} &= 2 d - 2 \log(\hat{L}) \\
+        \operatorname{BIC} &= d \cdot \log(n) - 2 \log(\hat{L}) \\
+        \operatorname{HQIC} &= d \cdot \log(\log(n)) - 2 \log(\hat{L}) 
+    \end{align*}
+
+    Lågt värde är bättre.
+
+\end{frame}
+
+\begin{frame}{Indirekt skatta testfelet}
+    
+    \myheading{Linjär Regression}
+
+    \begin{align*}
+        \operatorname{AIC} &= \frac{1}{n \hat{\sigma}^2} (\operatorname{RSS} + 2 d \hat{\sigma}^2) \\
+        \operatorname{BIC} &= \frac{1}{n \hat{\sigma}^2} (\operatorname{RSS} + \log(n) d \hat{\sigma}^2) \\
+        \operatorname{HQIC} &= \frac{1}{n \hat{\sigma}^2} (\operatorname{RSS} + \log(\log(n)) d \hat{\sigma}^2)
+    \end{align*}
+
+    För linjär regression är $C_p \propto \operatorname{AIC}$.
+
+    \includegraphics[width = \textwidth]{figs/logplot.png}
+
+\end{frame}
+
+\begin{frame}{Best subset selection}
+    \begin{nscenter}
+        \includegraphics[width=\textwidth]{figs/best subset selection.png}
+    \end{nscenter}
+    Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
+
+\end{frame}
+
+\begin{frame}{Forward selection}
+    \begin{nscenter}
+        \includegraphics[width=\textwidth]{figs/Forward stepwise selection.png}
+    \end{nscenter}
+    Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
+
+\end{frame}
+
+\begin{frame}{Backward selection}
+    \begin{nscenter}
+        \includegraphics[width=\textwidth]{figs/Backward stepwise selection.png}
+    \end{nscenter}
+    Bild från kursboken "An Introduction to Statistical Learning with Applications in R".
+
+\end{frame}
+
+\begin{frame}{Krympning (Shrinkage)}
+    
+    Idé: begränsa hur stora parametrarna får vara.
+    \begin{itemize}
+        \item Straffa stora parametrar
+        \item Ändra deras värdemängd
+    \end{itemize}
+    Vanligaste metoderna:
+    \begin{itemize}
+        \item Ridge: $l^2$-norm
+        \item Lasso: $l^1$-norm
+    \end{itemize}
+
+    Kom ihåg att standardisera era förklarande variabler först innan krympning!
+
+\end{frame}
+
+\begin{frame}{Ridge Regression}
+
+    I vanliga regression minimerar vi
+    \begin{equation*}
+        f(\beta) = \operatorname{RSS} = \sum_{i=1}^{n}\left(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\right)^2
+    \end{equation*}
+    I Ridge lägger vi till $l^2$-norm på $\beta$ vilket ger
+    \begin{equation*}
+        f_{\text{Ride}}(\beta) = \sum_{i=1}^{n}\left(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\right)^2 + \lambda \sum_{j=1}^{p} \beta_j^2, \quad \lambda \geq 0.
+    \end{equation*}
+    $\lambda$ är en \textbf{hyperparameter} som vi behöver sätta.
+
+    Notera att $\beta_0$ inte påverkas.
+    
+\end{frame}
+
+\begin{frame}{Ridge Regression}
+
+    \includegraphics[width=\textwidth]{figs/standardized ridge regression coefficients.png}
+    
+\end{frame}
+
+\begin{frame}{Lasso Regression}
+    I vanliga regression minimerar vi
+    \begin{equation*}
+        f(\beta) = \operatorname{RSS} = \sum_{i=1}^{n}\left(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\right)^2
+    \end{equation*}
+    I Ridge lägger vi till $l^1$-norm på $\beta$ vilket ger
+    \begin{equation*}
+        f_{\text{Ride}}(\beta) = \sum_{i=1}^{n}\left(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\right)^2 + \lambda \sum_{j=1}^{p} |\beta_j|, \quad \lambda \geq 0.
+    \end{equation*}
+    $\lambda$ är en \textbf{hyperparameter} som vi behöver sätta.
+
+    Notera att $\beta_0$ inte påverkas.
+\end{frame}
+
+\begin{frame}{Lasso Regression}
+    
+    \includegraphics[width=\textwidth]{figs/standardized lasso coefficients.png}
+
+\end{frame}
+
+\begin{frame}{Ridge vs Lasso}
+    \begin{tabular}{lll}
+        & Ridge & Lasso \\ \hline
+        $\lambda \to 0$ & $\hat{\beta}_{\text{Ridge}} \to \hat{\beta}_{\text{OLS}}$ & $\hat{\beta}_{\text{Lasso}} \to \hat{\beta}_{\text{OLS}}$ \\
+        $\lambda \to \infty$ &  $\hat{\beta}_{\text{Ridge}} \to 0$ &  $\hat{\beta}_{\text{Lasso}} \to 0$ \\
+        Norm & $l^2$-norm & $l^1$-norm \\
+        Område & Hypersfär & Polytop \\
+        Parametrar & Krymper och ger många små & Sätter många till 0 \\
+        Korrelerade variable & Krymper alla lika mycket & Sätter en till 0
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Ridge vs Lasso}
+
+    \includegraphics[width=\textwidth]{figs/Contours of the error .png}
+    
+\end{frame}
+
+\begin{frame}{Ridge vs Lasso}
+    
+    \begin{itemize}
+        \item I R, skattas enkelt med \texttt{glmnet()} eller \texttt{cv.glmnet()}.
+        \item Vilken som är bäst beror på kontext.
+        \item Ridge passar bra när $y$ beror på de flesta variablerna.
+        \begin{itemize}
+            \item Många variabler och ungefär samma effektstorlek.
+        \end{itemize}
+        \item Lasso passar bra när $y$ beror på bara några få variabler.
+        \begin{itemize}
+            \item Fåtal variabler med hög effektstorlek, resten nära 0.
+        \end{itemize}
+        \item Lasso kan vara lättare att tolka.
+        \item Lättare att göra inference på parameterarna i Ridge.
+        \item Vilken man ska välja får ofta avgöras empiriskt för specifika dataset.
+        \item Finns många utökningar.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Adaptive-Lasso}
+    \begin{itemize}
+        \item Låt varje parameter $\beta_j$ ha sin egen vikt $w_j$
+        \begin{equation*}
+            f(\beta) = \sum_{i=1}^{n}\left(y_i - \beta_0 - \sum_{j=1}^{p}\beta_j x_{ij}\right)^2 + \lambda \sum_{j=1}^{p} w_j |\beta_j|, \quad \lambda \geq 0.
+        \end{equation*}
+        \item Välj vikter
+        \begin{equation*}
+            w_j = | \hat{\beta}_{j, \text{start}} |^{-\gamma}
+        \end{equation*}
+        \item Ofta väljs $\gamma = 1$.
+        \item Behöver startvärde $\hat{\beta}_{j,\text{start}}$, kan använda OLS eller Ridge skattning.
+        \item Stora startvärden ger små vikter vilket gör att parametern krymper mindre.
+        \item Finns vissa teorestiska fördelar, men kräver extra skattning.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Elasticnet regression}
+
+    \begin{itemize}
+        \item Kombinerar Ridge och Lasso.
+        \item Ny hyperparameter $\alpha$ för att mixa dessa,
+        \begin{equation*}
+            f(\beta) = \operatorname{RSS} + \lambda \left((1-\alpha) \sum_{j=1}^{p}\beta_j^2 + \alpha \sum_{j=1}^{p}|\beta_j|  \right), \qquad \lambda \geq 0,\, 0 \leq \alpha \leq 1.
+        \end{equation*}
+        \item $\lambda$ är likt tidigare hur mycket regularisering vi gör.
+        \item $\alpha$ väljer hur mycket vikt vid Ridge respektive Lasso.
+        \item Kan tvinga vissa $\beta$ till 0, men inte lika många som Lasso.
+        \item Klarar av korrelerade/grupper av variabler bättre än Lasso.
+        \item Nackdel är att vi har två hyperparametrar.
+    \end{itemize}
+    
+\end{frame}
+
+
+\end{document}

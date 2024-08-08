@@ -1,0 +1,356 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 3}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+    
+    \begin{itemize}
+        \item Linjära och icke-linjära modeller
+        \item Trädmodeller
+        \item Metoder för besultsträd
+        \item Regularisering
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linjära och icke-linjära modeller}
+    Inom både regression och klassificering har vi pratat om linjära modeller.
+
+    Exempel:
+    \begin{itemize}
+        \item Linjär regression
+        \item Linjär logistisk regression
+    \end{itemize}
+
+    Lätta att skatta och tolka.
+
+    Kan inte lösa alla problem.
+\end{frame}
+
+\begin{frame}{Exempel - Klassificering}
+
+    \includegraphics[width=0.8\textwidth]{figs/non-linear class problem.png}
+
+    100 observationer, två förklarande variabler, binär respons.
+
+\end{frame}
+
+\begin{frame}{Exempel - Klassificering}
+    
+    \includegraphics[width=0.8\textwidth]{figs/non-linear class problem2.png}
+
+    Sann beslutsregel: $x_2 \cdot (1 + \exp(-25 \cdot (x_1 - 0.5))) > 1$
+
+    Bästa linjära?
+
+\end{frame}
+
+
+\begin{frame}{Linjär regression till icke-linjär?}
+    
+    Som vanligt, har förklarande variabler $\mathbf{X} = (x_1, x_2, \ldots, x_p)$ och respons $y$.
+
+    Modellerear som $y = \mathbf{X}\beta$.
+
+    Ett sätt att hantera icke-linjära samband är att transformera $\mathbb{X}$.
+
+    Till exempel:
+    \begin{itemize}
+        \item Polynomregression
+        \item Andra funktioner
+        \item Interaktioner
+        \item Stegfunktioner
+        \item Diskretisering
+    \end{itemize}
+
+    Svårt att veta vilka transformationer man ska göra, svårt att transformera komplexa datastrukturer.
+
+\end{frame}
+
+\begin{frame}{Icke-linjära modeller}
+    
+    Maskininlärning har gett oss många olika metoder för att anpassa mer generella icke-linjära modeller.
+
+    \begin{greenbox}
+        Målet är att hitta "automatiska" transformationer av de förklarande variablerna.
+    \end{greenbox}
+
+    Ska kunna hantera många variabler av olika typer.
+
+    Exempel:
+    \begin{itemize}
+        \item Trädmodeller
+        \item Neurala nätverk
+        \item Splines
+        \item Local regression
+        \item Generalized additive models
+        \item Support vector machines
+        \item K-närmaste grannar
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Trädmodeller}
+    \begin{greenbox}
+        Idé: Dela upp variabelrummet i icke överlappande regioner (rektanglar), alla observationer i samma region har samma värde.
+    \end{greenbox}
+
+    Reglerna för att hitta sin region kan beskrivas i en trädstruktur (binärt träd) kallas det för trädmodeller.
+
+    Skattning inom ett område sker oftast genom medelvärde eller typvärde.
+
+    Hur delar vi upp variabelrummet på ett bra sätt?
+\end{frame}
+
+\begin{frame}{Besultsträd}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+           Ett träd består av:
+           \begin{itemize}
+            \item Rotnod (N1)
+            \item Noder (N*)
+            \item Löv/slutnoder (N4-N7)
+            \item Regler (Cond.1-Cond.6)
+            \item Varje löv har ett tilldelat klassvärde
+           \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}  %%<--- here
+            \begin{center}
+             \includegraphics[width=\textwidth]{figs/tree1.png}
+             \end{center}
+        \end{column}
+        \end{columns}
+\end{frame}
+
+\begin{frame}{Beslutsträd Exempel}
+    \includegraphics[width=\textwidth]{figs/tree2.png}
+\end{frame}
+
+\begin{frame}{Att bygga ett träd}
+    \myheading{Hunt's algoritm}
+    \begin{enumerate}
+        \item Givet en nuvarande datamängd $D_t = \{(X_i, Y_i), i = 1,\ldots,n\}$ för den aktuella noden $t$.
+        \item Om alla $Y_i$ är lika, markera $t$ som ett löv och ge värdet $Y_i$.
+        \item Annars, använd en \myheading{testregel} för att dela upp $D_t$ i flera delar $D_{t_1}, \ldots, D_{t_k}$ och kör algoritmen (steg 1) för alla dessa noder.
+    \end{enumerate}
+
+    \myheading{Testregler:}
+    \begin{description}
+        \item[Binära attribut] Binär uppdelning
+        \item[Nomiala attribut] Binär eller mångfaldig uppdelninig
+        \item[Ordinala attribut] Uppdelning som bevarar attributsföljden
+        \item[Intervall attribut] Uppdelning till icke-överlappande intervall
+    \end{description}
+\end{frame}
+
+\begin{frame}{Att bygga ett träd - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/tree3.png}
+    
+\end{frame}
+
+\begin{frame}{Trädmodeller}
+    
+    Sammanfattninig:
+    \begin{itemize}
+        \item Idé: Dela upp observationerna för att separera klasser.
+        \item Uppdelningen sker genom att jämföra testregler.
+        \item För att avsluta processen:
+        \begin{itemize}
+            \item Dela upp tills alla observationer har samma klass
+            \item Alt 1. Dela upp tills alla attribut är lika.
+            \item Alt 2. Bestäm en regel för tidigt avslut.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{CART}
+    Classification and Regression Trees (CART).
+
+    I grunden Hunt's algoritm.
+
+    Stöd för kontinuerliga och diskreta utfall.
+
+    Optimering för att välja bästa splitten.
+\end{frame}
+
+\begin{frame}{CART - Regressionsträd}
+    
+    Att försöka minimera RSS över alla möjliga partitioneringar och funktionsvärden är orimligt.
+
+    Istället kör vi med en girig algoritm, där vi vill hitta bästa variabeln $x_j$ och uppdelning $s$ genom att lösa följande problem:
+    \begin{align*}
+        \min_{j,s} \left[ \min_{c_1} \sum_{x_1 \in R_1(j,s)} (y_i - c_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j,s)} (y_i - c_2)^2 \right], \\
+        R_1(j,s) = \{x \mid x_j \leq s\} \qquad R_2(j,s) = \{x | x_j \geq s\},
+    \end{align*}
+    $c_1$ och $c_2$ skattas oftast som medelvärdet av respektive region.
+\end{frame}
+
+\begin{frame}{CART - Regressionsträd}
+    \includegraphics[width=0.85\textwidth]{figs/reg_tree_surface.png}
+\end{frame}
+
+\begin{frame}{CART - Klassificeringsträd}
+    
+    När det kommer till klassificering behöver vi ett nytt mått för att utvärdera om en regel är bra eller dålig.
+
+    Låt $p_{m,k} = \frac{1}{s} \sum_{i : x_i \in R_m} \mathbb{I}_{y_i = k}$ vara proportionen av träningsdata i region $m$ som tillhör klass $k$.
+
+    Kriterier för att välja regioner:
+    \begin{description}
+        \item[Felkvot] $E = 1 - \max_{k} (p_{m,k})$
+        \item[Gini index] $G = \sum_{k} p_{m,k} ( 1 - p_{m,k}) = 1 - \sum_{k} p_{m,k}^2$
+        \item[Cross-entropy] $D = - \sum_{k} p_{m,k} \log(p_{m,k})$   
+    \end{description}
+
+\end{frame}
+
+\begin{frame}{CART - Klassificeringsträd}
+
+    Välj nu den uppdelning som maximerar informationsvinsten
+    \begin{align*}
+        \Delta = I(\text{förälder}) - I(\text{barn}), \\
+        \Delta = I(\text{förälder}) - \sum_{j} \frac{N(R_j)}{N} I(R_j),
+    \end{align*}
+    Där
+    \begin{description}
+        \item[$I(\cdot)$] är ditt valda mått (Felkvot, Gini, Entropy)
+        \item[$N$] antal objekt i föräldranoden
+        \item[$R_j$] är barnnod $j$
+        \item[$N(R_j)$] antal objekt i barnnod $j$    
+    \end{description}
+    
+\end{frame}
+
+\begin{frame}{CART - Klassificeringsträd}
+
+    Predikationer görs med majoritetsröstninig. Vi vill helst att alla observationer i ett löv ska ha samma klass.
+
+    Vi stoppar utbyggnadet på samma sätt som i Hunt's algoritm.
+
+    Entropy och Gini är bättre mått, de ger renare löv.
+
+    Felkvoten används ofta för att utvärdera trädet på testdata.
+
+    Trädmodeller överanpassar väldigt lätt. Vilket ger en hög varians!
+    
+\end{frame}
+
+\begin{frame}{Motverka överanpassning}
+
+    Två olika sätt
+    \begin{description}
+        \item[Förbeskärnining]
+        \begin{itemize}
+            \item Sluta expandera trädet när informationsvinsten är lägre än en vald tröskel.
+            \item Kräv ett visst minsta antal obs i varje löv.
+        \end{itemize}
+        \item[Efterbeskärninig]
+        \begin{itemize}
+            \item Beskär ett helt utväxt träd, ersätt delträd med ett löv.
+        \end{itemize}
+    \end{description}
+    
+\end{frame}
+
+\begin{frame}{Efterbeskärning}
+    Använd CART för att ta växa fram ett stort träd $T_0$ på all träningsdata.
+
+    För varje $\alpha \geq 0$ finns ett delträd $T \subset T_0$ som minimerar kostande
+    \begin{equation*}
+        C_{\alpha}(T) = \sum_{R \in \text{Löv i T}} N(R) \cdot I(R) + \alpha |T|,
+    \end{equation*} 
+    där $|T|$ är antalet löv i $T$.
+
+    Använd korsvalidering för att skatta $\alpha$, välj det som ger minst valideringsfel.
+
+    Idén är lik LASSO.
+\end{frame}
+
+\begin{frame}{Regressionsträd med cost complexity pruning}
+    \includegraphics[height=0.9\textheight]{figs/reg_tree_estimate.png}
+\end{frame}
+
+\begin{frame}{Trädmodell eller linjär modell}
+    För regression har vi:
+
+    \myheading{Linjär regression}
+    \begin{equation*}
+        f(x) = \beta_0 + \sum_{i=1}^{p} x_i \beta_i
+    \end{equation*}
+
+    \myheading{Regressionsträd}
+    \begin{equation*}
+        f(x) = \sum_{i=1}^{M}c_i \mathbb{I}_{c \in R_i}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Trädmodell eller linjär modell}
+    För klassificering har vi:
+
+    \includegraphics[width = \textwidth]{figs/trees_vs_linear.png}
+
+\end{frame}
+
+\begin{frame}{Kommentarer om trädmodeller}
+    Fördelar:
+    \begin{itemize}
+        \item Lätta att förstå och tolka
+        \item Klarar av olika responsvariabler
+        \item Kräver inte så mycket datahantering innan
+        \item Funkar på relativt stora dataset
+        \item Icke-parametrisk metod
+        \item Automatisk variabelselektion
+        \item Kan anpassa många olika sorters funktioner
+    \end{itemize}
+
+    Nackdelar:
+    \begin{itemize}
+        \item Sämre prediktiv förmåga än vissa andra metoder
+        \item Orubusta: överanpassar lätt
+        \item Omöjligt att hitta det optimala trädet
+        \item Vissa enkla funktioner kräver ett komplext träd
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Kommentarer om trädmodeller}
+
+    Förbättringar:
+    \begin{itemize}
+        \item Bagging
+        \item Random forest
+        \item Boosting
+        \item BART: Bayesian Additive Regression Trees
+    \end{itemize}
+    
+\end{frame}
+
+\end{document}

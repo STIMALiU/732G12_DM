@@ -4,3 +4,12 @@
 .Ruserdata
 # LyX
 *.lyx~
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+.vscode/settings.json

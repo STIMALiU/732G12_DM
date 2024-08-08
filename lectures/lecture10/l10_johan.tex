@@ -1,0 +1,339 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 10}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item One-Dimensional Kernel Smoothers
+        \item Lokal Regression
+        \item Generaliserade Additativa Modeller
+        \item Sammanfattning av Kursen
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    Vi tänker oss tillbaka till KNN och dess användning vid regression.
+    \begin{equation*}
+        \hat{g}(x) = \operatorname{Medel}(y_i | x_i \in N_k(x)).
+    \end{equation*}
+
+    \includegraphics[width=\textwidth]{fig/knnreg.png}
+
+    Blå har $K=10$ och grön $K=30$.
+\end{frame}
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    \begin{itemize}
+        \item Problem med hopp i funktionen.
+        \item Ett sätt att lösa det är att vikta om punkterna.
+    \end{itemize}
+
+    Vi vill estimera $g(x_0)$ men istället för att ge alla närliggande punkterna samma vikt så använder vi
+    \begin{equation*}
+        \hat{g}(x_0) = \frac{\sum_{i=1}^{n} K_{\lambda}(x_0, x_i) y_i}{\sum_{i=1}^{n}K_{\lambda}(x_0, x_i)},
+    \end{equation*}
+    där $K_{\lambda}(x_0, x_i)$ är en viktfunktion (Kernel).
+\end{frame}
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+    
+    Kernel-funktionen är en täthet, vanligtvis given på formen
+    \begin{align*}
+        K_{\lambda} (x_0, x_i) &= D\left(\frac{|x_0 - x_i|}{\lambda}\right) \\
+        D(t) &\propto \begin{cases}
+            (1 - |t|^p)^q,& \quad \text{om } |t| \leq 1, \\
+            0& \text{annars.}
+        \end{cases}
+    \end{align*}
+    eller $D(t)$ är täthetsfunktionen för en standard normalfördelning. $\lambda$ kallas för "bandwidth".
+
+    \begin{description}
+        \item[Triangel] : $p = 1, q = 1$
+        \item[Epanechnikov] : $p = 2, q = 1$
+        \item[Quartic] : $p = 2, q = 2$ 
+        \item[Tri-cube] : $p = 3, q = 3$  
+    \end{description}
+    
+
+\end{frame}
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    Vi testar tre olika kernels (Triangel - Grön, Epanechnikov - Brun, Quartic - Blå) och får följande resultat
+
+    \includegraphics[width = \textwidth]{fig/kernel.png}
+    
+\end{frame}
+
+\begin{frame}{One-Dimensional Kernel Smoothers}
+
+    \begin{itemize}
+        \item Ett sätt att göra "viktat KNN" som ger en "mjuk" funktion.
+        \item Vanligtvis sätter vi inte ett antal grannar.
+        \begin{itemize}
+            \item Låter $\lambda$ styra hur stort fönster vi kollar i.
+        \end{itemize}
+        \item Många olika val av kernels.
+        \item Problem vid kanterna.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Lokal Regression}
+
+    Vi har sedan tidigare delat upp variabelrummet i olika delar och gjort regression på varje del.
+
+    Istället för att dela upp rummet i förväg och göra regression i varje del, varför inte välja ett intervall runt den punkt där vi vill beräkna regressionen?
+
+    Hur välja område?
+    
+\end{frame}
+
+\begin{frame}{Lokal Regression}
+    Inspirerat av det One-Dimensio Kenel Smoothers
+    \begin{greenbox}
+        Gör (linjär) regression vid en punkt $x_0$ där vi viktar alla fel med en kernel.
+    \end{greenbox}
+
+    För varje punkt $x_0$ där vi vill beräkna funktionen löser vi ett regressionsproblem
+    \begin{equation*}
+        \min_{\mathbf{\beta}(x_0)} \sum_{i=1}^{n} K_{\lambda}(x_0, x_i) [y_i - \beta_0(x_0) + \beta_1(x_0) x_i]^2.
+    \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Lokal Regression}
+    Skattar lokal regression med olika $\lambda$ med $p = q = 3$ (Tri-Cube)
+
+    \includegraphics[width = \textwidth]{fig/locreg.png}
+\end{frame}
+
+\begin{frame}{Lokal Regression}
+    
+    \begin{itemize}
+        \item Kan såklart göra polynomregression istället för linjär regression.
+        \item Går att göra för multiple regression,
+        \begin{itemize}
+            \item Vanligt att man bara gör lokal regression för några enstaka parametrar.
+            \item Kan göra simultan lokal regression där vi skattar ett $p$-dimensionellt plan.
+            \item Funkar (generellt) dåligt för $p$ större än 4.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Generaliserade Additativa Modeller}
+
+    Allt det vi gjort denna och förra föreläsning handlar om att presentera flexibla modeller för att prediktera $y$ givet $x$.
+    
+    Nu ska vi använda detta för att skapa flexibla modeller för att prediktera $y$ givet $x_1, x_2, x_3, \ldots, x_p$.
+
+    \begin{greenbox}
+        \imp{Generaliserade Additativa Modeller} (GAM) är en generell modell för att utöka linjär regression genom att tillåta icke-linjära funktioner av varje variabel, samtidigt som modellen är additativ.
+    \end{greenbox}
+    
+\end{frame}
+
+\begin{frame}{Generaliserade Additativa Modeller}
+    
+    Gemensamt för alla GAM modeller är att vi i vår regression eller klassificerings modell byter ut
+    \begin{equation*}
+        \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_p x_p,
+    \end{equation*}
+    till
+    \begin{equation*}
+        \beta_0 + \beta_1 g_1(x_1) + \beta_2 g_2(x_2) + \ldots + \beta_p g_p(x_p),
+    \end{equation*}
+    där $g_i$ är en ("mjuk") icke-linjär funktion.
+
+\end{frame}
+
+\begin{frame}{Generaliserade Additativa Modeller}
+    
+    För regression får vi följande typ av modell,
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 g_1(x_1) + \beta_2 g_2(x_2) + \ldots + \beta_p g_p(x_p) + \varepsilon_i,
+    \end{equation*}
+    där vi är fria att välja varje $g_i$ själva.
+
+    T.ex. kan vi välja att några ska vara splines, någon kanske är en steg-funktion och någon är identitetsfunktionen.
+
+\end{frame}
+
+\begin{frame}{Generaliserade Additativa Modeller}
+    
+    För klassificering får vi följande typ av modell,
+    \begin{equation*}
+        \log\left(\frac{p(x)}{1 - p(x)}\right) = \beta_0 + \beta_1 g_1(x_1) + \beta_2 g_2(x_2) + \ldots + \beta_p g_p(x_p) + \varepsilon_i,
+    \end{equation*}
+    där vi är fria att välja varje $g_i$ själva.
+
+    Här kan vi igen aktivt välja vilka typer av funktioner som passar bäst per variabel.
+
+\end{frame}
+
+\begin{frame}{Generaliserade Additativa Modeller}
+    
+    \begin{itemize}
+        \item GAMs låter oss anpassa en icke-linjär funktion för varje förklarande variabel.
+        \item Eftersom modellen är additativ kan vi fortfarande undersöka effekten av varje förklarande variabel genom att hålla de andra konstanta.
+        \item Hur "mjuka" varje funktion är kan vi beskriva genom frihetsgraderna. 
+        \item Den största nackdelen är att modellen måste vara additativ.
+        \begin{itemize}
+            \item Detta gör att interaktioner mellan variabler missas.
+            \item Vi kan lägga till specifika interaktioner, men detta måste göras manuellt.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[standout]
+    \Huge Sammanfattning av kursen
+\end{frame}
+
+\begin{frame}{Sammanfattning av kursen}
+
+    Sammanfattning i en mening:
+    \begin{itemize}
+        \item Givet data, hitta den bästa (mest lämpade), modellen som beskriver detta dataset.
+    \end{itemize}
+
+    Till vår hjälp har vi gått igenom väldigt många olika modeller och algoritmer.
+    
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Modellval
+        \begin{itemize}
+            \item Felfunktioner
+            \item Dela upp data i träning, validering, test.
+            \item Korsvalidering
+            \item AIC, BIC\dots
+            \item Variabelselektion
+        \end{itemize}
+        \item Regularisering,
+        \begin{itemize}
+            \item LASSO, Ridge
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Trädmodeller
+        \begin{itemize}
+            \item Dela upp variabelrummet i rektanglar.
+            \item Varje rektangel får ett värde.
+            \item Olika regler för uppdelning beroende på problem.
+        \end{itemize}
+        \item Beskärning av träd
+        \begin{itemize}
+            \item Förbeskärning
+            \item Efterbeskärning
+        \end{itemize}
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging - Använd bootstrap för att skapa många "oberoende" träd.
+            \item Random forest - Gör slumpmässiga ändringar i träden.
+            \item Boosting - Skapa många små träd, men modifiera datan mellan varje träd.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item K-närmaste grannar
+        \begin{itemize}
+            \item Skattar värdet med hjälp av närmaste datapunkterna.
+            \item Kan förbättras genom att vikta med avståndet
+        \end{itemize}
+        \item Naive bayes
+        \begin{itemize}
+            \item Skatta klassificering med hjälp av bayes sats
+            \item För full fördelning krävs mykcet data.
+            \item Görs ofta förenklningen att varje variabel är oberoende.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Klusteranalys
+        \begin{itemize}
+            \item Oövervakad inlärning.
+            \item K-means klustring
+            \item Hierarkisk klustring
+            \item K-medoid klustring
+            \item DBSCAN
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Icke-linjär regression
+        \begin{itemize}
+            \item Grundidé är att hitta en transformation av förklarande variabler.
+            \item Gått igenom många olika transformationer.
+        \end{itemize}
+        \item Basfunktioner
+        \item Splines
+        \item Kernelfunktioner
+        \item Lokal regression
+        \item Neurala nätverk
+        \begin{itemize}
+            \item Olika typer av lager för oliak problem.
+            \item Olika aktiveringsfunktioner.
+            \item Global approximation theorem.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[standout]
+    \Huge Tack för att ni har lyssnat!
+
+    \large Nu är det bara projektet kvar.
+\end{frame}
+
+\end{document}

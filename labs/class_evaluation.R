@@ -11,7 +11,7 @@
 class_evaluation <- function(new_data, model, true_y, type = "class", digits = 3){
   # Predikterar klassen för new_data givet den skattade modellen
   if(any(str_detect(class(model), pattern = "keras"))){
-    pred <- predict_classes(model, new_data)  
+    pred <- model %>% predict(new_data) %>% k_argmax()  
   } else {
     pred <- predict(model, newdata = new_data, type = type)  
   }

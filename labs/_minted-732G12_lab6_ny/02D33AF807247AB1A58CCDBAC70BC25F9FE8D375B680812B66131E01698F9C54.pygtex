@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{n}{y}\PYG{+w}{ }\PYGZbs{}\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n+nf}{poly}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{y}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n+nf}{poly}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{raw}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{y}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{4}\PYG{p}{)}
+\end{Verbatim}

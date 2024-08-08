@@ -1,0 +1,387 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 8}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item K-medoid klustring
+        \item Densitetsbaserade metoder
+        \item Faktorer som påverkar klusteranalys
+        \item Utvärdera klusteranalys
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Information Kandidatuppsats}
+    
+    Kommer (troligtvis) vara ett informationsmöte om kandidatuppsatsen på torsdag nästa vecka. 
+
+\end{frame}
+
+\begin{frame}{K-medoid klustring}
+
+    Använder \imp{medoider} som center/prototyp vid klustring.
+    \begin{itemize}
+        \item En \imp{medoid} är en representativ observation inom ett dataset/kluster.
+        \item Medoid är \imp{inte} samma som centroid, median, geometrisk median etc.
+        \item Medoider är \imp{lätta att tolka}
+        \begin{itemize}
+            \item centroider kan vara punkter som inte liknar någon av observationerna i data.
+        \end{itemize}
+        \item k-medoids:
+        \begin{itemize}
+            \item minimerar summan av parvisa avstånd.
+            \item kan använda godtyckligt avståndsmått.
+            \item mer robust med brus och extremvärden.
+        \end{itemize}
+        \item k-means: använder oftast euklidiskt avstånd.
+        \item k-medoid klustring kallas också Partitioning Around Medoids (PAM)
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-medoid klustring}
+
+    \includegraphics[width = \textwidth]{figs/k-mediod.png}
+    
+\end{frame}
+
+
+
+\begin{frame}{Densitetsbaserade metoder}
+
+    Kluster kan formas baserat på hur densiteten på punkter varierar över variablerna: Täta områden kan defineras som ett kluster.
+
+    \includegraphics[width = .8\textwidth]{figs/density_cluster2.png}
+    
+\end{frame}
+
+\begin{frame}{DBSCAN}
+
+    \begin{itemize}
+        \item Algoritm för att skapa kluster baserat på punkternas täther.
+        \item Använder två begrepp:
+        \begin{itemize}
+            \item $\operatorname{eps}$, en sökradie där vi letar efter punkter.
+            \item $\operatorname{minPts}$, minsta antal punkter.
+        \end{itemize}
+    \end{itemize}
+    
+    Från detta kan vi klassa observation i någon av följande:
+    \begin{description}
+        \item[Kärnpunkt] Punkter med fler än $\operatorname{minPts}$ punkter inom sökradien $\operatorname{eps}$.
+        \item[Gränspunkt] Inte en kärnpunkt men hamnar inom sökradien från en kärnpunkt.
+        \item[Bruspunkt] Varken kärnpunkt eller gränspunkt.   
+    \end{description}
+
+\end{frame}
+
+\begin{frame}{Illustration}
+    
+    \includegraphics[width=\textwidth]{figs/DBSCAN_obs_class.png}
+
+\end{frame}
+
+\begin{frame}{DBSCAN Algoritmen}
+
+    \includegraphics[width=\textwidth]{figs/DBSCAN algoritm.png}
+    
+\end{frame}
+
+\begin{frame}{Val av $\operatorname{eps}$ och $\operatorname{minPts}$}
+
+    Hyperparametrar som vi måste välja.
+    \begin{enumerate}
+        \item Definera ett nummer $k$.
+        \item Beräkna avståndet mellan varje punkt och dess $k$-närmaste granne och sortera punkterna enligt ökande avstånd.
+        \item Definera $\operatorname{eps}$ som värdet där skarp förändring märks (armbågsmetoden).
+        \item $\operatorname{minPts} = k$.
+    \end{enumerate}
+    $k$-värdet vi valt i steg 1 påverkar \imp{inte} $\operatorname{eps}$-värdet mycket om $k$ inte är extremt (för litet eller för stort).
+    
+\end{frame}
+
+\begin{frame}{DBSCAN - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/density_cluster.png}
+    
+\end{frame}
+
+\begin{frame}{DBSCAN - Exempel}
+    
+    \includegraphics[width=\textwidth]{figs/DBSCAN_cluster_example.png}
+
+\end{frame}
+
+\begin{frame}{DBSCAN - För och nackdelar}
+
+    \begin{itemize}
+        \item Brusbeständig.
+        \item Behandlar kluster av olika former och storlekar.
+        \item Problem med kluster som har betydligt varierande tätheter.
+        \begin{itemize}
+            \item Svårt att välja ett bra $\operatorname{eps}$.
+        \end{itemize}
+        \item Problem i stora dimensioner.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{K-means och DBSCAN}
+
+    \includegraphics[width=\textwidth]{figs/compre_k-mean_DBACAN.png}
+    
+\end{frame}
+
+\begin{frame}{Faktorer som påverkar klusteranalys}
+    \begin{itemize}
+        \item Dimensionalitet (problem för täthetsbaserade metoder).
+        \item Datamängdens storlek (stora datamängder är svåra att skala upp).
+        \item Brus och extremvärden.
+        \item Skalan på data: numerisk, kategorisk.
+        \begin{itemize}
+            \item problem att välja närhetsmått för datamängder med blandade attribut.
+        \end{itemize}
+        \item Standardisering av variabler.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Egenskaper}
+    
+\begin{itemize}
+    \item Fördelningar - Olika metoder passar bättre på vissa fördelningar.
+    \item Form - Godtyckliga former är svårare att klustra.
+    \item Storlek - K-means, problem med olika storlekar.
+    \item Tåthet - Olika täthet problem för K-means, DBSCAN.
+    \item Dålgit separerade kluster - Vissa metoder slår ihop överlappande kluster.
+\end{itemize}
+
+\begin{redbox}
+Ingen klustermetod passar för alla dataset!
+\end{redbox}
+
+\end{frame}
+
+\begin{frame}{Utvärdera klusteranalys}
+
+    \begin{itemize}
+        \item Cluster tendency: Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
+        \item Avgöra rätt antal kluster.
+        \item Interna mått på hur bra klusteranalysen är.
+        \item Externa mått på hur bra klusteranalysen är, om vi har tillgång till sanna klasser/grupper.
+        \item Jämföra olika metoder för klusteranalys på samma dataset.
+        \item Kontext och problembeskrivning, avgör om vi har en bra klustring.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Cohesion och Separation}
+    Interna mått.
+    \begin{description}
+        \item[Cohesion:] Hur tight eller sammanhållet ett kluster är med sig själv.
+        \item[Separation:] Hur väl separerat ett kluster är från övriga kluster.
+    \end{description}
+    
+    När vi har beräknat mått för ett kluster kan vi väga samman alla dessa mått till ett mått.
+
+\end{frame}
+
+\begin{frame}{Cohesion och Separation}
+    
+    \begin{align*}
+        \operatorname{cohesion}(C_i) &= \sum_{x \in C_i, y \in C_i} \operatorname{proximity}(x,y) \\
+        \operatorname{proximity}(C_i, C_j) &= \sum_{x \in C_i, y \in C_j} \operatorname{proximity}(x,y)
+    \end{align*}
+
+    \includegraphics[width=.8\textwidth]{figs/cohesion and separation.1.png}
+
+    $\operatorname{proximity}(x,y)$ kan vara både närhetsmått eller avståndsmått.
+
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient}
+    
+    Använder både cohesion och separation för att beräkna ett mått.
+
+    \begin{enumerate}
+        \item Beräkna medelavståndet från $\text{observation}_i$ till alla andra observationer i dess kluster, kalla det $a_i$.
+        \item Beräkna nu medelavståndet från $\text{observation}_i$ till alla kluster som inte innehåller denna observation.
+        \item Hitta det minsta av dessa avstånd kalla det $b_i$.
+        \item Silhouette coefficient för $\text{observation}_i$ defineras som,
+        \begin{equation*}
+            s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+        \end{equation*}
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient}
+
+    \begin{equation*}
+        s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+    \end{equation*}
+
+    \begin{itemize}
+        \item $s_i$ kan ta värden mellan $-1$ och $1$.
+        \item 1 är bästa möjliga värde.
+        \begin{itemize}
+            \item Vill ha $a_i < b_i$ och att $a_i$ ska vara nära noll.
+        \end{itemize}
+        \item Average silhouette coefficient.
+        \begin{itemize}
+            \item Ta medelvärdet över alla $s_i$
+            \item Ger ett mått på hur bra klustringen är.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{The Silhouette Coefficient - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/Silhouette coefficients for points in ten clusters..png}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster}
+
+    \begin{itemize}
+        \item K-means: vi kan använda total SSE och average silhouette coefficient.
+        \item Plotta dessa mot antal kluster.
+        \begin{itemize}
+            \item Kolla efter böjar och toppar.
+            \item SSE planar ut efter en böj: ta antal kluster vid böjen.
+            \item Average silhouette coefficient: Kolla om det finns en eller flera toppar.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster - Exempel}
+
+    \includegraphics[width=\textwidth]{figs/Determining the Correct Number of Clusters.png}
+    
+\end{frame}
+
+\begin{frame}{Calinski-Harabasz Index}
+    \begin{description}
+        \item[Inter-cluster dispersion]
+        \begin{equation*}
+            \operatorname{BGSS} = \sum_{k=1}^{K} n_k \| C_k - C \|^2.
+        \end{equation*}
+        \item[Intra-cluster dispersion]
+        \begin{equation*}
+            \operatorname{WGSS}_k = \sum_{i=1}^{n_k} \| x_{i,k} - C_k \|^2, \qquad \operatorname{WGSS} = \sum_{k=1}^{K} \operatorname{WGSS}_k.
+        \end{equation*}
+        \item[Calinski-Harabasz Index]
+        \begin{equation*}
+            \operatorname{CH} = \frac{\operatorname{BGSS}}{\operatorname{WGSS}} \cdot \frac{N - K}{K-1}.
+        \end{equation*}
+    \end{description}
+    Höga värden är bra för CH.
+
+    Davies-Bouldin Index är ett liknande mått. Där ska man ha låga värden.
+\end{frame}
+
+\begin{frame}{Välja antal kluster}
+
+    \begin{itemize}
+        \item Vi kan beräkna närhetsmatrisen eller avståndsmatrisen för alla datapunkter.
+        \begin{itemize}
+            \item Matris med alla parvisa närheter/avstånd mellan observationer.
+        \end{itemize}
+        \item Notera att detta är dyrt!
+        \begin{itemize}
+            \item Kostar $O(n^2)$
+            \item Svårt att plotta med många observationer.
+            \item En lösning är att ta ett slumpmässigt urval av data.
+        \end{itemize}
+        \item Sortera närhetsmatrisen baserat på kluster.
+        \begin{itemize}
+            \item Först kommer kluster 1, sen kluster 2, osv.
+        \end{itemize}
+        \item Om vi har väl separerade kluster och valt ett bra antal kluster kommer den sorterade matrisen vara ungefär blockdiagonal.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Välja antal kluster - Exempel}
+
+    \includegraphics[width=.8\textwidth]{figs/Similarity matrices for clusters.png}
+    
+\end{frame}
+
+\begin{frame}{Cluster Tendency}
+
+    \begin{itemize}
+        \item Har vi slumpmässig data eller finns det något mönster? (kluster)
+        \item Sampla två grupper om $p$ datapunkter
+        \begin{itemize}
+            \item Uniformt fördelade från datarymden.
+            \item Från datasetet utan återläggning.
+        \end{itemize}
+        \item Beräkna avståndet till närmaste granne i datasetet.
+        \begin{itemize}
+            \item $u_i$ är minsta avståndet från en uniform datapunkt till en observation.
+            \item $w_i$ är minsta avståndet från en samplad datapunkt till en icke-samplad datapunkt.
+        \end{itemize}
+        \item Hopkins statistic:
+        \begin{equation*}
+            \operatorname{H} 0 \frac{\sum_{i=1}^{p}w_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
+        \end{equation*}
+        \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
+        \item Värden nära 1 indikerar att data inte är uniformt fördelat.
+        
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Extern validering}
+
+    \begin{itemize}
+        \item Jämför med sanna klasser/kluster.
+        \item Vi kan ta resultatet från vår klusteranalys som våra "predikterade värden"
+        \item Kan då jämföra med sanna klasserna.
+        \begin{itemize}
+            \item Vi kan då beräkna förväxlingsmatris och liknande mått.
+        \end{itemize}
+        \item Notera:
+        \begin{itemize}
+            \item Vi har inte de "rätta namnen" på våra kluster.
+            \item Vi vill ofta att klustren ska vara så rena som möjligt, dvs. domineras av en klass.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\end{document}
