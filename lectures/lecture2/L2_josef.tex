@@ -46,7 +46,7 @@
         \begin{itemize}
             \item Med generalisering menas att den ska fungera bra på ny data.
         \end{itemize}
-        \item En komplex modell har lättare att överanpassa.
+        \item En flexibel (komplex) modell har lättare att överanpassa.
         \item Vad är ''komplexitet''?
         \begin{itemize}
             \item Linjär modell: Antal variabler, interaktioner, transformationer etc.
@@ -70,7 +70,7 @@
 
     Idén är att
     \begin{equation*}
-        \text{Komplex modell} + \text{regularisering} = \text{en bra modell}
+        \text{Flexibel modell} + \text{regularisering} = \text{en bra modell}
     \end{equation*}
 
     Kommer prata mer om detta senare.
@@ -94,7 +94,7 @@
             \item Binär: logistisk/probit regression
             \item Fler klasser: Multinomial logistisk/probit regression
             \item Kommer diskutera fler metoder senare
-            \item Hur skapar vi en felfunktion?
+            \item Hur skapar vi en felfunktion? Utvärdering?
         \end{itemize}
     \end{itemize}
 
@@ -161,10 +161,13 @@
 \end{frame}
 
 
-\begin{frame}{Förväxlingsmatris - fler klasser}
+\begin{frame}{Klassificering - utvärdering}
+
 
 \begin{itemize}
-    \item Se separat dokument: här
+    \item Vanligt att skatta modellen med en felfunktion (tex negativa loglikelihoodfunktionen) och sen utvärdera med andra mått (felkvot, sensitivitet, specificitet etc)
+    \item Problemet och strukturen på data avgör vilka mått som är lämpliga
+    \item Förväxlingsmatris - fler klasser, se separat dokument: \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/other/confusion\%20matrix\%20classification\%20evaluation\%20metrics.pdf}{här}
 \end{itemize}
     
 \end{frame}
@@ -211,7 +214,7 @@
         \begin{equation*}
             g(\mu) = \log\left( \frac{\mu}{1-\mu} \right)
         \end{equation*}
-        \item Skattas med att maximera MLE
+        \item Skattas med att maximera likelihoodfunktionen (MLE)
     \end{itemize}
 \end{frame}
 
