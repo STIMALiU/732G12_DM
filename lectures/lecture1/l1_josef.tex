@@ -7,7 +7,6 @@
 %\usepackage{../lindsten}
 %\usepackage{movie15}
 
-
 \title{732G12 Data Mining}
 \subtitle{Föreläsning 1}
 \date{}
@@ -44,7 +43,8 @@
 \begin{frame}{Introduktion - Kursupplägg}
     \begin{itemize}
         \item Lärare och examinator: Josef Wilzén, mail: josef.wilzen@liu.se
-        \item Struktur: Kurshemsidan, Lisam, Teams
+        \item Struktur:  \href{https://www.ida.liu.se/~732G12/info/courseinfo.sv.shtml}{Kurshemsidan}, Lisam, Teams
+        \item Kurslitteratur
         \item Upplägg: 
         \begin{itemize}
             \item Föreläsningar
@@ -60,7 +60,7 @@
     \begin{itemize}
         \item Föreläsningar
         \begin{itemize}
-            \item Presenterar metoder
+            \item Presenterar metoder, teori
         \end{itemize}
         \item Datorövningar
         \begin{itemize}
@@ -80,26 +80,28 @@
     
 \end{frame}
 
-\begin{frame}{Introduktion - Kursutvärdering 2022}
+\begin{frame}{Introduktion - Kursutvärdering 2023}
     \begin{itemize}
-        \item Antal respondenter: 11
-        \item Antal svar: 8 ($72\%$)
-        \item Helhetsbetyg: $3.88$
+        \item Antal respondenter: 14
+        \item Antal svar: 7 ($50\%$)
+        \item Helhetsbetyg: $4,43$
         \item Förändringar till detta år:
         \begin{itemize}
-            \item Ny kursplan:
+            \item Ny kursplan: (2023)
             \begin{itemize}
                 \item Associations- och sekvensanalys har tagits bort.
-                \item Mer om icke-linjära metoder har tillkommit.
+                \item Mer om icke-linjära metoder har tillkommit $\rightarrow$ lite annan ordning i år
             \end{itemize}
-            \item Med nytt innehåll kommer nya labbar.
+            \item Ev mindre förändingar på labbar
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+
 \begin{frame}{Introduktion - Bonuspoäng}
     \begin{itemize}
         \item Möjligt att ha 2 bonuspoäng på tentamen.
-        \item Krav: Delta aktivt på 9 av 14 tillfällen
+        \item Krav: Delta aktivt på 9 av 14 datorlaborationern 
         \item Delta aktivt innebär:
         \begin{itemize}
             \item Vara på plats och jobba med kursen.
@@ -118,6 +120,11 @@
         \item Grupper om två.
         \item Gruppanmälan på Lisam.
         \item Eget datamaterial.
+        \item Två steg:
+          \begin{itemize}
+            \item Välja data, separat inlämning
+            \item Själva projektet: skriftlig och muntlig redovisning
+          \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -347,6 +354,7 @@
         \item Modellen ska fånga upp den relevanta strukturen i problemet och kunna svara på frågeställningen!
         \item Modellen ska vara så enkel som möjligt.
         \item Modellen ska gå att beräkna i rimlig tid.
+        \item Vi vill att modellen ska \textbf{generalisera} till ny liknande data.
     \end{itemize}
 
 \end{frame}
@@ -365,7 +373,7 @@
         \item Exempel på funktioner:
         \begin{align*}
             f(x \mid \omega) &= \omega_1 \cdot x + \omega_2 \\
-            f(x \mid \omega) &= \sin(2\pi \omega_1 x + \omega_2) + \omega_3 \\
+            f(x \mid \omega) &= \omega_3 \cdot \sin(2\pi \omega_1 x + \omega_2) + \omega_4 \\
             f(x \mid \omega) &= \exp(- \omega_1 (x - \omega_2)^2) \\
             f(x \mid \omega) &= \omega_1 x_1 + \omega_2 x_2 + \omega_3 x_3 \\
         \end{align*}
@@ -422,7 +430,7 @@
             \item $(0.5, 0.25, 0.25)$
             \item $(0.8, 0.1, 0.1)$
         \end{itemize}
-        \item Testdata bör inte vara minst.
+        \item Träningsdata bör inte vara minst.
     \end{itemize}
 \end{frame}
 
@@ -459,7 +467,7 @@
 
 \begin{frame}{Testdata}
     
-    Vi använder testdatan för att få en väntevärdesriktig skattning av felfunktionen på ny data.
+    Vi använder testdatan för att få en väntevärdesriktig skattning av felfunktionen på ny data $\rightarrow$ vi skattar testfelet
 
     Vi bör \emph{inte} ändra något på modellen när vi ska använda den på testdata. Varför?
 
@@ -497,7 +505,7 @@
     OBS! Om vi har $K$ block måste vi anpassa varje modell $K$ gånger.
 \end{frame}
 
-\begin{frame}{Leave-one-out cross-validation}
+\begin{frame}{K-fold cross-validation}
     \begin{center}
         \includegraphics[height=0.8\textheight]{figs/cv2.png}
     \end{center}
