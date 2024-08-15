@@ -435,6 +435,7 @@
             \item $(0.8, 0.1, 0.1)$
         \end{itemize}
         \item Träningsdata bör inte vara minst.
+        \item Notera: i många källor/på internet så används ofta "test data" för att beskriva valideringsdata. Dvs de använder "test data" för att välja den bästa modellen
     \end{itemize}
 \end{frame}
 
@@ -532,6 +533,22 @@
         \item Modellens systematiska fel $\operatorname{Bias}[\hat{f}(x_{\text{test}})]$: modelleringsfel i modellen
     \end{itemize}
 \end{frame}
+
+\begin{frame}{Bias-variance-trade-off}
+    Vi vill ha:
+    \begin{itemize}
+        \item Låg bias och låg varians $\rightarrow$ en modell som generaliserar bra på ny liknande data!
+    \end{itemize}
+    
+    \includegraphics[width = \textwidth]{figs/overtfitting_train_test_curve.png}
+
+    \begin{itemize}
+      \item För vissa komplexa modeller: \href{https://en.wikipedia.org/wiki/Double_descent}{Double descent} $\rightarrow$ testfelet minskar för att sedan öka, men för att sedan minska igen
+    \end{itemize}
+    
+\end{frame}
+
+
 
 \begin{frame}{Frågor?}
     
