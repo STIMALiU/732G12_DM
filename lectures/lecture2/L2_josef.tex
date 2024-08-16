@@ -153,11 +153,11 @@
         \end{equation*}
         \item F-score är ett mått av träffsäkerhet baserat på precision och sensitivitet.
         \begin{equation*}
-            F_{\beta} = (1 + \beta^2) \frac{\operatorname{P} \cdot \operatorname{TPR}}{\beta^2 \cdot \operatorname{P} + \operatorname{TPR}}
+            F_{\beta} = (1 + \beta^2) \frac{\operatorname{PPV} \cdot \operatorname{TPR}}{\beta^2 \cdot \operatorname{PPV} + \operatorname{TPR}}
         \end{equation*}
         \item Vanligt med $\beta=1$ vilket ger (harmoniska medelvärdet)
         \begin{equation*}
-            F_1 = 2 \frac{\operatorname{P} \cdot \operatorname{TPR}}{\operatorname{P} + \operatorname{TPR}}
+            F_1 = 2 \frac{\operatorname{PPV} \cdot \operatorname{TPR}}{\operatorname{PPV} + \operatorname{TPR}}
         \end{equation*}
         \item F-score är mellan 0 och 1, högre är bättre.
         \item $\beta$ säger hur du värderar precision och sensivitet.
@@ -194,7 +194,7 @@
         \item Kontinuerlig: Normal, t, gamma, log-normal
         \item Binär: Logistisk regression
         \item Nominell: Multinomiell logistisk regression
-        \item Frekvensdata: Poisson regression
+        \item Frekvensdata: Poissonregression, Negativ binomialregression
     \end{itemize}
 \end{frame}
 
@@ -443,9 +443,10 @@
             \item Fåtal variabler med hög effektstorlek, resten nära 0.
         \end{itemize}
         \item Lasso kan vara lättare att tolka.
-        \item Lättare att göra inference på parameterarna i Ridge.
+        \item Lättare att göra inferens på parameterarna i Ridge.
         \item Vilken man ska välja får ofta avgöras empiriskt för specifika dataset.
-        \item Finns många utökningar.
+        \item Finns många utökningar och varianter.
+        \item $l^2$-norm och $l^1$-norm används som regularisering inom många olika modeller inom maskininlärning
     \end{itemize}
 
 \end{frame}
@@ -480,6 +481,28 @@
         \item Kan tvinga vissa $\beta$ till 0, men inte lika många som Lasso.
         \item Klarar av korrelerade/grupper av variabler bättre än Lasso.
         \item Nackdel är att vi har två hyperparametrar.
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Adaptive Elasticnet regression}
+
+    \begin{itemize}
+        \item Kombinerar Ridge, Lasso och vikter.
+        \item Ny hyperparameter $\alpha$ för att mixa dessa,
+        
+        
+        \begin{equation*}
+            f(\beta) = \operatorname{RSS} + \lambda \sum_{j=1}^{p} w_j \left((1-\alpha) \frac{1}{2} \beta_j^2 + \alpha|\beta_j|  \right), \qquad \lambda \geq 0,\, 0 \leq \alpha \leq 1.
+        \end{equation*}
+        \item Välj vikter
+        \begin{equation*}
+            w_j = | \hat{\beta}_{j, \text{start}} |^{-\gamma}
+        \end{equation*}
+        \item Ofta väljs $\gamma = 1$.
+        \item Behöver startvärde $\hat{\beta}_{j,\text{start}}$, kan använda OLS eller Ridge skattning.
+        \item Två hyperparameterar: $\alpha$ och $\lambda$
     \end{itemize}
     
 \end{frame}
