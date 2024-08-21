@@ -176,6 +176,15 @@ glmnet
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
+target "https://glmnet.stanford.edu/articles/glmnet.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
 target "https://cran.r-project.org/web/packages/glmnet/vignettes/glmnet.pdf"
 literal "false"
 
@@ -281,7 +290,7 @@ Gå till UC Irvine Machine Learning Repository, länk
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://archive.ics.uci.edu/ml/datasets.php?format=&task=cla&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table"
+target "https://archive.ics.uci.edu/"
 literal "false"
 
 \end_inset
@@ -302,10 +311,6 @@ Välj ett dataset som intresserar er, dock ej för stort, då det kan resultera
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-Urban Land Cover Data Set
-\end_layout
-
 \begin_layout Enumerate
 Divorce Predictors data set Data Set
 \end_layout
