@@ -225,8 +225,8 @@ Exempel: Vi har två klasser och vår modell har en felkvot på 43 %, vilket
 \begin_layout Standard
 Det finns många situationer där träffsäkerhet eller felkvot inte är tillräckliga
  mått.
- För vissa problem så kan typ I-fel (falska positiva) vara alvarligare än
- typ II-fel (falska negativa) eller tvärtom.
+ För vissa problem så kan typ I-fel (falska positiva) vara allvarligare
+ än typ II-fel (falska negativa) eller tvärtom.
  Ibland så har vi obalanserade klasser i data vilket gör det olämligt att
  bara titta på träffsäkerhet/felkvot.
 \end_layout
