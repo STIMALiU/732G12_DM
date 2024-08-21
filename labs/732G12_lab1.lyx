@@ -261,7 +261,7 @@ ISL
 \end_layout
 
 \begin_layout Enumerate
-Gå igenom koden 
+Använd Hitters-data och gå igenom koden 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -271,6 +271,28 @@ literal "false"
 \end_inset
 
  för att testa adaptive lasso.
+\end_layout
+
+\begin_layout Enumerate
+Använd Hitters-data och testa elastic net regression.
+ Detta görs genom att ändra argumentet 
+\family typewriter
+alpha=
+\family default
+ till ett värde mellan 0 och 1 i funktionerna 
+\family typewriter
+glmnet
+\family default
+ och 
+\family typewriter
+cv.glmnet
+\family default
+.
+ Testa minst två olika värden på 
+\family typewriter
+alpha
+\family default
+, och jämför med tidigare resultat.
 \end_layout
 
 \begin_layout Enumerate
