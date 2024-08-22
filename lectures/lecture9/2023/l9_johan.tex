@@ -1,0 +1,510 @@
+\documentclass[10pt,english]{beamer}
+%\documentclass[english,handout]{beamer} % For handouts
+\input{../metropolis_preamble.tex}
+\input{../macros.tex}
+%\usepackage{extendedalt}
+%\usepackage{animate} % Animations
+%\usepackage{../lindsten}
+%\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{listofitems} % for \readlist to create arrays
+
+\title{732G12 Data Mining}
+\subtitle{Föreläsning 9}
+\date{}
+\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
+%\institute{Joint work with\dots}
+
+
+%% MY DEF %%
+\newcommand{\itm}[1]{\mathrm{Item}_{#1}}
+\newcommand{\pausa}{\pause}
+%\renewcommand{\pausa}{}
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+
+
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Dagens föreläsning}
+
+    \begin{itemize}
+        \item Icke-linjär regression
+        \item Splines
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Icke-linjär regression}
+
+    Vi backar tillbaka till början av kursen och vanlig linjär regression i en variabel.
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim \mathcal{N}(0, \sigma^2).
+    \end{equation*}
+
+    Vad gör vi om en linjär funktion inte passar till datan?
+
+    \only<2>{\includegraphics[width = \textwidth]{figs/nonLin.png}}
+    \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithLM.png}}
+    
+\end{frame}
+
+\begin{frame}{Polynom regression}
+
+    Ett alternativ är att modellera som ett polynom,
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \ldots + \beta_p x_i^p + \varepsilon_i.
+    \end{equation*}
+
+    Men vilken ordning ska vi ha?
+
+    \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly4.png}}
+    \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly6.png}}
+    \only<4>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly8.png}}
+    
+\end{frame}
+
+% \begin{frame}{Neuralt nätverk}
+    
+%     Annat alternativ är att modellera med ett neuralt nätverk.
+%     \begin{equation*}
+%         y_i = f(x_i) + \varepsilon_i,
+%     \end{equation*}
+%     där $f$ är ett neuralt nätverk.
+
+%     Hur många lager? Units? Aktiveringsfunktion?
+
+%     \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithNN.png}}
+%     \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithNNtanh.png}}
+
+% \end{frame}
+
+\begin{frame}{Steg funktion}
+
+    Ett alternativ är att använda en steg-funktion,
+    \begin{equation*}
+        y_i = \beta_1 \mathbb{I}(x_i \in C_1) + \beta_2 \mathbb{I}(x_i \in C_2) + \ldots + \beta_k \mathbb{I}(x_i \in C_k) + \varepsilon_i.
+    \end{equation*}
+    
+    Vilka områden ska vi välja?
+
+    \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithSteps5.png}}
+    \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithSteps10.png}}
+
+\end{frame}
+
+\begin{frame}{Polynom regression och stegfunktioner}
+    
+    Fördelar:
+    \begin{itemize}
+        \item Generellt applicerbara.
+        \item Enkelt att skala upp komplexiteten (fler polynom, fler områden).
+    \end{itemize}
+
+    Nackdelar:
+    \begin{itemize}
+        \item Svårt i högre dimensioner.
+        \item Svårt att prediktera utanför data.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Basfunktioner}
+    Gemensamt för dessa metoder är att de bygger på basfunktioner.
+
+    Givet ett gäng funktioner $(b_1(x), b_2(x), \ldots, b_k(x))$ kan vi göra regression som
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \ldots + \beta_k b_k(x_i) + \varepsilon_i.
+    \end{equation*}
+
+    Observera att vi har ett linjärt problem (i basfunktionerna), vi kan enkelt skatta parametrarna $\beta_i$ som i vanliga linjär regression.
+
+\end{frame}
+
+\begin{frame}{Basfunktioner}
+
+    Basfunktioner kommer i många olika former:
+    \begin{itemize}
+        \item Polynom: $b_i(x) = x^i$.
+        \item Stegfunktioner: $b_i(x) = \mathbb{I}(x \in C_i)$ där $C_i$ är något intervall.
+        \item Andra funktioner är också vanliga, t.ex. $\log$, $\exp$, $\sin$, $\cos$, osv.
+    \end{itemize}
+    
+    Ett problem: Behöver ofta väldigt många basfunktioner för att väl anpassa data. Leder ofta till överanpassning.
+
+\end{frame}
+
+\begin{frame}{Stegvisa basfunktioner}
+
+    \begin{greenbox}
+        Idé: Istället för att anpassa ett polynom (eller annan funktion) till hela datarymden. Anpassa en funktion per intervall.
+    \end{greenbox}
+
+    Modellen blir då:
+    \begin{equation*}
+        y_i = \begin{cases}
+            h_0(x_i) + \varepsilon_i, & x_i \in C_0 \\
+            \vdots & \vdots \\
+            h_K(x_i) + \varepsilon_i, & x_i \in C_K,
+        \end{cases}
+    \end{equation*}
+    där varje funktion $h_i$ ges av
+    \begin{equation*}
+        h_i(x) = \beta_{0,i} + \beta_{1,i} b_1(x) + \ldots + \beta_{k,i} b_k(x).
+    \end{equation*}
+
+    Vi löser helt enkelt en massa "simpla" problem på olika intervall.
+    
+\end{frame}
+
+\begin{frame}{Stegvisa basfunktioner - Exempel}
+
+    Vi delar upp data i fyra intervall. $x<1$, $1 \leq x < 2.5$, $ 2.5 \leq x < 4$ och $4 \leq x$ och skattar en kvadratisk funktion i varje intervall.
+
+    \includegraphics<1>[width=\textwidth]{figs/nonLinGG.png}
+    \includegraphics<2>[width=\textwidth]{figs/nonLinPieceQuad.png}
+    \includegraphics<3>[width=\textwidth]{figs/nonLinPieceQuadCont.png}
+    
+\end{frame}
+
+\begin{frame}{Regression Splines}
+    Stegvis polynom regression som i exemplet innan är en form av Regression Splines.
+
+    \begin{bluebox}
+    Målet är att anpassa en stegvis polynomfunktion med begränsningar i skarvarna för att få kontinuitet, kontinuerliga derivator osv.
+    \end{bluebox}
+
+    Termonologi:
+    \begin{description}
+        \item[knut (knot)]: Antal brytpunkter som vi använder oss av.
+        \item[frihetsgrader (degrees of freedom)]: Antal parametrar som vi kan välja.
+        \item[trunkerad polynombas (truncated power basis)]: en funktion $h(x,\xi)$ som ges av
+        \begin{equation*}
+            h(x,\xi) = (x - \xi)^p_+ = \begin{cases}
+                (x - \xi)^p & \text{if } x > \xi, \\
+                0 & \text{otherwise.}
+            \end{cases}
+        \end{equation*} 
+    \end{description}
+\end{frame}
+
+\begin{frame}{Regression splines}
+    
+    \begin{greenbox}
+        Vårt mål: Skatta en stegvis polynomfunktion av grad-d under begränsningen att den ska vara kontinuerlig (kanske även kontinuerliga derivator).
+    \end{greenbox}
+
+    Ett grad-d polynom regression med $K$ knutar kan modelleras med basfunktioner som
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \ldots + \beta_k b_k(x_i) + \varepsilon_i,
+    \end{equation*}
+    för ett lämpligt val av basfunktioner. Observera att $k \neq K$.
+
+\end{frame}
+
+\begin{frame}{Regression splines - Basfunktioner}
+
+    För att få till ett grad-d polynom med rätt egenskaper skapar vi en modell som
+    \begin{multline*}
+        y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \ldots \beta_d x_i^d \\
+        + \beta_{d+1} h(x_i, \xi_1) + \beta_{d+2} h(x_i, \xi_2) + \ldots + \beta_{d+K} h(x_i \xi_K) + \varepsilon_i,
+    \end{multline*}
+    där $h(x, \xi) = (x - \xi)^d$.
+
+    Antal frihetsgrader:
+    \begin{itemize}
+        \item För ett grad-d polynom har vi $d+1$ frihetsgradet.
+        \item Med $K$ knutar ($K+1$ intervall) får vi $(K+1)\cdot(d+1)$ frihetsgrader.
+        \item Regression splines ger $d + 1 + K$ frihetsgrader.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Regression splines - Sammanfattning}
+
+    \begin{itemize}
+        \item Att dela upp och skatta oberoende polynom i varje intervall ger diskontinuerlig funktion.
+        \item För varje begränsning (kontinuerlig, kontinuerliga derivator) minskar antalet frihetsgrader.
+        \item Vilken grad ska vi välja?
+        \begin{itemize}
+            \item Vanligt med kubiska polynom (grad-3).
+        \end{itemize}
+        \item Hur välja antal knutar och deras placeringar?
+        \item Skattningar utanför intervallet blir dåliga.
+        \begin{description}
+            \item[Natural spline]: Lägger till ett extra krav, att funktionen ska vara linjär i ändarna (innan första och efter sista knuten). 
+        \end{description}
+        \item Jämfört med vanlig polynomregression skulle vi behöva grad $d+k$ för samma antal frihetsgrader.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Natural Splines - Exempel}
+
+    Vi modellerar med kubiska splines med knutar i $1,2,3$ och $4$.
+
+    \uncover<2->{Lägger till Natural Splines med samma knutar.}
+
+    \uncover<3->{Lägger till nya knutar i $0.5$ och $4.5$ och kör natural splines.}
+    
+    \includegraphics<1>[width=\textwidth]{figs/nonLinPeceBS.png}
+    \includegraphics<2>[width=\textwidth]{figs/nonLinPeceBSNS.png}
+    \includegraphics<3>[width=\textwidth]{figs/nonLinPeceBSNS2.png}
+
+\end{frame}
+
+\begin{frame}{Antal knutar och deras placeringar}
+    
+\begin{itemize}
+    \item Funktionen kommer ha mest flexibilitet vid knutarna.
+    \begin{itemize}
+        \item Knutarna tillåter parametrarna att ändras.
+        \item Placera fler knutar där du tror att det behövs.
+    \end{itemize}
+    \item Specificera antalet frihetsgrader och sprid ut knutarna jämnt.
+    \begin{itemize}
+        \item Givet en förbestämd grad $d$ så är antalet frihetsgrader $d+1+k$
+        \item Fler frihetsgrader ger fler knutar.
+    \end{itemize}
+    \item Använd kors-validering för att bestämma antalet.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Antalet knutar och deras placeringar - Exempel}
+
+    Vi använder samma data som tidigare och beräknar MSE för olika frihetsgrader
+
+    \includegraphics[width=\textwidth]{figs/bsnsMSE.png}
+    
+
+\end{frame}
+
+\begin{frame}{Antalet knutar och deras placeringar - Exempel}
+
+    Bästa modellen ser vi $8$ frihetsgrader för natural splines och $9$ frihetsgrader för cubic splines.
+
+    Det ger 4 respektive 5 knutar.
+
+    \includegraphics[width=\textwidth]{figs/bestMSE.png}
+    
+
+\end{frame}
+
+\begin{frame}{Smoothing Splines}
+    
+    \begin{greenbox}
+        Vårt mål är att hitta en funktion $g(x)$ som passar vår data väl.
+    \end{greenbox}
+
+    Ett generellt sätt att göra detta på är att hitta $g$ som minimerar
+    \begin{equation*}
+        \operatorname{RSS} = \sum_{i=1}^{n}(y_i - g(x_i))^2
+    \end{equation*}
+
+    Problem: Utan begränsningar på $g$ kan vi alltid få $\operatorname{RSS}$ till 0.
+
+    Vad vi vill ha är en funktion som passar data bra men också är "mjuk".
+
+\end{frame}
+
+\begin{frame}{Mellanspel - Derivator}
+
+    Givet en funktion $g(x)$, låt $g'(x)$ beteckna dess förstaderivata och $g''(x)$ dess andraderivata.
+
+    \begin{itemize}
+        \item Förstaderivatan $g'$ är lutningen (hastigheten) av en kurva.
+        \item Andraderivatan $g''$ är hur lutningen ändrar sig (acceleration).
+    \end{itemize}
+
+    Vi kan se andraderivatan som ett mått på funktionens grovhet (roughness).
+
+    Ett sätt att mäta grovhet av en funktion är att summera andraderivatan över funktionen (kontinuerlig funktion = integral)
+    \begin{equation*}
+        \int g''(x)^2 \mathrm{d}x.
+    \end{equation*}
+
+    Linjär funktion har $g''(x) = 0$ vilket är en helt mjuk funktion.
+
+    Om $g(x)$ rör sig väldigt mycket kommer integralen bli väldigt stor.
+\end{frame}
+
+\begin{frame}{Smoothing Splines}
+
+    Vi kan använda måttet för att skatta en funktion som har en viss "mjukhet".
+
+    \begin{greenbox}
+        Hitta funktionen $g(x)$ som minimerar
+        \begin{equation*}
+            L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x.
+        \end{equation*}
+    \end{greenbox}
+    
+    Använder förlust funktion + straffterm likt regularisering vi sett tidigare i Ridge och LASSO.
+
+    \begin{itemize}
+        \item Om $\lambda = 0$ har vi ingen begränsning.
+        \item Om $\lambda = \infty$ får vi linjär funktion.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Smoothing splines}
+
+    \begin{equation*}
+        L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x.
+    \end{equation*}
+
+    \begin{bluebox}\myheading{Teorem:}
+        Funktionen $g(x)$ som optimerar förlustfunktionen är stegvis kubiskt med knutar i (unika) punkterna $(x_1, x_2, \ldots, x_n)$ och linjär utanför detta område.
+    \end{bluebox}
+
+    Resultatet är naturliga splines, men inte samma som om man gjort optimeringen som tidigare med samma knutar.
+
+    Det blir en "krympt" version av dessa naturliga splines där krympningen beror på $\lambda$.
+    
+\end{frame}
+
+\begin{frame}{Smoothing Splines - Sammanfattning}
+
+    \begin{itemize}
+        \item Efter optimering får vi kubisk natural splines.
+        \item En knut i varje datapunkt.
+        \item För många frihetsgrader? ($4+n$)
+        \item $\lambda$ krymper parameterarna vilket ändrar den effektiva frihetsgraden $df_{\lambda}$.
+        \begin{itemize}
+            \item $\lambda = 0$ ger $df_{\lambda} = 4+n$.
+            \item $\lambda = \infty$ ger $df_{\lambda} = 2$.
+            \item Ofta vill vi istället välja $\lambda$ som ger oss vissa frihetsgrad.
+        \end{itemize}
+        \item Hur välja $\lambda$?
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Att välja $\lambda$}
+    
+    Eftersom smoothing splines resulterar i natural splines med ett fixt antal knutar med ridge regularisering kan vi skriva
+    \begin{equation*}
+        \hat{\mathbf{g}}_{\lambda} = \mathbf{S}_{\lambda} \mathbf{y},
+    \end{equation*}
+    där $\hat{\mathbf{g}}_{\lambda}$ är lösningen för vårt problem.
+
+    Matrisen $\mathbf{S}_{\lambda}$ kallas smoothing matrisen.
+
+    Se Kap 5.4 i \href{https://hastie.su.domains/ElemStatLearn/}{Elements of Statistical Learning} för tekniska detaljer.
+
+\end{frame}
+
+\begin{frame}{Effektiva frihetsgrader}
+
+    En intressant detalj från formeln är att hur vi hittar $\hat{\mathbf{g}}_{\lambda}$ beror bara på data $x_i$ och $\lambda$ \imp{inte} på $\mathbf{y}$.
+
+    Ett annat resultat är att vi kan definera effektiva frihetsgraderna som
+    \begin{equation*}
+        df_{\lambda} := \operatorname{tr}(\mathbf{S}_{\lambda}) = \sum_{i=1}^{n} \{\mathbf{S}_{\lambda}\}_{ii}.
+    \end{equation*}
+
+    Eftersom knutarna positioner är förbestämda $x_i$ så behöver vi bara bestämma $\lambda$.
+
+\end{frame}
+
+\begin{frame}{LOOCV}
+
+    Det visar sig (igen see Elements of Statistical Learning för detaljer) att vi kan beräkna leave-one out cross-validation felet ($\text{RSS}_{\text{cv}}$) väldigt effektivt,
+    \begin{equation*}
+        \operatorname{RSS_{\text{cv}}} = \sum_{i=1}^{n}(y_i - \hat{g}_{\lambda}^{(-i)}(x_i))^2 = \sum_{i=1}^{n}\left[ \frac{y_i - \hat{g}_{\lambda}(x_i)}{1 - \{\mathbf{S}_{\lambda}\}_{ii}} \right]^2.
+    \end{equation*}
+    
+    Observera: Vi behöver bara funktionen anpassad på all träningsdata för att beräkna detta.
+
+\end{frame}
+
+\begin{frame}{Smoothing Splines - Exempel}
+    
+    Använder samma data som tidigare.
+
+    Skattar smoothing splines med effektiva frihetsgrader $9$. (Blå)
+
+    Använder också LOOCV för att hitta bästa värdet $20.6$. (Röd)
+
+    \includegraphics[width=\textwidth]{figs/bestCV.png}
+
+\end{frame}
+
+
+
+\begin{frame}{Smoothing Splines för klassificering}
+    
+    Vi har hittills gjort smoothing splines för regression, vi kan såklart använda metoden för klassificering.
+
+    För logistisk regression har vi
+    \begin{equation*}
+        p(x) = \mathbb{P}(Y = 1 | X = x) = \frac{e^{f(x)}}{1 + e^{f(x)}},
+    \end{equation*}
+    där $f(x)$ är en linjär funktion.
+
+    Vi kan såklart använda smoothing splines istället.
+
+\end{frame}
+
+\begin{frame}{Smoothing Splines för Klassificering}
+    Om vi skriver upp optimeringsproblemet får vi log-likelihood (med straffterm)
+    \begin{equation*}
+        \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i))} \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
+    \end{equation*}
+
+    Vilket igen kan visas resultera i natural splines med knutar i datapunkterna.
+\end{frame}
+
+\begin{frame}{Flerdimensionella Splines}
+    
+    Hittills har vi pratat om endimensionella modeller. Alla går utäka till flerdimensionella modeller.
+
+    Antag att vi har $x \in \mathbb{R}^2$ och att vi har basfunktioner $h_{1k}(x_1), k = 1, \ldots, K_1$ för första koordinaten och motsvarande $h_{2k}(x_2), k = 1, \ldots, K_2$ för andra koordinaten.
+
+    Vi kan då definera den $K_1 \times K_2$ dimensionella tensor produkt basen
+    \begin{equation*}
+        g_{jk}(x) = h_{1j}(x_1)h_{2k}(x_2), j = 1,\ldots,K_1 \, k = 1, \ldots, K_2.
+    \end{equation*}
+
+    Dessa baser kan vi använda för att beskriva vår tvådimensionella funktion
+    \begin{equation*}
+        g(x) = \sum_{j=1}^{K_1} \sum_{k=1}^{K_2} g_{jk}(x).
+    \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Flerdimensionella Smoothing Splines}
+    Vi kan igen sätta upp smoothing splines problemet för dessa flerdimensionella problem. Om $x_i \in \mathbb{R}^d$ ställer vi upp problemet
+    \begin{equation*}
+        \min_g \sum_{i=1}^{n}\{y_i - g(x_i)\}^2 + \lambda J[g],
+    \end{equation*}
+    där $J[g]$ är en lämplig straffterm.
+
+    Om $d=2$ har vi
+    \begin{equation*}
+        J[g] = \int \int_{\mathbb{R}^2} \left[ \left( \frac{\partial^2 g(x)}{\partial x_1^2}\right)^2 + 2 \left(\frac{\partial^2 g(x)}{\partial x_1 \partial x_2}\right)^2 + \left(\frac{\partial^2 g(x)}{\partial x_2^2}\right)^2  \right] \mathrm{d}x_1 \mathrm{d} x_2
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Flerdimensionella Smoothing Splines}
+
+    Precis som för endimensionella smoothing splines har vi
+    \begin{itemize}
+        \item $\lambda = 0$ ger en funktion som interpolerar alla datapunkter.
+        \item $\lambda = \infty$ ger ett plan.
+        \item Andra värden ger en lösning som kan representeras som en linjärfunktion av basfunktioner med koefficient från ridge regression.
+    \end{itemize}
+
+    Lösningen är inte kubiska basfunktioner (som i endimensionella fallet) utan \imp{radiala basfunktioner} (radial basis functions).
+
+    Också kallade \imp{thin-plate splines}.
+    
+\end{frame}
+
+\end{document}
