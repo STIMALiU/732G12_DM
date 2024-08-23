@@ -281,7 +281,16 @@ literal "false"
 
 .
  Följ instruktionerna i länken för att ansluta online.
- 
+ Finns även info 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://rdpklienter.edu.liu.se/"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section*
