@@ -9,10 +9,14 @@
 \usepackage{tikz}
 \usepackage{listofitems} % for \readlist to create arrays
 
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
+
 \title{732G12 Data Mining}
-\subtitle{Föreläsning 9}
+\subtitle{Föreläsning 3}
 \date{}
-\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
 %\institute{Joint work with\dots}
 
@@ -35,15 +39,48 @@
 \begin{frame}{Dagens föreläsning}
 
     \begin{itemize}
-        \item Icke-linjär regression
+        \item Linjära och icke-linjära modeller
         \item Splines
+        \item GAM: Generalized additive model
     \end{itemize}
     
 \end{frame}
 
+\begin{frame}{Linjära och icke-linjära modeller}
+    Inom både regression och klassificering har vi pratat om linjära modeller.
+
+    Exempel:
+    \begin{itemize}
+        \item Linjär regression
+        \item Linjär logistisk regression
+    \end{itemize}
+
+    Lätta att skatta och tolka $\rightarrow$ Kan inte lösa alla problem.
+\end{frame}
+
+\begin{frame}{Exempel klassificering}
+   
+   \includegraphics[scale=0.35]{non-linear_class_problem.png}
+   
+    100 observationer, två förklarande variabler, binär respons.
+
+   
+\end{frame}
+
+
+\begin{frame}{Exempel - Klassificering}
+    
+    \includegraphics[scale=0.35]{non-linear class problem2.png}
+
+    Sann beslutsregel: $x_2 \cdot (1 + \exp(-25 \cdot (x_1 - 0.5))) > 1$ $\qquad$ Bästa linjära?
+
+\end{frame}
+
+
+
 \begin{frame}{Icke-linjär regression}
 
-    Vi backar tillbaka till början av kursen och vanlig linjär regression i en variabel.
+    Vanlig linjär regression i en variabel:
     \begin{equation*}
         y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim \mathcal{N}(0, \sigma^2).
     \end{equation*}
@@ -55,14 +92,14 @@
     
 \end{frame}
 
-\begin{frame}{Polynom regression}
+\begin{frame}{Polynomregression}
 
     Ett alternativ är att modellera som ett polynom,
     \begin{equation*}
         y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \ldots + \beta_p x_i^p + \varepsilon_i.
     \end{equation*}
 
-    Men vilken ordning ska vi ha?
+    Men vilken ordning $p$ ska vi ha?
 
     \only<2>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly4.png}}
     \only<3>{\includegraphics[width = \textwidth]{figs/nonLinWithPoly6.png}}
@@ -85,9 +122,9 @@
 
 % \end{frame}
 
-\begin{frame}{Steg funktion}
+\begin{frame}{Stegfunktion}
 
-    Ett alternativ är att använda en steg-funktion,
+    Ett alternativ är att använda en steg-funktion, vi delar in $x$ i ett antal regioner $C_j$:
     \begin{equation*}
         y_i = \beta_1 \mathbb{I}(x_i \in C_1) + \beta_2 \mathbb{I}(x_i \in C_2) + \ldots + \beta_k \mathbb{I}(x_i \in C_k) + \varepsilon_i.
     \end{equation*}
@@ -99,7 +136,7 @@
 
 \end{frame}
 
-\begin{frame}{Polynom regression och stegfunktioner}
+\begin{frame}{Polynomregression och stegfunktioner}
     
     Fördelar:
     \begin{itemize}
@@ -111,6 +148,8 @@
     \begin{itemize}
         \item Svårt i högre dimensioner.
         \item Svårt att prediktera utanför data.
+        \item Polynom av en hög ordning kan ofta vara "instabila"
+        \item Stegfunktioner: hur många och vilka områden ska väljas?
     \end{itemize}
 \end{frame}
 
@@ -122,7 +161,7 @@
         y_i = \beta_0 + \beta_1 b_1(x_i) + \beta_2 b_2(x_i) + \ldots + \beta_k b_k(x_i) + \varepsilon_i.
     \end{equation*}
 
-    Observera att vi har ett linjärt problem (i basfunktionerna), vi kan enkelt skatta parametrarna $\beta_i$ som i vanliga linjär regression.
+    Observera att vi har ett linjärt problem (i basfunktionerna), vi kan enkelt skatta parametrarna $\beta$ som i vanlig linjär regression, dvs med OLS
 
 \end{frame}
 
@@ -168,12 +207,12 @@
 
     \includegraphics<1>[width=\textwidth]{figs/nonLinGG.png}
     \includegraphics<2>[width=\textwidth]{figs/nonLinPieceQuad.png}
-    \includegraphics<3>[width=\textwidth]{figs/nonLinPieceQuadCont.png}
+    %\includegraphics<3>[width=\textwidth]{figs/nonLinPieceQuadCont.png}
     
 \end{frame}
 
 \begin{frame}{Regression Splines}
-    Stegvis polynom regression som i exemplet innan är en form av Regression Splines.
+    Stegvis polynomregression som i exemplet innan är en form av Regression Splines.
 
     \begin{bluebox}
     Målet är att anpassa en stegvis polynomfunktion med begränsningar i skarvarna för att få kontinuitet, kontinuerliga derivator osv.
@@ -182,7 +221,7 @@
     Termonologi:
     \begin{description}
         \item[knut (knot)]: Antal brytpunkter som vi använder oss av.
-        \item[frihetsgrader (degrees of freedom)]: Antal parametrar som vi kan välja.
+        \item[frihetsgrader (degrees of freedom)]: Antal parametrar som skattas.
         \item[trunkerad polynombas (truncated power basis)]: en funktion $h(x,\xi)$ som ges av
         \begin{equation*}
             h(x,\xi) = (x - \xi)^p_+ = \begin{cases}
@@ -271,7 +310,7 @@
         \item Givet en förbestämd grad $d$ så är antalet frihetsgrader $d+1+k$
         \item Fler frihetsgrader ger fler knutar.
     \end{itemize}
-    \item Använd kors-validering för att bestämma antalet.
+    \item Använd korsvalidering för att bestämma antalet.
 \end{itemize}
 
 \end{frame}
@@ -341,11 +380,11 @@
     \begin{greenbox}
         Hitta funktionen $g(x)$ som minimerar
         \begin{equation*}
-            L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x.
+            L_{\text{Sm.Spl.}} = \sum_{i=1}^{n}(y_i - g(x_i))^2 + \lambda \int g''(x)^2 \mathrm{d}x \qquad \lambda \ge 0
         \end{equation*}
     \end{greenbox}
     
-    Använder förlust funktion + straffterm likt regularisering vi sett tidigare i Ridge och LASSO.
+    Använder förlustfunktion + straffterm likt regularisering vi sett tidigare i Ridge och LASSO.
 
     \begin{itemize}
         \item Om $\lambda = 0$ har vi ingen begränsning.
@@ -379,7 +418,7 @@
         \begin{itemize}
             \item $\lambda = 0$ ger $df_{\lambda} = 4+n$.
             \item $\lambda = \infty$ ger $df_{\lambda} = 2$.
-            \item Ofta vill vi istället välja $\lambda$ som ger oss vissa frihetsgrad.
+            \item Ofta vill vi istället välja $\lambda$ som ger oss viss frihetsgrad.
         \end{itemize}
         \item Hur välja $\lambda$?
     \end{itemize}
@@ -394,7 +433,7 @@
     \end{equation*}
     där $\hat{\mathbf{g}}_{\lambda}$ är lösningen för vårt problem.
 
-    Matrisen $\mathbf{S}_{\lambda}$ kallas smoothing matrisen.
+    Matrisen $\mathbf{S}_{\lambda}$ kallas utjämningsmatris (smoothing matrix).
 
     Se Kap 5.4 i \href{https://hastie.su.domains/ElemStatLearn/}{Elements of Statistical Learning} för tekniska detaljer.
 
@@ -455,7 +494,7 @@
 \begin{frame}{Smoothing Splines för Klassificering}
     Om vi skriver upp optimeringsproblemet får vi log-likelihood (med straffterm)
     \begin{equation*}
-        \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i))} \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
+        \ell = \sum_{i=1}^{n} \left[y_i f(x_i) - \log(1 + e^{f(x_i)}) \right] - \frac{1}{2}\lambda \int \{ f''(x)\}^2 \mathrm{d}x.
     \end{equation*}
 
     Vilket igen kan visas resultera i natural splines med knutar i datapunkterna.
@@ -463,11 +502,11 @@
 
 \begin{frame}{Flerdimensionella Splines}
     
-    Hittills har vi pratat om endimensionella modeller. Alla går utäka till flerdimensionella modeller.
+    Hittills har vi pratat om endimensionella modeller. Alla går utöka till flerdimensionella modeller.
 
-    Antag att vi har $x \in \mathbb{R}^2$ och att vi har basfunktioner $h_{1k}(x_1), k = 1, \ldots, K_1$ för första koordinaten och motsvarande $h_{2k}(x_2), k = 1, \ldots, K_2$ för andra koordinaten.
+    Antag att vi har $x \in \mathbb{R}^2$ och att vi har basfunktioner $h_{1k}(x_1), k = 1, \ldots, K_1$ för första koordinaten $\qquad$ och motsvarande $h_{2k}(x_2), k = 1, \ldots, K_2$ för andra koordinaten.
 
-    Vi kan då definera den $K_1 \times K_2$ dimensionella tensor produkt basen
+    Vi kan då definera den $K_1 \times K_2$ dimensionella tensorprodukten basen
     \begin{equation*}
         g_{jk}(x) = h_{1j}(x_1)h_{2k}(x_2), j = 1,\ldots,K_1 \, k = 1, \ldots, K_2.
     \end{equation*}
