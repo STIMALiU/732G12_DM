@@ -211,20 +211,39 @@ rstudio
  i terminalen och tryck enter
 \end_layout
 
+\begin_layout Itemize
+Många R-paket är installerade i modulen, om de inte är det så går de att
+ installera med 
+\family typewriter
+install.packages()
+\end_layout
+
 \begin_layout Standard
 Andra program som är bra att känna till
 \end_layout
 
 \begin_layout Itemize
-caja: filhanterare
+
+\family typewriter
+caja
+\family default
+: filhanterare
 \end_layout
 
 \begin_layout Itemize
-pluma: enkel textredigerare, bra att använda för att titta på datafiler
+
+\family typewriter
+pluma
+\family default
+: enkel textredigerare, bra att använda för att titta på datafiler
 \end_layout
 
 \begin_layout Itemize
-LibreOffice: kontorsprogram
+
+\family typewriter
+LibreOffice
+\family default
+: kontorsprogram
 \end_layout
 
 \begin_layout Standard
