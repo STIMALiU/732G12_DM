@@ -459,7 +459,16 @@ Räkna ut klassificeringsfelet (misclassification rate) för testdata.
 \begin_deeper
 \begin_layout Enumerate
 Beräkna förväxlingsmatrisen för testdata.
- Se kodmanualen för kod.
+ Kod: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/2023/labs/class_evaluation.R"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
