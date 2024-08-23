@@ -247,16 +247,16 @@ LibreOffice
 \end_layout
 
 \begin_layout Standard
-Se mer allmän information om SU-salar 
+Se mer allmän information om dator-salar 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://www.student.liu.se/studentstod/itsupport/allmant-linuxdatorsalar?l=sv"
+target "https://liuonline.sharepoint.com/sites/student-campus-och-lokaler/SitePages/Datorsalar.aspx"
 literal "false"
 
 \end_inset
 
-.
+ (läs under Linux).
 \end_layout
 
 \begin_layout Section*
@@ -274,13 +274,12 @@ Gå in på denna sida:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://www.student.liu.se/studentstod/itsupport/linuxdatorsalar/fjarrinloggning?l=sv"
+target "https://liuonline.sharepoint.com/sites/student-under-studietiden/SitePages/Fjarrinloggning.aspx"
 literal "false"
 
 \end_inset
 
 .
- Ni kan använda er av RDP eller ThinLinc, men ThinLinc rekommenderas.
  Följ instruktionerna i länken för att ansluta online.
  
 \end_layout
