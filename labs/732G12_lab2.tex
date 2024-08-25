@@ -61,7 +61,7 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
     \item Gå igenom Lab 7.8.1 i ISL
     \item Vad är skillnaden mellan följande tre funktioner för polynomregression?
     \begin{minted}{R}
-        y ~ poly(x, 4)
+        y ~ poly(x, 4)K
         y ~ poly(x, 4, raw = TRUE)
         y ~ x + I(x^2) + I(x^3) + I(x^4)
     \end{minted}
@@ -84,11 +84,17 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
 
 \section*{Del 4: Email Spam}
     \begin{enumerate}
-        \item Ladda in \texttt{spambase.csv} datasetet och bekanta dig med det. Vi vill skapa en modell som predikterar \texttt{spam} (0 eller 1) givet de förklarande variablerna. Då våra förklarande är tungsvansade kan en log-transformation fungera bra ($\log(x + 0.1)$) där vi lägger på $0.1$ för att undvika $\log(0)$ problem.
+        \item Ladda in \texttt{spambase.csv} datasetet och bekanta dig med det (se bilaga för mer info). Vi vill skapa en modell som predikterar \texttt{spam} (0 eller 1) givet de förklarande variablerna. Då våra förklarande variabler är tungsvansade kan en log-transformation fungera bra ($\log(x + 0.1)$) där vi lägger på $0.1$ för att undvika $\log(0)$ problem.
         \item Dela upp datamaterialet i 70\% träningsdata och 30\% valideringsdata.
         \item Börja med att anpassa en vanlig multiple logistisk regression till datamaterialet. Vilket klassificeringsfel får du?
-        \item Anpassa nu en GAM modell med kubiska natural splines med 4 frihetsgrader för varje förklarande variabel. Vilket klassificeringsfel får du nu?
+        \item Anpassa nu en GAM-modell med kubiska natural splines med 4 frihetsgrader för varje förklarande variabel. Vilket klassificeringsfel får du nu?
         \item Testa med andra ordningar av frihetsgrader för dina splines och se om du kan få till en bättre modell.
         \item Testa att använda lokal regression för någon eller några variabler och se hur det påverkar dina resultat.
     \end{enumerate}
+    
+    
+\section*{d}    
+
+
+
 \end{document}

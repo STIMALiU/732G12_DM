@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{n}{y} \PYG{o}{\PYGZti{}} \PYG{n+nf}{poly}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{l+m}{4}\PYG{p}{)}\PYG{n}{K}
+        \PYG{n}{y} \PYG{o}{\PYGZti{}} \PYG{n+nf}{poly}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{l+m}{4}\PYG{p}{,} \PYG{n}{raw} \PYG{o}{=} \PYG{k+kc}{TRUE}\PYG{p}{)}
+        \PYG{n}{y} \PYG{o}{\PYGZti{}} \PYG{n}{x} \PYG{o}{+} \PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)} \PYG{o}{+} \PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{3}\PYG{p}{)} \PYG{o}{+} \PYG{n+nf}{I}\PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZca{}}\PYG{l+m}{4}\PYG{p}{)}
+\end{Verbatim}
