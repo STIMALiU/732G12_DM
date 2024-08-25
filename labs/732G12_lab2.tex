@@ -5,17 +5,21 @@
 \usepackage{fancyhdr}
 \usepackage[top=10mm, bottom=10mm, left=10mm, right=10mm,includehead,includefoot]{geometry}
 
+%\hypersetup{
+%  colorlinks=true, urlcolor=blue, linkcolor=red
+%}
+
 
 \pagestyle{empty}
 \fancyhf{}
 
 \lhead{LINKÖPINGS UNIVERSITET\\Avdelningen för statistik och maskininlärning\\Institutionen för datavetenskap}
 \rhead{
-Data Mining 732G12 \\ HT2023}
+Data Mining 732G12 \\ HT2024}
 
 
-\title{Datorlaboration 6}
-\author{Johan Alenlöv}
+\title{Datorlaboration 2}
+\author{Josef Wilzen}
 
 
 
@@ -49,7 +53,7 @@ Notera att ni inte behöver göra alla delar på alla uppgifter. Det viktiga är
 
 \section*{Datoruppdelning}
 
-För att motverka överanpassning bör ni dela upp data till träning-, validering-, (och testmängd). Detta kan göras med \texttt{createDataPartition()} från \texttt{caret}-paketet. Argument till den funktionen som är av vikt här är \texttt{p} som anger hur stor andel av observationerna som ska användas till träningsmängden. Ni kan också använda \texttt{subset()} för att göra detta, men det blir svårare att tydligt ange de observationer som ska tilldelas till valideringsmängden. Denna uppdelning måste var aslumpmässigt. Notera att om en testmängd ska skapas måste uppdelningen ske en gång till från valideringsmängden.
+För att motverka överanpassning bör ni dela upp data till träning-, validering-, (och testmängd). Detta kan göras med \texttt{createDataPartition()} från \texttt{caret}-paketet. Argument till den funktionen som är av vikt här är \texttt{p} som anger hur stor andel av observationerna som ska användas till träningsmängden. Ni kan också använda \texttt{subset()} för att göra detta, men det blir svårare att tydligt ange de observationer som ska tilldelas till valideringsmängden. Denna uppdelning måste vara slumpmässigt. Notera att om en testmängd ska skapas måste uppdelningen ske en gång till från valideringsmängden.
 
 \section*{Del 1: Polynomregression och stegfunktioner}
 
@@ -61,7 +65,7 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
         y ~ poly(x, 4, raw = TRUE)
         y ~ x + I(x^2) + I(x^3) + I(x^4)
     \end{minted}
-    \item Läs in datamaterialet \texttt{lab6\_data\_1.csv}. Dela upp i träning och validering och använd korsvalidering för att skatta den bästa polynomregression och stegfunktionen till detta datamaterial. Vilken grad av polynom används? Hur många stegfunktioner används?
+    \item Läs in datamaterialet \texttt{lab2\_data\_1.csv}. Dela upp i träning och validering och använd korsvalidering för att skatta den bästa polynomregression och stegfunktionen till detta datamaterial. Vilken grad av polynom används? Hur många stegfunktioner används?
 \end{enumerate}
 
 \section*{Del 2: Splines}

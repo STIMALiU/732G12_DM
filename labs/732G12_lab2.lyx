@@ -1,0 +1,431 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /home/joswi05/Dropbox/Josef/arbete/kurser/732G12/732G12_2024HT/732G12_DM/labs/
+\textclass article
+\begin_preamble
+\usepackage{minted}
+\usepackage{fancyhdr}
+
+
+
+
+\fancyhf{}
+
+\lhead{LINKÃPINGS UNIVERSITET\\Avdelningen fÃ¶r statistik och maskininlÃ¤rning\\Institutionen fÃ¶r datavetenskap}
+\rhead{
+Data Mining 732G12 \\ HT2024}
+
+
+\title{Datorlaboration 2}
+\author{Josef Wilzen}
+
+
+
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks 0
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 0
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+thispagestyle{fancy}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+AllmÃ¤nt
+\end_layout
+
+\begin_layout Standard
+Datorlaborationerna krÃ¤ver att ni har R och Rstudio installerat. 
+\end_layout
+
+\begin_layout Itemize
+Kodmanual: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://www.isakhietala.com/teaching/732g12/"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+: An introduction to Statistical Learning, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Boken: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://www.statlearning.com/"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R-kod till labbar: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dataset: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "true"
+
+\end_inset
+
+och 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+IDM
+\series default
+: Introduction to Data Mining, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kod till boken: 
+\begin_inset CommandInset href
+LatexCommand href
+name "lÃ¤nk"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Sample chapters"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/index.php#chapters"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dataset till vissa uppgifter finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "hÃ¤r"
+target "https://github.com/STIMALiU/732G12_DM/tree/2023/data"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notera att ni inte behÃ¶ver gÃ¶ra alla delar pÃ¥ alla uppgifter. Det viktiga Ã¤r att ni fÃ¥r en fÃ¶rstÃ¥else fÃ¶r de olika principerna och modellerna som avhandlats. Dessa uppgifter ska inte lÃ¤mnas in, utan Ã¤r till fÃ¶r er Ã¶vning.
+\end_layout
+
+\begin_layout Section*
+Datoruppdelning
+\end_layout
+
+\begin_layout Standard
+FÃ¶r att motverka Ã¶veranpassning bÃ¶r ni dela upp data till trÃ¤ning-, validering-, (och testmÃ¤ngd). Detta kan gÃ¶ras med 
+\family typewriter
+createDataPartition()
+\family default
+ frÃ¥n 
+\family typewriter
+caret
+\family default
+-paketet. Argument till den funktionen som Ã¤r av vikt hÃ¤r Ã¤r 
+\family typewriter
+p
+\family default
+ som anger hur stor andel av observationerna som ska anvÃ¤ndas till trÃ¤ningsmÃ¤ngden. Ni kan ocksÃ¥ anvÃ¤nda 
+\family typewriter
+subset()
+\family default
+ fÃ¶r att gÃ¶ra detta, men det blir svÃ¥rare att tydligt ange de observationer som ska tilldelas till valideringsmÃ¤ngden. Denna uppdelning mÃ¥ste var aslumpmÃ¤ssigt. Notera att om en testmÃ¤ngd ska skapas mÃ¥ste uppdelningen ske en gÃ¥ng till frÃ¥n valideringsmÃ¤ngden.
+\end_layout
+
+\begin_layout Section*
+Del 1: Polynomregression och stegfunktioner
+\end_layout
+
+\begin_layout Enumerate
+GÃ¥ igenom Lab 7.8.1 i ISL 
+\end_layout
+
+\begin_layout Enumerate
+Vad Ã¤r skillnaden mellan fÃ¶ljande tre funktioner fÃ¶r polynomregression? 
+\begin_inset listings
+lstparams "language=R"
+inline false
+status open
+
+\begin_layout Plain Layout
+y ~ poly(x, 4)
+\end_layout
+
+\begin_layout Plain Layout
+        y ~ poly(x, 4, raw = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+        y ~ x + I(x^2) + I(x^3) + I(x^4)
+\end_layout
+
+\begin_layout Plain Layout
+    
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+LÃ¤s in datamaterialet 
+\family typewriter
+lab6_data_1.csv
+\family default
+. Dela upp i trÃ¤ning och validering och anvÃ¤nd korsvalidering fÃ¶r att skatta den bÃ¤sta polynomregression och stegfunktionen till detta datamaterial. Vilken grad av polynom anvÃ¤nds? Hur mÃ¥nga stegfunktioner anvÃ¤nds? 
+\end_layout
+
+\begin_layout Section*
+Del 2: Splines
+\end_layout
+
+\begin_layout Enumerate
+GÃ¶r Lab 7.8.2 i ISL 
+\end_layout
+
+\begin_layout Enumerate
+Ladda in datamaterialet 
+\family typewriter
+lab6_data_1.csv
+\family default
+. VÃ¤lj knutarna i 1, 2, 3, och 4. Testa nu att skatta vanliga splines (
+\family typewriter
+bs()
+\family default
+) med 
+\family typewriter
+degree
+\family default
+ 1, 2, 3 och 4. Vad blir skillnaden i resultat? Vilken ser bÃ¤st ut? 
+\end_layout
+
+\begin_layout Enumerate
+AnvÃ¤nd samma datamaterial och Ã¤ndra till natural splines (
+\family typewriter
+ns()
+\family default
+). Vad blir skillnaden? LÃ¤gg till knutar i 0.5 och 4.5 och jÃ¤mfÃ¶r. 
+\end_layout
+
+\begin_layout Enumerate
+Testa andra platser fÃ¶r knutarna och anvÃ¤nd korsvalidering fÃ¶r att hitta den bÃ¤sta modellen. 
+\end_layout
+
+\begin_layout Section*
+Del 3: GAM
+\end_layout
+
+\begin_layout Enumerate
+GÃ¶r Lab 7.8.3 i ISL 
+\end_layout
+
+\begin_layout Section*
+Del 4: Email Spam
+\end_layout
+
+\begin_layout Enumerate
+Ladda in 
+\family typewriter
+spambase.csv
+\family default
+ datasetet och bekanta dig med det. Vi vill skapa en modell som predikterar 
+\family typewriter
+spam
+\family default
+ (0 eller 1) givet de fÃ¶rklarande variablerna. DÃ¥ vÃ¥ra fÃ¶rklarande Ã¤r tungsvansade kan en log-transformation fungera bra (
+\begin_inset Formula $\log(x + 0.1)$
+\end_inset
+
+) dÃ¤r vi lÃ¤gger pÃ¥ 
+\begin_inset Formula $0.1$
+\end_inset
+
+ fÃ¶r att undvika 
+\begin_inset Formula $\log(0)$
+\end_inset
+
+ problem. 
+\end_layout
+
+\begin_layout Enumerate
+Dela upp datamaterialet i 70% trÃ¤ningsdata och 30% valideringsdata. 
+\end_layout
+
+\begin_layout Enumerate
+BÃ¶rja med att anpassa en vanlig multiple logistisk regression till datamaterialet. Vilket klassificeringsfel fÃ¥r du? 
+\end_layout
+
+\begin_layout Enumerate
+Anpassa nu en GAM modell med kubiska natural splines med 4 frihetsgrader fÃ¶r varje fÃ¶rklarande variabel. Vilket klassificeringsfel fÃ¥r du nu? 
+\end_layout
+
+\begin_layout Enumerate
+Testa med andra ordningar av frihetsgrader fÃ¶r dina splines och se om du kan fÃ¥ till en bÃ¤ttre modell. 
+\end_layout
+
+\begin_layout Enumerate
+Testa att anvÃ¤nda lokal regression fÃ¶r nÃ¥gon eller nÃ¥gra variabler och se hur det pÃ¥verkar dina resultat. 
+\end_layout
+
+\end_body
+\end_document
