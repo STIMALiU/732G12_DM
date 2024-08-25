@@ -72,7 +72,7 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
 
 \begin{enumerate}
     \item Gör Lab 7.8.2 i ISL
-    \item Ladda in datamaterialet \texttt{lab6\_data\_1.csv}. Välj knutarna i 1, 2, 3, och 4. Testa nu att skatta vanliga splines (\texttt{bs()}) med \texttt{degree} 1, 2, 3 och 4. Vad blir skillnaden i resultat? Vilken ser bäst ut?
+    \item Ladda in datamaterialet \texttt{lab2\_data\_1.csv}. Välj knutarna i 1, 2, 3, och 4. Testa nu att skatta vanliga splines (\texttt{bs()}) med \texttt{degree} 1, 2, 3 och 4. Vad blir skillnaden i resultat? Vilken ser bäst ut?
     \item Använd samma datamaterial och ändra till natural splines (\texttt{ns()}). Vad blir skillnaden? Lägg till knutar i 0.5 och 4.5 och jämför.
     \item Testa andra platser för knutarna och använd korsvalidering för att hitta den bästa modellen.
 \end{enumerate}
@@ -84,7 +84,7 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
 
 \section*{Del 4: Email Spam}
     \begin{enumerate}
-        \item Ladda in \texttt{spambase.csv} datasetet och bekanta dig med det (se bilaga för mer info). Vi vill skapa en modell som predikterar \texttt{spam} (0 eller 1) givet de förklarande variablerna. Då våra förklarande variabler är tungsvansade kan en log-transformation fungera bra ($\log(x + 0.1)$) där vi lägger på $0.1$ för att undvika $\log(0)$ problem.
+        \item Ladda in \texttt{spambase.csv} datasetet och bekanta dig med det (se här för mer info \href{https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/Email_Spam_dataset_info.pdf}{länk}). Vi vill skapa en modell som predikterar \texttt{spam} (0 eller 1) givet de förklarande variablerna. Då våra förklarande variabler är tungsvansade kan en log-transformation fungera bra ($\log(x + 0.1)$) där vi lägger på $0.1$ för att undvika $\log(0)$ problem.
         \item Dela upp datamaterialet i 70\% träningsdata och 30\% valideringsdata.
         \item Börja med att anpassa en vanlig multiple logistisk regression till datamaterialet. Vilket klassificeringsfel får du?
         \item Anpassa nu en GAM-modell med kubiska natural splines med 4 frihetsgrader för varje förklarande variabel. Vilket klassificeringsfel får du nu?
@@ -93,8 +93,25 @@ För att motverka överanpassning bör ni dela upp data till träning-, valideri
     \end{enumerate}
     
     
-\section*{d}    
-
+\section*{Del 5: k-nearest neighbour}    
+  \begin{enumerate}
+  
+  \item Anpassa k-närmaste granne (KNN) modeller på det inbyggda iris data. Måtet är att klassifcera variablen Species. Utgå från kodmanualen. Låt 30 \% av data vara valideringsdata. Testa $ k=\left(5,7,11,17\right) $. Beräkna lämpliga utvärderingsmått för valideringsdata. Vilket k ger bäst resultat?
+  \item Upprepa uppgiften ovan, men använd korsvalidering för att välja k från en lista med olika värden. Vilket k ger bäst resultat? Hur presterade den valda modellen? 
+  \item Nu ska ni undersöka KNNs känslighet mot brus i data. Genera data med koden som finns \href{https://github.com/STIMALiU/732G12_DM/blob/master/labs/KNN_noise_data.R}{här}. Parametern \texttt{sd\_val} styr hur mycket brus som finns i data. Genera nu tre dataset där ni låter \texttt{sd\_val} vara 0.05, 0.1 och 0.15. För varje dataset\:
+    
+    \begin{enumerate}
+    
+    \item Låt 30 \% vara valideringsdata.
+    \item Skatta KNN modeller med tre olika värden på $k=\left(3,9,15\right)$. Beräkna lämpliga utvärderingsmått för valideringsdata. Vilket k ger bäst resultat?
+    \item Gör scatterplot för valideringsdata, där ni färglägger punkterna baserat på klass. Lägg till den sanna beslutslinjen i plotten.
+    \item Hur presterar KNN i relation till brusnivån?
+    
+    \end{enumerate}
+  
+  \item Regression: Återvänd till \texttt{lab2\_data\_1.csv}. Avsätt 30 \% data som valideringsdata. Skatta KNN med korsvalidering (med hjälp av träningsdata). Skatta minst två andra lämpliga modeller på träningsdata. Utvärdera alla modellerna på valideringsdata. Jämför och analysera.
+  
+  \end{enumerate}
 
 
 \end{document}
