@@ -23,6 +23,9 @@
 %\renewcommand{\pausa}{}
 \tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
 
+\hypersetup{
+  colorlinks=true, urlcolor=blue, linkcolor=red
+}
 
 \newenvironment{nscenter}
  {\parskip=0pt\par\nopagebreak\centering}
@@ -39,7 +42,6 @@
         \item One-Dimensional Kernel Smoothers
         \item Lokal Regression
         \item GAM: Generaliserade Additativa Modeller
-        \item Sammanfattning av Kursen
     \end{itemize}
     
 \end{frame}
@@ -60,11 +62,11 @@
     \begin{description}
         \item[Euklidiskt avstånd]
         \begin{equation*}
-            d(\mathbf{x},\mathbf{y}) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^2}
+            d(\mathbf{x},\mathbf{y}) = \sqrt{\sum_{k=1}^{p} (x_k - y_k)^2}
         \end{equation*}
         \item[Manhattan avstånd] 
         \begin{equation*}
-            d(\mathbf{x},\mathbf{y}) = \sum_{k=1}^{n} | x_k - y_k |
+            d(\mathbf{x},\mathbf{y}) = \sum_{k=1}^{p} | x_k - y_k |
         \end{equation*}
     \end{description}
 \end{frame}
@@ -79,12 +81,12 @@
             \item Låt $y' = \argmax_v \sum_{(\mathbf{x}_i, y_i) \in D_z} \mathbf{I}_{v = y_i}$
         \end{enumerate}
     \end{enumerate}
-    2.3 är majoritetsvalet. Kan också vikta detta värde med avståndet:
+    2.3 är majoritetsval. Kan också vikta detta värde med avståndet:
     \begin{itemize}
         \item[2.3] $y' = \argmax_{v} \sum_{(\mathbf{x}_i, y_i) \in D_z} w_i \mathbf{I}_{v = y_i}$. 
     \end{itemize}
 
-    För regression används medelvärde alternativt viktat medelvärde.
+    För regression används medelvärde, alternativt viktat medelvärde.
 \end{frame}
 
 \begin{frame}{K-närmaste grannar}
@@ -112,7 +114,8 @@
             \item Korsvalidering kan användas för att bestämma K.
         \end{itemize}
         \item Producerar godtyckligt utformade beslutsgränser.
-        \item Problem i högre dimensioner.
+        \item Problem i högre dimensioner $\rightarrow$ \href{https://en.wikipedia.org/wiki/Curse_of_dimensionality}{ Curse of dimensionality}
+       
     \end{itemize}
     
 \end{frame}
@@ -245,7 +248,7 @@
 
 \begin{frame}{Generaliserade Additativa Modeller}
     
-    Gemensamt för alla GAM modeller är att vi i vår regression eller klassificerings modell byter ut
+    Gemensamt för alla GAM modeller är att vi i vår regressions- eller klassificeringsmodell byter ut
     \begin{equation*}
         \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_p x_p,
     \end{equation*}
@@ -286,6 +289,7 @@
     \begin{itemize}
         \item GAMs låter oss anpassa en icke-linjär funktion för varje förklarande variabel.
         \item Eftersom modellen är additativ kan vi fortfarande undersöka effekten av varje förklarande variabel genom att hålla de andra konstanta.
+        \item Ger en bra avvägning mellan flexibilitet och tolkningsbarhet
         \item Hur "mjuka" varje funktion är kan vi beskriva genom frihetsgraderna. 
         \item Den största nackdelen är att modellen måste vara additativ.
         \begin{itemize}
