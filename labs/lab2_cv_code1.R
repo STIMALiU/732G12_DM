@@ -66,3 +66,25 @@ plot(sort(Wage$age),fit_loess)
 plot(x = Wage$age, y = Wage$wage)
 lines(x = sort(Wage$age),fit_ns,t="l",col="blue",lwd=3,lty="dashed")
 lines(x = sort(Wage$age),fit_loess,col="red",lwd=3,lty="dashed")
+
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# CV för gam
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+library(mgcv)
+
+gam_cv <- mgcv::gam(wage ~  s(year,k=7,bs="cr") + s(age,k=7,bs="cr") + education,data = Wage)
+
+plot(gam_cv,pages=1,residuals=TRUE)  ## show partial residuals
+plot(gam_cv,pages=1,seWithMean=TRUE) ## `with intercept' CIs
+gam_cv
+summary(gam_cv)
+
+
+# för mer exempel:
+?mgcv::gam
+example(gam)
+
