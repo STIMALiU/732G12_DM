@@ -129,7 +129,9 @@
         \item Om alla $Y_i$ är lika, markera $t$ som ett löv och ge värdet $Y_i$.
         \item Annars, använd en \myheading{testregel} för att dela upp $D_t$ i flera delar $D_{t_1}, \ldots, D_{t_k}$ och kör algoritmen (steg 1) för alla dessa noder.
     \end{enumerate}
-
+    
+    Denna approach kallas för \textit{recursive binary splitting}.
+      
     \myheading{Testregler:}
     \begin{description}
         \item[Binära attribut] Binär uppdelning
@@ -178,13 +180,13 @@
     Istället kör vi med en girig algoritm, där vi vill hitta bästa variabeln $x_j$ och uppdelning $s$ genom att lösa följande problem:
     \begin{align*}
         \min_{j,s} \left[ \min_{c_1} \sum_{x_1 \in R_1(j,s)} (y_i - c_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j,s)} (y_i - c_2)^2 \right], \\
-        R_1(j,s) = \{x \mid x_j \leq s\} \qquad R_2(j,s) = \{x | x_j \geq s\},
+        R_1(j,s) = \{x \mid x_j < s\} \qquad R_2(j,s) = \{x | x_j \geq s\},
     \end{align*}
     $c_1$ och $c_2$ skattas oftast som medelvärdet av respektive region.
 \end{frame}
 
 \begin{frame}{CART - Regressionsträd}
-    \includegraphics[width=0.85\textwidth]{figs/reg_tree_surface.png}
+    \includegraphics[width=0.68\textwidth]{figs/reg_tree_surface.png}
 \end{frame}
 
 \begin{frame}{CART - Klassificeringsträd}
@@ -235,7 +237,13 @@
 
 \begin{frame}{Motverka överanpassning}
 
-    Två olika sätt
+    Viktiga hyperparametrar:
+    \begin{itemize}
+      \item Trädets djup
+      \item Minsta antal obs i en lövnod alt. minsta antal obs i en nod för att överväga en split av noden
+    \end{itemize}
+
+    Två olika sätt:
     \begin{description}
         \item[Förbeskärnining]
         \begin{itemize}
@@ -253,11 +261,11 @@
 \begin{frame}{Efterbeskärning}
     Använd CART för att ta växa fram ett stort träd $T_0$ på all träningsdata.
 
-    För varje $\alpha \geq 0$ finns ett delträd $T \subset T_0$ som minimerar kostande
+    För varje $\alpha \geq 0$ finns ett delträd $T \subset T_0$ som minimerar kostanden
     \begin{equation*}
         C_{\alpha}(T) = \sum_{R \in \text{Löv i T}} N(R) \cdot I(R) + \alpha |T|,
     \end{equation*} 
-    där $|T|$ är antalet löv i $T$.
+    där $|T|$ är antalet löv i $T$, $N(R_j)$ antal objekt i lövnod $j$.
 
     Använd korsvalidering för att skatta $\alpha$, välj det som ger minst valideringsfel.
 
@@ -285,7 +293,7 @@
 \begin{frame}{Trädmodell eller linjär modell}
     För klassificering har vi:
 
-    \includegraphics[width = \textwidth]{figs/trees_vs_linear.png}
+    \includegraphics[width=0.68\textwidth]{figs/trees_vs_linear.png}
 
 \end{frame}
 
@@ -298,8 +306,14 @@
         \item Funkar på relativt stora dataset
         \item Icke-parametrisk metod
         \item Automatisk variabelselektion
+        \item Lär sig variabelinteraktioner automatiskt
         \item Kan anpassa många olika sorters funktioner
     \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Kommentarer om trädmodeller}
 
     Nackdelar:
     \begin{itemize}
@@ -309,6 +323,8 @@
         \item Vissa enkla funktioner kräver ett komplext träd
     \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}{Kommentarer om trädmodeller}
 
