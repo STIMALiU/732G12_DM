@@ -102,7 +102,7 @@ Kodmanual:
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
-target "https://www.isakhietala.com/teaching/732g12/"
+target "https://canadice.shinyapps.io/732G12_material/"
 literal "false"
 
 \end_inset
@@ -116,7 +116,7 @@ Utvärdering av klassificeringsproblem, se
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "– https://www.isakhietala.com/teaching/732g12/#sammanfattande-funktion-f%C3%B6r-modellutv%C3%A4rdering"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation.R"
 literal "false"
 
 \end_inset
@@ -365,7 +365,7 @@ Beräkna felkvoten av både tränings och valideringsmängden och tolka.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://www.isakhietala.com/teaching/732g12/#sammanfattande-funktion-f%C3%B6r-modellutv%C3%A4rdering"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation.R"
 literal "false"
 
 \end_inset
@@ -488,6 +488,10 @@ Korsvalideringen gör på träningsdata.
  och jämför validerings MSE med era resultat från 3).
 \end_layout
 
+\begin_layout Enumerate
+Jämför med någon metod från kursvecka 2 (splines, loess etc)
+\end_layout
+
 \begin_layout Subsection*
 Identifiering av spam-mail med hjälp av beslutsträd
 \end_layout
@@ -535,7 +539,7 @@ Använd nu uppdelningen 70/30 och använd cost complexity pruning tillsammans
 status collapsed
 
 \begin_layout Plain Layout
-Korsvalideringen gör på träningsdata.
+Korsvalideringen görs på träningsdata.
 \end_layout
 
 \end_inset
