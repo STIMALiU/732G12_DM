@@ -15,13 +15,16 @@ df<-data.frame(x=x,y=y)
 
 # viktiga hyperparameterar:
 # Anger att antalet observationer som krävs för att en förgrening ska ske
-minsplit = 20,
+# minsplit = 20,
 # Anger maxdjupet av träder, där 0 är rotnoden
-maxdepth = 10, 
+# maxdepth = 10, 
 # Anger den minsta tillåtna förbättringen som måste ske för att en förgrening ska ske
-cp = 0,
+# cp = 0,
 
-# testa att dessa till lite olika värden
+# testa att ändra dessa till olika värden och notera hur det skattade trädet och
+# anpassade värden ändras
+
+
 # med y alt 2: testa cp = 0, 0.1, 0.001 och se ev skillnad i resultatet
 
 
