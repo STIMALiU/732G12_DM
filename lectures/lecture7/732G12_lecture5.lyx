@@ -1,0 +1,1880 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+% or ...
+
+\usecolortheme{orchid}
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\end_preamble
+\use_default_options false
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file is a solution template for:
+\end_layout
+
+\begin_layout Itemize
+Talk at a conference/colloquium.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk length is about 20min.
+ 
+\end_layout
+
+\begin_layout Itemize
+Style is ornate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Föreläsning 5 - Neurala Nätverk
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Short Paper Title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, use only with long paper titles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Josef Wilzen
+\end_layout
+
+\begin_layout Date
+2022-09-07
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Neurala nätverk
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Denna föreläsning utgår ifrån att ni har:
+\end_layout
+
+\begin_layout Itemize
+Sett dessa videor: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.youtube.com/watch?v=sDv4f4s2SB8"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.youtube.com/watch?v=vMh0zPT0tLI"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Läsning i 
+\series bold
+ISL
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+10 intro, 10.1-10.2 10.7 intro, 10.7.1, 10.7.2, 10.7.4
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Läsning i 
+\series bold
+IDM
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+6.7 till 6.8.2 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Neurala nätverk 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Neuroner 
+\end_layout
+
+\begin_layout Itemize
+Axoner
+\end_layout
+
+\begin_layout Itemize
+Dendriter
+\end_layout
+
+\begin_layout Itemize
+Synapser
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Neuron3.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Terminologi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Feed-forward nätverk: Inlager - Gömda lager - Utlager
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/NN_image1.png
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Terminologi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Feed-forward nätverk 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Noder i ett lager är bara kopplade till noder i nästa lager
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Återkopplande nätverk:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Noder i ett lager kan vara kopplade till noder i samma, föregående eller
+ nästa lager
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Finns 
+\series bold
+många
+\series default
+ olika sorters nätverk! Se 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.asimovinstitute.org/neural-network-zoo/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+ för en sammaställning.
+\end_layout
+
+\begin_layout Itemize
+De används för många olika saker
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Supervised learning
+\end_layout
+
+\begin_layout Itemize
+Unsupervised learning
+\end_layout
+
+\begin_layout Itemize
+Reinforcement learning
+\end_layout
+
+\begin_layout Itemize
+Representation learning
+\end_layout
+
+\begin_layout Itemize
+Generativa modeller
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Supervised learning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Feed-forward/mult-layer peceptron (MLP)
+\end_layout
+
+\begin_layout Itemize
+Radial basis networks
+\end_layout
+
+\begin_layout Itemize
+Faltade (Convolutional) nätverk: bilder, videor, tidserier.
+\end_layout
+
+\begin_layout Itemize
+Recurrent neural networks, LSTM
+\end_layout
+
+\begin_layout Itemize
+Transformer networks
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unsupervised learning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dolda representationer: Autoencoders
+\end_layout
+
+\begin_layout Itemize
+Clustering: Self Organizing Map (SOM)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Generativa modeller:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används för att lära sig komplexa sannolikhetsfördelningar: sampla bilder,
+ text, mm
+\end_layout
+
+\begin_layout Itemize
+Generative adversarial network (GAN)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Feature learning
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Linjär regression
+\begin_inset Formula 
+\[
+y=X\beta+\epsilon\qquad E\left[\epsilon\right]=0\qquad V\left[\epsilon\right]=\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Linjär regression: 
+\end_layout
+
+\begin_layout Itemize
+Givet 
+\begin_inset Formula $X=\left(x_{1},x_{2},\ldots,x_{p}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+: 
+\begin_inset Formula $y=X\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi kan transformera variablerna i 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Polynomregression: 
+\begin_inset Formula $X=\left(x,x^{2},x^{3},\ldots,x^{p}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Andra exempel: 
+\begin_inset Formula $log\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\sqrt{x}$
+\end_inset
+
+, 
+\begin_inset Formula $cos\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $exp\left(x\right)$
+\end_inset
+
+, interaktioner, stegfunktioner, diskretisering, dummy-kodning
+\end_layout
+
+\begin_layout Itemize
+Kallas i maskininlärning för 
+\begin_inset Quotes eld
+\end_inset
+
+feature engineering
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Svårt att veta vilken transformation vi ska göra för ett givet problem!
+\end_layout
+
+\begin_layout Itemize
+Svårt med komplexa datastrukturer: text, bilder mm
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi har 
+\begin_inset Formula $X=\left(x_{1},x_{2},\ldots,x_{p}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transformationer är funktiner av 
+\begin_inset Formula $\left(x_{1},x_{2},\ldots,x_{p}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex: 
+\begin_inset Formula $h\left(x\right)=log\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $h\left(x_{1},x_{2}\right)=log\left(x_{1}\right)+sin\left(x_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Anta en 
+\begin_inset Formula $x$
+\end_inset
+
+ variabel, vi kan låta 
+\begin_inset Formula $h\left(x\right)$
+\end_inset
+
+ vara en viktad summa av andra funktioner:
+\begin_inset Formula 
+\[
+z=h\left(x\right)=\sum_{i=1}^{M}w_{i}h_{i}\left(x\right)
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $h_{i}\left(x\right)$
+\end_inset
+
+ är godtyckliga funktioner
+\end_layout
+
+\begin_layout Itemize
+Om vi har många 
+\begin_inset Formula $x$
+\end_inset
+
+ variabler: 
+\begin_inset Formula 
+\[
+z=h\left(x_{1},x_{2},\ldots,x_{p}\right)=\sum_{i=1}^{M}w_{i}h_{i}\left(x_{1},x_{2},\ldots,x_{p}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hur ska vi välja 
+\begin_inset Formula $h_{i}\left(x\right)$
+\end_inset
+
+? 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linjär transformation: bestäm värden på 
+\begin_inset Formula $W$
+\end_inset
+
+ och 
+\begin_inset Formula $V$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underset{n\times m}{Z}=\underset{n\times p}{X}\cdot\underset{p\times m}{W}\qquad\underset{n\times g}{Z}=\underset{n\times p}{X}\cdot\underset{p\times m}{W}\cdot\underset{m\times g}{V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neurala nätverk: Vill kunna modellera icke-linjära funktioner
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sätt samman många 
+\begin_inset Quotes eld
+\end_inset
+
+enkla
+\begin_inset Quotes erd
+\end_inset
+
+ icke-linjära funktioner för att göra en komplex funktion!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Neurala nätverk: 
+\end_layout
+
+\begin_layout Standard
+Låt 
+\begin_inset Formula $\sigma\left(\right)$
+\end_inset
+
+ vara en enkel icke-linjär funktion, och låt 
+\begin_inset Formula $h_{i}\left(x_{1},x_{2},\ldots,x_{p}\right)$
+\end_inset
+
+ vara en linjär funktion: 
+\begin_inset Formula $h_{i}\left(x_{1},x_{2},\ldots,x_{p}\right)=\beta_{0i}+\beta_{i}^{T}\boldsymbol{x}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+z=\sigma\left(h_{i}\left(x_{1},x_{2},\ldots,x_{p}\right)\right)=\sigma\left(\beta_{0i}+\beta_{i}^{T}\boldsymbol{x}\right)
+\]
+
+\end_inset
+
+Nästla sedan många sådana funktioner för bygga upp en godtyckligt komplicerad
+ icke-linjär funktion.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+För MLP brukar det skrivas som 
+\begin_inset Formula 
+\[
+\underset{k\times1}{a}^{(p+1)}=\sigma\left(\underset{k\times n}{W}\cdot\underset{n\times1}{a}^{(p)}+b^{(p)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Wa^{(0)}+b$
+\end_inset
+
+ ger en vektor som är 
+\begin_inset Formula $n\times1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma\left(\right)$
+\end_inset
+
+ opererar elementvis på inputvektorn
+\end_layout
+
+\begin_layout Itemize
+Historiskt, 
+\begin_inset Formula $\sigma\left(x\right)$
+\end_inset
+
+ har valts till sigmoid eller hyperbolic tangent
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dessa nätverken visade sig vara svåra att skatta
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nu används ofta Rectified Linear (ReLu) eller varianter 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\sigma\left(x\right)=max\left(0,x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Funkar bättre med SGD
+\end_layout
+
+\begin_layout Itemize
+Kan skatta djupa modeller!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Feature learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Vi kan se neurala nätverk som att vi 
+\end_layout
+
+\begin_layout Enumerate
+Automatiskt lär oss en lämplig transformation av de förklarande variablerna
+\end_layout
+
+\begin_layout Enumerate
+Gör linjär (logistik) regression på transformationen = sista lagret
+\end_layout
+
+\begin_layout Standard
+Notera! 
+\end_layout
+
+\begin_layout Itemize
+Komplexa funktioner kräver mycket data att lära sig!
+\end_layout
+
+\begin_layout Itemize
+Neurala nätverk kan lätt överanpassa träningsdata!
+\end_layout
+
+\begin_layout Itemize
+Funkar när vi har stort antal förklarande variablerna
+\end_layout
+
+\begin_layout Itemize
+Om vi låter de gömda lagren ha mindre dim än förklarande variablerna: icke-linjä
+r variabelreduktion innan vi når sista lagret (output) 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Universal approximation theorem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Universal approximation theorem
+\series default
+ 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+En MLP med ett lager och en icke-linjär aktiveringsfunktion kan approximera
+ godtycklig kontinuerlig eller diskret funktion med ett godtyckligt litet
+ fel givet tillräckligt många gömda neuroner.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Optimering av neurala nätverk
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Svårt problem!
+\end_layout
+
+\begin_layout Itemize
+Lokala minima
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kan ha hög kostnad eller låg
+\end_layout
+
+\begin_layout Itemize
+Model identiﬁability problem 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Weight space symmetry
+\end_layout
+
+\begin_layout Itemize
+Scaling between layers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kan leda till oräkneligt antal lokala minima
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Saddle_point.svg.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Platåer och sadelpunkter
+\end_layout
+
+\begin_layout Itemize
+Ställen där gradienten är noll (eller nästan noll), fast vi inte är på ett
+ lokalt min/max
+\end_layout
+
+\begin_layout Itemize
+Sadelpunkter:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ta tvärsnitt längs några dimensioner och då har vi lokalt minima i sadelpunkten
+\end_layout
+
+\begin_layout Itemize
+Ta tvärsnitt längs några andra dimensioner då har vi lokalt maxima i sadelpunkte
+n
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Antalet sadelpunkter tenderar att öka med antalet dimensioner!
+\end_layout
+
+\begin_layout Itemize
+Stora områden som är platta
+\end_layout
+
+\begin_layout Itemize
+Platåer och sadelpunkter: gör optimeringen med gradient decent svårare
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimering av neurala nätverk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Gradient descent: hitta minimum på en funktion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underset{a}{argmin}\quad L\left(a_{n}\right)=\sum_{i}L_{i}\left(f\left(x^{(i)},a\right),y^{(i)}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{n+1}=a_{n}-\gamma\cdot\nabla L\left(a_{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi behöver gradienter (partiella derivator)
+\end_layout
+
+\begin_layout Itemize
+Backpropagation: kedjeregeln för derivator på neurala nätverk
+\end_layout
+
+\begin_layout Itemize
+Gradient descent: dyrt när vi har många obs!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stochastic gradient descent (SGD)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SGD: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dyrt att beräkna 
+\begin_inset Formula $\nabla L\left(a_{n}\right)$
+\end_inset
+
+ för alla datapunkter
+\end_layout
+
+\begin_layout Itemize
+Gör en väntevärdesriktig skattning av 
+\begin_inset Formula $\nabla\hat{L}\left(a_{n}\right)$
+\end_inset
+
+ genom att ta ett slumpmässigt sample från data (mini-batch) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ tänk urvalsundersökning!
+\end_layout
+
+\begin_layout Itemize
+Det finns varians i 
+\begin_inset Formula $\nabla\hat{L}\left(a_{n}\right)$
+\end_inset
+
+, större batch ger mindre varians men blir dyrare att beräkna.
+\end_layout
+
+\begin_layout Itemize
+Kräver många iterationer och liten learning rate (
+\begin_inset Formula $\gamma$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Kräver att vi har oberoende observationer i likelihoodfunktionen.
+\end_layout
+
+\begin_layout Itemize
+Funkar bra för neurala nätverk!
+\end_layout
+
+\begin_layout Itemize
+Ger en viss regularisering
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stochastic gradient descent (SGD)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Require
+\series default
+: Learning rate, Initial parameter 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $k\leftarrow1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+while
+\series default
+ stopping criterion not met 
+\series bold
+do
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sample a minibatch of m examples from the training set 
+\begin_inset Formula $\left(x^{(1)},\ldots,x^{(m)}\right)$
+\end_inset
+
+, with corresponding 
+\begin_inset Formula $y$
+\end_inset
+
+ values.
+\end_layout
+
+\begin_layout Itemize
+Compute gradient estimate:
+\begin_inset Formula 
+\[
+\hat{g}\leftarrow\frac{1}{m}\nabla\sum_{i}L\left(f\left(x^{(i)},a\right),y^{(i)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Apply update:
+\begin_inset Formula 
+\[
+a\leftarrow a-\gamma\cdot\hat{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $k\leftarrow k+1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+end while
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hyperparameterar
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hyperparameterar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Det finns många hyperparameterar för neurala nätverk!
+\end_layout
+
+\begin_layout Itemize
+Arkitektur:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Antal gömda lager
+\end_layout
+
+\begin_layout Itemize
+Antal neuroner i varje lager
+\end_layout
+
+\begin_layout Itemize
+Aktiveringsfunktioner
+\end_layout
+
+\begin_layout Itemize
+(Specialla typer av neuroner/lager)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Optimeringen:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mini-batchstorlek
+\end_layout
+
+\begin_layout Itemize
+Learning rate
+\end_layout
+
+\begin_layout Itemize
+Antal epoker (antalet gånger som hela träningsmängden används i SGD)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hyperparameterar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hur ska vi bestämma deras värden?
+\end_layout
+
+\begin_layout Itemize
+Svår fråga!
+\end_layout
+
+\begin_layout Itemize
+Mycket trail and error!
+\end_layout
+
+\begin_layout Itemize
+Valideringsdata
+\end_layout
+
+\begin_layout Itemize
+För stora problem/data kan det kan lång tid att hitta bra hyperparameterar
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Avslut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Frågor? Kommentarer?
+\end_layout
+
+\begin_layout Itemize
+Kurshemsidan
+\end_layout
+
+\begin_layout Itemize
+Labben
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document
