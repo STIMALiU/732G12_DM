@@ -9,6 +9,7 @@
 # true_y    : Vektor innehållande de sanna klass-värden i samma ordning som new_data
 
 class_evaluation <- function(new_data, model, true_y, type = "class", digits = 3){
+  library(stringr)
   # Predikterar klassen för new_data givet den skattade modellen
   if(any(str_detect(class(model), pattern = "keras"))){
     pred <- model %>% predict(new_data) %>% k_argmax()  
