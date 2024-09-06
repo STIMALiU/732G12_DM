@@ -198,39 +198,13 @@ history <- nn_model %>% fit(
   # Anger hur mycket av träningsdata som ska användas som valideringsmängd. 
   # Plockar ur data indexerat från slutet, så var vaksam på att data måste vara slumpat innan
   # Om man har en separat valideringsmängd används validation_data = data
-  validation_split = 0 # 25 % av träningsdata används som valideringsdata
+  validation_split = 0.30 # 30 % av träningsdata används som valideringsdata
 )
 
 # träningshistorik
 plot(history)
 
 
-#-------------------------------------------------------------------------------
-# Göra prediktioner
-#-------------------------------------------------------------------------------
-
-
-class_pred_train <- nn_model %>% predict(x_train)
-# är en matris med sannolikheter för alla klasser
-
-# Undersöker en obs:
-class_pred_train[3,]
-barplot(class_pred_train[3,],names.arg = 0:9)
-sum(class_pred_train[3,])
-# sann klass för obs 3:
-y_train_vect[3]
-
-round(class_pred_train[1:5,],2)
-
-# ta fram klasserna för prediktionerna som en vektor:
-temp<-class_pred_train %>% keras::k_argmax()
-class_pred_train_vect<-as.vector(as.array(temp))
-
-class_pred_train_vect
-
-
-# prediktionerna för testdata
-class_pred_test <- nn_model %>% predict(x_test)
 
 #-------------------------------------------------------------------------------
 # Utvärdera modellen
@@ -255,24 +229,5 @@ class_evaluation_keras(new_data = x_train, model = nn_model, true_y = y_train_ve
 class_evaluation_keras(new_data = x_test, model = nn_model, true_y = y_test_vect)
 
 
-# vi kan undersöka hur säkra våra prediktioner är i genomsnitt genom att kolla 
-# på värdet av arg_max k P(Y="k") för alla observationer som vi beräknar 
-# anpassade värden för, dvs vi kan kolla på radvisa maxvärden i matriserna
-# class_pred_train och class_pred_test
 
-p_max<-apply(X = class_pred_train,MARGIN = 1,FUN = max)
-hist(p_max,100)
-boxplot(p_max)
-summary(p_max)
-quantile(x = p_max,probs = c(0,0.01,0.05,0.1))
-# modellen är väldigt säker på sina prediktioner då 75% av alla 
-# max-sannolikheter > 0.9512
-# Notera att en dålig modell kan ha "säkra" prediktioner
-
-
-p_max_test<-apply(X = class_pred_test,MARGIN = 1,FUN = max)
-hist(p_max_test,100)
-boxplot(p_max_test)
-summary(p_max_test)
-quantile(x = p_max_test,probs = c(0,0.01,0.05,0.1))
 

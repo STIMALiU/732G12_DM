@@ -393,7 +393,7 @@ mnist_train.csv
 
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 mnist-data finns på 
@@ -414,7 +414,8 @@ tillplattat
 \begin_inset Quotes erd
 \end_inset
 
- så värdet på pixlarna i bilderna ligger som värden i kolumner.
+ så värdet på pixlarna i bilderna ligger som värden i kolumner, dvs att
+ varje rad är en observation/bild.
 \end_layout
 
 \end_inset
@@ -523,13 +524,12 @@ Utvärdera även modellen på er testmängd.
 \begin_layout Enumerate
 Testa nu att anpassa modellen med intern validering (30 procent) och repetera
  stegen ovan.
- Obs: genomför slumpmässig sortering av träningsdata innan
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Tänk på att x_train och y_train måste sorteras på samma sätt.
-\end_layout
+ Kod finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/nnet_class2.R"
+literal "false"
 
 \end_inset
 
@@ -539,11 +539,11 @@ Tänk på att x_train och y_train måste sorteras på samma sätt.
 \end_layout
 
 \begin_layout Enumerate
-Testa nu att skatta en modell med intern validering där ni försöker ändra
+Testa nu att skatta modeller med intern validering där ni försöker ändra
  arkitekturen av nätverket, t.ex.
  aktiveringsfunktionerna, antalet gömda neuroner, antalet gömda lager osv.
  Testa några olika modeller.
- Vad verkar producera bättre resultat?
+ Vad verkar producera bättre resultat på valideringsdata?
 \end_layout
 
 \begin_layout Enumerate
@@ -551,13 +551,27 @@ Utgå från den modell som ni tyckte fungerade bäst i 7).
  Testa nu att skatta en modell där ni försöker ändra optimeringen av nätverket,
  t.ex.
  antalet epoker, batchstorleken, learning rate osv.
- Vad verkar producera bättre resultat?
+ Vad verkar producera bättre resultat? Förslag på upplägg:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+learning rate: 0.1, 0.05, 0.001
 \end_layout
 
 \begin_layout Enumerate
-Sammanfatta alla dessa modeller som ni skattat och dra slutsatser om huruvida
- denna sorts data är lämplig att skatta med neurala nätverk och vad som
- krävs för att få bra resultat.
+batchstorleken: 32, 64, 128
+\end_layout
+
+\begin_layout Enumerate
+epoker: 20, 30, 40
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sammanfatta era modeller som ni skattat och dra slutsatser om huruvida neurala
+ nätverk är lämpliga för denna sorts data och vad som krävs för att få bra
+ resultat.
 \end_layout
 
 \begin_layout Enumerate

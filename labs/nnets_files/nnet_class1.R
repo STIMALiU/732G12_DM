@@ -147,7 +147,7 @@ history <- nn_model %>% fit(
   # Anger hur mycket av träningsdata som ska användas som valideringsmängd. 
   # Plockar ur data indexerat från slutet, så var vaksam på att data måste vara slumpat innan
   # Om man har en separat valideringsmängd används validation_data = data
-  validation_split = 0 # 25 % av träningsdata används som valideringsdata
+  validation_split = 0 # 0 % av träningsdata används som valideringsdata
 )
 
 # träningshistorik
