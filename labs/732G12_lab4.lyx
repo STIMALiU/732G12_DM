@@ -393,7 +393,7 @@ mnist_train.csv
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mnist-data finns på 
@@ -406,6 +406,15 @@ literal "false"
 \end_inset
 
 .
+ Detta data är 
+\begin_inset Quotes eld
+\end_inset
+
+tillplattat
+\begin_inset Quotes erd
+\end_inset
+
+ så värdet på pixlarna i bilderna ligger som värden i kolumner.
 \end_layout
 
 \end_inset
@@ -434,13 +443,12 @@ mnist_test.csv
 \begin_inset Quotes erd
 \end_inset
 
- .
+.
  Tänk på hur keras-paketet vill ha data strukturerat och följ instruktionerna
- i 
+ i denna 
 \begin_inset CommandInset href
 LatexCommand href
-name "kodmanualen"
-target "https://canadice.shinyapps.io/732G12_material/"
+name "kod"
 literal "false"
 
 \end_inset
@@ -458,6 +466,7 @@ ISL
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -471,7 +480,8 @@ et.
 validation_split = 0
 \family default
 .
- Använd de övriga standardvärden som är angivna i kodmanualen för anpassning.
+ Ange inlärningstakten till 0.1.
+ Använd de övriga standardvärden som är angivna i koden för anpassning.
  Ta reda på hur många parametrar er modell har.
  
 \end_layout
@@ -479,15 +489,18 @@ validation_split = 0
 \begin_layout Enumerate
 Utvärdera modellen som skattats genom att kontrollera nätverkets anpassningshist
 orik.
- Hur många epoker behövdes för att hitta den bästa modellen? Verkar modellen
- vara nog bra för att modellera datamaterialet? Utifrån träningsmängden
- vilka siffror verkar modellen ha lyckas sämst med att prediktera? Vilka
- siffror har modellen predikterat de till istället? 
-\lang swedish
-Utvärdering vid klassificering kan göras med funktionen 
-\begin_inset Newline newline
-\end_inset
+ Hur många epoker behövdes för att hitta en bra modell? Verkar modellen
+ vara nog bra för att modellera datamaterialet?
+\end_layout
 
+\begin_layout Enumerate
+Ta fram träffsäkerhet för träningsdata.
+ Är modellen bra överlag? Ta fram förväxlingsmatrisen för träningsdata.
+ Vilka siffror verkar modellen ha lyckas sämst med att prediktera? Vilka
+ siffror har modellen predikterat de till istället? Kolla på klassspecifika
+ utvärderingsmått.
+ Tips: 
+\lang swedish
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -507,8 +520,19 @@ Utvärdera även modellen på er testmängd.
 \end_layout
 
 \begin_layout Enumerate
-Testa nu att anpassa modellen med intern validering (20 procent) och repetera
- steg 3) och 4).
+Testa nu att anpassa modellen med intern validering (30 procent) och repetera
+ stegen ovan.
+ Obs: genomför slumpmässig sortering av träningsdata innan
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Tänk på att x_train och y_train måste sorteras på samma sätt.
+\end_layout
+
+\end_inset
+
+.
  Hur ser resultatet ut nu? Kan man teoretiskt förvänta sig en bättre modell
  med denna förändring?
 \end_layout
@@ -522,7 +546,8 @@ Testa nu att skatta en modell med intern validering där ni försöker ändra
 \end_layout
 
 \begin_layout Enumerate
-Testa nu att skatta en modell där ni försöker ändra optimeringen av nätverket,
+Utgå från den modell som ni tyckte fungerade bäst i 7).
+ Testa nu att skatta en modell där ni försöker ändra optimeringen av nätverket,
  t.ex.
  antalet epoker, batchstorleken, learning rate osv.
  Vad verkar producera bättre resultat?
@@ -545,8 +570,11 @@ literal "false"
 \end_inset
 
 .
- Här används också MNIST-data, men data läses in med funktionen dataset_mnist(),
- notera att data har annat format än när ni läste in den i 1), nu är det
+ Här används också MNIST-data, men data läses in med funktionen 
+\family typewriter
+dataset_mnist()
+\family default
+, notera att data har annat format än när ni läste in den i 1), nu är det
  en array.
  Dett gör att inputlagret behöver vara annorlunda.
  Anpassa den föreslagna modellen
@@ -579,7 +607,7 @@ A Multilayer Network on the MNIST Digit Data
 \series bold
 ISL
 \series default
- skattar en liknande modell som ni har gjort i 2) och 9).
+ skattar en liknande modell som ni har gjort i 2) och 10).
  Läs igenom labben, jämför deras precision för testdata med vad ni fått
  tidigare.
  
@@ -653,6 +681,10 @@ Testa att ändra optimeringen
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+inlärningstakten
+\end_layout
+
 \begin_layout Enumerate
 antalet epoker
 \end_layout
