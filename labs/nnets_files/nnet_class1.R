@@ -1,6 +1,6 @@
 
 
-# denna kod utgår från keras3 (se paketet keras för en ändre version)
+# denna kod utgår från keras3 (se paketet keras för en äldre version)
 # installera keras:
 # https://hastie.su.domains/ISLR2/keras-instructions.html
 # https://rstudio.github.io/cheatsheets/html/keras.html?_gl=1*1p01l90*_ga*MTczNDI3OTQ5Ni4xNzIxNzQyNDAw*_ga_2C0WZ1JHG0*MTcyNTQ1NjczMS44LjEuMTcyNTQ1NjgwNy4wLjAuMA..
@@ -44,7 +44,7 @@ colnames(x_train)[1:50]
 
 
 y_train_vect<-mnist_train[,785]
-y_test_vect<-mnist_train[,785]
+y_test_vect<-mnist_test[,785]
 # one-hot encoding av vår kategoriska responsvariabel
 # vektor med 10 klasser blir en binär matris med 10 kolumner här
 y_train <- to_categorical(mnist_train[, 785,drop=FALSE], num_classes = 10)
@@ -155,6 +155,33 @@ plot(history)
 
 
 #-------------------------------------------------------------------------------
+# Göra prediktioner
+#-------------------------------------------------------------------------------
+
+
+class_pred_train <- nn_model %>% predict(x_train)
+# är en matris med sannolikheter för alla klasser
+
+# Undersöker en obs:
+class_pred_train[3,]
+barplot(class_pred_train[3,],names.arg = 0:9)
+sum(class_pred_train[3,])
+# sann klass för obs 3:
+y_train_vect[3]
+
+round(class_pred_train[1:5,],2)
+
+# ta fram klasserna för prediktionerna som en vektor:
+temp<-class_pred_train %>% keras::k_argmax()
+class_pred_train_vect<-as.vector(as.array(temp))
+
+class_pred_train_vect
+
+
+# prediktionerna för testdata
+class_pred_test <- nn_model %>% predict(x_test)
+
+#-------------------------------------------------------------------------------
 # Utvärdera modellen
 #-------------------------------------------------------------------------------
 
@@ -177,29 +204,24 @@ class_evaluation_keras(new_data = x_train, model = nn_model, true_y = y_train_ve
 class_evaluation_keras(new_data = x_test, model = nn_model, true_y = y_test_vect)
 
 
+# vi kan undersöka hur säkra våra prediktioner är i genomsnitt genom att kolla 
+# på värdet av arg_max k P(Y="k") för alla observationer som vi beräknar 
+# anpassade värden för, dvs vi kan kolla på radvisa maxvärden i matriserna
+# class_pred_train och class_pred_test
+
+p_max<-apply(X = class_pred_train,MARGIN = 1,FUN = max)
+hist(p_max,100)
+boxplot(p_max)
+summary(p_max)
+quantile(x = p_max,probs = c(0,0.01,0.05,0.1))
+# modellen är väldigt säker på sina prediktioner då 75% av alla 
+# max-sannolikheter > 0.9512
+# Notera att en dålig modell kan ha "säkra" prediktioner
 
 
-
-y_train
-class_pred <- nn_model %>% predict(x_train)
-class_pred[1:10,]
-keras3::tf.keras.backend.argmax
-g<-apply(X = class_pred,MARGIN = 1,FUN = which.max)
-g2<-apply(X = class_pred,MARGIN = 1,FUN = max)
-which.max(class_pred[1,])
-
-hist(g2,200)
-
-barplot(class_pred[1349,])
-
-keras::k_argmax
-# Notera att för denna funktion måste y vara i klass-form, inte binärt som används i keras-funktionerna ovan
-class_evaluation_keras(new_data = x_train, model = nn_model, true_y = y_train)
-class_evaluation_keras(new_data = x_test, model = nn_model, true_y = y_test)
-
-
-
-
-
-
+p_max_test<-apply(X = class_pred_test,MARGIN = 1,FUN = max)
+hist(p_max_test,100)
+boxplot(p_max_test)
+summary(p_max_test)
+quantile(x = p_max_test,probs = c(0,0.01,0.05,0.1))
 

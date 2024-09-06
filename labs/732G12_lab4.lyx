@@ -449,6 +449,7 @@ mnist_test.csv
 \begin_inset CommandInset href
 LatexCommand href
 name "kod"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/nnet_class1.R"
 literal "false"
 
 \end_inset
