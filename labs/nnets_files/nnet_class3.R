@@ -93,6 +93,10 @@ nn_model4 <- keras_model_sequential()
 # grundmodellen och sen köra stegen nedan i ordning.
 
 
+# nedan följer 4 olika modeller
+# testa att ändra i dessa!!!
+
+
 #-------------------------------------------------------------------------------
 # modell 1
 # 784 x-variabler -> 100 gömda noder med tanh -> 10 output noder med softmax
