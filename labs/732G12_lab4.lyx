@@ -922,7 +922,7 @@ literal "false"
 
  (använd 
 \family typewriter
-`
+model_diagnostics()
 \family default
 ).
  
