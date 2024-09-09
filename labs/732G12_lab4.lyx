@@ -657,7 +657,7 @@ dataset_mnist()
 \family default
 , notera att data har annat format än när ni läste in den i 1), nu är det
  en array.
- Dett gör att inputlagret behöver vara annorlunda.
+ Detta gör att inputlagret behöver vara annorlunda.
  Anpassa den föreslagna modellen
 \begin_inset Foot
 status collapsed
@@ -800,7 +800,7 @@ literal "false"
 \end_layout
 
 \begin_layout Part*
-Del 4: Neurala Nätverk: Regression 
+Del 4: Neurala Nätverk: Regression (under uppdatering)
 \end_layout
 
 \begin_layout Standard
