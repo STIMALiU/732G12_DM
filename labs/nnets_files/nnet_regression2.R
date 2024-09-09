@@ -14,7 +14,8 @@ hist(log(diamonds$price))
 
 
 # det är många observationer, så vi tar ett urval för att göra skattningarna 
-# lite snabbare
+# lite snabbare (detta är främst för att göra skattningarna av de olika 
+# trädmodellerna snabbare)
 set.seed(352)
 index<-sample(x = nrow(diamonds),size = nrow(diamonds)*0.5,replace = FALSE)
 
@@ -24,6 +25,7 @@ str(diamonds2)
 
 # standardisera numeriska x:
 diamonds2[,c(1,5,6,8,9,10)]<-scale(diamonds2[,c(1,5,6,8,9,10)])[]
+# skapar log av price:
 diamonds2$price<-log(diamonds2$price)
 colnames(diamonds2)[7]<-"log_price"
 
