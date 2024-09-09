@@ -800,7 +800,7 @@ literal "false"
 \end_layout
 
 \begin_layout Part*
-Del 4: Neurala Nätverk: Regression (under uppdatering)
+Del 4: Neurala Nätverk: Regression 
 \end_layout
 
 \begin_layout Enumerate
@@ -832,7 +832,16 @@ vanlig
 \end_inset
 
  linjär modell.
- Testa följande kod, där olika regressionsmodeller skattas med keras.
+ Testa följande 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/nnet_regression1.R"
+literal "false"
+
+\end_inset
+
+, där olika regressionsmodeller skattas med keras.
  
 \end_layout
 
@@ -852,6 +861,77 @@ ISL
 .
 \end_layout
 
+\begin_layout Enumerate
+Ni ska nu analysera datasetet diamonds från ggplot2 paketet.
+ Ni ska försöka prediktera priset baserat på de andra variablerna.
+ Kod finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/nnet_regression2.R"
+literal "false"
+
+\end_inset
+
+.
+ Skatta följande modeller:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Modell 1: Neuralt nätverk: ett lager med 100 noder, använd relu
+\end_layout
+
+\begin_layout Enumerate
+Modell 2: Neuralt nätverk: två lager med 50 noder i varje lager, använd
+ relu
+\end_layout
+
+\begin_layout Enumerate
+Modell 3: Neuralt nätverk: ni väljer arkitekturer på modellen
+\end_layout
+
+\begin_layout Enumerate
+Modell 4: En vanlig trädmodell med maxdjup på 15 och minsta antal observationer
+ för en uppelning är 50
+\end_layout
+
+\begin_layout Enumerate
+Modell 5: Random forest: ha 100 träd i modellen (om skattningen går långsamt
+ så kan ni minska mängden träd)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utvärdera modellerna på tränings- och valideringsdata med MSE.
+ Sammanställ en tabell med dessa värden.
+ Jämför och analysera modellerna.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Genomför residualanalys på träningsdata för de olika modellerna.
+ Kod finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/lm_diagnostics.R"
+literal "false"
+
+\end_inset
+
+ (använd 
+\family typewriter
+`
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vilken av modellerna i 3) är ni mest nöjd med när det gäller prediktioner?
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -860,7 +940,7 @@ ISL
 \end_layout
 
 \begin_layout Part*
-Del 5: Mer regression (under uppdatering)
+Del 5: Mer regression 
 \end_layout
 
 \begin_layout Standard
