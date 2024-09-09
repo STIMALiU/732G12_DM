@@ -341,29 +341,49 @@ literal "false"
 \end_inset
 
  för Keras.
- Dokumentation för keras finns 
+ Dokumentation för keras finns här:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
+name "R interface to Keras"
+target "https://keras3.posit.co/index.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "TensorFlow/Keras"
 target "https://tensorflow.rstudio.com/guides/"
 literal "false"
 
 \end_inset
 
- och
-\lang swedish
  
+\end_layout
+
+\begin_layout Itemize
+
+\lang swedish
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
+name "Lista över funktioner i Keras"
 target "https://tensorflow.rstudio.com/reference/keras/"
 literal "false"
 
 \end_inset
 
-.
+
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \lang swedish
@@ -406,7 +426,7 @@ mnist_train.csv
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mnist-data finns på 
@@ -442,7 +462,7 @@ literal "false"
 
 \end_inset
 
- och ange rätt skala på variablerna.
+.
  Datamaterialet finns under Kursdokument på Lisam.
  Här lämpar sig 
 \family typewriter
@@ -455,6 +475,20 @@ read.csv2()
 
 mnist_test.csv
 \begin_inset Quotes erd
+\end_inset
+
+.
+ Neurala nätverk är känsliga för skalan på de förklarande variablerna.
+ Dataseten som ni laddar ner från Lisam är skalat så att alla x-värden ligger
+ mellan 0 och 1, vilket är lämpligt här
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+När vi arbetar med neurala nätverk så är det vanligt att x skalas till att
+ ligga mellan 0 och 1, eller att ha medelvärde 0 och standardavvikelse 1.
+\end_layout
+
 \end_inset
 
 .
@@ -873,6 +907,8 @@ literal "false"
 
 \begin_layout Enumerate
 Läs in datamaterialet i R.
+ Standardisera x-vaiabeln till att ha medelvärde 0 och standardavvikelse
+ 1.
 \end_layout
 
 \begin_layout Enumerate
@@ -984,7 +1020,7 @@ Två gömda lager med 100 + 100 noder +Relu
 
 \end_deeper
 \begin_layout Enumerate
-Gör b), men lägg till polynom av 
+Gör c), men lägg till polynom av 
 \family typewriter
 x
 \family default
@@ -992,6 +1028,9 @@ x
  Tips: 
 \family typewriter
 as.matrix(poly(train_x,degree = 5))
+\family default
+.
+ Standardisera de nya x-variablern innan ni använder dem.
 \end_layout
 
 \begin_layout Enumerate
@@ -1030,7 +1069,7 @@ I 5) försöker ni
 \begin_inset CommandInset href
 LatexCommand href
 name "interpolera"
-target "https://sv.wikipedia.org/wiki/Interpolation"
+target "https://en.wikipedia.org/wiki/Interpolation"
 literal "false"
 
 \end_inset
@@ -1039,7 +1078,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "extrapolera"
-target "https://sv.wikipedia.org/wiki/Extrapolering"
+target "https://en.wikipedia.org/wiki/Extrapolation"
 literal "false"
 
 \end_inset
