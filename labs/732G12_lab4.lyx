@@ -803,58 +803,39 @@ literal "false"
 Del 4: Neurala Nätverk: Regression (under uppdatering)
 \end_layout
 
-\begin_layout Standard
-Kör denna tutorial: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_regression/"
-literal "false"
+\begin_layout Enumerate
+Linjär regression: Om vi har ett neuralt nätverk med inga gömda noder, har
+ identitetsfunktionen som aktiveringsfunktionen i sista lagret
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I keras anger vi 
+\begin_inset Quotes eld
+\end_inset
+
+linear
+\begin_inset Quotes erd
+\end_inset
+
+ för att sätta identitetsfunktionen som aktiveringsfunktionen i ett lager.
+\end_layout
 
 \end_inset
 
-.
+ och tränas med MSE, då har vi en 
+\begin_inset Quotes eld
+\end_inset
+
+vanlig
+\begin_inset Quotes erd
+\end_inset
+
+ linjär modell.
+ Testa följande kod, där olika regressionsmodeller skattas med keras.
  
 \end_layout
 
-\begin_layout Enumerate
-Vad är det för data? Hur många förklarande variabler? Hur många observationer?
-\end_layout
-
-\begin_layout Enumerate
-Skatta den föreslagna modellen.
- Hur många parameterar har den?
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Hur bra blir modellen på testdata?
-\end_layout
-
-\begin_layout Enumerate
-Vilken kostnadsfunktion används?
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Testa att ändra arkitekturen på modellen och utvärdera resultatet på testdata.
-\end_layout
-
-\begin_layout Enumerate
-Testa att ändra optimeringen och utvärdera resultatet på testdata.
-\end_layout
-
-\begin_layout Enumerate
-Skatta en Random forest-modell på samma dataset och utvärdera resultatet
- på testdata.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Fungerar Random forest bättre eller sämre än neurala nätverk på dettta dataset?
-\end_layout
-
-\end_deeper
 \begin_layout Enumerate
 Gå igenom labben 10.9.1 
 \begin_inset Quotes eld
@@ -879,7 +860,7 @@ ISL
 \end_layout
 
 \begin_layout Part*
-Del 5: Mer regression 
+Del 5: Mer regression (under uppdatering)
 \end_layout
 
 \begin_layout Standard
