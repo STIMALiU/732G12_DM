@@ -1,0 +1,1144 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik och maskininlärning\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Data Mining}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 5
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Allmänt
+\end_layout
+
+\begin_layout Standard
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Exempelkod för neurala nätvek: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/labs/nnets_files"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Kodmanual: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://canadice.shinyapps.io/732G12_material/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+ISL
+\series default
+: An Introduction to Statistical Learning, 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Boken: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+R-kod till labbar: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Dataset: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\lang english
+IDM
+\series default
+: Introduction to Data Mining
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+Kod till boken finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset CommandInset href
+LatexCommand href
+name "Sample chapters"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/index.php#chapters"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang english
+Dataset till vissa uppgifter finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
+ mnist-data finns på 
+\begin_inset CommandInset href
+LatexCommand href
+name "Lisam"
+target "https://liuonline.sharepoint.com/sites/Lisam_732G53_2024HT_MV"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notera att ni inte behöver göra alla delar på alla uppgifter.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna
+ som avhandlats.
+ Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Datauppdelning
+\end_layout
+
+\begin_layout Standard
+För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+ (och testmängd).
+ Detta kan göras med 
+\family typewriter
+createDataPartition()
+\family default
+ från 
+\family typewriter
+caret
+\family default
+-paketet.
+ Argument till den funktionen som är av vikt här är 
+\begin_inset Formula $p$
+\end_inset
+
+ som hur stor andel av observationerna som ska användas till träningsmängden.
+ Ni kan också använda 
+\family typewriter
+subset()
+\family default
+ för att göra detta också, men det blir svårare att tydligt ange de observatione
+r som ska tilldelas till valideringsmängden.
+ Denna uppdelning ska ske slumpmässigt.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
+ från valideringsmängden.
+\end_layout
+
+\begin_layout Section*
+Keras
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "CHEAT SHEET"
+target "https://raw.githubusercontent.com/rstudio/cheatsheets/master/keras.pdf"
+literal "false"
+
+\end_inset
+
+ för Keras.
+ Dokumentation för keras finns här:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+\begin_inset CommandInset href
+LatexCommand href
+name "R interface to Keras"
+target "https://keras3.posit.co/index.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset CommandInset href
+LatexCommand href
+name "TensorFlow/Keras"
+target "https://tensorflow.rstudio.com/guides/"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Lista över funktioner i Keras"
+target "https://tensorflow.rstudio.com/reference/keras/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Utvärdering vid klassificering kan göras med funktionen 
+\begin_inset CommandInset href
+LatexCommand href
+name "class_evaluation_keras()"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/class_evaluation_keras.R"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Del 1: Optimiering av neurala nätverk
+\end_layout
+
+\begin_layout Standard
+Här kommer vi utgå från Fashion MNIST-data, kolla 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_classification/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+ Läs in datamaterialet och se till att ha koll på vad det är för sorts data.
+ Nu ska ni testa olika inställningar på optimeringen.
+\end_layout
+
+\begin_layout Enumerate
+Definera följande modell i keras:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+model <- keras_model_sequential() 
+\end_layout
+
+\begin_layout Plain Layout
+
+model %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_flatten(input_shape = c(28, 28)) %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 128, activation = 'relu') %>%
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 128, activation = 'relu') %>%     
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 10, activation = 'softmax')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Fixera antal epoker till 30.
+ Sätt den globala learning rate till 0.01.
+ Sätt batchstorlek till 128.
+\end_layout
+
+\begin_layout Enumerate
+Hur många parametrar har modellen?
+\end_layout
+
+\begin_layout Enumerate
+Testa nu följande inställningar.
+ Undersök tränings- och valideringsdata under träning och utvärdera på testdata.
+ 
+\series bold
+Tips
+\series default
+: titta 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/reference/keras/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+ vid behov.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Skatta modellen med vanlig SGD
+\end_layout
+
+\begin_layout Enumerate
+Skatta modellen med Adam algoritmen.
+ Använd defaultvärden på övriga hyperparametrar.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skatta modellen med RMSPROP algoritmen.
+ Använd defaultvärden på övriga hyperparametrar.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vilken metod är ni mest nöjd med?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gör om 4) men med batchstorlek 64 och 256.
+ Hur påverkar det optimeringen?
+\end_layout
+
+\begin_layout Enumerate
+Välj batchstorlek 128 och SGD.
+ Ändra learning rate till 1 och 0.0001, vad händer?
+\end_layout
+
+\begin_layout Enumerate
+Upprepa 6) men med Adam eller RMSPROP
+\end_layout
+
+\begin_layout Enumerate
+Välj batchstorlek 128 och SGD.
+ Testa att ändra startvärdena.
+ Detta görs i lagerfunktionerna.
+ Kolla i dokumentationen hur ni ska göra.
+ Testa att låta startvärdena vara väldigt små (men ej exakt noll) och rätt
+ stora.
+ Hur blir resultatet?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Batch normalization"
+target "https://en.wikipedia.org/wiki/Batch_normalization"
+literal "false"
+
+\end_inset
+
+: Definiera modellen nedan.
+ Skatta modellen med Adam, learning_rate=0.01, epochs = 30, batch_size=128.
+ Hur blir resultatet? Undersök tränings- och valideringsdata under träning
+ och utvärdera på testdata.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+model_batch_norm <- keras_model_sequential() 
+\end_layout
+
+\begin_layout Plain Layout
+
+model_batch_norm %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_flatten(input_shape = c(28, 28)) %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 128, activation = 'relu') %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_batch_normalization() %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 128, activation = 'relu') %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_batch_normalization() %>%   
+\end_layout
+
+\begin_layout Plain Layout
+
+layer_dense(units = 10, activation = 'softmax')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Välj en metod från 4) och skatta modellen med 50 epoker.
+\end_layout
+
+\begin_layout Enumerate
+Av alla metoder för optimering ni testat, vad tycker ni har funkat bäst?
+ Har det varit stor skillnad?
+\end_layout
+
+\begin_layout Section*
+Del 2: Neurala nätverk: regularisering
+\end_layout
+
+\begin_layout Standard
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_overfit_underfit/"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section*
+Del 3: Faltade nätverk och MNIST data
+\end_layout
+
+\begin_layout Standard
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://keras3.posit.co/articles/examples/vision/mnist_convnet.html"
+literal "false"
+
+\end_inset
+
+.
+ Jämför med er bästa MLP-modell (förra labben) på samma dataset.
+\end_layout
+
+\begin_layout Section*
+Del 4: Faltade nätverk och CIFAR10 data
+\end_layout
+
+\begin_layout Standard
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://tensorflow.rstudio.com/examples/cifar10_cnn"
+literal "false"
+
+\end_inset
+
+.
+ Ni ska här jobba med CIFAR10 datasetet, som är ett klassiskt datasets inom
+ maskininlärning.
+ För mer info, se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.cs.toronto.edu/~kriz/cifar.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/CIFAR-10"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notera att detta är färgbilder som har tre kanaler (grön, röd, blå) och
+ att beräkningarna blir mycket tyngre.
+ 
+\series bold
+Läs steg 1 och 2 nedan innan börjar skatta modeller
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Beroende på hårdvaran i er dator så kan det vara bra att minska ner storleken
+ på datasetet.
+ Testa att börja med hälften av observationerna.
+ Sedan kan ni använda fler om er dator klarar av det.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar0 <- dataset_cifar10() 
+\end_layout
+
+\begin_layout Plain Layout
+
+no_obs<-dim(cifar0$train$y)[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+no_obs_test<-dim(cifar0$test$y)[1] 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(34) 
+\end_layout
+
+\begin_layout Plain Layout
+
+index<-base::sample(no_obs,size = no_obs/2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+index2<-base::sample(no_obs_test,size = no_obs_test/2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar<-cifar0
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$train$x<-cifar0$train$x[index,,,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$train$y<-cifar0$train$y[index,]
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$test$x<-cifar0$test$x[index2,,,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+cifar$test$y<-cifar0$test$y[index2,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+rm(cifar0)
+\end_layout
+
+\begin_layout Plain Layout
+
+# kolla så att klasserna är hyfsat balanserade: 
+\end_layout
+
+\begin_layout Plain Layout
+
+table(cifar$train$y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+table(cifar$test$y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Börja med att träna i max 5 epoker när ni skattar modellen.
+ Sen kan ni öka antalet när ni ser hur lång tid beräkningarna tar.
+\end_layout
+
+\begin_layout Enumerate
+Vad är det för sorts data ni jobbar med här? Hur många obs? Hur stora bilder?
+ Vilka klasser finns?
+\end_layout
+
+\begin_layout Enumerate
+Skatta den föreslagna modellen (OBS kan ta lång tid).
+ Hur många parameterar har den?
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar modellen på testdata? Beräkna förväxlingsmatrisen för testdata.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vilken klass var lättast att klassificera?
+\end_layout
+
+\begin_layout Enumerate
+Vilken klass var svårat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra arkitekturen på modellen.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ändra de faltade lagren: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Antal lager, varning: ta ej för många 
+\end_layout
+
+\begin_layout Enumerate
+Ändra antal och storlek på 
+\family typewriter
+filters
+\family default
+ i faltade lagren, varning: ta ej för många
+\end_layout
+
+\begin_layout Enumerate
+Ändra 
+\family typewriter
+pool_size
+\family default
+ i pooling-lagren.
+\end_layout
+
+\begin_layout Enumerate
+Testa average pooling
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att modifiera de fullt kopplade lagren.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Testa att ändra optimeringen
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar den bästa modellen som ni lyckas hitta?
+\end_layout
+
+\begin_layout Enumerate
+Gå in 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://benchmarks.ai/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+ och se hur de bästa modellerna presterar på CIFAR10 och MNIST.
+\end_layout
+
+\begin_layout Section*
+Del 5: Autoencoders och Functional API
+\end_layout
+
+\begin_layout Standard
+I denna del ska ni testa att skatta autoencoders.
+ Ni även testa att använda functional API i Keras (istället för Sequential
+ model som ni testat innan).
+ Functional API är ett gränssnitt för konstruera modeller som är mer avancerade
+ och där allt inte bara är kopplat från lagret precis innan.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Kör denna tutorial: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://keras3.posit.co/articles/examples/vision/autoencoder.html"
+literal "false"
+
+\end_inset
+
+, minska ev antal epoker om det tar lång tid att träna modellerna.
+ Målet är att återkapa rena bilder baserat på data med brusiga bilder.
+\end_layout
+
+\begin_layout Enumerate
+Functional API: kolla på den 
+\begin_inset CommandInset href
+LatexCommand href
+name "tutorial"
+target "https://keras3.posit.co/articles/functional_api.html"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gå igenom 
+\begin_inset Quotes sld
+\end_inset
+
+Setup
+\begin_inset Quotes srd
+\end_inset
+
+ till 
+\begin_inset Quotes sld
+\end_inset
+
+All models are callable, just like layers
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kolla på 
+\begin_inset Quotes sld
+\end_inset
+
+Manipulate complex graph topologies
+\begin_inset Quotes srd
+\end_inset
+
+ till 
+\begin_inset Quotes sld
+\end_inset
+
+Shared layers
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Vissa delar här ligger utanför kursen (tex hantering av text, embeddings,
+ LSTM etc).
+ Kolla mer på koncepten på hur mer avancerade arkitekturer kan skapas.
+ Testa att återkskapa modellen under 
+\begin_inset Quotes sld
+\end_inset
+
+A toy ResNet model
+\begin_inset Quotes srd
+\end_inset
+
+ och försök skatta den på CIFAR10 (obs kan ta lång tid).
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Del 6: Mer faltade nätverk
+\end_layout
+
+\begin_layout Standard
+Återvänd till Fashion MNIST-data, kolla 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://tensorflow.rstudio.com/tutorials/beginners/basic-ml/tutorial_basic_classification/"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+ Läs in datamaterialet och se till att ha koll på vad det är för sorts data.
+\end_layout
+
+\begin_layout Enumerate
+Skapa följande modeller:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Faltat lager + pooling + två fullt kopplade lager
+\end_layout
+
+\begin_layout Enumerate
+Faltat lager + pooling + faltat lager + pooling + två fullt kopplade lager
+\end_layout
+
+\begin_layout Enumerate
+En egen kombination av lager, men med minst ett faltat lager.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skatta de föreslagna modellerna.
+ Hur många parameterar har de?
+\end_layout
+
+\begin_layout Enumerate
+Hur presterar modellerna på testdata? Beräkna förväxlingsmatrisen för testdata
+ för de olika modellerna.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vilken klass var lättast att klassificera?
+\end_layout
+
+\begin_layout Enumerate
+Vilken klass var svårat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Om ni vill: testa att lägga till någon regularisering till den bästa modellen
+ i 1).
+ Hur blir prediktionen på testdata?
+\end_layout
+
+\begin_layout Enumerate
+Jämför med er bästa modell med bara fullt kopplade lager på detta dataset.
+ Vilken presterar bäst? Hur stor är skillnaden? Hur skiljer sig antalet
+ parametrar åt?
+\end_layout
+
+\begin_layout Enumerate
+Utgå från MNIST och försök skapa en model som kopplingar som hoppar över
+ vissa lager.
+ Använd Functional API.
+\end_layout
+
+\end_body
+\end_document
