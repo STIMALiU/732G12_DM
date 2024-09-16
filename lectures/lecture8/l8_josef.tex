@@ -94,7 +94,7 @@
         \item Kräver fler iterationer och mindre learning rate.
         \item Kräver att vi har oberoende observationer.
         \item Funkar bra för neurala nätverk!
-        \item En epoch är en genomgång av all träningsdata.
+        \item En epok är en genomgång av all träningsdata.
     \end{itemize}
     
 \end{frame}
@@ -262,13 +262,13 @@ Vid prediktioner så används medelvärde och varians beräknat på hela dataset
     
     $\text{Ridge} = \text{OLS} + \ell^2$-norm på $\beta$:
     \begin{equation*}
-        \argmin_{\beta} L(\beta) = \sum_{i=1}^{n}(y_i - \hat{y})^2 + \lambda \sum_{j=1}^{p} \beta^2, \qquad \lambda \geq 0.
+        \argmin_{\beta} L(\beta) = \sum_{i=1}^{n}(y_i - \hat{y})^2 + \lambda \sum_{j=1}^{p} \beta_{j}^2, \qquad \lambda \geq 0.
     \end{equation*}
 
 
     $\text{Lasso} = \text{OLS} + \ell^1$-norm på $\beta$:
     \begin{equation*}
-        \argmin_{\beta} L(\beta) = \sum_{i=1}^{n}(y_i - \hat{y})^2 + \lambda \sum_{j=1}^{p} |\beta|, \qquad \lambda \geq 0.
+        \argmin_{\beta} L(\beta) = \sum_{i=1}^{n}(y_i - \hat{y})^2 + \lambda \sum_{j=1}^{p} |\beta_{j}|, \qquad \lambda \geq 0.
     \end{equation*}
 \end{frame}
 
@@ -526,7 +526,7 @@ Vid prediktioner så används medelvärde och varians beräknat på hela dataset
 \begin{frame}{Pooling}
     
     \begin{itemize}
-        \item Pooling avnänds ofta för varje (eller vartannat) faltningslager.
+        \item Pooling används ofta för varje (eller vartannat) faltningslager.
         \item Hjälper till att reducera storleken på bilden.
         \begin{itemize}
             \item Betyder att senare lager inte behöver vara så stora.
