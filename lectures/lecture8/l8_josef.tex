@@ -43,6 +43,7 @@
         \item Optimering av neurala nätverk
         \item Regularisering
         \item Faltade nätverk
+        \item Autoencoder
     \end{itemize}
 
     \url{http://playground.tensorflow.org}
@@ -96,7 +97,7 @@
         \item Viktig parameter för att få konvergens.
         \item Behöver ofta ändras med antalet iterationer.
         \begin{itemize}
-            \item Schema ger hur learning rate minskar $\gamma_1, \gamma_2, \ldots$
+            \item Schema ger hur learning rate minskar: $\gamma_1, \gamma_2, \gamma_3, \ldots$
             \item Vanliga krav på schemat:
             \begin{equation*}
                 \sum_{k=1}^{\infty} \gamma_k = \infty \qquad \sum_{k=1}^{\infty} \gamma_k^2 < \infty.
@@ -160,6 +161,7 @@
         \end{itemize}
         \item Bias sätts för det mesta till något värde.
         \item Att sätta startparametrar kan ses som en hyperparameter.
+        \item Keras dok: se \href{https://keras3.posit.co/reference/index.html\#initializers}{här}
     \end{itemize}
 
 \end{frame}
@@ -193,8 +195,57 @@
     
 \end{frame}
 
-\begin{frame}{Regularisering}
+
+\begin{frame}{Batch normalization}
+
+\href{https://en.wikipedia.org/wiki/Batch_normalization}{Batch normalization}:
+  \begin{itemize}
+    \item Metod för att göra träningen av neurala nätverk stabilare och snabbare.
+    \item Funkar bra empiriskt, teorin om varför det funkar är inte klarlagd 
+    \item Idén är standardisera alla inputs till ett lager
+    \item Anta att vi använder någon variariant av SGD
+    \begin{itemize}
+      \item standardiseringen sker per nod i det aktuella lagret
+      \item standardiseringen sker över den aktuella mini-batchen i ett träningssteg
+      \item vi beräknar medelvärde och standardavvikelse baserat på aktuell mini-batch
+    \end{itemize}
+    
+  \end{itemize}
+   
+    
+\end{frame}
+
+
+\begin{frame}{Batch normalization}
+
+Låt $z_i$ vara ett set av noder i ett lager. Beräkna medelvärde och varians per nod över aktuell mini-batch:
+
+$\mu_i = \frac{1}{m} \sum_{j=1}^m x_{ij} \quad$ och $\quad \sigma_{i}^2 = \frac{1}{m} \sum_{j=1}^m (x_{ij}-\mu_i)^2$
+
+Normaliserar: 
+
+$z_{i,norm}=\frac{z_i-\mu_i}{\sqrt{ \sigma_{i}^2 + \epsilon}}$
+
+Skala om $z_{i,norm}$ med parametarar:
+
+$\tilde{z_{i}} = \gamma_i \cdot z_{i,norm} + \beta_i$
+
+Applicera aktiveringsfunktionen på $\tilde{z_{i}}$. 
+
+$\gamma_i$ och  $\beta_i$ är parametarar som vi skattar tillsammans med alla parametrar i nätverket. 
+
+Vid prediktioner så används medelvärde och varians beräknat på hela datasetet.
+
+   
+    
+\end{frame}
+
+
+
+\begin{frame}{Regularisering: krympning}
     Vad händer med kostandsfunktionen när vi kör Ridge/Lasso?
+    
+    Vad händer med parametrarna i modellen när vi kör Ridge/Lasso?
 
 \end{frame}
 
@@ -234,7 +285,7 @@
         \item[$\lambda$] Hyperparameter med $\lambda \geq 0$.   
     \end{description}
 
-    Vad händer med problemet då vi ändrar $\lambda$?
+    Vad händer med  $\tilde{L}(\theta)$ då vi ändrar $\lambda$?
 
 \end{frame}
 
@@ -272,11 +323,8 @@
         \end{itemize}
         \item Nätverket kan inte "lita på" några specifika kopplingar.
         \item Nätverket måste distribuera sin kapacitet över hela nätverket, motverkar överanpassning.
-        \item När värdena på vikterna sprids ut över många kopplingar så blir de mindre.
+        \item När värdena på vikterna sprids ut över många kopplingar så blir de mindre $\rightarrow$ Liknande effekt som vid normstraff.
         \item Dropout används vid träning, inte testning.
-        \begin{itemize}
-            \item Liknande effekt som vid normstraff.
-        \end{itemize}
         \item Notera likheten med Random forest.
     \end{itemize}
     
@@ -289,6 +337,7 @@
 \begin{frame}{Mer Regularisering}
     Det finns flera andra sätt att regularisera
     \begin{itemize}
+        \item Batch normalization: ger viss regularisering
         \item Skaffa mer träningsdata!
         \item Stoppa tidigt, använd valideringsdata för att avgöra när det är dags att stanna skattningen.
         \item Förstärk data (dataset augmentation), skapa mer artificiell data att träna på.
@@ -298,11 +347,11 @@
         \end{itemize}
         \item Ensamblemetoder
         \begin{itemize}
-            \item Generera fler uppsättningar med startvärden och träna flera modeller: aggregera resultatet vid testdata.
+            \item Generera fler uppsättningar med startvärden och träna flera modeller: aggregera resultatet vid prediktioner.
         \end{itemize}
         \item Parameter Tying och Parameter Sharing
         \begin{itemize}
-            \item Ha en struktur på modellen som tvingar vissa kopplingar att vara identiska eller gles m.m.
+            \item Ha en struktur på modellen som tvingar vissa kopplingar att vara identiska eller glesa m.m.
             \item T.ex. CNN, RNN
         \end{itemize}
     \end{itemize}
@@ -310,7 +359,7 @@
 
 \begin{frame}{Speciella typer av modeller}
     \begin{itemize}
-        \item Residual nets: Kopplingar som hoppar över ett lager.
+        \item Residual nets: Kopplingar som hoppar över ett eller flera lager.
         \begin{itemize}
             \item Skip layer connections.
             \item Tänk: "Modellera residualerna på en linjär modell med ett neuralt nätverk".
@@ -321,7 +370,7 @@
             \item Finns olika sorter, vanlig variant: Använd förtränade nätverk på andra problem.
             \begin{itemize}
                 \item Ta ett neuralt nätverk som redan är anpassat för ett problem/dataset.
-                \item Starta optimering för ett annat dataset med start i de redan tränad parametrarna.
+                \item Starta optimering för ett annat dataset med start i de redan tränade parametrarna.
                 \item Kan ses som ett avancerat sätt att välja startvärden.
                 \item Ofta effektivt på mindre dataset.
             \end{itemize}
@@ -348,7 +397,7 @@
 
     \begin{itemize}
         \item Faltning är en speciell typ av linjär operator.
-        \item Kan defineras på lite olika sätt
+        \item Kan defineras på olika sätt, kontinuerliga funktioner:
         \begin{align*}
             y_t &= \int x_{\tau} h(t - \tau) \mathrm{d}\tau = \int x(t-\tau) h(\tau) \mathrm{d}\tau \\
             y(t) &= (x * h) (t)
@@ -368,7 +417,7 @@
     Faltninig är en vanlig operation inom statistik, matematik, signalbehandling, reglerteknik m.m.
     \begin{itemize}
         \item Används för att filtrera signaler/tidsserier, t.ex. för att ta bort brus.
-        \item Används när vi vill beräkna täthetsfunktionen för summan av två oberoende slumpvariabler.
+        \item Används när vi vill beräkna täthetsfunktionen för \href{https://en.wikipedia.org/wiki/Convolution_of_probability_distributions}{summan av två oberoende slumpvariabler}.
         \begin{itemize}
             \item Givet $p(X), p(Y)$, låt $Z = X + Y$, hur beräkna $p(Z)$?
         \end{itemize}
@@ -518,7 +567,7 @@
         \end{itemize}
         \item Vilka filter ska vi välja?
         \begin{itemize}
-            \item Neurala nätverk till undsättning!
+            \item $\rightarrow$ Neurala nätverk till undsättning!
             \item Vi lär oss parametrarna i ett eller flera filter med SGD (RMSProp, Adam etc.)
         \end{itemize}
         \item Förr valdes filter "för hand" för att passa olika problem.
@@ -529,5 +578,88 @@
 \begin{frame}{CNN Arkitektur för Klassificering}
     \includegraphics[width = \textwidth]{figs/CNN ARCHITECTURE.png}
 \end{frame}
+
+
+\begin{frame}{Autoencoder}
+    
+    \href{https://en.wikipedia.org/wiki/Autoencoder}{Autoencoder}:
+    \begin{itemize}
+      \item Målet är att lära sig en effektiv kod/representation av en dataset $X$.
+      \item Exempel på \textbf{oövervakad inlärning}
+      \item Oftast så har koden/representation lägre dimension än $X$.
+      \item Nätverk med två delar: encoder och decoder
+    \end{itemize}
+        
+    \begin{equation*}
+        X \rightarrow encoder \rightarrow Z/code \rightarrow decoder \rightarrow X'
+    \end{equation*}
+
+    \includegraphics[scale=0.32]{figs/Autoencoder_schema.png}
+    
+\end{frame}
+
+\begin{frame}{Autoencoder}
+    
+    Vanligt att använda djupa nätverk: encodern och decodern har noder i flera lager.
+    
+    Antalet noder brukar minskas successivt tills kod-lagret, för sen successivt ökas till det sista lagret. Antalet noder i kod-lagret är en viktig hyperparameter.
+    
+    Input och output är lika stora.
+    
+    \includegraphics[scale=0.30]{figs/Autoencoder_structure_deep.png}
+    
+
+\end{frame}
+
+
+\begin{frame}{Autoencoder: Träning}
+    
+    \begin{itemize}
+      \item Encoder: $E_\phi: X \rightarrow Z$
+      \item Decoder: $D_\theta: Z \rightarrow X$
+      \item Anpassade värden: $X' = D_\theta (E_\phi(X))$
+      \item $D_\phi()$ och $E_\theta()$: kan vara MLP, CNN etc
+    \end{itemize}
+        
+    Låt $d(x,x')$ vara ett avståndsmått, kostnadsfunktion:
+    
+    \begin{equation*}
+        L(\theta ,\phi) = \mathbb{E}[d(x,x')] = \mathbb{E}[d(x,D_\theta (E_\phi(X)))]
+    \end{equation*}
+    
+    Om vi använder Euklidiskt avstånd och MSE som kostnadsfunktion:
+    
+    \begin{equation*}
+        \argmin_{\theta ,\phi} L(\theta ,\phi) = \frac{1}{N} \sum_{i=1}^{N} \| x_i - D_\theta(E_\phi(X)) \|_{2}^{2}
+    \end{equation*}
+    
+\end{frame}
+
+
+\begin{frame}{Autoencoder}
+    
+    Finns olika varaianter
+    \begin{itemize}
+      \item Icke-linjär variabelreduktion/transformation
+      \begin{itemize}
+        \item Notera: Om vi har en linjär autoencoder så är det likt PCA
+      \end{itemize}
+      \item Sparse autoencoder: koden tvingas att vara nära noll för de flesta noder
+      \item Denoising autoencoder - brusreducering: tränar på ett $X$ där man lagt till brus och försöker återskapa $X$ utan brus
+      \item Variational autoencoder (VAE): en generativ modell där koden som man lär sig är en sannolikhetsfördelning $\rightarrow$ lär sig att sampla från fördelningen för $X$
+    \end{itemize}
+    
+\end{frame} 
+     
+
+\begin{frame}{Autoencoder: exempel}
+    
+    
+    \includegraphics[scale=0.32]{figs/Reconstruction_autoencoders_vs_PCA.png}
+    
+    ``Reconstruction of 28x28pixel images by an Autoencoder with a code size of two (two-units hidden layer) and the reconstruction from the first two Principal Components of PCA. Images come from the Fashion MNIST dataset.''  - \href{https://en.wikipedia.org/wiki/Autoencoder\#Principal_component_analysis}{källa}
+
+\end{frame}
+
 
 \end{document}
