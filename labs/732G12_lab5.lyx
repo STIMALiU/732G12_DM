@@ -992,7 +992,7 @@ literal "false"
 
 , minska ev antal epoker om det tar lång tid att träna modellerna.
  Målet är att återskapa rena bilder baserat på data med brusiga bilder,
- vi ska skatten denoising autoencoder.
+ vi ska skatta en denoising autoencoder.
 \end_layout
 
 \begin_layout Enumerate
