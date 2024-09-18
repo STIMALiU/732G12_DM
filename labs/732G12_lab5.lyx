@@ -981,7 +981,139 @@ I denna del ska ni testa att skatta autoencoders.
 \end_layout
 
 \begin_layout Enumerate
-Kör denna tutorial: 
+Autoencoder och spambase data: Målet är nu att testa att träna en autoencoder
+ datasetet spambase.
+ Vi kommer att använda Keras functional API, för mer detaljer, se steg 3)
+ nedan.
+ Datasetet har 57 förklarande variabler och en kategorisk responsvariabel
+ (Spam).
+ För detaljer kring data, se denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/Email_Spam_dataset_info.pdf"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Läs data och transformera data enligt koden: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+literal "false"
+
+\end_inset
+
+ (finns kod för skattning av modeller mm)
+\end_layout
+
+\begin_layout Enumerate
+Skatta följande modeller som grund för vidare analys.
+ Använd alla förklarande variabler och ha Spam som responsvariabel.
+ Använd all data som träningsdata.
+ Ta fram träffsäkerhet på träningsdata.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vanlig linjär logistik regression
+\end_layout
+
+\begin_layout Enumerate
+Random forest, använd 100 träd.
+\end_layout
+
+\begin_layout Enumerate
+MLP, ha lager: 100 noder + 100 noder och sen en klassificeringsnod.
+ Välj övriga inställningar själv.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Vi ska nu utgå från de 57 förklarande variablerna.
+ Målet är att få fram en transformation/kod av dessa som är har en låg dimension
+, men som ändå innehåller relevant information för klassificering av spam
+ från de ursprungliga variablerna.
+ Skatta den föreslagna autoencoder-modellen.
+ Beskriv hur encoder och decoder ser ut.
+ Vårt flaskhalslager har här 2 noder
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Dvs de minsta lagret som ligger i mitten av modellen.
+ Två noder gör det lätt att visualisera de nya transformerade variablerna
+ i ett spridningsdiagram.
+\end_layout
+
+\end_inset
+
+.
+ Så vi gör en icke-linjär variabelreduktion från 57 variabler till 2 variabler.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Plotta data i de två nya variablerna (baserat på flaskhalslagret), färglägg
+ punkterna baserat på Spam-variabeln.
+ Detta får vi genom att göra prediktioner med encoder-delen av modellen.
+ Verkar de nya variablerna vara meningsfulla? Notera att Spam inte har använts
+ för att göra variabelreduktionen.
+\end_layout
+
+\begin_layout Enumerate
+Testa nu att skatta några modeller där ni har de två nya variablerna som
+ förklarande variabler och Spam som respons.
+ Ta fram träffsäkerhet för träningsdata.
+ Hur bra blir modellerna? Jämför med b) ovan.
+ Verkar de nya variablerna vara användbara eller ej?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vanlig logistik regression
+\end_layout
+
+\begin_layout Enumerate
+KNN, där ni väljer K med korsvalidering från en lista av värden (5,7, 9,
+ ...
+ ,21).
+\end_layout
+
+\begin_layout Enumerate
+MLP, ha lager: 50 noder + 50 noder.
+ Välj övriga inställningar själv.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bonus: Gör PCA på de 57 förklarande variablerna, och spara de två första
+ komponenterna i ett dataset.
+ Hur mycket av datas varians förklarar de två första variablerna tillsammans?
+ Skatta modellerna i e) med de två första komponenterna som förklarande
+ variabler.
+ Jämför med modellerna i b) och e).
+\end_layout
+
+\begin_layout Enumerate
+Bonus: Gör om c), men flaskhalslagret ha 3 noder och testa även att ha 5
+ noder.
+ Notera att det är mycket svårare att analysera det nya variabelrummet är
+ bra/meningsfullt när vi har mer än 2 noder.
+ Vi kan kolla på parvisa punktdiagram, men det kommer inte att ge hela bilden
+ av de nya variablerna, men kan lära oss nåt.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Denoising autoencoder: Kör denna tutorial: 
 \begin_inset CommandInset href
 LatexCommand href
 name "länk"
@@ -991,8 +1123,7 @@ literal "false"
 \end_inset
 
 , minska ev antal epoker om det tar lång tid att träna modellerna.
- Målet är att återskapa rena bilder baserat på data med brusiga bilder,
- vi ska skatta en denoising autoencoder.
+ Målet är att återskapa rena bilder baserat på data med brusiga bilder.
 \end_layout
 
 \begin_layout Enumerate
@@ -1059,7 +1190,7 @@ A toy ResNet model
 \begin_inset Quotes srd
 \end_inset
 
- och försök skatta den på CIFAR10 (obs kan ta lång tid).
+ och försök skatta den på CIFAR10 eller fashion MNIST (obs kan ta lång tid).
 \end_layout
 
 \end_deeper
