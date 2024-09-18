@@ -214,7 +214,7 @@ X_hat<-autoencoder_model %>% predict(x = train_data)
 
 
 # sätt en sökväg + namn för att spara modellen:
-save_path<-"/home/joswi05/Dropbox/Josef/arbete/kurser/732G12/732G12_2024HT/732G12_DM_teacher/labs/lab5/keras_models/spambase_autoencoder_model.keras"
+save_path<-"min sökväg till en mapp/spambase_autoencoder_model.keras"
 
 autoencoder_model |> save_model(save_path,overwrite = TRUE)
 

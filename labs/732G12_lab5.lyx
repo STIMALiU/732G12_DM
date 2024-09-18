@@ -1006,6 +1006,7 @@ Läs data och transformera data enligt koden:
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
+target "https://raw.githubusercontent.com/STIMALiU/732G12_DM/master/labs/nnets_files/spambase_autoencoder.R"
 literal "false"
 
 \end_inset
