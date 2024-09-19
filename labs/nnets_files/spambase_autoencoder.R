@@ -202,7 +202,7 @@ history <- autoencoder_model %>% fit(
 X_hat<-autoencoder_model %>% predict(x = train_data)
 
 # kan kolla anpassningen på några dimensioner av X om vi vill,
-# dock jobbigt att kolla alla 75 dimensioner
+# dock jobbigt att kolla alla 57 dimensioner
 # plot(train_data[,1],X_hat[,1])
 # plot(train_data[,2],X_hat[,20])
 # plot(train_data[,3],X_hat[,30])
