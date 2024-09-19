@@ -1032,7 +1032,7 @@ Random forest, använd 100 träd.
 
 \begin_layout Enumerate
 MLP, ha lager: 100 noder + 100 noder och sen en klassificeringsnod.
- Välj övriga inställningar själv.
+ Ni väljer övriga inställningar själva.
 \end_layout
 
 \end_deeper
@@ -1089,7 +1089,7 @@ KNN, där ni väljer K med korsvalidering från en lista av värden (5,7, 9,
 
 \begin_layout Enumerate
 MLP, ha lager: 50 noder + 50 noder.
- Välj övriga inställningar själv.
+ Ni väljer övriga inställningar själva.
 \end_layout
 
 \end_deeper
