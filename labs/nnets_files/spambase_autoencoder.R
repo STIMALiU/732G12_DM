@@ -201,12 +201,19 @@ history <- autoencoder_model %>% fit(
 
 X_hat<-autoencoder_model %>% predict(x = train_data)
 
-# kan kolla anpassningen på några dimensioner av X om vi vill,
-# dock jobbigt att kolla alla 57 dimensioner
-# plot(train_data[,1],X_hat[,1])
-# plot(train_data[,2],X_hat[,20])
-# plot(train_data[,3],X_hat[,30])
-# plot(train_data[,4],X_hat[,44])
+# kan kolla anpassningen på X om vi vill, blir många plottar.
+many_plots<-FALSE
+if(many_plots){
+  cor_vect<-rep(0,57)
+  for(i in 1:57){
+    cor_temp<-cor(train_data[,i],X_hat[,i])
+    cor_vect[i]<-cor_temp
+    plot(train_data[,i],X_hat[,i],main=paste0("X-var: ",i,", cor: ",cor_temp),
+         xlab="original X",ylab="X_hat")
+  }
+  hist(cor_vect,15)
+  summary(cor_vect)
+}
 
 
 #-----------------------------------
