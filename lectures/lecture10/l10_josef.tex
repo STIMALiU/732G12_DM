@@ -10,9 +10,9 @@
 \usepackage{listofitems} % for \readlist to create arrays
 
 \title{732G12 Data Mining}
-\subtitle{Föreläsning 8}
+\subtitle{Föreläsning 10}
 \date{}
-\author{Johan Alenlöv \\ IDA, Linköping University, Sweden}
+\author{Josef Wilzén \\ IDA, Linköping University, Sweden}
 \titlegraphic{\hfill\includegraphics[height=1.2cm]{../LiU_primary_black.pdf}}
 %\institute{Joint work with\dots}
 
@@ -183,8 +183,8 @@
     \item Fördelningar - Olika metoder passar bättre på vissa fördelningar.
     \item Form - Godtyckliga former är svårare att klustra.
     \item Storlek - K-means, problem med olika storlekar.
-    \item Tåthet - Olika täthet problem för K-means, DBSCAN.
-    \item Dålgit separerade kluster - Vissa metoder slår ihop överlappande kluster.
+    \item Täthet - Olika täthet problem för K-means, DBSCAN.
+    \item Dåligt separerade kluster - Vissa metoder slår ihop överlappande kluster eller kluster som ligger nära varandra
 \end{itemize}
 
 \begin{redbox}
@@ -199,7 +199,7 @@ Ingen klustermetod passar för alla dataset!
         \item Cluster tendency: Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
         \item Avgöra rätt antal kluster.
         \item Interna mått på hur bra klusteranalysen är.
-        \item Externa mått på hur bra klusteranalysen är, om vi har tillgång till sanna klasser/grupper.
+        \item Externa mått på hur bra klusteranalysen är $\rightarrow$ om vi har tillgång till sanna klasser/grupper.
         \item Jämföra olika metoder för klusteranalys på samma dataset.
         \item Kontext och problembeskrivning, avgör om vi har en bra klustring.
     \end{itemize}
@@ -359,7 +359,7 @@ Ingen klustermetod passar för alla dataset!
         \begin{equation*}
             \operatorname{H} 0 \frac{\sum_{i=1}^{p}w_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
         \end{equation*}
-        \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
+        \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H_0}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
         \item Värden nära 1 indikerar att data inte är uniformt fördelat.
         
     \end{itemize}
