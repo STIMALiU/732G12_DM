@@ -1,0 +1,2497 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+\usetheme{Boadilla}
+% or ...
+
+\usecolortheme{orchid}
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\end_preamble
+\use_default_options false
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file is a solution template for:
+\end_layout
+
+\begin_layout Itemize
+Talk at a conference/colloquium.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk length is about 20min.
+ 
+\end_layout
+
+\begin_layout Itemize
+Style is ornate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Föreläsning 7 - Klusteranalys
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Short Paper Title
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, use only with long paper titles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Josef Wilzen
+\end_layout
+
+\begin_layout Date
+2022-09-19
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduktion
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Oövervakad inlärning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Klusteranalys
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Associationsanalys och sekventiella mönster
+\end_layout
+
+\begin_layout Itemize
+Dimensionality reduction techniques
+\end_layout
+
+\begin_layout Itemize
+PCA, Faktormodeller
+\end_layout
+
+\begin_layout Itemize
+Representation Learning
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Målet med klusteranalys är att dela upp datamaterialet i grupper (kluster)
+ som är intressanta och/eller användbara
+\end_layout
+
+\begin_layout Itemize
+Vi vet inte i förväg vilka grupper som kommer att blidas 
+\end_layout
+
+\begin_layout Itemize
+Ingen responsvariabel
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klusteranalys
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ge exempel på områden där klusteranalys kan vara användbart
+\end_layout
+
+\begin_layout Enumerate
+Hur många kluster finns i bilden nedan?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/kluster1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definition av kluster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Begreppet ”kluster” är inte entydigt definierat.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/kluster1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tillämpningsområden 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Biologi (taxonomi/gener)
+\end_layout
+
+\begin_layout Itemize
+Informationssökning (sökmotorer)
+\end_layout
+
+\begin_layout Itemize
+Psykologi och medicin
+\end_layout
+
+\begin_layout Itemize
+Kunddata
+\end_layout
+
+\begin_layout Itemize
+Sociala medier/nätverk
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klassificering och klustering 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klassificeringsmetoder som beskrevs tidigare är exempel på övervakad klassificer
+ing – markerar nya objekt, utgår från originaldata (data, etiketter)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Klusteranalys är ett exempel på 
+\series bold
+oövervakad
+\series default
+ klassificering – härleder en etikett för objekt, utgår endast från data
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klustringstyper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Partitionell
+\series default
+: data är indelad i ett antal oöverlappande kluster,
+\begin_inset Newline newline
+\end_inset
+
+eller 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hierarkisk
+\series default
+: delkluster är tillåtna, kluster är representerade som ett träd
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Uteslutande
+\series default
+: ett objekt tillhör ett kluster,
+\begin_inset Newline newline
+\end_inset
+
+eller
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Överlappande
+\series default
+: ett objekt hör till några kluster,
+\begin_inset Newline newline
+\end_inset
+
+eller
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fuzzy
+\series default
+: Ett objekt hör till olika kluster med en specifik sannolikhet
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klustringstyper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Fullständig
+\series default
+: varje objekt tillskrivet ett kluster,
+\begin_inset Newline newline
+\end_inset
+
+eller
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ofullständig
+\series default
+: somliga objekt är inte tillskrivna något kluster
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Klustertyper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Separerade
+\end_layout
+
+\begin_layout Itemize
+Angränsande/intilliggande
+\end_layout
+
+\begin_layout Itemize
+Centroid- eller prototypbaserade
+\end_layout
+
+\begin_layout Itemize
+Densitet- eller täthetsbaserade
+\end_layout
+
+\begin_layout Itemize
+Konceptuella
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Klustertyper.png
+	scale 22
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_layout Columns
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+K-means klustring
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Centroid-baserad och partitionell klustringsmetod
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Centroid = en punkt som ska representera/sammanfatta alla obs i ett kluster
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Enkel och ofta effektiv metod 
+\end_layout
+
+\begin_layout Itemize
+K: hyperparameter, antalet kluster
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/basic K-means.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/K-means clustering.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/k-means Illustration1.png
+	scale 28
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Låt 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ vara centroider för kluster 
+\begin_inset Formula $i$
+\end_inset
+
+, låt 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ vara en mängd med alla obs i kluster 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vi behöver definera ett avståndsmått
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Används för att mäta avstånd mellan 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ och övriga obs
+\end_layout
+
+\begin_layout Itemize
+Vanligast är euklidiskt avstånd: låt 
+\begin_inset Formula $p$
+\end_inset
+
+ och 
+\begin_inset Formula $q$
+\end_inset
+
+ vara två vektorer
+\begin_inset Formula 
+\[
+d\left(p,q\right)=d\left(q,p\right)=\sqrt{\left(q_{1}-p_{1}\right)^{2}+\left(q_{2}-p_{2}\right)^{2}+\ldots+\left(q_{n}-p_{n}\right)^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\sqrt{\sum_{i=1}^{n}\left(q_{i}-p_{i}\right)^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notera: 
+\begin_inset Formula $d\left(p,p\right)=\sqrt{\sum_{i=1}^{n}p_{i}^{2}}=\sqrt{p^{T}p}=||p||$
+\end_inset
+
+ är den euklidiska normen.
+ Ridge använder 
+\begin_inset Formula $||p||^{2}=\sum_{i=1}^{n}p_{i}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+K-means minimerar 
+\begin_inset Formula $SSE$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+SSE i ett kluster: 
+\begin_inset Formula 
+\[
+E_{c_{i}}=\sum_{x\in C_{i}}d\left(x,c_{i}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Totala SSE för alla kluster
+\begin_inset Formula 
+\[
+SSE=\sum_{i=1}^{K}E_{c_{i}}=\sum_{i=1}^{K}\sum_{x\in C_{i}}d\left(x,c_{i}\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+I det euklidiska rummet beräknas centroider som
+\begin_inset Formula 
+\[
+c_{i}=\frac{1}{n_{i}}\sum_{x\in C_{i}}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+K-means algoritmen hittar en ett 
+\series bold
+lokalt
+\series default
+ minima
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figs/k-means Illustration2.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Från 
+\begin_inset CommandInset href
+LatexCommand href
+name "“An Introduction to Statistical Learning with Applications in R”"
+target "http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf"
+literal "false"
+
+\end_inset
+
+ av Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Startvärden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vi måste välja startvärden för centroiderna, valet påverkar starkt utgången
+ av algoritmen
+\end_layout
+
+\begin_layout Itemize
+Exempelvis, om man väljer dåliga startpunkter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/dåliga start värden.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vanlig metod är att köra algoritmen många gånger med olika slumpmässiga
+ startvärden.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Halverande K-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Algoritm som motverkar problemet med val av start-centroider
+\end_layout
+
+\begin_layout Itemize
+Dela upp datamängden i två kluster, välj ett och dela upp i två, välj ett
+ (av de nuvarande 3) och dela upp osv...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Valet av kluster kan göras med avseende på flest observationer, störst SSE
+ eller annat kriterie
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Uppdelningen kan liknas vid ett binärt träd
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Halverande K-means
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Halverande K-means_exempel.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Halverande K-means 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Halverande K-means algoritm.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Algoritm som motverkar problemet med val av start-centroider
+\end_layout
+
+\begin_layout Itemize
+Kostnad för vanlig k-means: 
+\begin_inset Formula $O\left(n\cdot k\cdot d\cdot i\right)$
+\end_inset
+
+, för många dataset 
+\begin_inset Formula $\approx O\left(n\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+: antal obs, 
+\begin_inset Formula $k$
+\end_inset
+
+: antal kluster, 
+\begin_inset Formula $d$
+\end_inset
+
+: antalet variabler, 
+\begin_inset Formula $i$
+\end_inset
+
+: antalet iterationer till konvergens
+\end_layout
+
+\begin_layout Itemize
+Ordo eller Big O notation, se 
+\bar under
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/Big_O_notation"
+literal "false"
+
+\end_inset
+
+
+\bar default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SSE kan bli godtyckligt dåligt med k-means
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Välj en centroid uniformt slumpmässsigt från observationerna
+\end_layout
+
+\begin_layout Enumerate
+För varje datapunkt 
+\begin_inset Formula $x$
+\end_inset
+
+, beräkna avståndet 
+\begin_inset Formula $d\left(x,c_{i}\right)$
+\end_inset
+
+ mellan 
+\begin_inset Formula $x$
+\end_inset
+
+ och den närmaste centroiden 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ som redan har valts.
+\end_layout
+
+\begin_layout Enumerate
+Välj en datapunkt som centroid genom att: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+slumpa en punkt (som inte redan är en centroid), med hjälp av viktade sannolikhe
+ter, där vikterna är proportionella mot 
+\begin_inset Formula $d\left(x,c_{i}\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Upprepa steg 2) och 3) tills 
+\begin_inset Formula $K$
+\end_inset
+
+ centroider har valts
+\end_layout
+
+\begin_layout Enumerate
+Givet de valda centroiderna: kör vanlig k-means klustering
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means++
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Generellt: k-means++ förbättrar slutgiltiga SSE mycket
+\end_layout
+
+\begin_layout Itemize
+Steg 1)-4) tar extra tid att beräkna, men sen krävs det ofta mycket mindre
+ iterationer innan vanliga k-means konvergerar i 5)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vanligt att k-means++ är dubbelt så snabb som k-means med avseende på total
+ beräkningstid
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means: kommentarer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enkel och ganska effektiv
+\end_layout
+
+\begin_layout Itemize
+Känslig mot initialiseringsproblem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kör många gånger med olika slumpade startvärden, Halverande k-means, k-means++
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Skapar kluster som är klotformade i 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ och är är linjärt spearerade
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Andra former fungerar sämre
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ger en centroid/prototyp för varje kluster: kan användas för att beskriva
+ klustren
+\end_layout
+
+\begin_layout Itemize
+Har svårt att identifiera kluster av olika storlekar eller med olika tätheter
+\end_layout
+
+\begin_layout Itemize
+Känslig mot extremvärden
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+K-means: utökningar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kernel k-means: kan forma kluster av olika former, med icke-linjära speareration
+sgränser
+\end_layout
+
+\begin_layout Itemize
+Gaussian mixture models/clustering: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Varje kluster beskrivs med en multivariat normalfördelning
+\end_layout
+
+\begin_layout Itemize
+Skattas med expectation–maximization (EM) algorithm
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+k-medoids/Partitioning Around Medoids (PAM): använder medioder som center
+\end_layout
+
+\begin_layout Itemize
+k-medians clustering: använder medianer istället
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hierarkisk klustring
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hierarkisk klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hierarkisk klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Två typer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Agglomerativ hierarkisk klustring
+\end_layout
+
+\begin_layout Itemize
+Diversiv hierarkisk klustring
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Skapar en hierarki med kluster
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Subkluster som har subkluster, som har subkluster...
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Agglomerativ hierarkisk klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Börja med enstaka observationer som individuella kluster och slå ihop närmaste
+ par av kluster steg för steg.
+ Detta upprepas tills alla observationer är i ett kluster.
+\end_layout
+
+\begin_layout Itemize
+Processen visualiseras i ett s.k.
+ dendrogram
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vågrät axel innehåller observationsnummer (notera att ordningen här är godtyckli
+g)
+\end_layout
+
+\begin_layout Itemize
+Lodrät axel mäter avstånd mellan kluster
+\end_layout
+
+\begin_layout Itemize
+Förgreningen mäter vilka kluster och vid vilket avstånd dessa slås ihop
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/dendogram1.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Agglomerativ hierarkisk klustring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/dendogram2.png
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Dendrogram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dendrogrammet visar 
+\emph on
+alla
+\emph default
+ ihopslagningar
+\end_layout
+
+\begin_layout Itemize
+Vi måste manuellt ange när vi anser ihopslagningarna ska sluta: Hur många
+ kluster?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Subjektivt
+\end_layout
+
+\begin_layout Itemize
+När avstånden mellan ihopslagningar (lodräta linjer) är ”nog stort”
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Dendrogram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/dendogram3.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "An Introduction to Statistical Learning"
+target "https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Algoritm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/hclut_alg.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proximity matrix är en matris innehållande närheten mellan kluster, även
+ distansmatriser kan användas
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beräkning av avstånd mellan två kluster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Då kluster ofta innehåller flera observationer behövs en metod för att definiera
+ hur avstånd beräknas, även kallad 
+\emph on
+länkningsmetod
+\emph default
+.
+\begin_inset Newline newline
+\end_inset
+
+Låt 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ och 
+\begin_inset Formula $C_{j}$
+\end_inset
+
+ vara två kluster.
+\end_layout
+
+\begin_layout Itemize
+MIN eller Single (enkel länkning):
+\begin_inset Formula 
+\[
+prox\left(C_{i},C_{j}\right)=\underset{x\in C_{i},y\in C_{j}}{min}dist\left(x,y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+MAX eller Complete (fullständig länkning):
+\begin_inset Formula 
+\[
+prox\left(C_{i},C_{j}\right)=\underset{x\in C_{i},y\in C_{j}}{max}dist\left(x,y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beräkning av avstånd mellan två kluster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Group average (genomsnitts länkning):
+\begin_inset Formula 
+\[
+prox\left(C_{i},C_{j}\right)=\frac{1}{\left(n_{i}\cdot n_{j}\right)}\underset{x\in C_{i},y\in C_{j}}{\sum}dist\left(x,y\right)
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ och 
+\begin_inset Formula $n_{j}$
+\end_inset
+
+ är antalet obs i kluster 
+\begin_inset Formula $i$
+\end_inset
+
+ och 
+\begin_inset Formula $j$
+\end_inset
+
+ respektive.
+\end_layout
+
+\begin_layout Itemize
+Wards/Centroid metod: närhet defineras som hur mycket kvadrerade fel ökar
+ när två kluster slås ihop.
+ Samma kostandsfunktion som k-means.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beräkning av avstånd mellan två kluster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/linking_pic.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Egenskaper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ingen global funktion att optimera (jämf.
+ K-means)
+\end_layout
+
+\begin_layout Itemize
+Group average- och olika centroid metoder kan ta hänsyn till olika klusterstorle
+kar när ett par kluster förenas
+\end_layout
+
+\begin_layout Itemize
+Ihopslagningar är slutgiltiga och går inte att ta isär
+\end_layout
+
+\begin_layout Itemize
+Närhetsmåttet kan påverka resultatet 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+extremvärden eller brus
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Passar bra för data som har en hierarkisk struktur
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Egenskaper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Minneskomplexitet: 
+\begin_inset Formula $O\left(n^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tidskomplexitet: 
+\begin_inset Formula $O\left(n^{3}\right)$
+\end_inset
+
+, med smarta datastrukturer 
+\begin_inset Formula $O\left(n^{2}log\left(n\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/ex_data.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Single link clustering.png
+	scale 17
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/Complete link clustering.png
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exempel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/grouP_ward_clustering.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+Källa: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Introduction to Data Mining"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Avslut
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kurshemsidan
+\end_layout
+
+\begin_layout Itemize
+Labben
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document
