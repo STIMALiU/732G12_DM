@@ -78,6 +78,9 @@ bibliography: report_ref.bib
 <!-- Börjar med kapitel 1 -->
 # Inledning
 Detta är enklare mall för hur akademiska rapporter ska skrivas. Den kan även användas som stöd när övriga rapporter ska skrivas.
+
+Notera: det finns instruktioner i denna mall löpande till och med Bilaga.
+
 Se till att använda ett korrekt språk i rapporterna, utan stavfel och andra grammatiska misstag. Tänk hela tiden att ni ska kunna visa upp det ni presterar för en framtida arbetsgivare.
 
 Referenser till källor, både elektroniska och fysiska, måste följa en korrekt och enhetlig stil. Det finns flera olika att välja mellan men de vanligaste är APA, Harvard eller Oxford. Det spelar ingen roll vilken av dessa system som ni väljer att använda så länge ni använder en konsekvent och korrekt. 
@@ -88,6 +91,10 @@ Denna mall använder en bibtex-fil med referenser (report_ref.bib) Exempel på r
 - En annan referens är [@zaki2019data]
 
 Läs  *[här](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)* för mer information om referenser i Rmarkdown.
+
+Notera: Alla figurer, tabeller och liknande ska vara numrerade och ska refereras från brödtexten. Alltså inga orefererade figurer/tabeller!
+
+Notera: Ingen R-kod eller råa R-utskrifter ska synas i rapporten (med undantag för om de är i Bilaga under rubriken Kod). Alla tabeller ska vara ordentliga rapporttabeller.
 
 ## Bakgrund
 I bakgrunden ges en introduktion till ämnet och motivering till problemställningen i uppsatsen.
@@ -115,10 +122,17 @@ Här ska all databearbetning presenteras, det vill säga ifall ni har behövt tr
 
 **Allmänt om data:**
 
-- Visa metadata: dimensioner på data 
+- Variabeldefinitioner 
+- Ange tydligt vad som är reponsvariabel och vad som är era förklarande variabler
+- Visa metadata: dimensioner på data, skaltyper på variabler etc
+- Standardiseringar när det behövs
 - Visa beskrivande statistik, lämpliga plottar och tabeller på data
+- Grundläggande variabeltransformationer
 - Hantera saknade värden
 - Undersök om det finns outliers, oblanserade klasser mm
+- Datauppdelning: Träning, validering, test
+
+
 
 
 
@@ -127,7 +141,7 @@ Här ska all databearbetning presenteras, det vill säga ifall ni har behövt tr
 
 
 # Metod (VIKTIGT!!!)
-Detta kapitel beskriver de statistiska metoderna som används i rapporten. Hänvisa till litteraturen då metoderna förklaras och visa formler, t.ex. hur support beräknas.
+Detta kapitel beskriver de statistiska metoderna som används i rapporten. Hänvisa till litteraturen då metoderna förklaras och visa formler när det är relevant.
 Metoderna ska beskrivas **generellt** i detta kapitel; i vilka fall de bör användas, vilka krav eller antaganden som gäller och hur metoden beräknas. 
 
 Ta upp nedanstående punkter i den mån de är relevanta för er metod:
@@ -139,20 +153,36 @@ Ta upp nedanstående punkter i den mån de är relevanta för er metod:
   - Träning, validering, test
 - Utvärderingsmått och liknande
 
-Förklara vilka mjukvaror/progam/paket som ni använder för att tillämpa er metod.
+Förklara vilka mjukvaror/program/paket som ni använder för att tillämpa er metod.
 
 Notera att i de flesta fall så är det lämpligt att jämföra två eller fler modeller/metoder på samma problem. Det kan vara så att man har samma metodfamlij, men med olika hyperparametrar.
 
-- Tex inom klassificering /regression: Om ni tänker använda någon icke-linjär metod, då är det ofta rimligt att jämföra med linjär regression/linjär logistisk regression (men även andra modeller kan vara intressant att jämföra med). Tänk frågan: "Vad vinner vi med en mer komplicerad modell?"
+- Inom klassificering /regression: Om ni tänker använda någon icke-linjär metod, då är det ofta rimligt att jämföra med linjär regression/linjär logistisk regression (men även andra modeller kan vara intressant att jämföra med). Tänk frågan: "Vad vinner vi med en mer komplicerad modell?"
 - Det är ok att ha en metod som sin "huvudmetod" som beskrivs mer ingående i metodkapitlet, och en eller flera jämförande metoder som beskrivs kortare.
 - Om ni vill hålla er till endast en metod så bör ni motivera det och den metoden bör utforskas mer ingående med avseende på olika inställningar etc. 
+
+
+Först beskriver ni era metoder/modeller teoretiskt i generella termer.
+
+Sen ska ni beskriva era "praktiska metod": hur ni applicerar era metoder/modeller på ert problem. Ni ska alltså har ett strukturerat arbetssätt och ni ska beskriva det övergripande här. Sen under Resultat visar ni resutlatet av er applicerade metod. 
+
+ - När man analyserar data är det naturligt att ha en initial fas där men explorativt utforskar data och olika metoder kopplat till problemet. Denna fas behöver man oftast inte skriva om under Metod. Notera: denna fas ska vara relativt kort i tid.
+ - Sen när ni fått ungefärlig bild av vad som ni behöver göras för att analysera er frågeställning så ska ni bestämma ett strukturerat upplägg på hur ni ska använda era metoder/modeller på ert problem.
+    - Ska data delas upp? Hur? (träning, validering, korsvalidering, test)
+    - Vilka modellval/inställningar/hyperparametrar ska göras? Detta är ofta en svår och viktig fråga.
+      - Ofta behöver man fixera några inställningar/hyperparametrar (pga man behöver avgränsa och tidsbegränsningar)
+      - Andra inställningar/hyperparametrar vill man hitta så optimala värden för som möjligt (ofta med hjälp av korsvalidering/valideringsdata). 
+      - Ange tydligt vilka hyperparametrar som ni fixerar och vilka som ni vill försöker optimera för olika metoder/modeller. De som ni optimerar: ange tydligt vilka olika hyperparametervärden som ni väljer mellan för varje specifik hyperparameter. Ex: "För KNN används korsvalidering med tio uppdelningar för att bestämma k. Följande  följande värden på k testas: $k=5,7,9,\ldots,25$. Det k som ger minst genomsnittligt MSE i korsvalideringen används."
+    - Hur metoder/modellerna ska utvärderas och jämföras.
+  - Det är ok att revidera sitt praktiska upplägg vid behov efter att man har börjat med själva analysen (se till att uppdatera beskrivningen av upplägget) 
+
 
 
 
 <!-- Anger sidbrytning -->
 \clearpage
 
-# Resultat och Analys
+# Resultat
 
 Detta kapitel presenterar resultatet av beräkningar, diagram och tabeller som sen tolkas och analyseras. 
 
@@ -160,7 +190,7 @@ Här anger ni vilka faktiska val ni har gjort med avseende på modellval, hyperp
 
 Varje diagram och tabell som presenteras i rapporten ska vara numrerat och ha en figur/tabelltext som kort beskriver innehållet. Avrunda till lämpligt antal decimaler.
 
-- Ta inte med någon tabell eller diagram som ni inte kommenterar eller tolkar.
+- Ta inte med någon tabell eller diagram som ni inte kommenterar eller tolkar. Alla figurer, tabeller och liknande ska ska refereras från brödtexten.
 
 
 
@@ -170,7 +200,11 @@ Varje diagram och tabell som presenteras i rapporten ska vara numrerat och ha en
 
 # Diskussion
 Här ingår en kritisk granskning av resultaten (inte analys eller tolkning utan mer fokuserad på trovärdighet) samt en utvärdering av lämpligheten av de använda metoderna. Här görs även kopplingar tillbaka till tidigare studier som gåtts igenom i bakgrunden med referenser i texten.
+
 En del av diskussion bör också försöka sätta resultatet i sitt sammanhang, vad kan samhället ta lärdom av dessa resultat, hur kan man fortsätta undersöka ämnet (t.ex. andra metoder eller andra faktorer).
+
+Skriv kort om etiska överväganden kopplat till ert datamaterial och frågeställning.
+(etiska problem med data? etiska problem med er modell?)
 
 <!-- Anger sidbrytning -->
 \clearpage
@@ -209,5 +243,8 @@ Här ska ni ha relevant R-kod
 
 ## Redogörelse för bidrag
 Här skriver ni en kort redogörelse för hur gruppens medlemmar har bidragit till arbetet och rapporten. Kan vara i form av en punktlista.
+
+## Generativ AI
+Mer info kommer snart.
 
 
