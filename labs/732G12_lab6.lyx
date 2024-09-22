@@ -1,0 +1,988 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik och maskininlärning\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Data Mining}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Data Mining}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 5
+\end_layout
+
+\begin_layout Author
+Josef Wilzén
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Allmänt
+\end_layout
+
+\begin_layout Standard
+Datorlaborationerna kräver att ni har R och Rstudio installerat.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kodmanual: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.isakhietala.com/teaching/732g12/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ISL
+\series default
+: An Introduction to Statistical Learning,
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Boken: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+R-kod till labbar: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dataset: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://cran.r-project.org/web/packages/ISLR2/index.html"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://www.statlearning.com/resources-second-edition"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+IDM
+\series default
+: Introduction to Data Mining
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kod till boken finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Sample chapters"
+target "https://www-users.cse.umn.edu/~kumar001/dmbook/index.php#chapters"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dataset till vissa uppgifter finns 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/732G12_DM/tree/master/data"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notera att ni inte behöver göra alla delar på alla uppgifter.
+ Det viktiga är att ni får en förståelse för de olika principerna och modellerna
+ som avhandlats.
+ Dessa uppgifter ska inte lämnas in, utan är till för er övning.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Datauppdelning
+\end_layout
+
+\begin_layout Standard
+För att motverka överanpassning bör ni dela upp data till träning-, validering-,
+ (och testmängd).
+ Detta kan göras med 
+\family typewriter
+createDataPartition()
+\family default
+ från 
+\family typewriter
+caret
+\family default
+-paketet.
+ Argument till den funktionen som är av vikt här är 
+\begin_inset Formula $p$
+\end_inset
+
+ som hur stor andel av observationerna som ska användas till träningsmängden.
+ Ni kan också använda 
+\family typewriter
+subset()
+\family default
+ för att göra detta också, men det blir svårare att tydligt ange de observatione
+r som ska tilldelas till valideringsmängden.
+ Denna uppdelning ska ske slumpmässigt.
+ Notera att om en testmängd ska skapas måste uppdelningen ske en gång till
+ från valideringsmängden.
+\end_layout
+
+\begin_layout Section*
+Del 0: Kod
+\end_layout
+
+\begin_layout Itemize
+Klustering i 
+\begin_inset CommandInset href
+LatexCommand href
+name "Kodmanualen"
+target "https://www.isakhietala.com/teaching/732g12/2-klustring/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "ISL"
+target "https://www.statlearning.com/resources-second-edition"
+literal "false"
+
+\end_inset
+
+ se R-kod för kaptiel 12
+\end_layout
+
+\begin_layout Itemize
+IDM, kod för 
+\begin_inset CommandInset href
+LatexCommand href
+name "klustering"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Del 1: K-means klustering
+\end_layout
+
+\begin_layout Enumerate
+Gör lab 12.5.3 
+\begin_inset Quotes sld
+\end_inset
+
+K-means clustering
+\begin_inset Quotes srd
+\end_inset
+
+ i 
+\series bold
+ISL
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
+: 12.6 Exercises Conceptual: 3
+\end_layout
+
+\begin_layout Enumerate
+I denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html"
+literal "false"
+
+\end_inset
+
+: gå igenom 7.1 och 7.2.1
+\end_layout
+
+\begin_layout Enumerate
+I denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html#partitioning-around-medoids-pam"
+literal "false"
+
+\end_inset
+
+: gå igenom 7.2.4 
+\begin_inset Quotes sld
+\end_inset
+
+Partitioning Around Medoids (PAM)
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Del 2: Startcentroider i K-means klustering
+\end_layout
+
+\begin_layout Standard
+Använd 
+\begin_inset Quotes sld
+\end_inset
+
+data1_alt.csv
+\begin_inset Quotes srd
+\end_inset
+
+ för att beräkna en K-means klusteranalys.
+\end_layout
+
+\begin_layout Enumerate
+Visualisera datamaterialet för att se med blotta ögat de kluster som finns
+ där.
+ Hur ser de naturliga klustrena ut? Var är deras centroider?
+\end_layout
+
+\begin_layout Enumerate
+Genomför en k-means klustring med de angivna startcentroiderna i koden nedan
+ samt ange antalet maximala iterationer till 1.
+ Visualisera de resulterande klustren och tolka resultatet.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE,comment=''>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cluster_result <- kmeans(x = data1, 
+\end_layout
+
+\begin_layout Plain Layout
+
+		centers = rbind(c(0,0), c(1, 0), c(-1, 0), c(1, 1)), 
+\end_layout
+
+\begin_layout Plain Layout
+
+		iter.max = 1, nstart = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Öka antalet iterationer till något rimligt värde som tillåter algoritmen
+ att konvergera och kör algoritmen igen och repetera steg 2.
+ Blev resultatet något bättre? Varför inte?
+\end_layout
+
+\begin_layout Enumerate
+Ange nu 
+\begin_inset Formula $k$
+\end_inset
+
+ slumpmässiga centroider istället.
+ Tillåt algoritmen konvergera och jämför resultatet med steg 2.
+ och 3.
+\end_layout
+
+\begin_layout Enumerate
+Återkoppla till vilken funktion som K-means avser att optimera och bedöm
+ vilken av diagrammen som visar de “korrekta” klustren.
+\end_layout
+
+\begin_layout Section*
+Del 3: Hierarkisk klustring
+\end_layout
+
+\begin_layout Enumerate
+Gör lab 12.5.3 
+\begin_inset Quotes sld
+\end_inset
+
+Hierarchical Clustering
+\begin_inset Quotes srd
+\end_inset
+
+ i 
+\series bold
+ISL
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+I denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html#agglomerative-hierarchical-clustering"
+literal "false"
+
+\end_inset
+
+: gå igenom 7.2.2 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
+: 12.6 Exercises Conceptual: 2
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
+: 12.6 Exercises Applied: 9
+\end_layout
+
+\begin_layout Subsubsection*
+Del 3.1 Länkningsmetoder i hierarkisk klustring
+\end_layout
+
+\begin_layout Standard
+Använd data2.csv för att beräkna hierarkisk klusteranalys.
+\end_layout
+
+\begin_layout Enumerate
+Visualisera materialet i två dimensioner och definiera antalet naturliga
+ kluster.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna en hierarkisk klustring med följande länkningsmetoder och visa lämpliga
+ dendrogram:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Enkel länkning 
+\end_layout
+
+\begin_layout Enumerate
+Fullständig länkning 
+\end_layout
+
+\begin_layout Enumerate
+Ward’s metod
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Definiera från varje dendrogram hur många kluster som hittats och visualisera
+ resultatet i ett diagram.
+ Verkar metoden ha hittat de naturliga klustren? Vilken länkningsmetod anser
+ ni vara lämpligast för denna sorts data?
+\end_layout
+
+\begin_layout Enumerate
+Genomför K-means klustring på samma data och jämför med resultaten med enkel
+ länkning.
+ Vilken egenskap från de två metoderna visas här?
+\end_layout
+
+\begin_layout Section*
+Del 4: Densitetsbaserad klustring
+\end_layout
+
+\begin_layout Itemize
+I denna 
+\begin_inset CommandInset href
+LatexCommand href
+name "kod"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html#dbscan"
+literal "false"
+
+\end_inset
+
+: gå igenom 7.2.4 
+\begin_inset Quotes sld
+\end_inset
+
+Density-based clustering with DBSCAN
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Använd 
+\begin_inset Quotes sld
+\end_inset
+
+data3.csv
+\begin_inset Quotes srd
+\end_inset
+
+ för att beräkna densitetsbaserad klusteranalys.
+\end_layout
+
+\begin_layout Enumerate
+Visualisera materialet i två dimensioner och definiera antalet naturliga
+ kluster.
+\end_layout
+
+\begin_layout Enumerate
+Genomför klustring med DBSCAN och följande värden: 
+\family typewriter
+eps = 0.18
+\family default
+, 
+\family typewriter
+minPts = 3
+\family default
+ och 
+\family typewriter
+borderPoints = TRUE
+\family default
+.
+ Vad innebär dessa inställningar? Visualisera de resulterande klustren och
+ bedöm ifall de faller in med de naturliga klustren som identifierats tidigare.
+\end_layout
+
+\begin_layout Enumerate
+Testa ändra på 
+\family typewriter
+eps
+\family default
+ argumentet till mindre och större värden.
+ Hitta det minsta värdet då alla observationer tilldelas till ett kluster.
+ Beskriv hur förändringen av detta argument påverkar klusterresultatet,
+ d.v.s.
+ vad händer i algoritmen i och med förändringen.
+\end_layout
+
+\begin_layout Enumerate
+Testa att ändra på 
+\family typewriter
+minPts
+\family default
+- och 
+\family typewriter
+borderPoints
+\family default
+-argumenten.
+ Hur förändras de resulterande klustren?
+\end_layout
+
+\begin_layout Enumerate
+Genomför k-means klustring med några olika värden på 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Visualisera de resulterande klustren och jämför med steg 2.
+ Vilken av metoderna anses producera “bättre” resultat? Om resultaten skiljer
+ sig åt, försök förklara varför.
+\end_layout
+
+\begin_layout Section*
+Del 5 Utvärdera kluster
+\end_layout
+
+\begin_layout Enumerate
+Utgå från koden i 
+\begin_inset CommandInset href
+LatexCommand href
+name "7.5 Cluster Evaluation"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html#cluster-evaluation"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utgå från koden i 
+\begin_inset CommandInset href
+LatexCommand href
+name "7.7 Outliers in Clustering"
+target "https://mhahsler.github.io/Introduction_to_Data_Mining_R_Examples/book/cluster-analysis.html#outliers-in-clustering"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Del 6: Irisdata
+\end_layout
+
+\begin_layout Standard
+Använd nu det inbyggda datasetet iris.
+ Notera att här finns det tre klasser (Species).
+ Använd inte den variabeln i klusteringen, utan endast de fyra numeriska
+ variablerna.
+\end_layout
+
+\begin_layout Enumerate
+Genomför klustring med DBSCAN.
+ Välj valfria värden på hyperparametrarna.
+ Hur många kluster erhåller ni? Undersök hur väl klustringen matchar de
+ befintliga grupperna (klasserna).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
+ ha olika färger.
+ Låt klasserna representeras av olika symboler.
+ Hur blir uppdelningen?
+\end_layout
+
+\begin_layout Enumerate
+Om matchningen blir dålig: försök att ändra på hyperparametrarna för att
+ få en bättre gruppering.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna förväxlingsmatrisen mellan de skattade klustren och den sanna klasserna.
+ Hur förhåller sig klasserna till de erhållna klustren?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Genomför klustring med k-means.
+ Testa k=2,3,4,5.
+ Undersök hur väl klustringen matchar de befintliga grupperna (klasserna).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
+ ha olika färger.
+ Låt klasserna representeras av olika symboler.
+ Hur blir uppdelningen?
+\end_layout
+
+\begin_layout Enumerate
+Beräkna förväxlingsmatrisen mellan de skattade klustren och den sanna klasserna.
+ Hur förhåller sig klasserna till de erhållna klustren?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Genomför klustring med hierarkisk klustring.
+ Testa minst två olika länkningsmetoder.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gör parvisa punktdiagram för variablerna (blir sex stycken), låt klustren
+ ha olika färger.
+ Låt klasserna representeras av olika symboler.
+ Hur blir uppdelningen?
+\end_layout
+
+\begin_layout Enumerate
+Beräkna förväxlingsmatrisen mellan de skattade klustren och den sanna klasserna.
+ Hur förhåller sig klasserna till de erhållna klustren?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Jämför resultatet i 1), 2) och 3).
+ Vilken modell föredrar ni här?
+\end_layout
+
+\begin_layout Section*
+Del 7: Teorifrågor
+\end_layout
+
+\begin_layout Enumerate
+Ge ett exempel på ett datamaterial där k-means kommer att fungera dåligt.
+\end_layout
+
+\begin_layout Enumerate
+Förklara varför man i K-means algoritmen beräknar centroidernas position
+ genom ett medelvärde av alla klustrets punkter om vi använder det Euklidiska
+ avståndsmåttet och vill minimera SSE.
+\end_layout
+
+\begin_layout Enumerate
+Beskriv två alternativa lösningar till initialiseringsproblemen för val
+ av startcentroider i K-means algoritmen utöver att slumpmässigt välja dessa.
+\end_layout
+
+\begin_layout Enumerate
+Ge ett exempel på ett datamaterial som innehåller kluster av olika tätheter
+ där DBSCAN inte kommer kunna hitta de “korrekta” naturliga klustren?
+\end_layout
+
+\begin_layout Enumerate
+Vilka olika hyperparameterar finns det i 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+k-means?
+\end_layout
+
+\begin_layout Enumerate
+DBSCAN?
+\end_layout
+
+\begin_layout Enumerate
+hierarkisk klustring?
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Del 8: Mer klustering
+\end_layout
+
+\begin_layout Standard
+Gå in på denna sida 
+\begin_inset CommandInset href
+LatexCommand href
+name "Clustering basic benchmark"
+target "http://cs.joensuu.fi/sipu/datasets/"
+literal "false"
+
+\end_inset
+
+.
+ Ni ska nu testa att klustra några dataset härifrån.
+\end_layout
+
+\begin_layout Enumerate
+Ladda ner datasetet 
+\begin_inset Quotes sld
+\end_inset
+
+Unbalance
+\begin_inset Quotes srd
+\end_inset
+
+ och läs in i R.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plotta och undersök data
+\end_layout
+
+\begin_layout Enumerate
+Testa att göra klustra data med
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+k-means: testa olika värden på k
+\end_layout
+
+\begin_layout Enumerate
+DBSCAN: Välj valfria värden på hyperparametrarna.
+\end_layout
+
+\begin_layout Enumerate
+Hierarkisk klustring, välj valfri länkningsmetod.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hur fungerar klustringen i de olika fallen?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ladda ner dataseteten 
+\begin_inset Quotes sld
+\end_inset
+
+S-sets
+\begin_inset Quotes srd
+\end_inset
+
+ och läs in i R.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Börja med att undersöka data: Vad skiljer S1-S4 åt?
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom dataseten S1-S4 och klustra med
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+k-means: testa olika värden på k
+\end_layout
+
+\begin_layout Enumerate
+DBSCAN: Välj valfria värden på hyperparametrarna.
+\end_layout
+
+\begin_layout Enumerate
+Hierarkisk klustring, välj valfri länkningsmetod.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hur fungerar klustringen i de olika fallen?
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Del 9: Frivillig fördjupning
+\end_layout
+
+\begin_layout Subsection*
+Principalkomponentanalys (PCA)
+\end_layout
+
+\begin_layout Enumerate
+Kör lab 12.5.1 i 
+\series bold
+ISL
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ISL
+\series default
+: 12.6 Exercises Applied: 10
+\end_layout
+
+\end_body
+\end_document
