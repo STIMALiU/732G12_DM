@@ -293,7 +293,7 @@ Hastie, Robert Tibshirani
         \item För varje datapunkt $x$ beräkna avstånder $d(x,c_i)$ mellan $x$ och den närmaste centroiden (som redan valts).
         \item Välj en datapunkt som centroid genom att:
         \begin{itemize}
-            \item Slumpa en punkt med hjälp av viktade sannolikheter, där vikterna är proportionella mot $d(x,c_i)^2$.
+            \item Slumpa en punkt med hjälp av viktade sannolikheter, där vikterna är proportionella mot $d(x,c_i)^2$, där $c_i$ är den närmaste centoriden för varje punkt.
         \end{itemize}
         \item Upprepa 2 och 3 tills $K$ centroider valts ut.
         \item Kör vanlig K-means med dessa startcentroider.
