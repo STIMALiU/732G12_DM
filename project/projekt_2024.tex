@@ -50,7 +50,15 @@ Rapporten ska skrivas med någon av följande programvaror:
     \item \href{https://en.wikipedia.org/wiki/LaTeX}{LaTeX} Vanligt vid skrivandet av akademiska rapporter. Kan använda \href{https://www.overleaf.com}{Overleaf} för att skriva tillsammans (utan strul med installationer).
     \item \href{https://www.lyx.org/}{LyX} Grafiskt program som generar en LaTeX-rapport i bakgrunden. Kan användas med knitr för att köra R-kod.
 \end{itemize}
-Rapporten ska lämnas in som en pdf-fil.  Döp filen på formen \texttt{gruppX\_liuid1\_liuid2.pdf} och ladda upp på Lisam.
+Om ni använder knitr med Rmarkdown/latex/lyx, då rekomenderas det att ni har seprata R-filer där ni har era anayser, och att ni sen bara läser in lämpliga resultat i er rapport-fil. Så man inte måste köra om alla skattningar etc varje gånga som man ska kompliera sin rapport-fil. 
+
+Rapporten ska lämnas in som en pdf-fil.  Döp filen på formen \texttt{gruppX\_liuid1\_liuid2.pdf} och ladda upp på Lisam. Er rapport ska vara snygg och välstruktuerad. Se rapportmallen för mer instruktioner.
+
+
+\subsection*{Tidigare studier}
+En del datamaterial har analyserats av andra och olika analyser kan finnas tillgängliga på internet. Det är inte ok att direkt kopiera någon annans analys av samma datamaterial. Det är ok att använda vissa avgränsade delar av andras analyser om tydligt anger vad man använt och citerar källan. Exempel kan vara att man använder samma transformation av förklarande varaiabler som i en annan analys. Man kan hämta inspiration av vilka metoder som har använts eller inte använts på just ert datamaterial. Om ni läser om andra analyser av ert datamaterial så bör ni skriva kort om dessa i er bakgrundsektion i rapporten (och citera!), alltså vad som har gjorts tidigare på "området". 
+
+Det är också ok att jämföra era egna resultat med resultatet från någon annans analys (glöm inte att citera då). Exempel: Ni har valt att använda neurala nätverk, ni ser att någon annan har använt random forest på samma data. Då kan ni i diskussionen citera den andra källan och jämföra era träffsäkerhet med deras träffsäkerhet. Det är inte ok att ta någon annas resultat från modellskattningar som ert eget resultat, utan ni måste skatta alla era egna modeller själv.
 
 \subsection*{Datainlämning}
 Ni ska göra en mindre inlämning på Lisam innan ni lämnar in den färdiga rapporten. Där ska ni:
@@ -82,6 +90,7 @@ Varje grupp ska välja ett eget datamaterial. Två grupper kan inte ha samma dat
 \subsection*{Välja datamaterial}
 Ni är fria att välja ett eget datamaterial. Följande regler gäller:
 \begin{itemize}
+    \item Inget datamaterial som ni har arbetet med under datorlaborationerna under kursen.
     \item Inget simulerat datamaterial eller "toy data". Det ska vara ett riktigt datamaterial som kan användas för en riktig frågeställning.
     \item Inte för "enkelt": Tumregel, minst 500 observationer eller minst 10 variabler. Fråga om ni är osäkra.
     \item När ni hittat ett datamaterial, skriv upp det i dokumentet. Fråga Johan om ni är osäkra på valet.
