@@ -237,7 +237,7 @@ Ingen klustermetod passar för alla dataset!
         \item[Separation:] Hur väl separerat ett kluster är från övriga kluster.
     \end{description}
     
-    När vi har beräknat mått för ett kluster kan vi väga samman alla dessa mått till ett mått.
+    När vi har beräknat dessa mått för ett kluster kan vi väga samman alla dessa mått till ett mått för hela klustringen.
 
 \end{frame}
 
@@ -431,7 +431,7 @@ Ingen klustermetod passar för alla dataset!
     \begin{itemize}
         
         
-        \item Klusteranalys kan användas för att komprimera ett dataset. Här passar det bra med någon prototypbaserad klustering, t.ex. k-means
+        \item Klusteranalys kan användas för att komprimera ett dataset. Här passar det bra med någon prototypbaserad klustering
         \begin{itemize}
             \item Om vi har många obs så kör vi k-means eller PAM på data, där $k$ är relativt stort
             \item Vi använder sen centroiderna/medoiderna som data i vidare analyser: vi har nu $k$ stycken obs
@@ -481,6 +481,7 @@ Ingen klustermetod passar för alla dataset!
             \item LASSO, Ridge
             \item Vi vill ofta ha så enkla modeller som möjligt
         \end{itemize}
+        \item Vi vill ha bra generaliserbarhet!
     \end{itemize}
 \end{frame}
 
