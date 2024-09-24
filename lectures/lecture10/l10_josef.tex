@@ -44,6 +44,7 @@
         \item Densitetsbaserade metoder
         \item Faktorer som påverkar klusteranalys
         \item Utvärdera klusteranalys
+        \item Sammanfattning av kursen
     \end{itemize}
     
 \end{frame}
@@ -107,11 +108,11 @@
         \item Använder två begrepp:
         \begin{itemize}
             \item $\operatorname{eps}$, en sökradie där vi letar efter punkter.
-            \item $\operatorname{minPts}$, minsta antal punkter.
+            \item $\operatorname{minPts}$, minsta antal punkter/grannar.
         \end{itemize}
     \end{itemize}
     
-    Från detta kan vi klassa observation i någon av följande:
+    Från detta kan vi klassificera observationerna till någon av följande kategorier:
     \begin{description}
         \item[Kärnpunkt] Punkter med fler än $\operatorname{minPts}$ punkter inom sökradien $\operatorname{eps}$.
         \item[Gränspunkt] Inte en kärnpunkt men hamnar inom sökradien från en kärnpunkt.
@@ -162,7 +163,7 @@
     \begin{itemize}
         \item Brusbeständig.
         \item Behandlar kluster av olika former och storlekar.
-        \item Problem med kluster som har betydligt varierande tätheter.
+        \item Problem med kluster som har tydligt varierande tätheter.
         \begin{itemize}
             \item Svårt att välja ett bra $\operatorname{eps}$.
         \end{itemize}
@@ -217,6 +218,9 @@ Ingen klustermetod passar för alla dataset!
 
     \begin{itemize}
         \item Cluster tendency: Finns det kluster i data? Eller har observationerna bara slumpmässiga värden?
+        \begin{itemize}
+           \item Notera: det kan finnas bra ett "naturligt" kluster i data
+        \end{itemize}
         \item Avgöra rätt antal kluster.
         \item Interna mått på hur bra klusteranalysen är.
         \item Externa mått på hur bra klusteranalysen är $\rightarrow$ om vi har tillgång till sanna klasser/grupper.
@@ -377,7 +381,7 @@ Ingen klustermetod passar för alla dataset!
         \end{itemize}
         \item Hopkins statistic:
         \begin{equation*}
-            \operatorname{H} 0 \frac{\sum_{i=1}^{p}w_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
+            \operatorname{H}=\frac{\sum_{i=1}^{p}w_i}{\sum_{i=1}^{p}u_i + \sum_{i=1}^{p}w_i}
         \end{equation*}
         \item Nollhypotesen är att datasetet följer en uniform fördelning. $\operatorname{H_0}$ kommer då vara $\operatorname{Beta}(p,p)$ fördelat.
         \item Värden nära 1 indikerar att data inte är uniformt fördelat.
@@ -402,6 +406,169 @@ Ingen klustermetod passar för alla dataset!
         \end{itemize}
     \end{itemize}
     
+\end{frame}
+
+
+\begin{frame}{Användning and utvärdering av klusteranalys}
+
+    \begin{itemize}
+        \item Börja med lämplig datahantering: välja variabler, skalning, mm
+        \item Välj lämpligt avståndsmått/närhetsmått
+        \item Överväg om någon variabelreduktion kan behövas (väja mindre delmängd av variabler, PCA, autoencoders, etc)
+        \item Ofta är det bra att testa olika klusteringsmetoder och olika inställningar på hyperparametrar
+        \item Vi kan använda klustering för att diskretisera variabler
+        \begin{itemize}
+          \item Välj en eller ett mindre antal variabler
+          \item Kör en klustring
+          \item Använd klustertillhörighet som en ny kategorisk variabel
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Användning and utvärdering av klusteranalys}
+
+    \begin{itemize}
+        
+        
+        \item Klusteranalys kan användas för att komprimera ett dataset. Här passar det bra med någon prototypbaserad klustering, t.ex. k-means
+        \begin{itemize}
+            \item Om vi har många obs så kör vi k-means eller PAM på data, där $k$ är relativt stort
+            \item Vi använder sen centroiderna/medoiderna som data i vidare analyser: vi har nu $k$ stycken obs
+            \item Vi kan använda den "nya datan" för klustering med någon annan klustringsmetod eller för annan dataanalys
+        \end{itemize}
+        
+        
+        \item För att testa robusthet i resultatet:
+        \begin{itemize}
+          \item Dra ett antal slumpmässiga urval från data (t.ex. med 70-90\% av obs i ursprungliga data) 
+          \item Klustra alla dessa data med samma metod med samma inställningar
+          \item Undersök om klustering blir lika mellan dataseten eller om det är tydliga skillnader
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}[standout]
+    \Huge Sammanfattning av kursen
+\end{frame}
+
+\begin{frame}{Sammanfattning av kursen}
+
+    Sammanfattning i en mening:
+    \begin{itemize}
+        \item Givet data, hitta den bästa (mest lämpade), modellen som beskriver eller predikterar detta dataset.
+    \end{itemize}
+
+    Till vår hjälp har vi gått igenom väldigt många olika modeller och algoritmer.
+    
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Modellval
+        \begin{itemize}
+            \item Felfunktioner
+            \item Utvärderingsmått
+            \item Dela upp data i träning, validering, test.
+            \item Korsvalidering
+            \item AIC, BIC\dots
+            \item Variabelselektion
+        \end{itemize}
+        \item Regularisering
+        \begin{itemize}
+            \item LASSO, Ridge
+            \item Vi vill ofta ha så enkla modeller som möjligt
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Icke-linjär regression/klassificering
+        \begin{itemize}
+            \item Grundidé är att hitta en transformationer av förklarande variabler.
+            \item Gått igenom många olika transformationer.
+        \end{itemize}
+        \item Basfunktioner
+        \item Splines
+        \item Kernelfunktioner
+        \item Lokal regression
+        \item Trädmodeller
+        \item Neurala nätverk
+        \begin{itemize}
+            \item Olika typer av lager för olika problem
+            \item Olika aktiveringsfunktioner
+            \item Global approximation theorem
+            \item Bra för bilder, video, text, ...
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    \begin{itemize}
+        \item Trädmodeller
+        \begin{itemize}
+            \item Dela upp variabelrummet i rektanglar.
+            \item Varje rektangel får ett värde.
+            \item Olika regler för uppdelning beroende på problem.
+        \end{itemize}
+        \item Beskärning av träd
+        \begin{itemize}
+            \item Förbeskärning
+            \item Efterbeskärning
+        \end{itemize}
+        \item Ensamblemetoder
+        \begin{itemize}
+            \item Bagging - Använd bootstrap för att skapa många "oberoende" träd.
+            \item Random forest - Gör slumpmässiga ändringar i träden.
+            \item Boosting - Skapa många (små) träd, men modifiera datan mellan varje träd.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item K-närmaste grannar
+        \begin{itemize}
+            \item Skattar värdet med hjälp av närmaste datapunkterna
+            \item Kan förbättras genom att vikta med avståndet
+        \end{itemize}
+        \item Naive bayes
+        \begin{itemize}
+            \item Skatta klassificering med hjälp av bayes sats
+            \item För full sannolikhetsfördelning krävs mycket data
+            \item Görs ofta förenklningen att varje variabel är oberoende
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sammanfattning}
+    
+    \begin{itemize}
+        \item Klusteranalys
+        \begin{itemize}
+            \item Oövervakad inlärning.
+            \item K-means klustring
+            \item K-medoid klustring
+            \item Hierarkisk klustring
+            \item DBSCAN
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[standout]
+    \Huge Tack för att ni har lyssnat!
+
+    \large Nu är det bara projektet och tentan kvar.
 \end{frame}
 
 \end{document}
