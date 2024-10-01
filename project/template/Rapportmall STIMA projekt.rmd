@@ -164,7 +164,7 @@ Notera att i de flesta fall så är det lämpligt att jämföra två eller fler 
 
 Först beskriver ni era metoder/modeller teoretiskt i generella termer.
 
-Sen ska ni beskriva era "praktiska metod": hur ni applicerar era metoder/modeller på ert problem. Ni ska alltså har ett strukturerat arbetssätt och ni ska beskriva det övergripande här. Sen under Resultat visar ni resutlatet av er applicerade metod. 
+Sen ska ni beskriva era "praktiska metod": hur ni applicerar era metoder/modeller på ert problem. Ni ska alltså har ett strukturerat arbetssätt och ni ska beskriva det övergripande här. Sen under Resultat visar ni resultatet av er applicerade metod. 
 
  - När man analyserar data är det naturligt att ha en initial fas där men explorativt utforskar data och olika metoder kopplat till problemet. Denna fas behöver man oftast inte skriva om under Metod. Notera: denna fas ska vara relativt kort i tid.
  - Sen när ni fått ungefärlig bild av vad som ni behöver göras för att analysera er frågeställning så ska ni bestämma ett strukturerat upplägg på hur ni ska använda era metoder/modeller på ert problem.
