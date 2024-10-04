@@ -245,6 +245,11 @@ Här ska ni ha relevant R-kod
 Här skriver ni en kort redogörelse för hur gruppens medlemmar har bidragit till arbetet och rapporten. Kan vara i form av en punktlista.
 
 ## Generativ AI
-Mer info kommer snart.
+Se den generella instruktionen för mer info.
 
+Har generativ AI används?
+
+Allmänt:
+
+Sektion per sektion:
 
